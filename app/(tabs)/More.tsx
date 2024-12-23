@@ -2,12 +2,14 @@ import React from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Linking } from 'react-native';
 import { useRouter } from 'expo-router';
 import Colors from '@/constants/Colors';
+import AnimatedHeaderLayout from '@/components/AnimatedHeaderLayout';
 
 const MoreScreen = () => {
   const router = useRouter();
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
+    <AnimatedHeaderLayout headerText="More" backgroundColor={styles.container.backgroundColor}>
+    {/* <ScrollView contentContainerStyle={styles.container}> */}
       {/* Header */}
       <View style={styles.header}>
         <Text style={styles.headerText}>More</Text>
@@ -69,7 +71,7 @@ const MoreScreen = () => {
           <Text style={styles.link}>Visit us on YouTube</Text>
         </TouchableOpacity>
       </View>
-    </ScrollView>
+    </AnimatedHeaderLayout>
   );
 };
 

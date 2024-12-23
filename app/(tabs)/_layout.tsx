@@ -32,7 +32,10 @@ export default function TabLayout() {
               backgroundColor: Colors.navyTint, // Set the tab bar background to light navy
             },
             tabBarActiveTintColor: '#dac368', // Set the active tab label color to gold
-            // headerShown: false,  // Hide the header
+            headerShown: false,  // Hide the header
+            // headerStyle: {
+            //   backgroundColor: Colors.navyTint, // Set the header background to dark navy
+            // },
           }}
         >
           <Tabs.Screen
@@ -79,7 +82,7 @@ export default function TabLayout() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Colors.navyBlue,
-    // paddingTop: Constants.statusBarHeight, // Add padding equivalent to the status bar height
+    backgroundColor: Colors.navyTint, // Match the tab bar background color
+    paddingTop: Constants.statusBarHeight, // Add padding equivalent to the status bar height
   },
 });
