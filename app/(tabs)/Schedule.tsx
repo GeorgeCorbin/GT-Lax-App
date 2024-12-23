@@ -3,12 +3,13 @@ import { View, Text, ScrollView, StyleSheet, Image } from 'react-native';
 import axios from 'axios';
 import { XMLParser } from 'fast-xml-parser';
 
+const rssURL23 = 'https://www.gtlacrosse.com/sports/mlax/2023-24/schedule?print=rss';
+const rssURL25 = 'https://www.gtlacrosse.com/sports/mlax/2024-25/schedule?print=rss';
+
 // Fetch the RSS feed and parse it
 export const fetchSchedule = async () => {
   try {
-    const response = await axios.get(
-      'https://www.gtlacrosse.com/sports/mlax/2023-24/schedule?print=rss'
-    );
+    const response = await axios.get(rssURL25);
 
     const parser = new XMLParser({ ignoreAttributes: false });
     const feed = parser.parse(response.data);
@@ -113,28 +114,23 @@ const Schedule = () => {
       {upcomingGames.map((game, index) => {
         // Determine if Georgia Tech is the home team
         const isHome = game.title.includes('vs. Georgia Tech');
+        const cleanedTitle = game.title.replace(/Final/i, '').trim();
+        const parts = cleanedTitle.split('vs.');
+        const awayTeam = parts[0] ? parts[0].replace(/\d+/g, '').trim() : 'Away Team';
+        const homeTeam = parts[1] ? parts[1].replace(/\d+/g, '').trim() : 'Home Team';
+
 
         return (
           <View key={index} style={styles.gameItem}>
             <View style={styles.row}>
-              {/* Team Section */}
               <View style={styles.teamColumn}>
-                {/* Opponent Team */}
                 <View style={styles.team}>
-                  <Image
-                    source={getTeamLogo(game.opponent?.trim() || 'placeholder')}
-                    style={styles.logo}
-                  />
-                  <Text style={styles.teamName}>{game.opponent?.trim() || 'Unknown'}</Text>
+                  <Image source={getTeamLogo(awayTeam)} style={styles.logo} />
+                  <Text style={styles.teamName}>{awayTeam}</Text>
                 </View>
-
-                {/* Georgia Tech Team */}
                 <View style={styles.team}>
-                  <Image
-                    source={getTeamLogo('Georgia Tech')}
-                    style={styles.logo}
-                  />
-                  <Text style={styles.teamName}>Georgia Tech</Text>
+                  <Image source={getTeamLogo(homeTeam)} style={styles.logo} />
+                  <Text style={styles.teamName}>{homeTeam}</Text>
                 </View>
               </View>
 
@@ -167,55 +163,50 @@ const Schedule = () => {
       <Text style={styles.sectionTitle}>COMPLETED</Text>
       {completedGames.map((game, index) => {
       // Determine if Georgia Tech is the home team
-      const isHome = game.title.includes('vs. Georgia Tech');
-      const opponent = game.opponent?.trim() || 'Unknown';
-      const [teamScore, opponentScore] = game.score
-        ? game.score.split(',').map((s) => s.replace(/[^\d]/g, '').trim())
-        : ['0', '0']; // Extract scores and clean formatting
+        const isHome = game.title.includes('vs. Georgia Tech');
+        const opponent = game.opponent?.trim() || 'Unknown';
+        const cleanedTitle = game.title.replace(/Final/i, '').trim();
+        const [awayPart, homePart] = cleanedTitle.split(',');
+        const awayTeam = awayPart ? awayPart.replace(/\d+/g, '').trim() : 'Away Team';
+        const homeTeam = homePart ? homePart.replace(/\d+/g, '').trim() : 'Home Team';
 
-      return (
-        <View key={index} style={styles.gameItem}>
-          <View style={styles.row}>
-            {/* Team Section */}
-            <View style={styles.teamColumn}>
-              <View style={styles.team}>
-                <Image
-                  source={getTeamLogo('Georgia Tech')}
-                  style={styles.logo}
-                />
-                <Text style={styles.teamName}>Georgia Tech</Text>
-                <Text style={styles.score}>{isHome ? teamScore : opponentScore}</Text>
+        const [awayScore, homeScore] = game.score ? game.score.split('-').map((s) => s.replace(/[^\d]/g, '').trim()) : ['0', '0'];
+
+        return (
+          <View key={index} style={styles.gameItem}>
+            <View style={styles.row}>
+              <View style={styles.teamColumn}>
+                <View style={styles.team}>
+                  <Image source={getTeamLogo(awayTeam)} style={styles.logo} />
+                  <Text style={styles.teamName}>{awayTeam}</Text>
+                  <Text style={styles.score}>{awayScore}</Text>
+                </View>
+                <View style={styles.team}>
+                  <Image source={getTeamLogo(homeTeam)} style={styles.logo} />
+                  <Text style={styles.teamName}>{homeTeam}</Text>
+                  <Text style={styles.score}>{homeScore}</Text>
+                </View>
               </View>
 
-              <View style={styles.team}>
-                <Image
-                  source={getTeamLogo(opponent)}
-                  style={styles.logo}
-                />
-                <Text style={styles.teamName}>{opponent}</Text>
-                <Text style={styles.score}>{isHome ? opponentScore : teamScore}</Text>
+              {/* Game Details */}
+              <View style={styles.detailsRow}>
+                <Text style={[styles.result, game.score?.includes('W') ? styles.win : styles.loss]}>
+                  {game.score?.includes('W') ? 'Win' : 'Loss'}
+                </Text>
+                <Text style={styles.date}>
+                  {new Date(game.pubDate).toLocaleDateString('en-US', {
+                    month: 'short',
+                    day: 'numeric',
+                  })}
+                </Text>
+                <Text style={styles.location}>
+                  {isHome ? 'Roe Stamps Field' : 'Away'}
+                </Text>
               </View>
-            </View>
-
-            {/* Game Details */}
-            <View style={styles.detailsRow}>
-              <Text style={[styles.result, game.score?.includes('W') ? styles.win : styles.loss]}>
-                {game.score?.includes('W') ? 'Win' : 'Loss'}
-              </Text>
-              <Text style={styles.date}>
-                {new Date(game.pubDate).toLocaleDateString('en-US', {
-                  month: 'short',
-                  day: 'numeric',
-                })}
-              </Text>
-              <Text style={styles.location}>
-                {isHome ? 'Roe Stamps Field' : 'Away'}
-              </Text>
             </View>
           </View>
-        </View>
-      );
-    })}
+        );
+      })}
 
 
     </ScrollView>
@@ -364,7 +355,7 @@ const styles = StyleSheet.create({
     color: '#FFFFFF', // White for scores
     marginLeft: 16, // Add spacing between the team name and score
   },
-    
+   
 });
 
 export default Schedule;
