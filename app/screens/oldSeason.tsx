@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, ScrollView, StyleSheet, Image } from 'react-native';
+import { View, Text, ScrollView, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import axios from 'axios';
 import { XMLParser } from 'fast-xml-parser';
-
-const rssURL23 = 'https://www.gtlacrosse.com/sports/mlax/2023-24/schedule?print=rss';
-const rssURL25 = 'https://www.gtlacrosse.com/sports/mlax/2024-25/schedule?print=rss';
+import { RouteProp } from '@react-navigation/native';
+import { useRouter, SearchParams } from 'expo-router';
+import { useSearchParams } from 'expo-router/build/hooks';
 
 // Fetch the RSS feed and parse it
-export const fetchSchedule = async () => {
+export const fetchSchedule = async (year: String) => {
   try {
-    const response = await axios.get(rssURL25);
+    const response = await axios.get(`https://www.gtlacrosse.com/sports/mlax/${year}/schedule?print=rss`);
 
     const parser = new XMLParser({ ignoreAttributes: false });
     const feed = parser.parse(response.data);
@@ -78,18 +78,20 @@ const getTeamLogo = (teamName: string): any => {
   return teamLogos[formattedName] || teamLogos.placeholder;
 };
 
+// type ScheduleRouteProp = RouteProp<{ params: { year: string } }, 'params'>;
 
-const Schedule = () => {
+const oldSeason = () => {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const year = searchParams.get('year') || '';
   const [completedGames, setCompletedGames] = useState<Game[]>([]);
-  const [upcomingGames, setUpcomingGames] = useState<Game[]>([]);
   const [record, setRecord] = useState({ wins: 0, losses: 0 });
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const loadSchedule = async () => {
       try {
-        const schedule = await fetchSchedule();
-
+        const schedule = await fetchSchedule(year);
         const completed = schedule.filter((game: Game) => game.score);
         const upcoming = schedule.filter((game: Game) => !game.score);
 
@@ -104,7 +106,6 @@ const Schedule = () => {
         );
 
         setCompletedGames(completed);
-        setUpcomingGames(upcoming);
         setRecord(record);
       } catch (error) {
         console.error('Error fetching schedule:', error);
@@ -128,61 +129,17 @@ const Schedule = () => {
     <ScrollView style={styles.container}>
       {/* Header */}
       <View style={styles.header}>
-        <Text style={styles.headerText}>Schedule</Text>
+        <Text style={styles.headerText}>{year} Season</Text>
         <Text style={styles.recordText}>
           {record.wins}-{record.losses}
         </Text>
+        {/* Back Button */}
+        {/* <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
+            <Text style={styles.backText}>Back</Text>
+        </TouchableOpacity> */}
       </View>
 
-      {/* Upcoming Games Section */}
-      <Text style={styles.sectionTitle}>UPCOMING</Text>
-      {upcomingGames.map((game, index) => {
-        // Determine if Georgia Tech is the home team
-        const isHome = game.title.includes('vs. Georgia Tech');
-        const cleanedTitle = game.title.replace(/Final/i, '').trim();
-        const parts = cleanedTitle.split('vs.');
-        const awayTeam = parts[0] ? parts[0].replace(/\d+/g, '').trim() : 'Away Team';
-        const homeTeam = parts[1] ? parts[1].replace(/\d+/g, '').trim() : 'Home Team';
-
-
-        return (
-          <View key={index} style={styles.gameItem}>
-            <View style={styles.row}>
-              <View style={styles.teamColumn}>
-                <View style={styles.team}>
-                  <Image source={getTeamLogo(awayTeam)} style={styles.logo} />
-                  <Text style={styles.teamName}>{awayTeam}</Text>
-                </View>
-                <View style={styles.team}>
-                  <Image source={getTeamLogo(homeTeam)} style={styles.logo} />
-                  <Text style={styles.teamName}>{homeTeam}</Text>
-                </View>
-              </View>
-
-              {/* Game Details Section */}
-              <View style={styles.detailsRow}>
-                <Text style={styles.date}>
-                  {new Date(game.pubDate).toLocaleDateString('en-US', {
-                    month: 'short',
-                    day: 'numeric',
-                    year: 'numeric',
-                  })}
-                </Text>
-                <Text style={styles.time}>
-                  {new Date(game.pubDate).toLocaleTimeString([], {
-                    hour: 'numeric',
-                    minute: '2-digit',
-                  })}
-                </Text>
-                <Text style={styles.location}>
-                  {isHome ? 'Roe Stamps Field' : 'Away'}
-                </Text>
-              </View>
-            </View>
-          </View>
-        );
-      })}
-
+      
 
       {/* Completed Games Section */}
       <Text style={styles.sectionTitle}>COMPLETED</Text>
@@ -380,7 +337,16 @@ const styles = StyleSheet.create({
     color: '#FFFFFF', // White for scores
     marginLeft: 16, // Add spacing between the team name and score
   },
-   
+  backButton: {
+    padding: 10,
+    backgroundColor: '#DAC368', // Updated gold for the back button
+    borderRadius: 5,
+  },
+  backText: {
+    color: '#000', // Black text for the back button
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
 });
 
-export default Schedule;
+export default oldSeason;
