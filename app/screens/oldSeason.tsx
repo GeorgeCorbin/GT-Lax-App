@@ -201,6 +201,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#000', // Black background for the entire screen
     flex: 1,
     padding: 16,
+    fontFamily: 'Roboto-Regular', // Apply Roboto-Regular font
   },
 
   // Header section
@@ -214,6 +215,7 @@ const styles = StyleSheet.create({
     fontSize: 28,
     fontWeight: 'bold',
     color: '#FFF', // White text for the header
+    fontFamily: 'Roboto-Regular', // Apply Roboto-Regular font
   },
   recordText: {
     fontSize: 16,
@@ -227,6 +229,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#DAC368', // Updated gold
     marginVertical: 12,
+    fontFamily: 'Roboto-Regular', // Apply Roboto-Regular font
   },
 
   // Game item card
@@ -257,6 +260,7 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     color: '#FFFFFF', // White for team names
     flex: 2, // Take available space but leave room for the score
+    fontFamily: 'Roboto-Regular', // Apply Roboto-Regular font
   },
   logo: {
     width: 32,
@@ -275,6 +279,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '500',
     color: '#FFFFFF', // White text for dates
+    fontFamily: 'Roboto-Regular', // Apply Roboto-Regular font
   },
   time: {
     fontSize: 14,
@@ -298,6 +303,7 @@ const styles = StyleSheet.create({
   loadingText: {
     fontSize: 18,
     color: '#DAC368', // Updated gold for loading text
+    fontFamily: 'Roboto-Regular', // Apply Roboto-Regular font
   },
 
   // Team Info (repeated in both teams)

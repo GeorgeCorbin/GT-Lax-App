@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, ScrollView, StyleSheet, Image } from 'react-native';
 import axios from 'axios';
 import { XMLParser } from 'fast-xml-parser';
+import Colors from '@/constants/Colors';
 
 const rssURL23 = 'https://www.gtlacrosse.com/sports/mlax/2023-24/schedule?print=rss';
 const rssURL25 = 'https://www.gtlacrosse.com/sports/mlax/2024-25/schedule?print=rss';
@@ -241,9 +242,10 @@ const Schedule = () => {
 const styles = StyleSheet.create({
   // General container for the screen
   container: {
-    backgroundColor: '#000', // Black background for the entire screen
+    backgroundColor: Colors.grayMatter, // Black background for the entire screen
     flex: 1,
     padding: 16,
+    fontFamily: 'Roboto-Regular', // Apply Roboto-Regular font
   },
 
   // Header section
@@ -257,24 +259,26 @@ const styles = StyleSheet.create({
     fontSize: 28,
     fontWeight: 'bold',
     color: '#FFF', // White text for the header
+    fontFamily: 'Roboto-Regular', // Apply Roboto-Regular font
   },
   recordText: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#DAC368', // Updated gold for the record text
+    color: Colors.techGold, // Updated gold for the record text
   },
 
   // Section title (e.g., UPCOMING, COMPLETED)
   sectionTitle: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#DAC368', // Updated gold
+    color: Colors.techGold, // Updated gold
     marginVertical: 12,
+    fontFamily: 'Roboto-Regular', // Apply Roboto-Regular font
   },
 
   // Game item card
   gameItem: {
-    backgroundColor: '#22284A', // Updated navy background
+    backgroundColor: Colors.navyBlue, // Updated navy background
     borderRadius: 8,
     marginBottom: 16,
     padding: 16,
@@ -300,11 +304,16 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     color: '#FFFFFF', // White for team names
     flex: 2, // Take available space but leave room for the score
+    fontFamily: 'Roboto-Regular', // Apply Roboto-Regular font
   },
   logo: {
     width: 32,
     height: 32,
     marginRight: 8,
+    shadowColor: '#fff',
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 1,
+    shadowRadius: 2.5,
   },
 
   // Date and time section
@@ -318,6 +327,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '500',
     color: '#FFFFFF', // White text for dates
+    fontFamily: 'Roboto-Regular', // Apply Roboto-Regular font
   },
   time: {
     fontSize: 14,
@@ -340,7 +350,8 @@ const styles = StyleSheet.create({
   },
   loadingText: {
     fontSize: 18,
-    color: '#DAC368', // Updated gold for loading text
+    color: Colors.techGold, // Updated gold for loading text
+    fontFamily: 'Roboto-Regular', // Apply Roboto-Regular font
   },
 
   // Team Info (repeated in both teams)

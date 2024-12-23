@@ -4,7 +4,6 @@ import Papa from 'papaparse';
 import * as FileSystem from 'expo-file-system';
 import styles from '../../constants/styles/roster'; // Updated path for styles
 import { NavigationProp } from '@react-navigation/native';
-import defaultHeadshot from '@assets/images/rosterPictures/headshot_default.png'; // Updated path for default headshot
 
 type Player = {
   name: string;
@@ -39,14 +38,15 @@ const RosterScreen = ({ navigation }: { navigation: NavigationProp<any> }) => {
     fetchRoster();
   }, []);
 
-  const defaultHeadshot = require('/Users/georgecorbin/GT-Lax-App/assets/images/rosterPictures/headshot_default.png'); // Updated path for default headshot
+  const defaultHeadshot = require('../../assets/images/rosterPictures/headshot_default.png'); // Ensure this path is correct
+
   const renderPlayer = (player: { name: string; number: string; position: string; image?: string }) => (
     <TouchableOpacity
       style={styles.playerContainer}
       onPress={() => navigation.navigate('Bio', { player })}
     >
       <Image
-        source={defaultHeadshot} // Replace with player.image if available
+        source={player.image ? { uri: player.image } : defaultHeadshot} // Use player's image if available, otherwise default headshot
         style={styles.playerImage}
       />
       <Text style={styles.playerName}>{player.name}</Text>
@@ -54,21 +54,23 @@ const RosterScreen = ({ navigation }: { navigation: NavigationProp<any> }) => {
   );
 
   return (
-    <FlatList
-      data={Object.entries(roster)}
-      keyExtractor={(item) => item[0]}
-      renderItem={({ item }) => (
-        <View style={styles.section}>
-          <Text style={styles.sectionHeader}>{item[0]}</Text>
-          <FlatList
-            data={item[1]}
-            keyExtractor={(player) => player.number}
-            renderItem={({ item: player }) => renderPlayer(player)}
-            horizontal
-          />
-        </View>
-      )}
-    />
+    <View style={styles.container}>
+      <FlatList
+        data={Object.entries(roster)}
+        keyExtractor={(item) => item[0]}
+        renderItem={({ item }) => (
+          <View style={styles.section}>
+            <Text style={styles.sectionHeader}>{item[0]}</Text>
+            <FlatList
+              data={item[1]}
+              keyExtractor={(player) => player.number}
+              renderItem={({ item: player }) => renderPlayer(player)}
+              horizontal
+            />
+          </View>
+        )}
+      />
+    </View>
   );
 };
 

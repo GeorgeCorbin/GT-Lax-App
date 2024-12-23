@@ -1,11 +1,8 @@
 import React from 'react';
-import { View, Text, Image } from 'react-native';
-import styles from '../../constants/styles/roster';
-// import defaultHeadshot from '/Users/georgecorbin/GT-Lax-App/assets/images/rosterPictures/headshot_default.png';
+import { View, Text, Image, StyleSheet } from 'react-native';
+import { RouteProp } from '@react-navigation/native';
 
 const defaultHeadshot = require('/Users/georgecorbin/GT-Lax-App/assets/images/rosterPictures/headshot_default.png'); // Updated path for default headshot
-
-import { RouteProp } from '@react-navigation/native';
 
 type BioPageRouteProp = RouteProp<{ params: { player: { name: string; number: string; year: string; position: string; image?: string } } }, 'params'>;
 
@@ -25,5 +22,32 @@ const BioPage = ({ route }: { route: BioPageRouteProp }) => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 16,
+    fontFamily: 'Roboto-Regular', // Apply Roboto-Regular font
+  },
+  bioImage: {
+    width: 120,
+    height: 120,
+    borderRadius: 60,
+    marginBottom: 16,
+  },
+  bioName: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 8,
+    fontFamily: 'Roboto-Regular', // Apply Roboto-Regular font
+  },
+  bioDetails: {
+    fontSize: 18,
+    marginVertical: 4,
+    fontFamily: 'Roboto-Regular', // Apply Roboto-Regular font
+  },
+});
 
 export default BioPage;

@@ -1,3 +1,4 @@
+import Colors from '@/constants/Colors';
 import React from 'react';
 import { ScrollView, StyleSheet, View, Text } from 'react-native';
 
@@ -11,6 +12,6 @@ export default function NewsScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#1E2952' },
+  container: { flex: 1, backgroundColor: Colors.navyBlue, padding: 16 },
   header: { fontSize: 24, fontWeight: 'bold', color: '#fff', margin: 20 },
 });
