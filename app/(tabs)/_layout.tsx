@@ -22,36 +22,41 @@ export default function TabLayout() {
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        // Disable the static render of the header on web
-        // to prevent a hydration error in React Navigation v6.
-        headerShown: useClientOnlyValue(false, true),
-      }}>
+      }}
+    >
       <Tabs.Screen
-        name="index"
+        name="News"
         options={{
-          title: 'Tab One',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-          headerRight: () => (
-            <Link href="/modal" asChild>
-              <Pressable>
-                {({ pressed }) => (
-                  <FontAwesome
-                    name="info-circle"
-                    size={25}
-                    color={Colors[colorScheme ?? 'light'].text}
-                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-                  />
-                )}
-              </Pressable>
-            </Link>
-          ),
+          title: 'News',
+          tabBarIcon: ({ color }) => <TabBarIcon name="newspaper-o" color={color} />,
         }}
       />
       <Tabs.Screen
-        name="two"
+        name="Schedule"
         options={{
-          title: 'Tab Two',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          title: 'Schedule',
+          tabBarIcon: ({ color }) => <TabBarIcon name="calendar" color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="Roster"
+        options={{
+          title: 'Roster',
+          tabBarIcon: ({ color }) => <TabBarIcon name="users" color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="Shop"
+        options={{
+          title: 'Shop',
+          tabBarIcon: ({ color }) => <TabBarIcon name="shopping-cart" color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="More"
+        options={{
+          title: 'More',
+          tabBarIcon: ({ color }) => <TabBarIcon name="ellipsis-h" color={color} />,
         }}
       />
     </Tabs>
