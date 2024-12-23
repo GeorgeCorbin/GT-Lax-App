@@ -1,7 +1,8 @@
 import React from 'react';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { Link, Tabs } from 'expo-router';
-import { Pressable } from 'react-native';
+import { Pressable, StyleSheet, StatusBar, View } from 'react-native';
+import Constants from 'expo-constants';
 
 import Colors from '@/constants/Colors';
 import { useColorScheme } from '@/components/useColorScheme';
@@ -19,46 +20,66 @@ export default function TabLayout() {
   const colorScheme = useColorScheme();
 
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-      }}
-    >
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'News',
-          tabBarIcon: ({ color }) => <TabBarIcon name="newspaper-o" color={color} />,
-        }}
-      />
-      <Tabs.Screen
-        name="Schedule"
-        options={{
-          title: 'Schedule',
-          tabBarIcon: ({ color }) => <TabBarIcon name="calendar" color={color} />,
-        }}
-      />
-      <Tabs.Screen
-        name="Roster"
-        options={{
-          title: 'Roster',
-          tabBarIcon: ({ color }) => <TabBarIcon name="users" color={color} />,
-        }}
-      />
-      <Tabs.Screen
-        name="Shop"
-        options={{
-          title: 'Shop',
-          tabBarIcon: ({ color }) => <TabBarIcon name="shopping-cart" color={color} />,
-        }}
-      />
-      <Tabs.Screen
-        name="More"
-        options={{
-          title: 'More',
-          tabBarIcon: ({ color }) => <TabBarIcon name="ellipsis-h" color={color} />,
-        }}
-      />
-    </Tabs>
+    <>
+      {/* Status Bar hidden */}
+      <StatusBar hidden />
+
+      {/* Container with top padding for space buffer */}
+      <View style={styles.container}>
+        <Tabs
+          screenOptions={{
+            tabBarStyle: {
+              backgroundColor: '#2f3553', // Set the tab bar background to light navy
+            },
+            tabBarActiveTintColor: '#dac368', // Set the active tab label color to gold
+            headerShown: false,  // Hide the header
+          }}
+        >
+          <Tabs.Screen
+            name="index"
+            options={{
+              title: 'News',
+              tabBarIcon: ({ color }) => <TabBarIcon name="newspaper-o" color={color} />,
+            }}
+          />
+          <Tabs.Screen
+            name="Schedule"
+            options={{
+              title: 'Schedule',
+              tabBarIcon: ({ color }) => <TabBarIcon name="calendar" color={color} />,
+            }}
+          />
+          <Tabs.Screen
+            name="Roster"
+            options={{
+              title: 'Roster',
+              tabBarIcon: ({ color }) => <TabBarIcon name="users" color={color} />,
+            }}
+          />
+          <Tabs.Screen
+            name="Shop"
+            options={{
+              title: 'Shop',
+              tabBarIcon: ({ color }) => <TabBarIcon name="shopping-cart" color={color} />,
+            }}
+          />
+          <Tabs.Screen
+            name="More"
+            options={{
+              title: 'More',
+              tabBarIcon: ({ color }) => <TabBarIcon name="ellipsis-h" color={color} />,
+            }}
+          />
+        </Tabs>
+      </View>
+    </>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: Colors.dark.background,
+    paddingTop: Constants.statusBarHeight, // Add padding equivalent to the status bar height
+  },
+});

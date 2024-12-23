@@ -41,10 +41,31 @@ type Game = {
 };
 
 const teamLogos: Record<string, any> = {
-  georgiatech: require('../../assets/images/teamLogos/GeorgiaTech.png'),
+  alabama: require('../../assets/images/teamLogos/Alabama.png'),
+  arizonastate: require('../../assets/images/teamLogos/ArizonaState.png'),
+  auburn: require('../../assets/images/teamLogos/Auburn.png'),
+  bostoncollege: require('../../assets/images/teamLogos/BostonCollege.png'),
+  california: require('../../assets/images/teamLogos/California.png'),
+  centralflorida: require('../../assets/images/teamLogos/CentralFlorida.png'),
+  clemson: require('../../assets/images/teamLogos/Clemson.png'),
+  colorado: require('../../assets/images/teamLogos/Colorado.png'),
+  connecticut: require('../../assets/images/teamLogos/Connecticut.png'),
+  florida: require('../../assets/images/teamLogos/Florida.png'),
   floridastate: require('../../assets/images/teamLogos/FloridaState.png'),
+  georgia: require('../../assets/images/teamLogos/Georgia.png'),
+  georgiatech: require('../../assets/images/teamLogos/GeorgiaTech.png'),
+  liberty: require('../../assets/images/teamLogos/Liberty.png'),
+  northcarolinastate: require('../../assets/images/teamLogos/NorthCarolinaState.png'),
+  northeastern: require('../../assets/images/teamLogos/Northeastern.png'),
   placeholder: require('../../assets/images/teamLogos/placeholder.png'),
-  // Add more teams here
+  southcarolina: require('../../assets/images/teamLogos/SouthCarolina.png'),
+  tbd: require('../../assets/images/teamLogos/TBA.png'),
+  tennessee: require('../../assets/images/teamLogos/Tennessee.png'),
+  texasam: require('../../assets/images/teamLogos/TexasA&M.png'),
+  utahvalley: require('../../assets/images/teamLogos/UtahValley.png'),
+  vanderbilt: require('../../assets/images/teamLogos/Vanderbilt.png'),
+  virginiatech: require('../../assets/images/teamLogos/VirginiaTech.png'),
+  westvirginia: require('../../assets/images/teamLogos/WestVirginia.png'),
 };
 
 // Function to get the team logo path
