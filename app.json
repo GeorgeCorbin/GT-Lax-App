@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "GT-Lax-App",
-    "slug": "GT-Lax-App",
+    "slug": "gt-lax-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/GeorgiaTechIcon.png",
@@ -32,6 +32,21 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "5083a26f-f6f1-4fef-a42c-67b97e94727b"
+      }
+    },
+    "owner": "georgec36",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/5083a26f-f6f1-4fef-a42c-67b97e94727b"
     }
   }
 }

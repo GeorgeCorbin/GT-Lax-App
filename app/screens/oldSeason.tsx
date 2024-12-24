@@ -6,6 +6,7 @@ import { RouteProp } from '@react-navigation/native';
 import { useRouter, SearchParams } from 'expo-router';
 import { useSearchParams } from 'expo-router/build/hooks';
 import styles from '../../constants/styles/schedule'; // Updated path for styles
+import AnimatedHeaderLayout from '@/components/AnimatedHeaderLayout';
 
 // Fetch the RSS feed and parse it
 export const fetchSchedule = async (year: String) => {
@@ -127,10 +128,15 @@ const oldSeason = () => {
   }
 
   return (
-    <ScrollView style={styles.container}>
+    <AnimatedHeaderLayout
+      headerText={`${year} Season`}
+      recordText={`${record.wins}-${record.losses}`}
+      backgroundColor={styles.container.backgroundColor}
+    >
+    {/* <ScrollView style={styles.container}> */}
       {/* Header */}
       <View style={styles.header}>
-        <Text style={styles.headerText}>{year} Season</Text>
+        <Text style={styles.oldSeasonHeaderText}>{year} Season</Text>
         <Text style={styles.recordText}>
           {record.wins}-{record.losses}
         </Text>
@@ -192,7 +198,7 @@ const oldSeason = () => {
       })}
 
 
-    </ScrollView>
+    </AnimatedHeaderLayout>
   );
 };
 

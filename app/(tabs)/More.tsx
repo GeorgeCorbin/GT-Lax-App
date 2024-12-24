@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Linking } from 'react-native';
 import { useRouter } from 'expo-router';
-import Colors from '@/constants/Colors';
+import styles from '../../constants/styles/more'; // Updated path for styles
 import AnimatedHeaderLayout from '@/components/AnimatedHeaderLayout';
 
 const MoreScreen = () => {
@@ -74,40 +74,5 @@ const MoreScreen = () => {
     </AnimatedHeaderLayout>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flexGrow: 1,
-    padding: 20,
-    backgroundColor: Colors.navyBlue, // Dark blue background
-    fontFamily: 'Roboto-Regular', // Apply Roboto-Regular font
-  },
-  header: {
-    alignItems: 'center',
-    marginBottom: 20,
-  },
-  headerText: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#ffffff',
-    fontFamily: 'Roboto-Regular', // Apply Roboto-Regular font
-  },
-  section: {
-    marginBottom: 20,
-  },
-  sectionHeader: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: Colors.techDarkGold, // Gold text
-    marginBottom: 10,
-    fontFamily: 'Roboto-Regular', // Apply Roboto-Regular font
-  },
-  link: {
-    fontSize: 16,
-    color: Colors.piMile, // Light gray text
-    paddingVertical: 5,
-    fontFamily: 'Roboto-Regular', // Apply Roboto-Regular font
-  },
-});
 
 export default MoreScreen;

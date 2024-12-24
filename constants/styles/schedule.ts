@@ -17,14 +17,20 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       marginBottom: 16,
     },
+    oldSeasonHeaderText: {
+      fontSize: 36,
+      fontWeight: 'bold',
+      color: '#FFF', // White text for the header
+      fontFamily: 'Roboto-Regular', // Apply Roboto-Regular font
+    },
     headerText: {
-      fontSize: 28,
+      fontSize: 48,
       fontWeight: 'bold',
       color: '#FFF', // White text for the header
       fontFamily: 'Roboto-Regular', // Apply Roboto-Regular font
     },
     recordText: {
-      fontSize: 16,
+      fontSize: 20,
       fontWeight: 'bold',
       color: Colors.techGold, // Updated gold for the record text
     },

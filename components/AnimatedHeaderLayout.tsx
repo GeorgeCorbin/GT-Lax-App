@@ -26,7 +26,7 @@ const AnimatedHeaderLayout: React.FC<AnimatedHeaderLayoutProps> = ({
   // Header animation
   const headerTranslateY = scrollY.interpolate({
     inputRange: [0, 100],
-    outputRange: [-100, 0],
+    outputRange: [-150, 0],
     extrapolate: 'clamp',
   });
 
@@ -39,8 +39,9 @@ const AnimatedHeaderLayout: React.FC<AnimatedHeaderLayoutProps> = ({
     <View style={[styles.container, { backgroundColor}]}>
       {/* Animated Header */}
       <Animated.View
-        style={[styles.header, { transform: [{ translateY: headerTranslateY }] }]}
+        style={[styles.header, { transform: [{ translateY: headerTranslateY }] }, { backgroundColor }]}
       >
+        {/* <Text style={[styles.headerText, { backgroundColor }]}>{headerText}</Text> */}
         <Text style={styles.headerText}>{headerText}</Text>
         {recordText && <Text style={styles.recordText}>{recordText}</Text>}
       </Animated.View>
@@ -69,13 +70,12 @@ const styles = StyleSheet.create({
     top: 0,
     left: 0,
     right: 0,
-    backgroundColor: Colors.navyTint,
     zIndex: 1000,
     padding: 4,
     elevation: 4, // Shadow for Android
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.3,
+    // shadowOpacity: 0.3,
     shadowRadius: 4,
   },
   headerText: {
