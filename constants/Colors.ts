@@ -16,6 +16,9 @@ export default {
     tabIconDefault: '#ccc',
     tabIconSelected: tintColorDark,
   },
+  black: '#000000',
+  
+  // Tech Colors
   techGold: '#B3A369',
   techMediumGold: '#A4925A', // For use in large headline test in any digital media
   techDarkGold: '#857437', // For usse in small bold text in any digital media

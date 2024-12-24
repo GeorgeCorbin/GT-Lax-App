@@ -5,6 +5,8 @@ import { XMLParser } from 'fast-xml-parser';
 import { RouteProp } from '@react-navigation/native';
 import { useRouter, SearchParams } from 'expo-router';
 import { useSearchParams } from 'expo-router/build/hooks';
+import styles from '../../constants/styles/schedule'; // Updated path for styles
+import AnimatedHeaderLayout from '@/components/AnimatedHeaderLayout';
 
 // Fetch the RSS feed and parse it
 export const fetchSchedule = async (year: String) => {
@@ -126,10 +128,15 @@ const oldSeason = () => {
   }
 
   return (
-    <ScrollView style={styles.container}>
+    <AnimatedHeaderLayout
+      headerText={`${year} Season`}
+      recordText={`${record.wins}-${record.losses}`}
+      backgroundColor={styles.container.backgroundColor}
+    >
+    {/* <ScrollView style={styles.container}> */}
       {/* Header */}
       <View style={styles.header}>
-        <Text style={styles.headerText}>{year} Season</Text>
+        <Text style={styles.oldSeasonHeaderText}>{year} Season</Text>
         <Text style={styles.recordText}>
           {record.wins}-{record.losses}
         </Text>
@@ -191,168 +198,8 @@ const oldSeason = () => {
       })}
 
 
-    </ScrollView>
+    </AnimatedHeaderLayout>
   );
 };
-
-const styles = StyleSheet.create({
-  // General container for the screen
-  container: {
-    backgroundColor: '#000', // Black background for the entire screen
-    flex: 1,
-    padding: 16,
-    fontFamily: 'Roboto-Regular', // Apply Roboto-Regular font
-  },
-
-  // Header section
-  header: {
-    flexDirection: 'row', // Align header items side by side
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 16,
-  },
-  headerText: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    color: '#FFF', // White text for the header
-    fontFamily: 'Roboto-Regular', // Apply Roboto-Regular font
-  },
-  recordText: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: '#DAC368', // Updated gold for the record text
-  },
-
-  // Section title (e.g., UPCOMING, COMPLETED)
-  sectionTitle: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#DAC368', // Updated gold
-    marginVertical: 12,
-    fontFamily: 'Roboto-Regular', // Apply Roboto-Regular font
-  },
-
-  // Game item card
-  gameItem: {
-    backgroundColor: '#22284A', // Updated navy background
-    borderRadius: 8,
-    marginBottom: 16,
-    padding: 16,
-  },
-
-  // Teams layout within a game card
-  teamRow: {
-    flexDirection: 'column', // Stack teams vertically
-    marginBottom: 8,
-  },
-  teamColumn: {
-    flexDirection: 'column', // Stack teams vertically
-    flex: 2, // Allow room for the team section
-  },
-  team: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between', // Space team name and score evenly
-    marginBottom: 8,
-  },  
-  teamName: {
-    fontSize: 16,
-    fontWeight: '600',
-    color: '#FFFFFF', // White for team names
-    flex: 2, // Take available space but leave room for the score
-    fontFamily: 'Roboto-Regular', // Apply Roboto-Regular font
-  },
-  logo: {
-    width: 32,
-    height: 32,
-    marginRight: 8,
-  },
-
-  // Date and time section
-  detailsRow: {
-    flexDirection: 'column',
-    alignItems: 'flex-end', // Align items to the right
-    justifyContent: 'center', // Center-align within the available space
-    paddingLeft: 8, // Prevent the details from being too close to the edge
-  },
-  date: {
-    fontSize: 14,
-    fontWeight: '500',
-    color: '#FFFFFF', // White text for dates
-    fontFamily: 'Roboto-Regular', // Apply Roboto-Regular font
-  },
-  time: {
-    fontSize: 14,
-    fontWeight: '500',
-    color: '#FFFFFF', // White text for times
-    marginTop: 4,
-  },
-  location: {
-    fontSize: 12, // Smaller font for location details
-    color: '#FFFFFF', // White text for location
-    marginTop: 4,
-  },
-
-  // Loading screen
-  loadingContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#000', // Black background
-  },
-  loadingText: {
-    fontSize: 18,
-    color: '#DAC368', // Updated gold for loading text
-    fontFamily: 'Roboto-Regular', // Apply Roboto-Regular font
-  },
-
-  // Team Info (repeated in both teams)
-  teamInfo: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-
-  // Row for organizing items horizontally
-  row: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-
-  // Date and time alignment section
-  dateTime: {
-    flex: 1,
-    alignItems: 'flex-end', // Align to the right
-  },
-
-  // Result, win, loss, and score styles
-  result: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    marginBottom: 4,
-  },
-  win: {
-    color: 'green', // Green for wins
-  },
-  loss: {
-    color: 'red', // Red for losses
-  },
-  score: {
-    fontSize: 16,
-    fontWeight: '600',
-    color: '#FFFFFF', // White for scores
-    marginLeft: 16, // Add spacing between the team name and score
-  },
-  backButton: {
-    padding: 10,
-    backgroundColor: '#DAC368', // Updated gold for the back button
-    borderRadius: 5,
-  },
-  backText: {
-    color: '#000', // Black text for the back button
-    fontSize: 16,
-    fontWeight: 'bold',
-  },
-});
 
 export default oldSeason;
