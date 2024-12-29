@@ -4,7 +4,7 @@ import Colors from '../Colors';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#2f3553',
+    backgroundColor: Colors.background,
     paddingHorizontal: 10,
     paddingVertical: 20,
   },
@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
   playerContainer: {
     alignItems: 'center',
     marginHorizontal: 10,
-    backgroundColor: '#3b4564',
+    backgroundColor: Colors.darkNavyTint,
     borderRadius: 8,
     padding: 10,
     shadowColor: '#000',
