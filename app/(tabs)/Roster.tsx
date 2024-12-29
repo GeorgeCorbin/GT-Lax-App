@@ -97,11 +97,14 @@ const RosterScreen = () => {
 
   if (selectedPlayer) {
     return (
-      <AnimatedHeaderLayout headerText="Roster" backgroundColor={styles.container.backgroundColor}>
+      <AnimatedHeaderLayout headerText={selectedPlayer.playerName} recordText={`#${selectedPlayer.number}`} backgroundColor={styles.container.backgroundColor}>
         <Image source={{ uri: selectedPlayer.imageUrl }} style={styles.detailImage} />
         <Text style={styles.detailName}>{selectedPlayer.playerName}</Text>
         <Text style={styles.detailPosition}>{selectedPlayer.position}</Text>
         <Text style={styles.detailNumber}>#{selectedPlayer.number}</Text>
+        <TouchableOpacity style={styles.topBackButton} onPress={() => setSelectedPlayer(null)}>
+          <Text style={styles.topBackButtonText}>← Back</Text>
+        </TouchableOpacity>
         <Markdown
           style={{
             bold: {
@@ -149,8 +152,8 @@ const RosterScreen = () => {
         >
           {markdownContent}
         </Markdown>
-        <TouchableOpacity style={styles.backButton} onPress={() => setSelectedPlayer(null)}>
-          <Text style={styles.backButtonText}>← Back</Text>
+        <TouchableOpacity style={styles.bottombackButton} onPress={() => setSelectedPlayer(null)}>
+          <Text style={styles.backButtonText}>Back to the Roster</Text>
         </TouchableOpacity>
       </AnimatedHeaderLayout>
     );

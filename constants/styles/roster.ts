@@ -83,13 +83,43 @@ const styles = StyleSheet.create({
     color: '#dac368',
     textAlign: 'center',
   },
-  backButton: {
-    marginTop: 20,
-    alignItems: 'center',
+  // backButton: {
+  //   marginTop: 20,
+  //   alignItems: 'center',
+  //   backgroundColor: Colors.buttonPrimary.background,
+  // },
+  // backButtonText: {
+  //   fontSize: 18,
+  //   color: Colors.buttonPrimary.text,
+  // },
+  bottombackButton: {
+    marginTop: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    backgroundColor: Colors.buttonPrimary.background,
+    borderRadius: 10,
+    alignSelf: 'center',
+    marginBottom: 20,
   },
   backButtonText: {
-    fontSize: 18,
-    color: '#007bff',
+    color: Colors.buttonPrimary.text,
+    fontSize: 16,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  topBackButton: {
+    paddingVertical: 5,
+    paddingHorizontal: 10,
+    alignSelf: 'flex-start',
+    backgroundColor: Colors.buttonPrimary.background,
+    borderRadius: 5,
+    marginBottom: 20,
+  },
+  topBackButtonText: {
+    color: Colors.buttonPrimary.text,
+    fontSize: 16,
+    fontWeight: 'bold',
+    textAlign: 'center',
   },
 });
 
