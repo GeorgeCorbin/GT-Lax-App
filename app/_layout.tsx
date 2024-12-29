@@ -8,10 +8,7 @@ import 'react-native-reanimated';
 
 import { useColorScheme } from '@/components/useColorScheme';
 
-export {
-  // Catch any errors thrown by the Layout component.
-  ErrorBoundary,
-} from 'expo-router';
+export {} from 'expo-router';
 
 export const unstable_settings = {
   // Ensure that reloading on `/modal` keeps a back button present.
@@ -52,7 +49,7 @@ function RootLayoutNav() {
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <Stack>
-      <Stack.Screen 
+      <Stack.Screen
           name="(tabs)" 
           options={{
             title: 'Back',
@@ -61,7 +58,16 @@ function RootLayoutNav() {
             headerTintColor: '#dac368',
           }}
         />
-      <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
+      {/* <Stack.Screen name="modal" options={{ presentation: 'modal' }} /> */}
+      {/* <Stack.Screen 
+          name="screens" 
+          options={{
+            title: 'Back',
+            headerShown: false,
+            headerStyle: { backgroundColor: '#2f3553' },
+            headerTintColor: '#dac368',
+          }}
+        /> */}
       </Stack>
     </ThemeProvider>
   );

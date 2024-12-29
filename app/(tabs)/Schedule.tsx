@@ -166,6 +166,9 @@ const Schedule = () => {
                 </View>
               </View>
 
+              {/* Divider */}
+              <View style={styles.divider} />
+
               {/* Game Details Section */}
               <View style={styles.detailsRow}>
                 <Text style={styles.date}>
@@ -182,7 +185,8 @@ const Schedule = () => {
                   })}
                 </Text>
                 <Text style={styles.location}>
-                  {isHome ? 'Roe Stamps Field' : 'Away'}
+                  {isHome ? 'Roe Stamps Field' : 
+                        (game.description.includes('SELC') || game.description.includes('MCLA') ? game.description.split(',')[2] : 'Away')}
                 </Text>
               </View>
             </View>
@@ -195,18 +199,25 @@ const Schedule = () => {
       <Text style={styles.sectionTitle}>COMPLETED</Text>
       {completedGames.map((game, index) => {
       // Determine if Georgia Tech is the home team
-        const isHome = game.title.includes('vs. Georgia Tech');
+        const isHome = game.title.includes(', Georgia Tech');
         const opponent = game.opponent?.trim() || 'Unknown';
         const cleanedTitle = game.title.replace(/Final/i, '').trim();
         const [awayPart, homePart] = cleanedTitle.split(',');
         const awayTeam = awayPart ? awayPart.replace(/\d+/g, '').trim() : 'Away Team';
         const homeTeam = homePart ? homePart.replace(/\d+/g, '').trim() : 'Home Team';
 
-        const [awayScore, homeScore] = game.score ? game.score.split('-').map((s) => s.replace(/[^\d]/g, '').trim()) : ['0', '0'];
+        const extractScore = (part: string) => {
+          const match = part.match(/(\d+)\s*(,|\s|$)/);
+          return match ? match[1] : '0';
+        };
+
+        const awayScore = extractScore(awayPart);
+        const homeScore = extractScore(homePart);
 
         return (
           <View key={index} style={styles.gameItem}>
             <View style={styles.row}>
+              {/* Teams */}
               <View style={styles.teamColumn}>
                 <View style={styles.team}>
                   <Image source={getTeamLogo(awayTeam)} style={styles.logo} />
@@ -220,6 +231,9 @@ const Schedule = () => {
                 </View>
               </View>
 
+              {/* Divider */}
+              <View style={styles.divider} />
+
               {/* Game Details */}
               <View style={styles.detailsRow}>
                 <Text style={[styles.result, game.score?.includes('W') ? styles.win : styles.loss]}>
@@ -232,7 +246,8 @@ const Schedule = () => {
                   })}
                 </Text>
                 <Text style={styles.location}>
-                  {isHome ? 'Roe Stamps Field' : 'Away'}
+                  {isHome ? 'Roe Stamps Field' : 
+                      (game.description.includes('SELC') || game.description.includes('MCLA') ? game.description.split(',')[2] : 'Away')}
                 </Text>
               </View>
             </View>

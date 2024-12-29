@@ -14,7 +14,6 @@ import RosterStyles from '../../constants/styles/roster'; // Updated path for st
 import ShopStyles from '../../constants/styles/shop'; // Updated path for styles
 import MoreStyles from '../../constants/styles/more'; // Updated path for styles
 
-
 // You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
 function TabBarIcon(props: {
   name: React.ComponentProps<typeof FontAwesome>['name'];
@@ -37,7 +36,7 @@ export default function TabLayout() {
   return (
     <>
       {/* Status Bar hidden */}
-      <StatusBar hidden />
+      {/* <StatusBar hidden /> */}
 
       {/* Container with top padding for space buffer */}
       <View style={styles.container}>

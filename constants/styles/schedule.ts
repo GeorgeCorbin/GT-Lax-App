@@ -15,6 +15,7 @@ const styles = StyleSheet.create({
       flexDirection: 'row', // Align header items side by side
       justifyContent: 'space-between',
       alignItems: 'center',
+      position: 'relative',
       marginBottom: 16,
     },
     oldSeasonHeaderText: {
@@ -49,7 +50,11 @@ const styles = StyleSheet.create({
       backgroundColor: Colors.navyBlue, // Updated navy background
       borderRadius: 8,
       marginBottom: 16,
-      padding: 16,
+      padding: 12,
+      position: 'relative',
+      // marginVertical: 10,
+      // flexDirection: 'row',
+      // justifyContent: 'space-between',
     },
   
     // Teams layout within a game card
@@ -87,15 +92,19 @@ const styles = StyleSheet.create({
     // Date and time section
     detailsRow: {
       flexDirection: 'column',
-      alignItems: 'flex-end', // Align items to the right
+      // alignItems: 'flex-end', // Align items to the right
       justifyContent: 'center', // Center-align within the available space
-      paddingLeft: 8, // Prevent the details from being too close to the edge
+      flex: 1, // Take up the remaining space
+      // Centering result, date, location
+      position: 'relative',
+      alignItems: 'center',
     },
     date: {
       fontSize: 14,
       fontWeight: '500',
-      color: '#FFFFFF', // White text for dates
+      color: Colors.white, // White text for dates
       fontFamily: 'Roboto-Regular', // Apply Roboto-Regular font
+      marginLeft: 8,
     },
     time: {
       fontSize: 14,
@@ -107,6 +116,10 @@ const styles = StyleSheet.create({
       fontSize: 12, // Smaller font for location details
       color: '#FFFFFF', // White text for location
       marginTop: 4,
+      fontFamily: 'Roboto-Regular-thin', // Apply Roboto-Regular font
+      textAlign: 'center', // Right-align the text
+      maxWidth: 100, // Limit the width of the location text
+      marginLeft: 8,
     },
   
     // Loading screen
@@ -146,20 +159,37 @@ const styles = StyleSheet.create({
       fontSize: 16,
       fontWeight: 'bold',
       marginBottom: 4,
+      marginLeft: 8,
+      // Centering result, date, location
+      textAlign: 'center',
     },
     win: {
       color: 'green', // Green for wins
+      fontFamily: 'Roboto-Regular-bold', // Apply Roboto-Regular font
+      textAlign: 'center', // Right-align the text      
     },
     loss: {
       color: 'red', // Red for losses
+      fontFamily: 'Roboto-Regular-bold', // Apply Roboto-Regular font
+      textAlign: 'center', // Right-align the text 
     },
     score: {
       fontSize: 16,
       fontWeight: '600',
-      color: '#FFFFFF', // White for scores
-      marginLeft: 16, // Add spacing between the team name and score
+      color: Colors.white, // White for scores
+      fontFamily: 'Roboto-bold', // Apply Roboto-Regular font
+      padding: 8,
     },
-     
+    divider: {
+      width: 2, // Adjust width for visibility
+      backgroundColor: Colors.white, // Divider color
+      marginHorizontal: 10, // Space between columns
+      height: '100%', // Ensure it spans the height of the container
+      alignSelf: 'stretch', // Matches the height of the surrounding content
+      opacity: 0.25, // Slightly transparent
+      position: 'absolute', // Overlay the divider
+      left: '64%', // Center the divider
+    },    
   });
 
   export default styles;

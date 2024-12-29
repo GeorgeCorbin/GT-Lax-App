@@ -76,13 +76,13 @@ const teamLogos: Record<string, any> = {
 
 // Function to get the team logo path
 const getTeamLogo = (teamName: string): any => {
-  const formattedName = teamName.replace(/\s/g, '').toLowerCase();
+  const formattedName = teamName.replace(/\s+/g, '').toLowerCase();
   return teamLogos[formattedName] || teamLogos.placeholder;
 };
 
 // type ScheduleRouteProp = RouteProp<{ params: { year: string } }, 'params'>;
 
-const oldSeason = () => {
+const OldSeason = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const year = searchParams.get('year') || '';
@@ -202,4 +202,4 @@ const oldSeason = () => {
   );
 };
 
-export default oldSeason;
+export default OldSeason;
