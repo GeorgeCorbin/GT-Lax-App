@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 import 'react-native-reanimated';
 
 import { useColorScheme } from '@/components/useColorScheme';
+import Colors from '@/constants/Colors';
 
 export {} from 'expo-router';
 
@@ -58,6 +59,23 @@ function RootLayoutNav() {
             headerTintColor: '#dac368',
           }}
         />
+      <Stack.Screen 
+          name="more" 
+          options={{ 
+            title: '',
+            headerShown: true,
+            headerStyle: { backgroundColor: Colors.background },
+            headerShadowVisible: false,
+            headerTintColor: Colors.white }} />
+      <Stack.Screen 
+          name="roster" 
+          options={{ 
+            title: '',
+            headerShown: true,
+            headerStyle: { backgroundColor: Colors.background },
+            headerShadowVisible: false,
+            headerTintColor: Colors.white }} />
+      
       {/* <Stack.Screen name="modal" options={{ presentation: 'modal' }} /> */}
       {/* <Stack.Screen 
           name="screens" 

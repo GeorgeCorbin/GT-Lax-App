@@ -1,12 +1,12 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Linking } from 'react-native';
-import { useRouter } from 'expo-router';
-import styles from '../../constants/styles/more'; // Updated path for styles
+import { View, Text, TouchableOpacity, Linking } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import styles from '../../constants/styles/more';
 import AnimatedHeaderLayout from '@/components/AnimatedHeaderLayout';
-import { Title } from 'react-native-paper';
+import { Link } from 'expo-router';
 
 const MoreScreen = () => {
-  const router = useRouter();
+  const navigation = useNavigation();
 
   return (
     <AnimatedHeaderLayout headerText="More" backgroundColor={styles.container.backgroundColor}>
@@ -18,29 +18,26 @@ const MoreScreen = () => {
       {/* All Seasons Section */}
       <View style={styles.section}>
         <Text style={styles.sectionHeader}>All Seasons</Text>
-        <TouchableOpacity onPress={() => { router.push('/more/OldSeason?year=2024-25'), router.setParams({Title: ''})}}>
-          <Text style={styles.link}>2024-25 Season</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => router.push('/more/OldSeason?year=2023-24')}>
-          <Text style={styles.link}>2023-24 Season</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => router.push('/more/OldSeason?year=2022-23')}>
-          <Text style={styles.link}>2022-23 Season</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => router.push('/more/OldSeason?year=2021-22')}>
-          <Text style={styles.link}>2021-22 Season</Text>
-        </TouchableOpacity>
+        <Link href="/more/OldSeason?year=2023-24" style={styles.link}>
+          2023-24 Season
+        </Link>
+        <Link href="/more/OldSeason?year=2022-23" style={styles.link}>
+          2022-23 Season
+        </Link>
+        <Link href="/more/OldSeason?year=2021-22" style={styles.link}>
+          2021-22 Season
+        </Link>
       </View>
 
       {/* Front Office Section */}
       <View style={styles.section}>
         <Text style={styles.sectionHeader}>Front Office</Text>
-        <TouchableOpacity onPress={() => router.push('/more/StudentBoard')}>
-          <Text style={styles.link}>Student Board</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => router.push('/more/CoachingStaff')}>
-          <Text style={styles.link}>Coaching Staff</Text>
-        </TouchableOpacity>
+        <Link href="/more/StudentBoard" style={styles.link}>
+          Student Board
+        </Link>
+        <Link href="/more/CoachingStaff" style={styles.link}>
+          Coaching Staff
+        </Link>
       </View>
 
       {/* Contact Section */}

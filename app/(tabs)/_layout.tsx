@@ -1,12 +1,9 @@
 import React from 'react';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { Tabs } from 'expo-router';
-import { Pressable, StyleSheet, StatusBar, View } from 'react-native';
-import Constants from 'expo-constants';
-
+import { StyleSheet, StatusBar, View } from 'react-native';
 import Colors from '@/constants/Colors';
 import { useColorScheme } from '@/components/useColorScheme';
-import { useClientOnlyValue } from '@/components/useClientOnlyValue';
 import { RouteProp } from '@react-navigation/native';
 import NewsStyles from '../../constants/styles/news'; // Updated path for styles
 import ScheduleStyles from '../../constants/styles/schedule'; // Updated path for styles
@@ -37,6 +34,7 @@ export default function TabLayout() {
     <>
       {/* Status Bar hidden */}
       {/* <StatusBar hidden /> */}
+      <StatusBar barStyle="light-content" backgroundColor={Colors.background} />
 
       {/* Container with top padding for space buffer */}
       <View style={styles.container}>
