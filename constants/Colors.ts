@@ -33,4 +33,38 @@ export default {
 
   // Navy Tint
   navyTint: '#003b6b',
+
+  // Pi Mile Tint
+  piMileTint: '#d6dbd4',
+
+
+  // Primary Colors
+  navy: '#002E63',        // Georgia Tech Navy
+  // techGold: '#B3A369',    // Georgia Tech Gold
+
+  // Secondary Colors
+  gray: '#7A7A7A',        // Neutral Gray for subtle text or elements
+  // white: '#FFFFFF',       // White for backgrounds or text
+
+  // Accent Colors
+  lightGoldTint: '#DAC368',  // Highlight or call-to-action elements
+  darkNavyTint: '#2F3553',   // Darker navy for headers or navigation backgrounds
+
+  // Additional Shades
+  background: '#003057',     // Default light background
+  textTitle: '#FFFFFF',      // Title text color
+  // textPrimary: '#002E63',    // Primary text color
+  textPrimary: '#B3A369',    // Primary text color
+  textSecondary: '#7A7A7A',  // Secondary text color
+  activeIcon: '#DAC368',     // Active icon or tab color
+  inactiveIcon: '#7A7A7A',   // Inactive icon or tab color
+  buttonPrimary: {
+    background: '#B3A369',
+    text: '#FFFFFF',
+  },
+  buttonSecondary: {
+    background: '#FFFFFF',
+    text: '#002E63',
+    border: '#B3A369',
+  },  
 };

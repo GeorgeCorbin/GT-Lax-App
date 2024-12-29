@@ -4,34 +4,92 @@ import Colors from '../Colors';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Colors.navyBlue, // Use centralized color
-    padding: 16,
-    fontFamily: 'Roboto-Regular', // Apply Roboto-Regular font
+    backgroundColor: '#2f3553',
+    paddingHorizontal: 10,
+    paddingVertical: 20,
+  },
+  headerContainer: {
+    // backgroundColor: '#3b4564',
+    // paddingVertical: 30,
+    // alignItems: 'center',
+    // marginBottom: 20,
+    // borderBottomWidth: 2,
+    // borderBottomColor: '#dac368',
+  },
+  headerText: {
+      fontSize: 48,
+      fontWeight: 'bold',
+      marginLeft: 10,
+      marginBottom: 20,
+      textAlign: 'left',
+      color: Colors.textTitle,
+      fontFamily: 'roboto-regular',
   },
   section: {
     marginBottom: 20,
   },
   sectionHeader: {
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: 'bold',
-    color: Colors.techGold, // Use centralized color
+    color: '#dac368',
     marginBottom: 10,
-    fontFamily: 'Roboto-Regular', // Apply Roboto-Regular font
+    marginLeft: 10,
   },
   playerContainer: {
     alignItems: 'center',
-    marginRight: 10,
+    marginHorizontal: 10,
+    backgroundColor: '#3b4564',
+    borderRadius: 8,
+    padding: 10,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.3,
+    shadowRadius: 4,
   },
   playerImage: {
     width: 100,
     height: 100,
     borderRadius: 50,
-    marginBottom: 10,
+    marginBottom: 5,
   },
   playerName: {
-    fontSize: 16,
-    color: Colors.white, // Use centralized color
-    fontFamily: 'Roboto-Regular', // Apply Roboto-Regular font
+    fontSize: 14,
+    fontWeight: 'bold',
+    color: '#fff',
+  },
+  playerNumber: {
+    fontSize: 12,
+    color: '#ccc',
+  },
+  detailImage: {
+    width: '100%',
+    height: 250,
+    resizeMode: 'cover',
+  },
+  detailName: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#fff',
+    marginVertical: 10,
+    textAlign: 'center',
+  },
+  detailPosition: {
+    fontSize: 20,
+    color: '#dac368',
+    textAlign: 'center',
+  },
+  detailNumber: {
+    fontSize: 18,
+    color: '#dac368',
+    textAlign: 'center',
+  },
+  backButton: {
+    marginTop: 20,
+    alignItems: 'center',
+  },
+  backButtonText: {
+    fontSize: 18,
+    color: '#007bff',
   },
 });
 

@@ -177,6 +177,9 @@ const OldSeason = () => {
                 </View>
               </View>
 
+              {/* Divider */}
+              <View style={styles.divider} />
+
               {/* Game Details */}
               <View style={styles.detailsRow}>
                 <Text style={[styles.result, game.score?.includes('W') ? styles.win : styles.loss]}>

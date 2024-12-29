@@ -5,7 +5,7 @@ import { shadow } from 'react-native-paper';
 export default StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Colors.navyBlue,
+    backgroundColor: Colors.background,
     padding: 10,
   },
   header: {
@@ -14,7 +14,7 @@ export default StyleSheet.create({
     marginLeft: 10,
     marginBottom: 20,
     textAlign: 'left',
-    color: Colors.white,
+    color: Colors.textTitle,
     fontFamily: 'roboto-regular',
   },
   list: {
@@ -89,13 +89,13 @@ export default StyleSheet.create({
     marginTop: 10,
     paddingVertical: 10,
     paddingHorizontal: 20,
-    backgroundColor: Colors.buzzGold,
+    backgroundColor: Colors.buttonPrimary.background,
     borderRadius: 10,
     alignSelf: 'center',
     marginBottom: 20,
   },
   backButtonText: {
-    color: Colors.diploma,
+    color: Colors.buttonPrimary.text,
     fontSize: 16,
     fontWeight: 'bold',
     textAlign: 'center',
@@ -104,19 +104,19 @@ export default StyleSheet.create({
     paddingVertical: 5,
     paddingHorizontal: 10,
     alignSelf: 'flex-end',
-    backgroundColor: Colors.buzzGold,
+    backgroundColor: Colors.buttonPrimary.background,
     borderRadius: 5,
     marginBottom: 10,
   },
   topBackButtonText: {
-    color: Colors.diploma,
+    color: Colors.buttonPrimary.text,
     fontSize: 16,
     fontWeight: 'bold',
     textAlign: 'center',
   },
   imageAuthor: {
     fontSize: 8,
-    color: Colors.diploma,
+    color: Colors.textSecondary,
     textAlign: 'left',
     marginLeft: 10,
   },

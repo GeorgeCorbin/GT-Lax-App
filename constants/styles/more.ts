@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
     container: {
       flexGrow: 1,
       padding: 20,
-      backgroundColor: Colors.navyBlue, // Dark blue background
+      backgroundColor: Colors.background, // Dark blue background
       fontFamily: 'Roboto-Regular', // Apply Roboto-Regular font
     },
     header: {
@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     headerText: {
       fontSize: 48,
       fontWeight: 'bold',
-      color: '#ffffff',
+      color: Colors.textTitle,
       fontFamily: 'Roboto-Regular', // Apply Roboto-Regular font
     },
     section: {
@@ -24,13 +24,13 @@ const styles = StyleSheet.create({
     sectionHeader: {
       fontSize: 18,
       fontWeight: 'bold',
-      color: Colors.techGold, // Gold text
+      color: Colors.textPrimary, // Gold text
       marginBottom: 10,
       fontFamily: 'Roboto-Regular', // Apply Roboto-Regular font
     },
     link: {
       fontSize: 16,
-      color: Colors.diploma, // Light gray text
+      color: Colors.textSecondary, // Light gray text
       paddingVertical: 5,
       fontFamily: 'Roboto-Regular', // Apply Roboto-Regular font
     },
