@@ -164,20 +164,41 @@ const RosterScreen = () => {
       </View>
 
       <FlatList
-        data={Object.entries(roster)} // Roster is now an object with grouped positions
-        keyExtractor={(item) => item[0]?.toString()} // Group name as the key
+        data={Object.entries(roster)} // Object entries for grouped data
+        keyExtractor={(item) => item[0]?.toString() || ''} // Use the group name as the key
         renderItem={({ item }) => (
           <View style={styles.section}>
-            <Text style={styles.sectionHeader}>{item[0]}</Text> {/* Group name */}
+            {/* Check if item[0] is valid */}
+            <Text style={styles.sectionHeader}>
+              {item[0] || 'Unknown Group'}
+            </Text>
+
             <FlatList
               data={item[1]} // Players in the group
-              keyExtractor={(player) => player.id.toString()}
-              renderItem={({ item: player }) => renderPlayerItem({ item: player })}
+              keyExtractor={(player) =>
+                player.id?.toString() || `player-${Math.random()}`
+              } // Ensure unique keys for players
+              renderItem={({ item: player }) => (
+                <TouchableOpacity
+                  style={styles.playerContainer}
+                  onPress={() => {
+                    setSelectedPlayer(player);
+                    fetchMarkdownContent(player.contentUrl);
+                  }}
+                >
+                  <Image source={{ uri: player.imageUrl }} style={styles.playerImage} />
+                  <Text style={styles.playerName}>{player.playerName || 'Unknown'}</Text>
+                  <Text style={styles.playerNumber}>
+                    #{player.number?.toString() || 'N/A'}
+                  </Text>
+                </TouchableOpacity>
+              )}
               horizontal
             />
           </View>
         )}
       />
+
     </View>
   );
 };
