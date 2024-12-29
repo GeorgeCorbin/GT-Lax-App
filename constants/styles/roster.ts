@@ -65,6 +65,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 250,
     resizeMode: 'cover',
+    fontFamily: 'roboto-regular',
   },
   detailName: {
     fontSize: 24,
@@ -72,26 +73,20 @@ const styles = StyleSheet.create({
     color: '#fff',
     marginVertical: 10,
     textAlign: 'center',
+    fontFamily: 'roboto-regular-bold',
   },
   detailPosition: {
     fontSize: 20,
     color: '#dac368',
     textAlign: 'center',
+    fontFamily: 'roboto-regular',
   },
   detailNumber: {
     fontSize: 18,
     color: '#dac368',
     textAlign: 'center',
+    fontFamily: 'roboto-regular',
   },
-  // backButton: {
-  //   marginTop: 20,
-  //   alignItems: 'center',
-  //   backgroundColor: Colors.buttonPrimary.background,
-  // },
-  // backButtonText: {
-  //   fontSize: 18,
-  //   color: Colors.buttonPrimary.text,
-  // },
   bottombackButton: {
     marginTop: 10,
     paddingVertical: 10,
