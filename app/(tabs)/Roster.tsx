@@ -30,30 +30,57 @@ const RosterScreen = () => {
   // Fetch roster data from the CSV file
   const fetchRoster = async () => {
     try {
-      const csvResponse = await fetch('https://gt-lax-app.web.app/players/roster2025.csv');
-      const csvText = await csvResponse.text();
-
-      const parsedCSV = Papa.parse(csvText, { header: true }).data;
-
-      // Map and transform data to match the expected format
-      const transformedRoster = parsedCSV.map((player: any) => ({
-        id: player['#'], // Map `#` to `id`
-        playerName: player['Name'], // Map `Name` to `playerName`
-        position: player['Pos'], // Map `Pos` to `position`
-        number: player['#'], // Use `#` as a placeholder for `number`
-        imageUrl: 'https://gt-lax-app.web.app/players/images/headshot_default.png', // Placeholder image URL
-        contentUrl: 'https://gt-lax-app.web.app/players/bios/default_bio.md', // Placeholder content URL
-      }));
-
-      // Group players by position
-      const groupedRoster = {
-        Defense: transformedRoster.filter((player) => ['D', 'LSM'].includes(player.position)),
-        Attack: transformedRoster.filter((player) => player.position === 'A'),
-        Middies: transformedRoster.filter((player) => player.position === 'M'),
-        Goalies: transformedRoster.filter((player) => player.position === 'G'),
-        'Face-Off': transformedRoster.filter((player) => player.position === 'FO'),
+      // Fetch JSON data
+      const jsonResponse = await fetch('https://gt-lax-app.web.app/players.json');
+      const jsonData = await jsonResponse.json();
+  
+      // Create a map from the JSON data indexed by playerName
+      type JsonPlayer = {
+        id: number;
+        playerName: string;
+        position: string;
+        imageUrl: string;
+        contentUrl: string;
       };
 
+      const jsonMap = new Map<string, JsonPlayer>(
+        jsonData.map((player: JsonPlayer) => [player.playerName, player])
+      );
+  
+      // Fetch CSV data
+      const csvResponse = await fetch('https://gt-lax-app.web.app/players/roster2025.csv');
+      const csvText = await csvResponse.text();
+      const parsedCSV = Papa.parse(csvText, { header: true }).data;
+  
+      // Transform CSV data by merging URLs from JSON
+      const combinedRoster = parsedCSV.map((player: any) => {
+        const jsonPlayer = jsonMap.get(player['Name']);
+        const result = {
+          id: Number(player['#']),
+          playerName: player['Name'],
+          position: player['Pos'],
+          number: Number(player['#']),
+          imageUrl: jsonPlayer?.imageUrl || 'https://gt-lax-app.web.app/players/images/headshot_default.png',
+          contentUrl: jsonPlayer?.contentUrl || 'https://gt-lax-app.web.app/players/bios/default_bio.md',
+        };
+        // console.log('Combined Player:', result);
+        return result;
+      });
+  
+      // console.log('Combined Roster:', combinedRoster);
+  
+      // Group players by position
+      const groupedRoster = {
+        Defense: combinedRoster.filter((player) => ['D', 'LSM'].includes(player.position)),
+        Attack: combinedRoster.filter((player) => player.position === 'A'),
+        Middies: combinedRoster.filter((player) => player.position === 'M'),
+        Goalies: combinedRoster.filter((player) => player.position === 'G'),
+        'Face-Off': combinedRoster.filter((player) => player.position === 'FO'),
+      };
+  
+      // console.log('Grouped Roster:', groupedRoster);
+  
+      // Update state
       setRoster(groupedRoster);
     } catch (error) {
       console.error('Error fetching roster:', error);
@@ -61,6 +88,9 @@ const RosterScreen = () => {
       setLoading(false);
     }
   };
+  
+  
+  
 
   // Fetch markdown content for the selected player
   const fetchMarkdownContent = async (url: string) => {

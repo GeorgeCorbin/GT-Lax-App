@@ -3,9 +3,36 @@
       "id": 1,
       "playerName": "George Corbin",
       "position": "Defense",
-      "number": 31,
-      "imageUrl": "https://gt-lax-app.web.app/players/images/headshot_default.png",
-      "contentUrl": "https://gt-lax-app.web.app/players/bios/default_bio.md"
+      "imageUrl": "https://gt-lax-app.web.app/players/images/George_Corbin.jpg",
+      "contentUrl": "https://gt-lax-app.web.app/players/bios/George_Corbin_bio.md"
+    },
+    {
+      "id": 2,
+      "playerName": "Pierce Quarles",
+      "position": "Attack",
+      "imageUrl": "https://gt-lax-app.web.app/players/images/Pierce_Quarles.jpg",
+      "contentUrl": "https://gt-lax-app.web.app/players/bios/Pierce_Quarles_bio.md"
+    },
+    {
+      "id": 3,
+      "playerName": "Andrew Belli",
+      "position": "Middies",
+      "imageUrl": "https://gt-lax-app.web.app/players/images/Andrew_Belli.jpg",
+      "contentUrl": "https://gt-lax-app.web.app/players/bios/Andrew_Belli_bio.md"
+    },
+    {
+      "id": 4,
+      "playerName": "Peter Zagrobelny",
+      "position": "Goalies",
+      "imageUrl": "https://gt-lax-app.web.app/players/images/Peter_Zagrobelny.jpg",
+      "contentUrl": "https://gt-lax-app.web.app/players/bios/Peter_Zagrobelny_bio.md"
+    },
+    {
+      "id": 5,
+      "playerName": "Ben Skopicki",
+      "position": "Face-Off",
+      "imageUrl": "https://gt-lax-app.web.app/players/images/Ben_Skopicki.jpg",
+      "contentUrl": "https://gt-lax-app.web.app/players/bios/Ben_Skopicki_bio.md"
     }
   ]
   

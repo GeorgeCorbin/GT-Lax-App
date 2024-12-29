@@ -63,9 +63,10 @@ const styles = StyleSheet.create({
   },
   detailImage: {
     width: '100%',
-    height: 250,
+    height: 300,
     resizeMode: 'cover',
     fontFamily: 'roboto-regular',
+    borderRadius: 15,
   },
   detailName: {
     fontSize: 24,
