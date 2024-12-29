@@ -4,17 +4,15 @@ import { useColorScheme } from '@/components/useColorScheme';
 import { StyleSheet, StatusBar, View } from 'react-native';
 import React from 'react';
 
-export default function MoreLayout() {
+export default function RosterLayout() {
   return (
       <>
         <StatusBar barStyle="light-content" backgroundColor={Colors.background} />
         {/* Container with top padding for space buffer */}
         <View style={styles.container}>
           <Stack screenOptions={{ headerShown: false }}>
-            <Stack.Screen name="index" options={{ title: 'More' }} />
-            <Stack.Screen name="OldSeason" options={{ title: 'OldSeason' }} />
-            <Stack.Screen name="StudentBoard" options={{ title: 'Student Board' }} />
-            <Stack.Screen name="CoachingStaff" options={{ title: 'Coaching Staff' }} />
+            <Stack.Screen name="index" options={{ title: 'Roster' }} />
+            <Stack.Screen name="PlayerBio" options={{ title: 'PlayerBio' }} />
           </Stack>
         </View>
       </>
