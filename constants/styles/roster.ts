@@ -31,10 +31,15 @@ const styles = StyleSheet.create({
   sectionHeader: {
     fontSize: 20,
     fontWeight: 'bold',
-    color: '#dac368',
+    color: Colors.textPrimary,
+    marginTop: 15,
     marginBottom: 10,
     marginLeft: 10,
     fontFamily: 'roboto-regular-bold',
+    shadowColor: Colors.black,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.6,
+    shadowRadius: 3.84,
   },
   playerContainer: {
     alignItems: 'center',
@@ -46,6 +51,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.3,
     shadowRadius: 4,
+    width: 145,
   },
   playerImage: {
     width: 100,
