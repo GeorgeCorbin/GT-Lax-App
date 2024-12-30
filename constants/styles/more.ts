@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     },
     link: {
       fontSize: 16,
-      color: Colors.textSecondary, // Light gray text
+      color: Colors.white,
       paddingVertical: 5,
       fontFamily: 'Roboto-Regular', // Apply Roboto-Regular font
     },

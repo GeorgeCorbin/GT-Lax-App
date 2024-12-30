@@ -26,7 +26,7 @@ const NewsScreen = () => {
     try {
       const response = await fetch('https://gt-lax-app.web.app/articles.json'); // Replace with your actual API or JSON URL
       const data = await response.json();
-      setArticles(data);
+      setArticles(data.reverse());
     } catch (error) {
       console.error('Error fetching articles:', error);
     } finally {

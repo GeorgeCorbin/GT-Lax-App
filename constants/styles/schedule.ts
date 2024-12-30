@@ -22,18 +22,19 @@ const styles = StyleSheet.create({
       fontSize: 36,
       fontWeight: 'bold',
       color: '#FFF', // White text for the header
-      fontFamily: 'Roboto-Regular', // Apply Roboto-Regular font
+      fontFamily: 'Roboto-Regular-bold', // Apply Roboto-Regular font
     },
     headerText: {
       fontSize: 48,
       fontWeight: 'bold',
       color: '#FFF', // White text for the header
-      fontFamily: 'Roboto-Regular', // Apply Roboto-Regular font
+      fontFamily: 'Roboto-Regular-bold', // Apply Roboto-Regular font
     },
     recordText: {
       fontSize: 20,
       fontWeight: 'bold',
       color: Colors.techGold, // Updated gold for the record text
+      fontFamily: 'roboto-regular-bold',
     },
   
     // Section title (e.g., UPCOMING, COMPLETED)
@@ -111,6 +112,7 @@ const styles = StyleSheet.create({
       fontWeight: '500',
       color: '#FFFFFF', // White text for times
       marginTop: 4,
+      fontFamily: 'roboto-regular-bold',
     },
     location: {
       fontSize: 12, // Smaller font for location details
@@ -162,6 +164,7 @@ const styles = StyleSheet.create({
       marginLeft: 8,
       // Centering result, date, location
       textAlign: 'center',
+      fontFamily: 'roboto-regular-bold',
     },
     win: {
       color: 'green', // Green for wins
@@ -177,7 +180,7 @@ const styles = StyleSheet.create({
       fontSize: 16,
       fontWeight: '600',
       color: Colors.white, // White for scores
-      fontFamily: 'Roboto-bold', // Apply Roboto-Regular font
+      fontFamily: 'roboto-regular-bold',
       padding: 8,
     },
     divider: {

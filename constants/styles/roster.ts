@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
       marginBottom: 20,
       textAlign: 'left',
       color: Colors.textTitle,
-      fontFamily: 'roboto-regular',
+      fontFamily: 'roboto-regular-bold',
   },
   section: {
     marginBottom: 20,
@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
     color: '#dac368',
     marginBottom: 10,
     marginLeft: 10,
+    fontFamily: 'roboto-regular-bold',
   },
   playerContainer: {
     alignItems: 'center',
@@ -56,6 +57,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: 'bold',
     color: '#fff',
+    fontFamily: 'roboto-regular-bold',
   },
   playerNumber: {
     fontSize: 12,
@@ -102,6 +104,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     textAlign: 'center',
+    fontFamily: 'roboto-regular-bold',
   },
   topBackButton: {
     paddingVertical: 5,
@@ -116,6 +119,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     textAlign: 'center',
+    fontFamily: 'roboto-regular-bold',
   },
 });
 

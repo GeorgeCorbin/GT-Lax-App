@@ -14,10 +14,12 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 8,
     color: '#333',
+    fontFamily: 'roboto-regular-bold',
   },
   subHeaderText: {
     fontSize: 16,
     color: '#666',
+    fontFamily: 'roboto-regular',
   },
   itemCard: {
     flexDirection: 'row',
@@ -45,11 +47,13 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     color: '#333',
+    fontFamily: 'roboto-regular-bold',
   },
   itemPrice: {
     fontSize: 16,
     color: '#666',
     marginVertical: 8,
+    fontFamily: 'roboto-regular',
   },
   buyButton: {
     backgroundColor: '#007BFF',
@@ -60,6 +64,7 @@ const styles = StyleSheet.create({
   buyButtonText: {
     color: '#fff',
     fontWeight: 'bold',
+    fontFamily: 'roboto-regular-bold',
   },
   loadingContainer: {
     flex: 1,
@@ -71,6 +76,7 @@ const styles = StyleSheet.create({
     marginTop: 8,
     fontSize: 16,
     color: '#666',
+    fontFamily: 'roboto-regular',
   },
   cartContainer: {
     position: 'absolute',

@@ -2,10 +2,18 @@
     {
       "id": 1,
       "title": "Preseason Talk & 2024 Review",
-      "date": "Dec 23, 2024",
+      "date": "Dec. 23, 2024",
       "imageUrl": "https://gt-lax-app.web.app/news/images/article1.jpg",
       "imageAuthor": "Kevin Schoonover",
       "contentUrl": "https://gt-lax-app.web.app/news/content/article1.md"
+    },
+    {
+      "id": 2,
+      "title": "Getting Ready for a Mini Camp Showdown",
+      "date": "Jan. 1st, 2025",
+      "imageUrl": "https://gt-lax-app.web.app/news/images/article2.jpg",
+      "imageAuthor": "Kevin Schoonover",
+      "contentUrl": "https://gt-lax-app.web.app/news/content/article2.md"
     }
   ]
   

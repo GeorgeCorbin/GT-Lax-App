@@ -15,7 +15,7 @@ export default StyleSheet.create({
     marginBottom: 20,
     textAlign: 'left',
     color: Colors.textTitle,
-    fontFamily: 'roboto-regular',
+    fontFamily: 'roboto-regular-bold',
   },
   list: {
     paddingBottom: 20,
@@ -99,6 +99,7 @@ export default StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     textAlign: 'center',
+    fontFamily: 'roboto-regular-bold',
   },
   topBackButton: {
     paddingVertical: 5,
@@ -113,12 +114,14 @@ export default StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     textAlign: 'center',
+    fontFamily: 'roboto-regular-bold',
   },
   imageAuthor: {
     fontSize: 8,
     color: Colors.textSecondary,
     textAlign: 'left',
     marginLeft: 10,
+    fontFamily: 'roboto-regular',
   },
 });
 
