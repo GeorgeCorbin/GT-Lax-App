@@ -2,50 +2,89 @@ import { StyleSheet } from 'react-native';
 import Colors from "../Colors";
 
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: Colors.background, // Navy blue background
-      paddingHorizontal: 20,
-      justifyContent: 'center',
-      alignItems: 'center',    
-    },
-    title: {
-      fontFamily: 'Roboto-Regular', // Apply Roboto-Regular font
-      fontSize: 32,
-      fontWeight: 'bold',
-      color: Colors.textTitle, // White text
-      marginBottom: 40,
-    },
-    messageContainer: {
-      alignItems: 'center',
-      marginBottom: 20,
-    },
-    soldOutMessage: {
-      fontFamily: 'Roboto-Regular', // Apply Roboto-Regular font
-      fontSize: 24,
-      fontWeight: 'bold',
-      color: Colors.textPrimary, // White text
-      marginBottom: 10,
-    },
-    subMessage: {
-      fontFamily: 'Roboto-Regular', // Apply Roboto-Regular font
-      fontSize: 16,
-      color: Colors.textSecondary, // Light gray text
-      textAlign: 'center',
-    },
-    refreshButton: {
-      marginTop: 20,
-      paddingVertical: 10,
-      paddingHorizontal: 20,
-      backgroundColor: Colors.buttonPrimary.background, // Gold color for button
-      borderRadius: 5,
-    },
-    refreshText: {
-      fontFamily: 'Roboto-Regular', // Apply Roboto-Regular font
-      fontSize: 16,
-      fontWeight: 'bold',
-      color: Colors.buttonPrimary.text, // Black text
-    },
-  });
+  container: {
+    padding: 16,
+    backgroundColor: '#f4f4f4',
+  },
+  headerContainer: {
+    marginBottom: 24,
+  },
+  headerText: {
+    fontSize: 28,
+    fontWeight: 'bold',
+    marginBottom: 8,
+    color: '#333',
+  },
+  subHeaderText: {
+    fontSize: 16,
+    color: '#666',
+  },
+  itemCard: {
+    flexDirection: 'row',
+    backgroundColor: '#fff',
+    borderRadius: 8,
+    marginBottom: 16,
+    padding: 16,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
+  },
+  itemImage: {
+    width: 80,
+    height: 80,
+    borderRadius: 8,
+    marginRight: 16,
+  },
+  itemDetails: {
+    flex: 1,
+    justifyContent: 'center',
+  },
+  itemTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#333',
+  },
+  itemPrice: {
+    fontSize: 16,
+    color: '#666',
+    marginVertical: 8,
+  },
+  buyButton: {
+    backgroundColor: '#007BFF',
+    paddingVertical: 8,
+    borderRadius: 4,
+    textAlign: 'center',
+  },
+  buyButtonText: {
+    color: '#fff',
+    fontWeight: 'bold',
+  },
+  loadingContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#f4f4f4',
+  },
+  loadingText: {
+    marginTop: 8,
+    fontSize: 16,
+    color: '#666',
+  },
+  cartContainer: {
+    position: 'absolute',
+    top: 10,
+    right: 10,
+    zIndex: 100,
+  },
+  cartButton: {
+    padding: 8,
+  },
+  cartIcon: {
+    width: 24,
+    height: 24,
+  },
+});
 
   export default styles;

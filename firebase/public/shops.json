@@ -1,0 +1,30 @@
+[
+    {
+      "id": 1,
+      "title": "Team Hat",
+      "Price": 19.99,
+      "imageUrl": "https://gt-lax-app.web.app/shop/images/gt_team_hat.png",
+      "contentUrl": "https://gt-lax-app.web.app/shop/content/1.md",
+      "colors": ["Black","White","Gold"],
+      "sizes": [ "S", "M", "L", "XL"]
+    },
+    {
+      "id": 2,
+      "title": "Team Shirt",
+      "Price": 29.99,
+      "imageUrl": "https://gt-lax-app.web.app/shop/images/gt_team_tshirt.png",
+      "contentUrl": "https://gt-lax-app.web.app/shop/content/2.md",
+      "colors": ["Gray","White"],
+      "sizes": [ "S", "M", "L", "XL"]
+    },
+    {
+      "id": 3,
+      "title": "Team Sweatshirt",
+      "Price": 39.99,
+      "imageUrl": "https://gt-lax-app.web.app/shop/images/gt_team_sweatshirt.png",
+      "contentUrl": "https://gt-lax-app.web.app/shop/content/3.md",
+      "colors": ["Black","White","Yellow"],
+      "sizes": [ "S", "M", "L", "XL"]
+    }
+  ]
+  

@@ -75,6 +75,14 @@ function RootLayoutNav() {
             headerStyle: { backgroundColor: Colors.background },
             headerShadowVisible: false,
             headerTintColor: Colors.white }} />
+      <Stack.Screen 
+          name="shop" 
+          options={{ 
+            title: '',
+            headerShown: true,
+            headerStyle: { backgroundColor: Colors.background },
+            headerShadowVisible: false,
+            headerTintColor: Colors.white }} />
       
       {/* <Stack.Screen name="modal" options={{ presentation: 'modal' }} /> */}
       {/* <Stack.Screen 
