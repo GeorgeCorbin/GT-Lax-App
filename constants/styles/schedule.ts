@@ -43,12 +43,12 @@ const styles = StyleSheet.create({
       fontWeight: 'bold',
       color: Colors.techGold, // Updated gold
       marginVertical: 12,
-      fontFamily: 'Roboto-Regular', // Apply Roboto-Regular font
+      fontFamily: 'Roboto-Regular-bold', // Apply Roboto-Regular font
     },
   
     // Game item card
     gameItem: {
-      backgroundColor: Colors.navyBlue, // Updated navy background
+      backgroundColor: Colors.cardBackground,
       borderRadius: 8,
       marginBottom: 16,
       padding: 12,

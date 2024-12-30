@@ -6,7 +6,7 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colors.background,
-    padding: 10,
+    paddingHorizontal: 10,
   },
   header: {
     fontSize: 48,
@@ -23,7 +23,7 @@ export default StyleSheet.create({
   card: {
     backgroundColor: Colors.techGold,
     borderRadius: 10,
-    marginBottom: 10,
+    marginBottom: 20,
     // overflow: 'hidden',
 
     // Elevation for Android

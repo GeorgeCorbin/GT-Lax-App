@@ -4,21 +4,21 @@ import Colors from "../Colors";
 const styles = StyleSheet.create({
   container: {
     padding: 16,
-    backgroundColor: '#f4f4f4',
+    backgroundColor: Colors.background,
   },
   headerContainer: {
     marginBottom: 24,
   },
   headerText: {
-    fontSize: 28,
+    fontSize: 48,
     fontWeight: 'bold',
     marginBottom: 8,
-    color: '#333',
+    color: Colors.textTitle,
     fontFamily: 'roboto-regular-bold',
   },
   subHeaderText: {
     fontSize: 16,
-    color: '#666',
+    color: Colors.textSecondary,
     fontFamily: 'roboto-regular',
   },
   itemCard: {
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     fontFamily: 'roboto-regular',
   },
   buyButton: {
-    backgroundColor: '#007BFF',
+    backgroundColor: Colors.buttonPrimary.background,
     paddingVertical: 8,
     borderRadius: 4,
     textAlign: 'center',
@@ -86,6 +86,7 @@ const styles = StyleSheet.create({
   },
   cartButton: {
     padding: 8,
+    borderColor: '#fff',
   },
   cartIcon: {
     width: 24,

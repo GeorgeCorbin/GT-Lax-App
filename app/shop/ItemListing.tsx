@@ -157,19 +157,19 @@ const ItemListing = () => {
               padding: 12,
             },
             heading1: {
-              fontSize: 28,
+              fontSize: 24,
               fontWeight: 'bold',
               color: Colors.techGold,
               marginBottom: 10,
             },
             heading2: {
-              fontSize: 24,
+              fontSize: 20,
               fontWeight: 'bold',
               color: Colors.techGold,
               marginBottom: 8,
             },
             heading3: {
-              fontSize: 20,
+              fontSize: 18,
               fontWeight: 'bold',
               color: Colors.techDarkGold,
               marginBottom: 8,

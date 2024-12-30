@@ -26,11 +26,15 @@ const styles = StyleSheet.create({
       fontWeight: 'bold',
       color: Colors.textPrimary, // Gold text
       marginBottom: 10,
-      fontFamily: 'Roboto-Regular', // Apply Roboto-Regular font
+      fontFamily: 'Roboto-Regular-bold', // Apply Roboto-Regular font
+      shadowColor: Colors.black,
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.8,
+      shadowRadius: 3.84,
     },
     link: {
       fontSize: 16,
-      color: Colors.white,
+      color: Colors.textSecondary,
       paddingVertical: 5,
       fontFamily: 'Roboto-Regular', // Apply Roboto-Regular font
     },

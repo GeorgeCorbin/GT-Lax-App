@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.background,
     paddingHorizontal: 10,
-    paddingVertical: 20,
+    paddingVertical: 0,
   },
   headerContainer: {
     // backgroundColor: '#3b4564',
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
   playerContainer: {
     alignItems: 'center',
     marginHorizontal: 10,
-    backgroundColor: Colors.darkNavyTint,
+    backgroundColor: Colors.cardBackground,
     borderRadius: 8,
     padding: 10,
     shadowColor: '#000',

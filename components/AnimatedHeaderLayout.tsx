@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
   headerText: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: Colors.white,
+    color: Colors.textTitle,
     textAlign: 'center',
     fontFamily: 'Roboto-Regular-bold',
   },

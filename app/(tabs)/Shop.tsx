@@ -5,6 +5,7 @@ import AnimatedHeaderLayout from '@/components/AnimatedHeaderLayout';
 import axios from 'axios';
 import styles from '@/constants/styles/shop';
 import { Ionicons } from '@expo/vector-icons';
+import Colors from '@/constants/Colors';
 
 export interface ShopItem {
   id: string;
@@ -46,11 +47,11 @@ const ShopScreen = () => {
   }
 
   return (
-    <AnimatedHeaderLayout headerText="Shop" backgroundColor="#f4f4f4">
+    <AnimatedHeaderLayout headerText="Shop" backgroundColor={ styles.container.backgroundColor }>
       <View style={styles.cartContainer}>
         <Link href="/shop/Checkout" style={styles.cartButton}>
           {/* <Image source={require('@/assets/cart-icon.png')} style={styles.cartIcon} /> */}
-          <Ionicons name="cart-outline" size={24} color="black" />
+          <Ionicons name="cart-outline" size={32} color={ Colors.cartIconColor } />
         </Link>
       </View>
 

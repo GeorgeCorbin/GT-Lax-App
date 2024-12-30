@@ -26,7 +26,7 @@ export const styles = StyleSheet.create({
       cartItem: {
         flexDirection: 'row',
         marginBottom: 16,
-        backgroundColor: '#fff',
+        backgroundColor: Colors.cardBackground,
         borderRadius: 8,
         overflow: 'hidden',
         alignItems: 'center',

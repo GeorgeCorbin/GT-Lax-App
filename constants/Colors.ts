@@ -37,6 +37,9 @@ export default {
   // Pi Mile Tint
   piMileTint: '#d6dbd4',
 
+  // light of this color #003057
+  navyLight: '#133E6E',
+  
 
   // Primary Colors
   navy: '#002E63',        // Georgia Tech Navy
@@ -51,12 +54,12 @@ export default {
   darkNavyTint: '#2F3553',   // Darker navy for headers or navigation backgrounds
 
   // Additional Shades
-  background: '#003057',     // Default light background
-  textTitle: '#FFFFFF',      // Title text color
-  // textPrimary: '#002E63',    // Primary text color
+  background: '#54585A',     // Default light background
+  textTitle: '#FFF',      // Title text color
   textPrimary: '#B3A369',    // Primary text color
-  textSecondary: '#7A7A7A',  // Secondary text color
-  activeIcon: '#DAC368',     // Active icon or tab color
+  textSecondary: '#F9F6E5',  // Secondary text color
+  // activeIcon: '#DAC368',     // Active icon or tab color
+  activeIcon: '#FFF',     // Active icon or tab color
   inactiveIcon: '#7A7A7A',   // Inactive icon or tab color
   buttonPrimary: {
     background: '#B3A369',
@@ -66,5 +69,8 @@ export default {
     background: '#FFFFFF',
     text: '#002E63',
     border: '#B3A369',
-  },  
+  },
+  tabBackground: '#B3A369',
+  cardBackground: '#133E6E',
+  cartIconColor: '#FFF',
 };

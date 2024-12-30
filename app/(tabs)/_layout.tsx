@@ -41,7 +41,8 @@ export default function TabLayout() {
         <Tabs
           screenOptions={({ route }: { route: RouteProp<Record<string, object | undefined>, string> }) => ({
             tabBarStyle: {
-              backgroundColor: Colors.background, // Set the tab bar background to light navy
+              backgroundColor: Colors.tabBackground,
+              height: 100, // Increase the height of the tab bar
             },
             tabBarActiveTintColor: Colors.activeIcon, // Set the active tab label color to gold
             // headerShown: false,  // Hide the header
