@@ -11,12 +11,18 @@ import Colors from '@/constants/Colors';
 const rssURL23 = 'https://www.gtlacrosse.com/sports/mlax/2023-24/schedule?print=rss';
 const rssURL25 = 'https://www.gtlacrosse.com/sports/mlax/2024-25/schedule?print=rss';
 
-const seasons = [
-  { label: '2020-21', value: '2020-21' },
-  { label: '2021-22', value: '2021-22' },
-  { label: '2022-23', value: '2022-23' },
-  { label: '2023-24', value: '2023-24' },
-  { label: 'Current Season', value: '2024-25' },
+type Season = {
+  label: string;
+  value: string;
+  key: string;
+};
+
+const seasons: Season[] = [
+  { label: '2020-21', value: '2020-21', key: '2020-21' },
+  { label: '2021-22', value: '2021-22', key: '2021-22' },
+  { label: '2022-23', value: '2022-23', key: '2022-23' },
+  { label: '2023-24', value: '2023-24', key: '2023-24' },
+  { label: 'Current Season', value: '2024-25', key: '2024-25' },
 ];
 
 // Fetch the RSS feed and parse it
@@ -160,9 +166,11 @@ const Schedule = () => {
         <ModalDropdown
           options={seasons.map((s) => s.label)} // Map labels for the dropdown
           defaultValue="Current Season"
-          onSelect={(index: any) => {
-            const selectedSeason = seasons[index].value;
-            setSeason(selectedSeason); // Update the season state
+          onSelect={(index: string, option) => {
+            const selectedSeason = seasons[index]?.value;
+            if (selectedSeason) {
+              setSeason(selectedSeason);
+            }
           }}
           dropdownStyle={styles.dropdownContainer} // Style the dropdown
           textStyle={styles.dropdownText} // Style the button text

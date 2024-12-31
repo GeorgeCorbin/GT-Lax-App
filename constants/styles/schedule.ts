@@ -232,8 +232,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between', // Place items at opposite ends
     alignItems: 'center', // Vertically align items
-    paddingHorizontal: 0, // Adjust spacing on left and right
-    marginBottom: 16, // Add space between the dropdown and items below
   },
   dropdownContainer: {
     backgroundColor: Colors.buttonPrimary.background,
@@ -241,6 +239,12 @@ const styles = StyleSheet.create({
   },
   dropdownItemTextHighlight: {
     color: Colors.buttonPrimary.text, // Highlight the selected item
+  },
+  dropdownRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 16, // Add space between the dropdown and items below
   },
 });
 

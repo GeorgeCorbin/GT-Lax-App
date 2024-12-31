@@ -115,10 +115,10 @@ const styles = StyleSheet.create({
   topBackButton: {
     paddingVertical: 5,
     paddingHorizontal: 10,
-    alignSelf: 'flex-start',
+    alignSelf: 'flex-end',
     backgroundColor: Colors.buttonPrimary.background,
     borderRadius: 5,
-    marginBottom: 20,
+    // marginBottom: 20,
   },
   topBackButtonText: {
     color: Colors.buttonPrimary.text,
