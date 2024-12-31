@@ -16,7 +16,7 @@ const MoreScreen = () => {
       </View>
   
       {/* All Seasons Section */}
-      <View style={styles.section}>
+      {/* <View style={styles.section}>
         <Text style={styles.sectionHeader}>All Seasons</Text>
         <Link href="/more/OldSeason?year=2023-24" style={styles.link}>
           2023-24 Season
@@ -27,7 +27,7 @@ const MoreScreen = () => {
         <Link href="/more/OldSeason?year=2021-22" style={styles.link}>
           2021-22 Season
         </Link>
-      </View>
+      </View> */}
 
       {/* Front Office Section */}
       <View style={styles.section}>

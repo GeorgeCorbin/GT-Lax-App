@@ -4,15 +4,26 @@ import axios from 'axios';
 import { XMLParser } from 'fast-xml-parser';
 import styles from '../../constants/styles/schedule'; // Updated path for styles
 import AnimatedHeaderLayout from '@/components/AnimatedHeaderLayout';
+import ModalDropdown from 'react-native-modal-dropdown';
+import Icon from 'react-native-vector-icons/FontAwesome'; // Import vector icon library
+import Colors from '@/constants/Colors';
 
 const rssURL23 = 'https://www.gtlacrosse.com/sports/mlax/2023-24/schedule?print=rss';
 const rssURL25 = 'https://www.gtlacrosse.com/sports/mlax/2024-25/schedule?print=rss';
 
-// Fetch the RSS feed and parse it
-export const fetchSchedule = async () => {
-  try {
-    const response = await axios.get(rssURL25);
+const seasons = [
+  { label: '2020-21', value: '2020-21' },
+  { label: '2021-22', value: '2021-22' },
+  { label: '2022-23', value: '2022-23' },
+  { label: '2023-24', value: '2023-24' },
+  { label: 'Current Season', value: '2024-25' },
+];
 
+// Fetch the RSS feed and parse it
+const fetchSchedule = async (season: string | undefined) => {
+  const rssURL =`https://www.gtlacrosse.com/sports/mlax/${season}/schedule?print=rss`;
+  try {
+    const response = await axios.get(rssURL);
     const parser = new XMLParser({ ignoreAttributes: false });
     const feed = parser.parse(response.data);
     const items = feed.rss.channel.item;
@@ -85,12 +96,13 @@ const Schedule = () => {
   const [completedGames, setCompletedGames] = useState<Game[]>([]);
   const [upcomingGames, setUpcomingGames] = useState<Game[]>([]);
   const [record, setRecord] = useState({ wins: 0, losses: 0 });
+  const [season, setSeason] = useState('2024-25'); // Default season
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const loadSchedule = async () => {
       try {
-        const schedule = await fetchSchedule();
+        const schedule = await fetchSchedule(season);
 
         const completed = schedule.filter((game: Game) => game.score);
         const upcoming = schedule.filter((game: Game) => !game.score);
@@ -116,7 +128,7 @@ const Schedule = () => {
     };
 
     loadSchedule();
-  }, []);
+  }, [season]);
 
   if (loading) {
     return (
@@ -142,7 +154,23 @@ const Schedule = () => {
       </View>
 
       {/* Upcoming Games Section */}
-      <Text style={styles.sectionTitle}>UPCOMING</Text>
+      {/* <Text style={styles.sectionTitle}>UPCOMING</Text> */}
+      <View style={styles.dropRow}>
+        <Text style={styles.sectionTitle}>UPCOMING</Text>
+        <ModalDropdown
+          options={seasons.map((s) => s.label)} // Map labels for the dropdown
+          defaultValue="Current Season"
+          onSelect={(index: any) => {
+            const selectedSeason = seasons[index].value;
+            setSeason(selectedSeason); // Update the season state
+          }}
+          dropdownStyle={styles.dropdownContainer} // Style the dropdown
+          textStyle={styles.dropdownText} // Style the button text
+          dropdownTextStyle={styles.dropdownItemText} // Style the dropdown items
+          dropdownTextHighlightStyle={styles.dropdownItemTextHighlight} // Highlight selected item
+          style={styles.dropdown} // Style the dropdown button
+        />
+      </View>
       {upcomingGames.map((game, index) => {
         // Determine if Georgia Tech is the home team
         const isHome = game.title.includes('vs. Georgia Tech');
