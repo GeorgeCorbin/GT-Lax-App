@@ -1,0 +1,39 @@
+[
+  {
+    "name": "Ken Lovic",
+    "title": "Head Coach",
+    "photo": "https://gt-lax-app.web.app/coaches/images/ken_lovic.jpg",
+    "bio": "Short Bio Here"
+  },
+  {
+    "name": "E.J. Freeman",
+    "title": "Assoc. Head Coach, Offense",
+    "photo": "https://gt-lax-app.web.app/coaches/images/ej_freeman.jpg",
+    "bio": "Short Bio Here"
+  },
+  {
+    "name": "Mat Edmunds",
+    "title": "Asst. Head Coach, Recruiting",
+    "photo": "https://gt-lax-app.web.app/coaches/images/mat_edmunds.jpg",
+    "bio": "Short Bio Here"
+  },
+  {
+    "name": "Jack Van Slyke",
+    "title": "Defense & Goalies",
+    "photo": "https://gt-lax-app.web.app/coaches/images/jack_van_slyke.jpg",
+    "bio": "Short Bio Here"
+  },
+  {
+    "name": "Kevin Lewis",
+    "title": "Asst. Defensive Coach",
+    "photo": "https://gt-lax-app.web.app/coaches/images/kevin_lewis.jpg",
+    "bio": "Short Bio Here"
+  },
+  {
+    "name": "Davis Cooke",
+    "title": "Offensive Asst. & Faceoffs",
+    "photo": "https://gt-lax-app.web.app/coaches/images/davis_cooke.jpg",
+    "bio": "Short Bio Here"
+  }
+]
+  

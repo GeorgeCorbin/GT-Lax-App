@@ -210,7 +210,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 0,
     padding: 4,
-    marginVertical: 12
+    marginVertical: 12,    
   },
   dropdownText: {
     fontSize: 14, // Set the font size
@@ -241,13 +241,6 @@ const styles = StyleSheet.create({
   },
   dropdownItemTextHighlight: {
     color: Colors.buttonPrimary.text, // Highlight the selected item
-  },
-  dropdownButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  arrowIcon: {
-    marginLeft: 8, // Space between text and icon
   },
 });
 

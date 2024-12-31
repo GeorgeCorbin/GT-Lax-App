@@ -40,7 +40,7 @@ const ShopScreen = () => {
   if (loading) {
     return (
       <View style={styles.loadingContainer}>
-        <ActivityIndicator size="large" color="#007BFF" />
+        <ActivityIndicator size="large" color={Colors.white} />
         <Text style={styles.loadingText}>Loading shop items...</Text>
       </View>
     );

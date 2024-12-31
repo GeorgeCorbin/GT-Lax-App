@@ -12,8 +12,8 @@ const styles = StyleSheet.create({
   headerText: {
     fontSize: 48,
     fontWeight: 'bold',
-    marginBottom: 8,
     color: Colors.textTitle,
+    textAlign: 'left',
     fontFamily: 'roboto-regular-bold',
   },
   subHeaderText: {
