@@ -28,14 +28,17 @@ export const styles = StyleSheet.create({
       cartItem: {
         flexDirection: 'row',
         marginBottom: 16,
-        backgroundColor: "#f4f4f4",
+        backgroundColor: Colors.diploma,
         borderRadius: 8,
         overflow: 'hidden',
         alignItems: 'center',
+        borderColor: Colors.grayMatter,
+        borderWidth: 1,
       },
       cartItemImage: {
         width: 80,
         height: 80,
+        marginLeft: 8,
       },
       cartItemDetails: {
         flex: 1,
