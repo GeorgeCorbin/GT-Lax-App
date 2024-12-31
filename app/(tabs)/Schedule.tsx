@@ -1,28 +1,33 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, ScrollView, StyleSheet, Image } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import axios from 'axios';
 import { XMLParser } from 'fast-xml-parser';
 import styles from '../../constants/styles/schedule'; // Updated path for styles
 import AnimatedHeaderLayout from '@/components/AnimatedHeaderLayout';
 import ModalDropdown from 'react-native-modal-dropdown';
-import Icon from 'react-native-vector-icons/FontAwesome'; // Import vector icon library
 import Colors from '@/constants/Colors';
+import { SelectList } from 'react-native-dropdown-select-list';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 
-const rssURL23 = 'https://www.gtlacrosse.com/sports/mlax/2023-24/schedule?print=rss';
-const rssURL25 = 'https://www.gtlacrosse.com/sports/mlax/2024-25/schedule?print=rss';
+// type Season = {
+//   label: string;
+//   value: string;
+// };
 
-type Season = {
-  label: string;
-  value: string;
-  key: string;
-};
+// const seasons: Season[] = [
+//   { label: '2020-21', value: '2020-21' },
+//   { label: '2021-22', value: '2021-22' },
+//   { label: '2022-23', value: '2022-23' },
+//   { label: '2023-24', value: '2023-24' },
+//   { label: 'Current Season', value: '2024-25' },
+// ];
 
-const seasons: Season[] = [
-  { label: '2020-21', value: '2020-21', key: '2020-21' },
-  { label: '2021-22', value: '2021-22', key: '2021-22' },
-  { label: '2022-23', value: '2022-23', key: '2022-23' },
-  { label: '2023-24', value: '2023-24', key: '2023-24' },
-  { label: 'Current Season', value: '2024-25', key: '2024-25' },
+const seasons = [
+  { key: '1', value: '2020-21' },
+  { key: '2', value: '2021-22' },
+  { key: '3', value: '2022-23' },
+  { key: '4', value: '2023-24' },
+  { key: '5', value: '2024-25' },
 ];
 
 // Fetch the RSS feed and parse it
@@ -102,8 +107,9 @@ const Schedule = () => {
   const [completedGames, setCompletedGames] = useState<Game[]>([]);
   const [upcomingGames, setUpcomingGames] = useState<Game[]>([]);
   const [record, setRecord] = useState({ wins: 0, losses: 0 });
-  const [season, setSeason] = useState('2024-25'); // Default season
+  // const [season, setSeason] = useState('2024-25'); // Default season
   const [loading, setLoading] = useState(true);
+  const [season, setSelected] = useState('2024-25');
 
   useEffect(() => {
     const loadSchedule = async () => {
@@ -163,20 +169,24 @@ const Schedule = () => {
       {/* <Text style={styles.sectionTitle}>UPCOMING</Text> */}
       <View style={styles.dropRow}>
         <Text style={styles.sectionTitle}>UPCOMING</Text>
-        <ModalDropdown
-          options={seasons.map((s) => s.label)} // Map labels for the dropdown
-          defaultValue="Current Season"
-          onSelect={(index: string, option) => {
-            const selectedSeason = seasons[index]?.value;
-            if (selectedSeason) {
-              setSeason(selectedSeason);
-            }
-          }}
-          dropdownStyle={styles.dropdownContainer} // Style the dropdown
-          textStyle={styles.dropdownText} // Style the button text
-          dropdownTextStyle={styles.dropdownItemText} // Style the dropdown items
-          dropdownTextHighlightStyle={styles.dropdownItemTextHighlight} // Highlight selected item
-          style={styles.dropdown} // Style the dropdown button
+        <SelectList
+        setSelected={setSelected}
+        data={seasons}
+        save="value"
+        dropdownStyles={styles.dropdown}
+        dropdownTextStyles={styles.dropdownText}
+        boxStyles={styles.dropdownContainer}
+        inputStyles={styles.dropdownItemText}
+        searchPlaceholder=""
+        placeholder="2024-25"
+        search={false}
+        fontFamily="Roboto-Regular-bold"
+        arrowicon={
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <Text style={{ marginRight: 4 }}></Text>
+            <AntDesign name="down" size={12} color={Colors.buttonPrimary.text} />
+          </View>
+        }
         />
       </View>
       {upcomingGames.map((game, index) => {

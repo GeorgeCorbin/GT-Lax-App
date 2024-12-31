@@ -202,15 +202,16 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.buttonPrimary.background, // Match color scheme
     borderRadius: 4, // Rounded corners
     alignSelf: 'flex-end', // Align dropdown to the right
-    marginRight: 0, // Remove extra margin
     zIndex: 1000, // Ensure it overlays content
+    top: 50, // Adjust as needed
+    position: 'absolute', // Position the dropdown
     elevation: 3, // Shadow for Android
     shadowColor: '#000', // Shadow color for iOS
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 0,
-    padding: 4,
-    marginVertical: 12,    
+    // padding: 4,
+    // marginVertical: 12,    
   },
   dropdownText: {
     fontSize: 14, // Set the font size
@@ -222,7 +223,6 @@ const styles = StyleSheet.create({
   dropdownItemText: {
     fontSize: 14, // Comfortable text size
     color: Colors.buttonPrimary.text, // Text contrast
-    paddingVertical: 8, // Enough padding for touch
     textAlign: 'center', // Center-align for dropdown text
     fontWeight: 'bold',
     fontFamily: 'Roboto-Regular-bold',
@@ -232,10 +232,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between', // Place items at opposite ends
     alignItems: 'center', // Vertically align items
+    marginBottom: 16, // Add space between the dropdown and items below
   },
   dropdownContainer: {
     backgroundColor: Colors.buttonPrimary.background,
-    borderRadius: 8,
+    // borderRadius: 8,
   },
   dropdownItemTextHighlight: {
     color: Colors.buttonPrimary.text, // Highlight the selected item
