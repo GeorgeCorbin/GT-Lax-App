@@ -50,6 +50,13 @@ const MoreScreen = () => {
         }}>
           <Text style={styles.link}>Contact Team</Text>
         </TouchableOpacity>
+        <TouchableOpacity onPress={() => {
+          const email = 'gcorbin36@gmail.com';
+          const url = `mailto:${email}`;
+          Linking.openURL(url).catch(err => console.error('Error opening email app:', err));
+        }}>
+          <Text style={styles.link}>Contact the Developer</Text>
+        </TouchableOpacity>
       </View>
 
       {/* Social Media Section */}
