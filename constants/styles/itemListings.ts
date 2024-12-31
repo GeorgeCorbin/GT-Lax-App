@@ -4,7 +4,8 @@ import Colors from '../Colors';
 export const styles = StyleSheet.create({
     container: {
       padding: 16,
-      backgroundColor: '#f4f4f4',
+      // backgroundColor: '#f4f4f4',
+      backgroundColor: Colors.background,
     },
     itemImage: {
       width: '100%',
@@ -15,13 +16,15 @@ export const styles = StyleSheet.create({
     itemTitle: {
       fontSize: 24,
       fontWeight: 'bold',
-      color: '#333',
+      color: Colors.textPrimary,
       marginBottom: 8,
+      fontFamily: 'Roboto-Regular-bold', // Apply Roboto-Regular font
     },
     itemPrice: {
       fontSize: 20,
-      color: '#666',
+      color: Colors.textSecondary,
       marginBottom: 16,
+      fontFamily: 'Roboto-Regular', // Apply Roboto-Regular font
     },
     sectionContainer: {
       marginBottom: 16,
@@ -29,8 +32,9 @@ export const styles = StyleSheet.create({
     sectionTitle: {
       fontSize: 18,
       fontWeight: 'bold',
-      color: '#333',
+      color: Colors.textSecondary,
       marginBottom: 8,
+      fontFamily: 'Roboto-Regular-bold', // Apply Roboto-Regular font
     },
     optionsContainer: {
       flexDirection: 'row',
@@ -46,17 +50,21 @@ export const styles = StyleSheet.create({
       marginBottom: 8,
     },
     selectedOptionButton: {
-      backgroundColor: '#007BFF',
+      // backgroundColor: '#007BFF',
+      backgroundColor: Colors.buttonPrimary.background,
     },
     optionText: {
       fontSize: 16,
-      color: '#333',
+      color: Colors.textSecondary,
+      fontFamily: 'Roboto-Regular', // Apply Roboto-Regular font
     },
     selectedOptionText: {
-      color: '#fff',
+      fontWeight: 'bold',
+      fontFamily: 'Roboto-Regular-bold', // Apply Roboto-Regular font
+      color: Colors.textSecondary,
     },
     addButton: {
-      backgroundColor: '#007BFF',
+      backgroundColor: Colors.buttonPrimary.background,
       paddingVertical: 12,
       borderRadius: 4,
       marginTop: 16,
@@ -69,12 +77,13 @@ export const styles = StyleSheet.create({
       textAlign: 'center',
       fontWeight: 'bold',
       fontSize: 16,
+      fontFamily: 'Roboto-Regular-bold', // Apply Roboto-Regular font
     },
     itemDescription: {
       fontSize: 16,
-      color: '#333',
       lineHeight: 24,
       marginTop: 16,
+      fontFamily: 'Roboto-Regular', // Apply Roboto-Regular font
     },
     loadingContainer: {
       flex: 1,
@@ -86,6 +95,7 @@ export const styles = StyleSheet.create({
       marginTop: 8,
       fontSize: 16,
       color: '#666',
+      fontFamily: 'Roboto-Regular', // Apply Roboto-Regular font
     },
     errorContainer: {
       flex: 1,
@@ -96,5 +106,6 @@ export const styles = StyleSheet.create({
     errorText: {
       fontSize: 16,
       color: '#333',
+      fontFamily: 'Roboto-Regular', // Apply Roboto-Regular font
     },
   });

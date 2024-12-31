@@ -16,13 +16,13 @@ const styles = StyleSheet.create({
       fontSize: 48,
       fontWeight: 'bold',
       color: Colors.textTitle,
-      fontFamily: 'Roboto-Regular', // Apply Roboto-Regular font
+      fontFamily: 'Roboto-Regular-bold', // Apply Roboto-Regular font
     },
     section: {
       marginBottom: 20,
     },
     sectionHeader: {
-      fontSize: 18,
+      fontSize: 32,
       fontWeight: 'bold',
       color: Colors.textPrimary, // Gold text
       marginBottom: 10,
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
       shadowRadius: 3.84,
     },
     link: {
-      fontSize: 16,
+      fontSize: 24,
       color: Colors.textSecondary,
       paddingVertical: 5,
       fontFamily: 'Roboto-Regular', // Apply Roboto-Regular font

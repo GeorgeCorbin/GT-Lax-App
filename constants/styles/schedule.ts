@@ -44,6 +44,10 @@ const styles = StyleSheet.create({
       color: Colors.techGold, // Updated gold
       marginVertical: 12,
       fontFamily: 'Roboto-Regular-bold', // Apply Roboto-Regular font
+      shadowColor: Colors.black,
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.8,
+      shadowRadius: 3.84,
     },
   
     // Game item card

@@ -11,6 +11,7 @@ export const styles = StyleSheet.create({
         fontWeight: 'bold',
         marginBottom: 16,
         textAlign: 'center',
+        fontFamily: 'Roboto-Regular-bold', // Apply Roboto-Regular font
       },
       cartContainer: {
         marginBottom: 16,
@@ -19,6 +20,7 @@ export const styles = StyleSheet.create({
         fontSize: 22,
         fontWeight: 'bold',
         marginBottom: 8,
+        fontFamily: 'Roboto-Regular-bold', // Apply Roboto-Regular font
       },
       cartList: {
         paddingBottom: 16,
@@ -26,7 +28,7 @@ export const styles = StyleSheet.create({
       cartItem: {
         flexDirection: 'row',
         marginBottom: 16,
-        backgroundColor: Colors.cardBackground,
+        backgroundColor: "#f4f4f4",
         borderRadius: 8,
         overflow: 'hidden',
         alignItems: 'center',
@@ -42,10 +44,12 @@ export const styles = StyleSheet.create({
       cartItemTitle: {
         fontSize: 16,
         fontWeight: 'bold',
+        fontFamily: 'Roboto-Regular-bold', // Apply Roboto-Regular font
       },
       cartItemPrice: {
         fontSize: 14,
         color: '#666',
+        fontFamily: 'Roboto-Regular', // Apply Roboto-Regular font
       },
       cartItemDetailsText: {
         fontSize: 14,
@@ -64,7 +68,7 @@ export const styles = StyleSheet.create({
         width: 24,
         height: 24,
         borderRadius: 6,
-        backgroundColor: '#007BFF',
+        backgroundColor: Colors.buttonPrimary.background,
         alignItems: 'center',
         marginHorizontal: 8,
       },
@@ -72,11 +76,13 @@ export const styles = StyleSheet.create({
         color: '#fff',
         fontSize: 18,
         fontWeight: 'bold',
+        fontFamily: 'Roboto-Regular-bold', // Apply Roboto-Regular font
       },
       quantityText: {
         fontSize: 18,
         fontWeight: 'bold',
         color: '#333',
+        fontFamily: 'Roboto-Regular-bold', // Apply Roboto-Regular font
       },
       totalCost: {
         fontSize: 18,
@@ -84,6 +90,7 @@ export const styles = StyleSheet.create({
         textAlign: 'right',
         marginTop: 16,
         color: '#333',
+        fontFamily: 'Roboto-Regular-bold', // Apply Roboto-Regular font
       },
       removeButton: {
         padding: 8,
@@ -96,6 +103,7 @@ export const styles = StyleSheet.create({
         color: '#fff',
         fontWeight: 'bold',
         textAlign: 'center',
+        fontFamily: 'Roboto-Regular-bold', // Apply Roboto-Regular font
       },
       inputGroup: {
         marginBottom: 16,
@@ -104,6 +112,7 @@ export const styles = StyleSheet.create({
         fontSize: 16,
         marginBottom: 8,
         color: '#333',
+        fontFamily: 'Roboto-Regular', // Apply Roboto-Regular font
       },
       input: {
         borderWidth: 1,
@@ -112,6 +121,7 @@ export const styles = StyleSheet.create({
         padding: 12,
         fontSize: 16,
         backgroundColor: '#fff',
+        fontFamily: 'Roboto-Regular', // Apply Roboto-Regular font
       },
       rowGroup: {
         flexDirection: 'row',
@@ -132,7 +142,8 @@ export const styles = StyleSheet.create({
         backgroundColor: '#fff',
       },
       orderButton: {
-        backgroundColor: '#007BFF',
+        // backgroundColor: '#007BFF',
+        backgroundColor: Colors.buttonPrimary.background,
         paddingVertical: 16,
         borderRadius: 4,
         marginTop: 16,
@@ -143,10 +154,12 @@ export const styles = StyleSheet.create({
         textAlign: 'center',
         fontWeight: 'bold',
         fontSize: 18,
+        fontFamily: 'Roboto-Regular-bold', // Apply Roboto-Regular font
       },
       emptyCartText: {
         fontSize: 16,
         color: '#666',
+        fontFamily: 'Roboto-Regular', // Apply Roboto-Regular font
       },
       formContainer: {
         marginBottom: 16,
