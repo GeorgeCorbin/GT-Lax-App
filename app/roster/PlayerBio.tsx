@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import { Link } from 'expo-router';
 import styles from '@/constants/styles/roster';
 import Markdown from 'react-native-markdown-display';
@@ -95,9 +95,9 @@ const PlayerBio = ({ selectedPlayer }: { selectedPlayer: Player }) => {
       >
         {markdownContent}
       </Markdown>
-      {/* <TouchableOpacity style={styles.bottombackButton} onPress={() => setSelectedPlayer(null)}>
+      {/* <Link href="/roster" style={styles.bottombackButton}>
         <Text style={styles.backButtonText}>Back to the Roster</Text>
-      </TouchableOpacity> */}
+      </Link> */}
     </AnimatedHeaderLayout>
   );
 };

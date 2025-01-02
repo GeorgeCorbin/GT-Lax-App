@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.buttonPrimary.background,
     borderRadius: 10,
     alignSelf: 'center',
-    marginBottom: 20,
+    marginBottom: 40,
   },
   backButtonText: {
     color: Colors.buttonPrimary.text,
