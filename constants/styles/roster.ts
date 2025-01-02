@@ -41,8 +41,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.6,
     shadowRadius: 3.84,
   },
-  playerContainer: {
-    alignItems: 'center',
+  playerContainerBox: {
     marginHorizontal: 10,
     backgroundColor: Colors.cardBackground,
     borderRadius: 8,
@@ -51,13 +50,18 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.3,
     shadowRadius: 4,
-    width: 145,
+    width: 145, // needs to be same as playerContainer width for centering (All because of Link)
+  },
+  playerContainer: {
+    alignItems: 'center',
+    width: 145, // needs to be same as playerContainerBox width for centering (All because of Link)
   },
   playerImage: {
     width: 100,
     height: 100,
     borderRadius: 50,
     marginBottom: 5,
+    
   },
   playerName: {
     fontSize: 14,
