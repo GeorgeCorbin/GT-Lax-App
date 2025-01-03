@@ -131,6 +131,59 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontFamily: 'roboto-regular-bold',
   },
+  // new
+
+  tableHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    padding: 10,
+    backgroundColor: Colors.techGold,
+  },
+  tableHeaderText: {
+    fontWeight: 'bold',
+    color: Colors.black,
+    flex: 1,
+    textAlign: 'center',
+  },
+  tableRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    padding: 10,
+    borderBottomWidth: 1,
+    borderColor: Colors.white,
+  },
+  tableCell: {
+    flex: 1,
+    textAlign: 'center',
+    color: Colors.textPrimary,
+  },
+  listViewHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+    backgroundColor: Colors.navyBlue,
+  },
+  columnHeader: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: Colors.techGold,
+  },
+  listViewRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.gray,
+  },
+  listViewText: {
+    fontSize: 14,
+    color: Colors.white,
+    flex: 1,
+    textAlign: 'center',
+  },
+  
 });
 
 export default styles;
