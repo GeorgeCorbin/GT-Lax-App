@@ -4,15 +4,17 @@ import { useNavigation } from '@react-navigation/native';
 import styles from '../../constants/styles/more';
 import AnimatedHeaderLayout from '@/components/AnimatedHeaderLayout';
 import { Link } from 'expo-router';
+import appJson from '../../app.json';
+const { version } = appJson.expo;
 
 const MoreScreen = () => {
   const navigation = useNavigation();
 
   return (
-    <AnimatedHeaderLayout headerText="More" backgroundColor={styles.container.backgroundColor}>
+    <AnimatedHeaderLayout headerText="" backgroundColor={styles.container.backgroundColor}>
       {/* Header */}
       <View style={styles.header}>
-        <Text style={styles.headerText}>More</Text>
+        {/* <Text style={styles.headerText}>More</Text> */}
       </View>
   
       {/* All Seasons Section */}
@@ -77,6 +79,11 @@ const MoreScreen = () => {
         <TouchableOpacity onPress={() => Linking.openURL('https://www.youtube.com/watch?v=WGj6QLv6_as')}>
           <Text style={styles.link}>Visit us on YouTube</Text>
         </TouchableOpacity>
+      </View>
+      <View style={styles.finePrintContainer}>
+      <Text style={styles.finePrint}>Developed by George Corbin #31</Text>
+      <Text style={styles.finePrint}>Player from 2022 - 2026</Text>
+      <Text style={styles.finePrint}>Version {version}</Text>
       </View>
     </AnimatedHeaderLayout>
   );

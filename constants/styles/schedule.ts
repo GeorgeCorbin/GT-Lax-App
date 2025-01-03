@@ -16,19 +16,16 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     position: 'relative',
+    // textAlign: 'left',
     marginBottom: 16,
-  },
-  oldSeasonHeaderText: {
-    fontSize: 36,
-    fontWeight: 'bold',
-    color: '#FFF', // White text for the header
-    fontFamily: 'Roboto-Regular-bold', // Apply Roboto-Regular font
   },
   headerText: {
     fontSize: 48,
     fontWeight: 'bold',
     color: '#FFF', // White text for the header
     fontFamily: 'Roboto-Regular-bold', // Apply Roboto-Regular font
+    // marginLeft: 10,
+    // textAlign: 'left',
   },
   recordText: {
     fontSize: 20,

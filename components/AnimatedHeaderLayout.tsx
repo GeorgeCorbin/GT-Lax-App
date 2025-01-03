@@ -63,7 +63,9 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   scrollView: {
-    padding: 16,
+    // padding: 16,
+    marginLeft: 16,
+    marginRight: 16,
   },
   header: {
     position: 'absolute',

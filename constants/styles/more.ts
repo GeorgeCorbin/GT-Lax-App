@@ -38,6 +38,15 @@ const styles = StyleSheet.create({
       paddingVertical: 5,
       fontFamily: 'Roboto-Regular', // Apply Roboto-Regular font
     },
+    finePrintContainer: {
+      marginTop: 20,
+    },
+    finePrint: {
+      fontSize: 12,
+      textAlign: 'center',
+      color: Colors.gray,
+      fontFamily: 'Roboto-Regular', // Apply Roboto-Regular font
+    },
   });
 
 export default styles;

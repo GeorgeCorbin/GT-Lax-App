@@ -3,7 +3,7 @@ import Colors from "../Colors";
 
 const styles = StyleSheet.create({
   container: {
-    padding: 16,
+    // padding: 16,
     backgroundColor: Colors.background,
   },
   headerContainer: {
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
   },
   cartContainer: {
     position: 'absolute',
-    top: 10,
+    top: 5,
     right: 10,
     zIndex: 100,
   },

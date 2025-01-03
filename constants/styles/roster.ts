@@ -172,6 +172,7 @@ const styles = StyleSheet.create({
   switchContainer: {
     alignSelf: 'flex-end',
     marginRight: 10,
+    marginBottom: 10,
   },
 });
 
