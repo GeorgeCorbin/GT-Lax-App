@@ -12,6 +12,7 @@ type Player = {
   playerName: string;
   position: string;
   number: number;
+  year: string;
   imageUrl: string;
   contentUrl: string;
 };
@@ -21,6 +22,7 @@ type jsonPlayer = {
   playerName: string;
   position: string;
   number: number;
+  year: string;
   imageUrl: string;
   contentUrl: string;
 };
@@ -30,7 +32,7 @@ const RosterScreen = () => {
   const [flatRoster, setFlatRoster] = useState<Player[]>([]);
   const [isListView, setIsListView] = useState(false);
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc' | 'default'>('default');
-  const [sortColumn, setSortColumn] = useState<'number' | 'playerName' | 'position'>('number');
+  const [sortColumn, setSortColumn] = useState<'number' | 'playerName' | 'position' | 'year'>('number');
 
   const fetchRoster = async () => {
     try {
@@ -41,7 +43,7 @@ const RosterScreen = () => {
       const jsonMap = new Map<string, jsonPlayer>(jsonData.map((player: jsonPlayer) => [player.playerName, player]));
 
       // Fetch CSV data
-      const csvResponse = await fetch('https://gt-lax-app.web.app/players/roster2025.csv');
+      const csvResponse = await fetch('https://gt-lax-app.web.app/players/theroster.csv');
       const csvText = await csvResponse.text();
       const parsedCSV = Papa.parse(csvText, { header: true }).data;
 
@@ -52,6 +54,8 @@ const RosterScreen = () => {
           playerName: player['Name'],
           position: player['Pos'],
           number: Number(player['#']),
+          year: player['year']
+          ? player['year'].charAt(0).toUpperCase() + player['year'].slice(1).toLowerCase() : '', // Capitalize first letter and lowercase the rest          
           imageUrl: jsonPlayer?.imageUrl || 'https://gt-lax-app.web.app/players/images/headshot_default.png',
           contentUrl: jsonPlayer?.contentUrl || 'https://gt-lax-app.web.app/players/bios/default_bio.md',
         };
@@ -86,7 +90,12 @@ const RosterScreen = () => {
       let valueB = b[sortColumn];
   
       // If sorting by "number", compare as numbers
-      if (sortColumn === 'number') {
+      if (sortColumn === 'year') {
+        // Define a custom order for the year field
+        const yearOrder = ['Fr', 'So', 'Jr', 'Sr'];
+        valueA = yearOrder.indexOf(a.year);
+        valueB = yearOrder.indexOf(b.year);
+      } else if (sortColumn === 'number') {
         valueA = Number(valueA);
         valueB = Number(valueB);
       } else {
@@ -104,20 +113,29 @@ const RosterScreen = () => {
     return sorted;
   };
 
-  const toggleSortOrder = (column: 'number' | 'playerName' | 'position') => {
+  const toggleSortOrder = (column: 'number' | 'playerName' | 'position' | 'year') => {
     setSortColumn(column);
     setSortOrder((prev) =>
       prev === 'default' ? 'asc' : prev === 'asc' ? 'desc' : 'default'
     );
   };
 
-  const getHeaderText = (column: 'number' | 'playerName' | 'position') => {
+  const columnHeaders = {
+    number: ' #',
+    playerName: 'Name', // Change "PlayerName" to "Name"
+    position: 'Position',
+    year: 'Year',
+  };  
+
+  const getHeaderText = (column: 'number' |  'playerName' | 'position' | 'year') => {
+    const displayName = columnHeaders[column];
     if (sortColumn === column) {
-      if (sortOrder === 'asc') return `${column.charAt(0).toUpperCase() + column.slice(1)} ↑`;
-      if (sortOrder === 'desc') return `${column.charAt(0).toUpperCase() + column.slice(1)} ↓`;
+      if (sortOrder === 'asc') return `${displayName} ↑`;
+      if (sortOrder === 'desc') return `${displayName} ↓`;
     }
-    return column.charAt(0).toUpperCase() + column.slice(1);
+    return displayName;
   };
+  
 
   if (isListView) {
     return (
@@ -168,11 +186,16 @@ const RosterScreen = () => {
           <TouchableOpacity onPress={() => toggleSortOrder('number')}>
             <Text style={styles.columnHeader}>{getHeaderText('number')}</Text>
           </TouchableOpacity>
+          <Text></Text>
           <TouchableOpacity onPress={() => toggleSortOrder('playerName')}>
             <Text style={styles.columnHeader}>{getHeaderText('playerName')}</Text>
           </TouchableOpacity>
+          <Text></Text>
           <TouchableOpacity onPress={() => toggleSortOrder('position')}>
             <Text style={styles.columnHeader}>{getHeaderText('position')}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => toggleSortOrder('year')}>
+            <Text style={styles.columnHeader}>{getHeaderText('year')}</Text>
           </TouchableOpacity>
         </View>
         <FlatList
@@ -186,6 +209,7 @@ const RosterScreen = () => {
                   name: player.playerName,
                   number: player.number,
                   position: player.position,
+                  year: player.year,
                   imageUrl: player.imageUrl,
                   contentUrl: player.contentUrl,
                 },
@@ -195,6 +219,7 @@ const RosterScreen = () => {
                 <Text style={[styles.listViewText, styles.listViewColumnNumber]}>{player.number}</Text>
                 <Text style={[styles.listViewText, styles.listViewColumnName]}>{player.playerName}</Text>
                 <Text style={[styles.listViewText, styles.listViewColumnPosition]}>{player.position}</Text>
+                <Text style={[styles.listViewText, styles.listViewColumnYear]}>{player.year}</Text>
               </View>
             </Link>
           )}
@@ -271,6 +296,7 @@ const RosterScreen = () => {
                       name: player.playerName,
                       number: player.number,
                       position: player.position,
+                      year: player.year,
                       imageUrl: player.imageUrl,
                       contentUrl: player.contentUrl,
                     },

@@ -133,41 +133,58 @@ const styles = StyleSheet.create({
   listViewHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingHorizontal: 16,
+    paddingHorizontal: 20,
     paddingVertical: 8,
     backgroundColor: Colors.navyBlue,
     marginTop: 15,
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.gray,
+    // flex: 1,
   },
   columnHeader: {
     fontSize: 16,
     fontWeight: 'bold',
     color: Colors.techGold,
+    fontFamily: 'roboto-regular-bold',
+    // flex: 1, // Ensures equal space for each column
+    // textAlign: 'center', // Centers the text horizontally
+    // flex: auto,
+    color: Colors.techGold,
   },
   listViewRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    // justifyContent: 'space-between',
     // paddingHorizontal: 16,
     paddingVertical: 10,
     borderBottomWidth: 1,
     borderBottomColor: Colors.gray,
+    // backgroundColor: Colors.navyBlue,
   },
   listViewText: {
     fontSize: 16,
+    // flex: 1,
+    textAlign: 'center',
     color: Colors.white,
-    paddingHorizontal: 8, // Adds spacing between columns
+    fontFamily: 'roboto-regular',
+    // paddingHorizontal: 8, // Adds spacing between columns
   },
   listViewColumnNumber: {
     flex: 1, // Adjust column width
     textAlign: 'center',
   },
   listViewColumnName: {
-    flex: 3, // Adjust column width
+    flex: 2, // Adjust column width
     textAlign: 'center',
   },
   listViewColumnPosition: {
-    flex: 1, // Adjust column width
+    flex: 2, // Adjust column width
     textAlign: 'center',
+  },
+  listViewColumnYear: {
+    flex: 1,
+    textAlign: 'center',
+    // paddingHorizontal: 12,
   },
   switchContainer: {
     alignSelf: 'flex-end',
