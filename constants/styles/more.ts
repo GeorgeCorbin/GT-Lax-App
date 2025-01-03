@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
     },
     finePrintContainer: {
       marginTop: 20,
+      marginBottom: 20,
     },
     finePrint: {
       fontSize: 12,

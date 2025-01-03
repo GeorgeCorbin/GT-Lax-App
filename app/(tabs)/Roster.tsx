@@ -144,16 +144,23 @@ const RosterScreen = () => {
           /> */}
         <SwitchSelector
           options={[
-            { label: 'List', value: 0 },
-            { label: 'Grid', value: 1 },
+            { label: 'Grid', value: 0 },
+            { label: 'List', value: 1 },
           ]}
-          initial={isListView ? 1 : 0}
-          onPress={() => setIsListView((prev) => !prev)}
+          initial={isListView ? 1 : 0} // Sync with `isListView`
+          // onPress={() => setIsListView((prev) => !prev)}
+          // onPress={(value: number) => setIsListView(value === 0)} // Toggle view
+          onPress={(value: number) => {
+            // Only toggle view if the selected value is different
+            if (isListView !== (value === 1)) {
+              setIsListView(value === 1);
+            }
+          }}
           buttonColor={Colors.techGold}
           backgroundColor={Colors.gray}
           textColor={Colors.white}
           selectedColor={Colors.black}
-          style={{ width: 140, alignSelf: 'flex-end'}}
+          style={{ width: 140, alignSelf: 'flex-end', marginBottom: 10 }}
           fontSize={14}
         />
         </View>
@@ -220,16 +227,23 @@ const RosterScreen = () => {
         /> */}
       <SwitchSelector
         options={[
-          { label: 'List', value: 0 },
-          { label: 'Grid', value: 1 },
+          { label: 'Grid', value: 0 },
+          { label: 'List', value: 1 },
         ]}
-        initial={isListView ? 0 : 1}
-        onPress={() => setIsListView((prev) => !prev)}
+        initial={isListView ? 1 : 0} // Sync with `isListView`
+        // onPress={() => setIsListView((prev) => !prev)}
+        // onPress={(value: number) => setIsListView(value === 1)} // Toggle view
+        onPress={(value: number) => {
+          // Only toggle view if the selected value is different
+          if (isListView !== (value === 1)) {
+            setIsListView(value === 1);
+          }
+        }}
         buttonColor={Colors.techGold}
         backgroundColor={Colors.gray}
         textColor={Colors.white}
         selectedColor={Colors.black}
-        style={{ width: 140, alignSelf: 'flex-end' }}
+        style={{ width: 140, alignSelf: 'flex-end', marginBottom: 10 }}
         fontSize={14}
       />
 

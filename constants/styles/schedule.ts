@@ -195,7 +195,7 @@ const styles = StyleSheet.create({
     left: '64%', // Center the divider
   },
   dropdown: {
-    width: 120,
+    minWidth: 120, // Set a minimum width
     backgroundColor: Colors.buttonPrimary.background, // Match color scheme
     borderRadius: 4, // Rounded corners
     alignSelf: 'flex-end', // Align dropdown to the right

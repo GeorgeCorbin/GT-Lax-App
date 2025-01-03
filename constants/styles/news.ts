@@ -12,7 +12,7 @@ export default StyleSheet.create({
     fontSize: 48,
     fontWeight: 'bold',
     marginLeft: 10,
-    marginBottom: 20,
+    marginBottom: 10,
     textAlign: 'left',
     color: Colors.textTitle,
     fontFamily: 'roboto-regular-bold',
@@ -38,6 +38,8 @@ export default StyleSheet.create({
   image: {
     width: '100%',
     height: 200,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
   },
   textContainer: {
     padding: 10,
