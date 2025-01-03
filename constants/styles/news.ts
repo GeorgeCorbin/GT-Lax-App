@@ -122,6 +122,7 @@ export default StyleSheet.create({
     textAlign: 'left',
     marginLeft: 10,
     fontFamily: 'roboto-regular',
+    marginBottom: 20,
   },
 });
 

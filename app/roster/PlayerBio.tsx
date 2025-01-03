@@ -98,6 +98,7 @@ const PlayerBio = ({ selectedPlayer }: { selectedPlayer: Player }) => {
       {/* <Link href="/roster" style={styles.bottombackButton}>
         <Text style={styles.backButtonText}>Back to the Roster</Text>
       </Link> */}
+      <Text style={{ marginBottom: 20 }}></Text>
     </AnimatedHeaderLayout>
   );
 };

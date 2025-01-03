@@ -83,14 +83,14 @@ function RootLayoutNav() {
             headerStyle: { backgroundColor: Colors.background },
             headerShadowVisible: false,
             headerTintColor: Colors.white }} />
-      {/* <Stack.Screen 
+      <Stack.Screen 
           name="news" 
           options={{ 
             title: '',
             headerShown: true,
             headerStyle: { backgroundColor: Colors.background },
             headerShadowVisible: false,
-            headerTintColor: Colors.white }} /> */}
+            headerTintColor: Colors.white }} />
       
       {/* <Stack.Screen name="modal" options={{ presentation: 'modal' }} /> */}
       {/* <Stack.Screen 

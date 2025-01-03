@@ -14,6 +14,14 @@
       "imageUrl": "https://gt-lax-app.web.app/news/images/article2.jpg",
       "imageAuthor": "Kevin Schoonover",
       "contentUrl": "https://gt-lax-app.web.app/news/content/article2.md"
+    },
+    {
+      "id": 3,
+      "title": "Owen Armentrout Gives Back in a Special Way",
+      "date": "Sep 12, 2024",
+      "imageUrl": "https://gt-lax-app.web.app/news/images/article3.jpg",
+      "imageAuthor": "Kevin Schoonover",
+      "contentUrl": "https://gt-lax-app.web.app/news/content/article3.md"
     }
   ]
   
