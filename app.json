@@ -11,15 +11,15 @@
     "splash": {
       "image": "./assets/images/GeorgiaTechIcon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#54585A"
     },
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "foregroundImage": "./assets/images/GeorgiaTechIcon.png",
+        "backgroundColor": "#54585A"
       }
     },
     "web": {

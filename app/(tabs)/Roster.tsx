@@ -5,6 +5,7 @@ import styles from '../../constants/styles/roster';
 import Colors from '@/constants/Colors';
 import { Link } from 'expo-router';
 import { Switch } from 'react-native-switch';
+import SwitchSelector from 'react-native-switch-selector';
 
 type Player = {
   id: number;
@@ -123,7 +124,7 @@ const RosterScreen = () => {
       <View style={styles.container}>
         <View style={styles.headerContainer}>
           <Text style={styles.headerText}>Roster</Text>
-          <Switch
+          {/* <Switch
             value={isListView}
             onValueChange={() => setIsListView((prev) => !prev)}
             disabled={false}
@@ -140,7 +141,21 @@ const RosterScreen = () => {
             switchWidthMultiplier={2.5} // Adjust width of the switch background
             circleSize={30} // Circle/button size
             containerStyle={styles.switchContainer} // Align switch
-          />
+          /> */}
+        <SwitchSelector
+          options={[
+            { label: 'List', value: 0 },
+            { label: 'Grid', value: 1 },
+          ]}
+          initial={isListView ? 1 : 0}
+          onPress={() => setIsListView((prev) => !prev)}
+          buttonColor={Colors.techGold}
+          backgroundColor={Colors.gray}
+          textColor={Colors.white}
+          selectedColor={Colors.black}
+          style={{ width: 140, alignSelf: 'flex-end'}}
+          fontSize={14}
+        />
         </View>
         <View style={styles.listViewHeader}>
           <TouchableOpacity onPress={() => toggleSortOrder('number')}>
@@ -185,7 +200,7 @@ const RosterScreen = () => {
     <View style={styles.container}>
       <View style={styles.headerContainer}>
         <Text style={styles.headerText}>Roster</Text>
-        <Switch
+        {/* <Switch
           value={isListView}
           onValueChange={() => setIsListView((prev) => !prev)}
           disabled={false}
@@ -202,7 +217,22 @@ const RosterScreen = () => {
           switchWidthMultiplier={2.5} // Adjust width of the switch background
           circleSize={30} // Circle/button size
           containerStyle={styles.switchContainer} // Align switch
-        />
+        /> */}
+      <SwitchSelector
+        options={[
+          { label: 'List', value: 0 },
+          { label: 'Grid', value: 1 },
+        ]}
+        initial={isListView ? 0 : 1}
+        onPress={() => setIsListView((prev) => !prev)}
+        buttonColor={Colors.techGold}
+        backgroundColor={Colors.gray}
+        textColor={Colors.white}
+        selectedColor={Colors.black}
+        style={{ width: 140, alignSelf: 'flex-end' }}
+        fontSize={14}
+      />
+
       </View>
       <FlatList
         data={Object.entries(roster)} // Object entries for grouped data

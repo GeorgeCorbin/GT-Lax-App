@@ -64,47 +64,6 @@ type Game = {
   score: string | null;
 };
 
-// const assetsLink = "../../assets/images/teamLogos/"
-
-// const teamLogos: Record<string, any> = {
-//     alabama: require(`${assetsLink}Alabama.png`),
-//     arizonastate: require(`${assetsLink}ArizonaState.png`),
-//     auburn: require(`${assetsLink}Auburn.png`),
-//     bostoncollege: require(`${assetsLink}BostonCollege.png`),
-//     california: require(`${assetsLink}California.png`),
-//     centralflorida: require(`${assetsLink}CentralFlorida.png`),
-//     clemson: require(`${assetsLink}Clemson.png`),
-//     colorado: require(`${assetsLink}Colorado.png`),
-//     connecticut: require(`${assetsLink}Connecticut.png`),
-//     florida: require(`${assetsLink}Florida.png`),
-//     floridastate: require(`${assetsLink}FloridaState.png`),
-//     georgia: require(`${assetsLink}Georgia.png`),
-//     georgiatech: require(`${assetsLink}GeorgiaTech.png`),
-//     liberty: require(`${assetsLink}Liberty.png`),
-//     newhampshire: require(`${assetsLink}NewHampshire.png`),
-//     northcarolinastate: require(`${assetsLink}NorthCarolinaState.png`),
-//     northeastern: require(`${assetsLink}Northeastern.png`),
-//     placeholder: require(`${assetsLink}placeholder.png`),
-//     southcarolina: require(`${assetsLink}SouthCarolina.png`),
-//     tbd: require(`${assetsLink}TBA.png`),
-//     tennessee: require(`${assetsLink}Tennessee.png`),
-//     texasam: require(`${assetsLink}TexasA&M.png`),
-//     texas: require(`${assetsLink}Texas.png`),
-//     utahvalley: require(`${assetsLink}UtahValley.png`),
-//     vanderbilt: require(`${assetsLink}Vanderbilt.png`),
-//     virginiatech: require(`${assetsLink}VirginiaTech.png`),
-//     westvirginia: require(`${assetsLink}WestVirginia.png`),
-// };
-
-// Function to get the team logo path
-// const getTeamLogo = (teamName: string): any => {
-//   var formattedName = teamName.replace(/\s/g, '').toLowerCase();
-//   if (formattedName.includes('&')) {
-//     formattedName = formattedName.replace('&', '');
-//   }
-//   return teamLogos[formattedName] || teamLogos.placeholder;
-// };
-// assetsLink should point to your logos directory
 const assetsLink = require.context('../../assets/images/Division1_Team_Logos', false, /\.(png|jpe?g|svg)$/);
 
 // Function to dynamically load all logos
