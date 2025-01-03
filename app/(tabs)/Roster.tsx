@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList, TouchableOpacity, Switch, Image } from 'react-native';
+import { View, Text, FlatList, TouchableOpacity, Image } from 'react-native';
 import Papa from 'papaparse';
 import styles from '../../constants/styles/roster';
 import Colors from '@/constants/Colors';
 import { Link } from 'expo-router';
+import { Switch } from 'react-native-switch';
 
 type Player = {
   id: number;
@@ -78,17 +79,27 @@ const RosterScreen = () => {
   const sortRoster = () => {
     const sorted = [...flatRoster];
     if (sortOrder === 'default') return flatRoster;
-
+  
     sorted.sort((a, b) => {
-      const valueA = a[sortColumn].toString();
-      const valueB = b[sortColumn].toString();
-
-      if (sortOrder === 'asc') {
-        return valueA.localeCompare(valueB);
+      let valueA = a[sortColumn];
+      let valueB = b[sortColumn];
+  
+      // If sorting by "number", compare as numbers
+      if (sortColumn === 'number') {
+        valueA = Number(valueA);
+        valueB = Number(valueB);
+      } else {
+        // Otherwise, compare as strings (case insensitive)
+        valueA = valueA.toString().toLowerCase();
+        valueB = valueB.toString().toLowerCase();
       }
-      return valueB.localeCompare(valueA);
+  
+      if (sortOrder === 'asc') {
+        return valueA > valueB ? 1 : valueA < valueB ? -1 : 0;
+      }
+      return valueA < valueB ? 1 : valueA > valueB ? -1 : 0;
     });
-
+  
     return sorted;
   };
 
@@ -115,6 +126,20 @@ const RosterScreen = () => {
           <Switch
             value={isListView}
             onValueChange={() => setIsListView((prev) => !prev)}
+            disabled={false}
+            activeText="List"
+            inActiveText="Grid"
+            changeValueImmediately={true}
+            backgroundActive={Colors.techGold} // Active state background color
+            backgroundInactive={Colors.gray} // Inactive state background color
+            circleActiveColor={Colors.gray} // Active circle/button color
+            circleInActiveColor={Colors.techGold} // Inactive circle/button color
+            circleBorderWidth={0} // No border for the button
+            switchLeftPx={2} // Padding adjustment for the circle
+            switchRightPx={2} // Padding adjustment for the circle
+            switchWidthMultiplier={2.5} // Adjust width of the switch background
+            circleSize={30} // Circle/button size
+            containerStyle={styles.switchContainer} // Align switch
           />
         </View>
         <View style={styles.listViewHeader}>
@@ -145,9 +170,9 @@ const RosterScreen = () => {
               }}
             >
               <View style={styles.listViewRow}>
-                <Text style={styles.listViewText}>{player.number}</Text>
-                <Text style={styles.listViewText}>{player.playerName}</Text>
-                <Text style={styles.listViewText}>{player.position}</Text>
+                <Text style={[styles.listViewText, styles.listViewColumnNumber]}>{player.number}</Text>
+                <Text style={[styles.listViewText, styles.listViewColumnName]}>{player.playerName}</Text>
+                <Text style={[styles.listViewText, styles.listViewColumnPosition]}>{player.position}</Text>
               </View>
             </Link>
           )}
@@ -163,6 +188,20 @@ const RosterScreen = () => {
         <Switch
           value={isListView}
           onValueChange={() => setIsListView((prev) => !prev)}
+          disabled={false}
+          activeText="List"
+          inActiveText="Grid"
+          changeValueImmediately={true}
+          backgroundActive={Colors.techGold} // Active state background color
+          backgroundInactive={Colors.gray} // Inactive state background color
+          circleActiveColor={Colors.gray} // Active circle/button color
+          circleInActiveColor={Colors.techGold} // Inactive circle/button color
+          circleBorderWidth={0} // No border for the button
+          switchLeftPx={2} // Padding adjustment for the circle
+          switchRightPx={2} // Padding adjustment for the circle
+          switchWidthMultiplier={2.5} // Adjust width of the switch background
+          circleSize={30} // Circle/button size
+          containerStyle={styles.switchContainer} // Align switch
         />
       </View>
       <FlatList

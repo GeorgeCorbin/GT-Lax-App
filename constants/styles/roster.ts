@@ -20,7 +20,6 @@ const styles = StyleSheet.create({
       fontSize: 48,
       fontWeight: 'bold',
       marginLeft: 10,
-      marginBottom: 20,
       textAlign: 'left',
       color: Colors.textTitle,
       fontFamily: 'roboto-regular-bold',
@@ -131,38 +130,13 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontFamily: 'roboto-regular-bold',
   },
-  // new
-
-  tableHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    padding: 10,
-    backgroundColor: Colors.techGold,
-  },
-  tableHeaderText: {
-    fontWeight: 'bold',
-    color: Colors.black,
-    flex: 1,
-    textAlign: 'center',
-  },
-  tableRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    padding: 10,
-    borderBottomWidth: 1,
-    borderColor: Colors.white,
-  },
-  tableCell: {
-    flex: 1,
-    textAlign: 'center',
-    color: Colors.textPrimary,
-  },
   listViewHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingHorizontal: 16,
     paddingVertical: 8,
     backgroundColor: Colors.navyBlue,
+    marginTop: 15,
   },
   columnHeader: {
     fontSize: 16,
@@ -171,19 +145,34 @@ const styles = StyleSheet.create({
   },
   listViewRow: {
     flexDirection: 'row',
+    alignItems: 'center',
     justifyContent: 'space-between',
-    paddingHorizontal: 16,
-    paddingVertical: 8,
+    // paddingHorizontal: 16,
+    paddingVertical: 10,
     borderBottomWidth: 1,
     borderBottomColor: Colors.gray,
   },
   listViewText: {
-    fontSize: 14,
+    fontSize: 16,
     color: Colors.white,
-    flex: 1,
+    paddingHorizontal: 8, // Adds spacing between columns
+  },
+  listViewColumnNumber: {
+    flex: 1, // Adjust column width
     textAlign: 'center',
   },
-  
+  listViewColumnName: {
+    flex: 3, // Adjust column width
+    textAlign: 'center',
+  },
+  listViewColumnPosition: {
+    flex: 1, // Adjust column width
+    textAlign: 'center',
+  },
+  switchContainer: {
+    alignSelf: 'flex-end',
+    marginRight: 10,
+  },
 });
 
 export default styles;
