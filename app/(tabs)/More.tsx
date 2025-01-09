@@ -1,6 +1,5 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, Linking } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 import styles from '../../constants/styles/more';
 import AnimatedHeaderLayout from '@/components/AnimatedHeaderLayout';
 import { Link } from 'expo-router';
@@ -8,7 +7,6 @@ import appJson from '../../app.json';
 const { version } = appJson.expo;
 
 const MoreScreen = () => {
-  const navigation = useNavigation();
 
   return (
     <AnimatedHeaderLayout headerText="" backgroundColor={styles.container.backgroundColor}>
@@ -80,6 +78,16 @@ const MoreScreen = () => {
           <Text style={styles.link}>Visit us on YouTube</Text>
         </TouchableOpacity>
       </View>
+
+      {/* Admin Section */}
+      <View style={styles.section}>
+        <Text style={styles.sectionHeader}>Other</Text>
+        <Link href="/more/AdminPage" style={styles.link}>
+          Admin Login
+        </Link>
+      </View>
+
+      {/* Fine Print */}
       <View style={styles.finePrintContainer}>
       <Text style={styles.finePrint}>Developed by George Corbin #31</Text>
       <Text style={styles.finePrint}>Player from 2022 - 2026</Text>

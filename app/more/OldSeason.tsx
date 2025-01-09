@@ -3,7 +3,7 @@ import { View, Text, ScrollView, StyleSheet, Image, TouchableOpacity } from 'rea
 import axios from 'axios';
 import { XMLParser } from 'fast-xml-parser';
 import { RouteProp } from '@react-navigation/native';
-import { useRouter, SearchParams } from 'expo-router';
+import { useRouter } from 'expo-router';
 import { useSearchParams } from 'expo-router/build/hooks';
 import styles from '../../constants/styles/schedule'; // Updated path for styles
 import AnimatedHeaderLayout from '@/components/AnimatedHeaderLayout';

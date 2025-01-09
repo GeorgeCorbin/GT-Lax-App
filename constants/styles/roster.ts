@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
     // flex: 1, // Ensures equal space for each column
     // textAlign: 'center', // Centers the text horizontally
     // flex: auto,
-    color: Colors.techGold,
+    // color: Colors.techGold,
   },
   listViewRow: {
     flexDirection: 'row',

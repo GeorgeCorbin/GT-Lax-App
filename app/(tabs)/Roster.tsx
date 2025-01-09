@@ -5,6 +5,7 @@ import styles from '../../constants/styles/roster';
 import Colors from '@/constants/Colors';
 import { Link } from 'expo-router';
 import { Switch } from 'react-native-switch';
+// @ts-ignore
 import SwitchSelector from 'react-native-switch-selector';
 
 type Player = {
