@@ -15,7 +15,7 @@ export default function MoreLayout() {
             <Stack.Screen name="OldSeason" options={{ title: 'OldSeason' }} />
             <Stack.Screen name="StudentBoard" options={{ title: 'Student Board' }} />
             <Stack.Screen name="CoachingStaff" options={{ title: 'Coaching Staff' }} />
-            <Stack.Screen name="AdminPage" options={{ title: 'Admin Only' }} />
+            <Stack.Screen name="admin" options={{ headerShown: false }} />
           </Stack>
         </View>
       </>

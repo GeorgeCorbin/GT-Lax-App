@@ -60,7 +60,7 @@ export default {
   textSecondary: '#F9F6E5',  // Secondary text color
   // activeIcon: '#DAC368',     // Active icon or tab color
   activeIcon: '#FFF',     // Active icon or tab color
-  inactiveIcon: '#133E6E',   // Inactive icon or tab color
+  inactiveIcon: '#54585A',   // Inactive icon or tab color
   buttonPrimary: {
     background: '#B3A369',
     text: '#FFFFFF',
@@ -73,4 +73,10 @@ export default {
   tabBackground: '#B3A369',
   cardBackground: '#133E6E',
   cartIconColor: '#FFF',
+
+  border: '#ced4da',
+  inputBackground: '#ffffff',
+  inputText: '#495057',
+  link: '#007bff',
+  errorText: '#dc3545',
 };

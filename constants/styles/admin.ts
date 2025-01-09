@@ -1,37 +1,87 @@
 import { StyleSheet } from 'react-native';
-import Colors from "../Colors";
+import Colors from '@/constants/Colors';
 
-export const styles = StyleSheet.create({
+const adminStyles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
-        padding: 16,
         backgroundColor: Colors.background,
+        padding: 20,
+        // justifyContent: 'center',
+        // marginTop: 50,
+        fontFamily: 'roboto-regular',
+    },
+    header: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        color: Colors.textPrimary,
+        marginBottom: 20,
+        textAlign: 'center',
+        fontFamily: 'roboto-regular-bold',
     },
     title: {
         fontSize: 24,
         fontWeight: 'bold',
-        marginBottom: 24,
+        color: Colors.textPrimary,
+        marginBottom: 20,
         textAlign: 'center',
-        color: Colors.textTitle,
+        fontFamily: 'roboto-regular-bold',
     },
     input: {
-        height: 40,
-        borderColor: Colors.gray,
         borderWidth: 1,
-        marginBottom: 12,
-        paddingHorizontal: 8,
-        color: Colors.textPrimary,
+        borderColor: Colors.border,
+        borderRadius: 8,
+        padding: 10,
+        marginBottom: 15,
+        backgroundColor: Colors.buttonSecondary.background,
+        color: Colors.inputText,
+        fontFamily: 'roboto-regular',
     },
     button: {
         backgroundColor: Colors.buttonPrimary.background,
-        padding: 10,
-        borderRadius: 5,
+        paddingVertical: 12,
+        borderRadius: 8,
         alignItems: 'center',
+        marginBottom: 15,
     },
     buttonText: {
         color: Colors.buttonPrimary.text,
         fontSize: 16,
         fontWeight: 'bold',
+        fontFamily: 'roboto-regular-bold',
+    },
+    error: {
+        color: Colors.errorText,
+        marginTop: 10,
+        textAlign: 'center',
+        fontFamily: 'roboto-regular',
+    },
+    link: {
+        color: Colors.link,
+        fontSize: 16,
+        marginTop: 20,
+        textAlign: 'center',
+        fontFamily: 'roboto-regular',
+    },
+    panelHeader: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: Colors.textPrimary,
+        marginBottom: 10,
+        fontFamily: 'roboto-regular-bold',
+    },
+    panelButton: {
+        backgroundColor: Colors.buttonPrimary.background,
+        paddingVertical: 12,
+        borderRadius: 8,
+        alignItems: 'center',
+        marginBottom: 10,
+    },
+    panelButtonText: {
+        color: Colors.buttonPrimary.text,
+        fontSize: 16,
+        fontWeight: 'bold',
+        fontFamily: 'roboto-regular-bold',
     },
 });
+
+export default adminStyles;

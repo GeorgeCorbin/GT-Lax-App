@@ -14,20 +14,6 @@ const MoreScreen = () => {
       <View style={styles.header}>
         {/* <Text style={styles.headerText}>More</Text> */}
       </View>
-  
-      {/* All Seasons Section */}
-      {/* <View style={styles.section}>
-        <Text style={styles.sectionHeader}>All Seasons</Text>
-        <Link href="/more/OldSeason?year=2023-24" style={styles.link}>
-          2023-24 Season
-        </Link>
-        <Link href="/more/OldSeason?year=2022-23" style={styles.link}>
-          2022-23 Season
-        </Link>
-        <Link href="/more/OldSeason?year=2021-22" style={styles.link}>
-          2021-22 Season
-        </Link>
-      </View> */}
 
       {/* Front Office Section */}
       <View style={styles.section}>
@@ -82,8 +68,8 @@ const MoreScreen = () => {
       {/* Admin Section */}
       <View style={styles.section}>
         <Text style={styles.sectionHeader}>Other</Text>
-        <Link href="/more/AdminPage" style={styles.link}>
-          Admin Login
+        <Link href="/more/admin/AdminLogin" style={styles.link}>
+          Admin Panel
         </Link>
       </View>
 

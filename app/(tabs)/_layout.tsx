@@ -45,8 +45,7 @@ export default function TabLayout() {
               height: 100, // Increase the height of the tab bar
             },
             tabBarActiveTintColor: Colors.activeIcon, // Set the active tab label color to gold
-            tabBarInactiveTintColor: Colors.inactiveIcon, // Set the inactive tab background color to navy
-            // headerShown: false,  // Hide the header
+            // tabBarInactiveTintColor: Colors.inactiveIcon, // Set the inactive tab background color to navy
             headerStyle: { 
               backgroundColor: tabBackgroundColors[route.name],
               height: 60,
@@ -99,7 +98,5 @@ export default function TabLayout() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // backgroundColor: tabBackgroundColors[Route.name], // Match the tab bar background color
-    // paddingTop: Constants.statusBarHeight, // Add padding equivalent to the status bar height
   },
 });
