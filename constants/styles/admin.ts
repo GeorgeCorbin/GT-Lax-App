@@ -17,6 +17,10 @@ const adminStyles = StyleSheet.create({
         marginBottom: 20,
         textAlign: 'center',
         fontFamily: 'roboto-regular-bold',
+        shadowColor: Colors.black,
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.8,
+        shadowRadius: 3.84,
     },
     title: {
         fontSize: 24,

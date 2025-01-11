@@ -52,6 +52,7 @@ export default function TabLayout() {
               shadowColor: 'transparent', // Remove the boarder line
             }, // Set the header background to navy
             headerTitle: '', // Removes the header title
+            tabBarButton: route.name === 'Shop' ? () => null : undefined, // Hide the "Shop" tab
           })}
         >
           <Tabs.Screen

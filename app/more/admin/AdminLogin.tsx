@@ -9,7 +9,7 @@ const AdminLogin = () => {
   const [password, setPassword] = useState('');
 
   const handleLogin = () => {
-    if (username === 'Admin' && password === 'password') {
+    if (username === '' && password === '') {
       // Navigate to AdminPanel on successful login
       router.push('/more/admin/AdminPanel');
     } else {

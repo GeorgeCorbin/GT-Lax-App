@@ -1,56 +1,53 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
+import { Link } from 'expo-router';
 import styles from '@/constants/styles/admin';
 
 const AdminPanel = () => {
-    const handleAction = (action: string) => {
-        alert(`${action} clicked`);
-    };
-
     return (
         <ScrollView style={styles.container}>
             <Text style={styles.header}>Admin Panel</Text>
-            <TouchableOpacity
-                style={styles.panelButton}
-                onPress={() => handleAction('Push Notifications')}
-            >
-                <Text style={styles.panelButtonText}>Push Notifications</Text>
+
+            <TouchableOpacity style={styles.panelButton}>
+                <Link href="/more/admin/PushNotifications" style={styles.panelButtonText}>
+                    Push Notifications
+                </Link>
             </TouchableOpacity>
-            <TouchableOpacity
-                style={styles.panelButton}
-                onPress={() => handleAction('Toggle Store')}
-            >
-                <Text style={styles.panelButtonText}>Toggle Store</Text>
+
+            <TouchableOpacity style={styles.panelButton}>
+                <Link href="/more/admin/ToggleStore" style={styles.panelButtonText}>
+                    Toggle Store
+                </Link>
             </TouchableOpacity>
-            <TouchableOpacity
-                style={styles.panelButton}
-                onPress={() => handleAction('Add Store Item')}
-            >
-                <Text style={styles.panelButtonText}>Add Store Item</Text>
+
+            <TouchableOpacity style={styles.panelButton}>
+                <Link href="/more/admin/AddStoreItem" style={styles.panelButtonText}>
+                    Add Store Item
+                </Link>
             </TouchableOpacity>
-            <TouchableOpacity
-                style={styles.panelButton}
-                onPress={() => handleAction('Post Article')}
-            >
-                <Text style={styles.panelButtonText}>Post Article</Text>
+
+            <TouchableOpacity style={styles.panelButton}>
+                <Link href="/more/admin/NewsSettings" style={styles.panelButtonText}>
+                    News Settings
+                </Link>
             </TouchableOpacity>
-            <TouchableOpacity
-                style={styles.panelButton}
-                onPress={() => handleAction('Upload Roster')}
-            >
-                <Text style={styles.panelButtonText}>Upload Roster</Text>
+
+            <TouchableOpacity style={styles.panelButton}>
+                <Link href="/more/admin/UploadRoster" style={styles.panelButtonText}>
+                    Upload Roster
+                </Link>
             </TouchableOpacity>
-            <TouchableOpacity
-                style={styles.panelButton}
-                onPress={() => handleAction('Upload Player Images')}
-            >
-                <Text style={styles.panelButtonText}>Upload Player Images</Text>
+
+            <TouchableOpacity style={styles.panelButton}>
+                <Link href="/more/admin/UploadPlayerImages" style={styles.panelButtonText}>
+                    Upload Player Images
+                </Link>
             </TouchableOpacity>
-            <TouchableOpacity
-                style={styles.panelButton}
-                onPress={() => handleAction('Manage Bios')}
-            >
-                <Text style={styles.panelButtonText}>Manage Bios</Text>
+
+            <TouchableOpacity style={styles.panelButton}>
+                <Link href="/more/admin/ManageBios" style={styles.panelButtonText}>
+                    Manage Bios
+                </Link>
             </TouchableOpacity>
         </ScrollView>
     );

@@ -5,15 +5,14 @@ export default function AdminLayout() {
   return (
     <Stack
       screenOptions={{
-        // headerShown: false,
-        headerStyle: {
-          backgroundColor: '#f4511e',
-        },
-        headerTintColor: '#fff',
-        headerTitleStyle: {
-          fontWeight: 'bold',
-        },
-        
+        headerShown: false,
+        // headerStyle: {
+        //   backgroundColor: '#f4511e',
+        // },
+        // headerTintColor: '#fff',
+        // headerTitleStyle: {
+        //   fontWeight: 'bold',
+        // },
       }}
     >
       {/* Ensure paths match */}
