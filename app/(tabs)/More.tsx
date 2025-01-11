@@ -66,12 +66,12 @@ const MoreScreen = () => {
       </View>
 
       {/* Admin Section */}
-      <View style={styles.section}>
+      {/* <View style={styles.section}>
         <Text style={styles.sectionHeader}>Other</Text>
         <Link href="/more/admin/AdminLogin" style={styles.link}>
           Admin Panel
         </Link>
-      </View>
+      </View> */}
 
       {/* Fine Print */}
       <View style={styles.finePrintContainer}>
