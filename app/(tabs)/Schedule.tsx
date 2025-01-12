@@ -50,7 +50,7 @@ type Game = {
   score: string | null;
 };
 
-const assetsLink = require.context('../../assets/images/Division1_Team_Logos', false, /\.(png|jpe?g|svg)$/);
+const assetsLink = require.context('../../assets/images/Opponent_Logos', false, /\.(png|jpe?g|svg)$/);
 
 // Function to dynamically load all logos
 const loadTeamLogos = () => {
@@ -80,7 +80,6 @@ const Schedule = () => {
   const [completedGames, setCompletedGames] = useState<Game[]>([]);
   const [upcomingGames, setUpcomingGames] = useState<Game[]>([]);
   const [record, setRecord] = useState({ wins: 0, losses: 0 });
-  // const [season, setSeason] = useState('2024-25'); // Default season
   const [loading, setLoading] = useState(true);
   const [season, setSelected] = useState('2024-25');
 
