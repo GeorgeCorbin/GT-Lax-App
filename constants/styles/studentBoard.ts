@@ -41,6 +41,7 @@ export const styles = StyleSheet.create({
       width: 120,
       height: 120,
       borderRadius: 15,
+      marginRight: 16,
     },
     textContainer: {
       flex: 1,

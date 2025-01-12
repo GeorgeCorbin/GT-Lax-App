@@ -3,13 +3,13 @@
     "name": "Hudson Higgins",
     "title": "President",
     "photo": "https://gt-lax-app.web.app/studentBoard/images/president.jpg",
-    "bio": "Oversees all board activities and liaises with the coaching staff."
+    "bio": "Oversees all field scheduling and liaisons with the coaching staff."
   },
   {
     "name": "Jojo Banks",
     "title": "Vice President",
     "photo": "https://gt-lax-app.web.app/studentBoard/images/vice_president.jpg",
-    "bio": "Assists the President in overseeing board activities and steps in during their absence."
+    "bio": "Oversees social media and team bonding activities."
   },
   {
     "name": "George Corbin",
@@ -18,10 +18,10 @@
     "bio": "Manages the team budget and coordinates fundraising activities."
   },
   {
-    "name": "Ryan Menghi",
+    "name": "Maddox Davis",
     "title": "Equipment Mgr.",
     "photo": "https://gt-lax-app.web.app/studentBoard/images/equipment_manager.jpg",
-    "bio": "Ensures all equipment is maintained, organized, and available for practices and games."
+    "bio": "Ensures all equipment is ordered, organized, and available for practices and games."
   }
 ]
   

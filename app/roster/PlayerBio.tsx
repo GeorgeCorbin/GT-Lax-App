@@ -5,7 +5,7 @@ import styles from '@/constants/styles/roster';
 import Markdown from 'react-native-markdown-display';
 import Colors from '@/constants/Colors'; // Ensure this path is correct
 import AnimatedHeaderLayout from '@/components/AnimatedHeaderLayout';
-import { useSearchParams } from 'expo-router/build/hooks';
+import { useLocalSearchParams } from 'expo-router/build/hooks';
 
 type Player = {
     id: number;
@@ -17,12 +17,12 @@ type Player = {
   };
 
 const PlayerBio = ({ selectedPlayer }: { selectedPlayer: Player }) => {
-  const searchParams = useSearchParams();
-  const name = searchParams.get('name') || '';
-  const number = searchParams.get('number') || '';
-  const position = searchParams.get('position') || '';
-  const imageUrl = searchParams.get('imageUrl') || '';
-  const contentUrl = searchParams.get('contentUrl') || '';
+  const searchParams = useLocalSearchParams();
+  const name = Array.isArray(searchParams.name) ? searchParams.name[0] : searchParams.name || '';
+  const number = Array.isArray(searchParams.number) ? searchParams.number[0] : searchParams.number || '';
+  const position = Array.isArray(searchParams.position) ? searchParams.position[0] : searchParams.position || '';
+  const imageUrl = Array.isArray(searchParams.imageUrl) ? searchParams.imageUrl[0] : searchParams.imageUrl || '';
+  const contentUrl = Array.isArray(searchParams.contentUrl) ? searchParams.contentUrl[0] : searchParams.contentUrl || '';
   const [markdownContent, setMarkdownContent] = useState('');
 //   const [selectedPlayer, setSelectedPlayer] = useState<Player | null>(null);
 

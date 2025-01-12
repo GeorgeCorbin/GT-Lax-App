@@ -4,7 +4,7 @@ import { Link } from 'expo-router';
 import Markdown from 'react-native-markdown-display';
 import Colors from '@/constants/Colors'; // Ensure this path is correct
 import AnimatedHeaderLayout from '@/components/AnimatedHeaderLayout';
-import { useSearchParams } from 'expo-router/build/hooks';
+import { useLocalSearchParams } from 'expo-router/build/hooks';
 import styles from '../../constants/styles/news'; // Updated path for styles
 
 interface Article {
@@ -18,20 +18,22 @@ interface Article {
 }
 
 const Articles = ({ selectedArticle }: { selectedArticle: Article }) => {
-  const searchParams = useSearchParams();
-  const title = searchParams.get('title') || '';
-  const date = searchParams.get('date') || '';
-  const imageUrl = searchParams.get('imageUrl') || '';
-  const imageAuthor = searchParams.get('imageAuthor') || '';
-  const contentUrl = searchParams.get('contentUrl') || '';
+  const searchParams = useLocalSearchParams();
+  const title = searchParams.title || '';
+  const date = searchParams.date || '';
+  const imageUrl = searchParams.imageUrl || '';
+  const imageAuthor = searchParams.imageAuthor || '';
+  const contentUrl = searchParams.contentUrl || '';
   const [markdownContent, setMarkdownContent] = useState('');
 
   // Fetch Markdown content for the selected article
   const fetchMarkdownContent = async () => {
     try {
-      const response = await fetch(contentUrl);
+      if (typeof contentUrl === 'string') {
+        const response = await fetch(contentUrl);
       const content = await response.text();
       setMarkdownContent(content);
+    }
     } catch (error) {
       console.error('Error fetching markdown content:', error);
     }
@@ -44,7 +46,7 @@ const Articles = ({ selectedArticle }: { selectedArticle: Article }) => {
   return (
     <ScrollView style={styles.container}>
       
-      <Image source={{ uri: imageUrl }} style={styles.detailImage} />
+      <Image source={{ uri: Array.isArray(imageUrl) ? imageUrl[0] : imageUrl }} style={styles.detailImage} />
       <Text style={styles.imageAuthor}>Photo by: {imageAuthor}</Text>
       {/* Top Back Button */}
       {/* <TouchableOpacity style={styles.topBackButton} onPress={() => setSelectedArticle(null)}>
