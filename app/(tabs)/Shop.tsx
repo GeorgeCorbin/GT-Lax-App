@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { View, Text, ScrollView, Image, ActivityIndicator, Alert } from 'react-native';
 import { Link } from 'expo-router';
 import AnimatedHeaderLayout from '@/components/AnimatedHeaderLayout';
-import axios from 'axios';
 import styles from '@/constants/styles/shop';
 import { Ionicons } from '@expo/vector-icons';
 import Colors from '@/constants/Colors';
+import { useAppData } from '@/context/AppDataProvider';
 
 export interface ShopItem {
   id: string;
@@ -18,24 +18,7 @@ export interface ShopItem {
 }
 
 const ShopScreen = () => {
-  const [shopItems, setShopItems] = useState<ShopItem[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchShopItems = async () => {
-      try {
-        const response = await axios.get('https://gt-lax-app.web.app/shops.json');
-        setShopItems(response.data);
-      } catch (error) {
-        Alert.alert('Error', 'Failed to load shop items.');
-        console.error(error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchShopItems();
-  }, []);
+  const { shopItems, loading } = useAppData();
 
   if (loading) {
     return (

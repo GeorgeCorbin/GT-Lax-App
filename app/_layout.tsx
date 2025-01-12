@@ -8,6 +8,7 @@ import 'react-native-reanimated';
 
 import { useColorScheme } from '@/components/useColorScheme';
 import Colors from '@/constants/Colors';
+import { AppDataProvider } from '@/context/AppDataProvider';
 
 export {} from 'expo-router';
 
@@ -41,7 +42,11 @@ export default function RootLayout() {
     return null;
   }
 
-  return <RootLayoutNav />;
+  return (
+    <AppDataProvider>
+      <RootLayoutNav />
+    </AppDataProvider>
+  );
 }
 
 function RootLayoutNav() {

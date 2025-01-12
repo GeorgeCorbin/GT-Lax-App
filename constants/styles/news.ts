@@ -126,5 +126,11 @@ export default StyleSheet.create({
     fontFamily: 'roboto-regular',
     marginBottom: 20,
   },
+  loadingContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: Colors.background, // Black background
+  },
 });
 
