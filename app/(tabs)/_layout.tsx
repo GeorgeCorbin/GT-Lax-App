@@ -1,15 +1,15 @@
 import React from 'react';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { Tabs } from 'expo-router';
-import { StyleSheet, StatusBar, View } from 'react-native';
+import { StyleSheet, StatusBar, View, Text, ActivityIndicator } from 'react-native';
 import Colors from '@/constants/Colors';
-import { useColorScheme } from '@/components/useColorScheme';
 import { RouteProp } from '@react-navigation/native';
 import NewsStyles from '../../constants/styles/news'; // Updated path for styles
 import ScheduleStyles from '../../constants/styles/schedule'; // Updated path for styles
 import RosterStyles from '../../constants/styles/roster'; // Updated path for styles
 import ShopStyles from '../../constants/styles/shop'; // Updated path for styles
 import MoreStyles from '../../constants/styles/more'; // Updated path for styles
+
 
 // You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
 function TabBarIcon(props: {
@@ -28,8 +28,6 @@ const tabBackgroundColors: { [key: string]: string } = {
 };
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
   return (
     <>
       {/* Status Bar hidden */}
@@ -99,5 +97,15 @@ export default function TabLayout() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  loadingContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    color: Colors.background,
+  },
+  loadingText: {
+    fontSize: 18,
+    color: Colors.textPrimary,
   },
 });

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, ActivityIndicator } from 'react-native';
 import axios from 'axios';
 import { XMLParser } from 'fast-xml-parser';
 import styles from '../../constants/styles/schedule'; // Updated path for styles
@@ -131,8 +131,11 @@ const Schedule = () => {
 
   if (loading) {
     return (
+      // <View style={styles.loadingContainer}>
+      //   <Text style={styles.loadingText}>Loading schedule...</Text>
+      // </View>
       <View style={styles.loadingContainer}>
-        <Text style={styles.loadingText}>Loading schedule...</Text>
+        <ActivityIndicator size="large" color={Colors.activeIcon} />
       </View>
     );
   }

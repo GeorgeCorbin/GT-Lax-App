@@ -10,7 +10,7 @@
 - **Position:** LSM (Long Stick Midfielder)  
 
 **Career Highlights:**  
-Luke Jurgans appeared in 6 games during the 2023-24 season, contributing as a long stick midfielder. He collected 2 ground balls, showcasing his effort and potential on the defensive end.  
+Luke Jurgens appeared in 6 games during the 2023-24 season, contributing as a long stick midfielder. He collected 2 ground balls, showcasing his effort and potential on the defensive end.  
 
 **Total Career Statistics:**  
 - Games Played: 6  
