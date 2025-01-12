@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, Image, ScrollView } from 'react-native';
+import { View, Text, Image, ScrollView } from 'react-native';
 import AnimatedHeaderLayout from '@/components/AnimatedHeaderLayout';
 import Colors from '@/constants/Colors';
 import { styles } from '@/constants/styles/coachingStaff';

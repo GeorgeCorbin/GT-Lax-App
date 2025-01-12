@@ -12,7 +12,6 @@ const MoreScreen = () => {
     <AnimatedHeaderLayout headerText="" backgroundColor={styles.container.backgroundColor}>
       {/* Header */}
       <View style={styles.header}>
-        {/* <Text style={styles.headerText}>More</Text> */}
       </View>
 
       {/* Front Office Section */}

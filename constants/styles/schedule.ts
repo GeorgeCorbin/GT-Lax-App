@@ -16,7 +16,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     position: 'relative',
-    // textAlign: 'left',
     marginBottom: 16,
   },
   headerText: {
@@ -24,8 +23,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#FFF', // White text for the header
     fontFamily: 'Roboto-Regular-bold', // Apply Roboto-Regular font
-    // marginLeft: 10,
-    // textAlign: 'left',
   },
   recordText: {
     fontSize: 20,
@@ -54,9 +51,6 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     padding: 12,
     position: 'relative',
-    // marginVertical: 10,
-    // flexDirection: 'row',
-    // justifyContent: 'space-between',
   },
 
   // Teams layout within a game card
@@ -94,7 +88,6 @@ const styles = StyleSheet.create({
   // Date and time section
   detailsRow: {
     flexDirection: 'column',
-    // alignItems: 'flex-end', // Align items to the right
     justifyContent: 'center', // Center-align within the available space
     flex: 1, // Take up the remaining space
     // Centering result, date, location
@@ -206,9 +199,7 @@ const styles = StyleSheet.create({
     shadowColor: '#000', // Shadow color for iOS
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
-    shadowRadius: 0,
-    // padding: 4,
-    // marginVertical: 12,    
+    shadowRadius: 0, 
   },
   dropdownText: {
     fontSize: 14, // Set the font size
@@ -233,7 +224,6 @@ const styles = StyleSheet.create({
   },
   dropdownContainer: {
     backgroundColor: Colors.buttonPrimary.background,
-    // borderRadius: 8,
   },
   dropdownItemTextHighlight: {
     color: Colors.buttonPrimary.text, // Highlight the selected item

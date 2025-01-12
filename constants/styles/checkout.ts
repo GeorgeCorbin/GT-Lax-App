@@ -145,7 +145,6 @@ export const styles = StyleSheet.create({
         backgroundColor: '#fff',
       },
       orderButton: {
-        // backgroundColor: '#007BFF',
         backgroundColor: Colors.buttonPrimary.background,
         paddingVertical: 16,
         borderRadius: 4,

@@ -4,7 +4,6 @@ import Papa from 'papaparse';
 import styles from '../../constants/styles/roster';
 import Colors from '@/constants/Colors';
 import { Link } from 'expo-router';
-import { Switch } from 'react-native-switch';
 // @ts-ignore
 import SwitchSelector from 'react-native-switch-selector';
 
@@ -143,32 +142,12 @@ const RosterScreen = () => {
       <View style={styles.container}>
         <View style={styles.headerContainer}>
           <Text style={styles.headerText}>Roster</Text>
-          {/* <Switch
-            value={isListView}
-            onValueChange={() => setIsListView((prev) => !prev)}
-            disabled={false}
-            activeText="List"
-            inActiveText="Grid"
-            changeValueImmediately={true}
-            backgroundActive={Colors.techGold} // Active state background color
-            backgroundInactive={Colors.gray} // Inactive state background color
-            circleActiveColor={Colors.gray} // Active circle/button color
-            circleInActiveColor={Colors.techGold} // Inactive circle/button color
-            circleBorderWidth={0} // No border for the button
-            switchLeftPx={2} // Padding adjustment for the circle
-            switchRightPx={2} // Padding adjustment for the circle
-            switchWidthMultiplier={2.5} // Adjust width of the switch background
-            circleSize={30} // Circle/button size
-            containerStyle={styles.switchContainer} // Align switch
-          /> */}
         <SwitchSelector
           options={[
             { label: 'Grid', value: 0 },
             { label: 'List', value: 1 },
           ]}
           initial={isListView ? 1 : 0} // Sync with `isListView`
-          // onPress={() => setIsListView((prev) => !prev)}
-          // onPress={(value: number) => setIsListView(value === 0)} // Toggle view
           onPress={(value: number) => {
             // Only toggle view if the selected value is different
             if (isListView !== (value === 1)) {
@@ -233,32 +212,12 @@ const RosterScreen = () => {
     <View style={styles.container}>
       <View style={styles.headerContainer}>
         <Text style={styles.headerText}>Roster</Text>
-        {/* <Switch
-          value={isListView}
-          onValueChange={() => setIsListView((prev) => !prev)}
-          disabled={false}
-          activeText="List"
-          inActiveText="Grid"
-          changeValueImmediately={true}
-          backgroundActive={Colors.techGold} // Active state background color
-          backgroundInactive={Colors.gray} // Inactive state background color
-          circleActiveColor={Colors.gray} // Active circle/button color
-          circleInActiveColor={Colors.techGold} // Inactive circle/button color
-          circleBorderWidth={0} // No border for the button
-          switchLeftPx={2} // Padding adjustment for the circle
-          switchRightPx={2} // Padding adjustment for the circle
-          switchWidthMultiplier={2.5} // Adjust width of the switch background
-          circleSize={30} // Circle/button size
-          containerStyle={styles.switchContainer} // Align switch
-        /> */}
       <SwitchSelector
         options={[
           { label: 'Grid', value: 0 },
           { label: 'List', value: 1 },
         ]}
         initial={isListView ? 1 : 0} // Sync with `isListView`
-        // onPress={() => setIsListView((prev) => !prev)}
-        // onPress={(value: number) => setIsListView(value === 1)} // Toggle view
         onPress={(value: number) => {
           // Only toggle view if the selected value is different
           if (isListView !== (value === 1)) {

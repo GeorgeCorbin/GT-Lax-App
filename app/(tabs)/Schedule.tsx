@@ -4,23 +4,9 @@ import axios from 'axios';
 import { XMLParser } from 'fast-xml-parser';
 import styles from '../../constants/styles/schedule'; // Updated path for styles
 import AnimatedHeaderLayout from '@/components/AnimatedHeaderLayout';
-import ModalDropdown from 'react-native-modal-dropdown';
 import Colors from '@/constants/Colors';
 import { SelectList } from 'react-native-dropdown-select-list';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-
-// type Season = {
-//   label: string;
-//   value: string;
-// };
-
-// const seasons: Season[] = [
-//   { label: '2020-21', value: '2020-21' },
-//   { label: '2021-22', value: '2021-22' },
-//   { label: '2022-23', value: '2022-23' },
-//   { label: '2023-24', value: '2023-24' },
-//   { label: 'Current Season', value: '2024-25' },
-// ];
 
 const seasons = [
   { key: '1', value: '2020-21' },
@@ -131,9 +117,6 @@ const Schedule = () => {
 
   if (loading) {
     return (
-      // <View style={styles.loadingContainer}>
-      //   <Text style={styles.loadingText}>Loading schedule...</Text>
-      // </View>
       <View style={styles.loadingContainer}>
         <ActivityIndicator size="large" color={Colors.activeIcon} />
       </View>

@@ -4,7 +4,7 @@ import axios from 'axios';
 import { XMLParser } from 'fast-xml-parser';
 import { RouteProp } from '@react-navigation/native';
 import { useRouter } from 'expo-router';
-import { useSearchParams } from 'expo-router/build/hooks';
+import { useLocalSearchParams } from 'expo-router/build/hooks';
 import styles from '../../constants/styles/schedule'; // Updated path for styles
 import AnimatedHeaderLayout from '@/components/AnimatedHeaderLayout';
 
@@ -84,8 +84,8 @@ const getTeamLogo = (teamName: string): any => {
 
 const OldSeason = () => {
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const year = searchParams.get('year') || '';
+  const searchParams = useLocalSearchParams();
+  const year = Array.isArray(searchParams.year) ? searchParams.year[0] : searchParams.year || '';
   const [completedGames, setCompletedGames] = useState<Game[]>([]);
   const [record, setRecord] = useState({ wins: 0, losses: 0 });
   const [loading, setLoading] = useState(true);
@@ -136,7 +136,7 @@ const OldSeason = () => {
     {/* <ScrollView style={styles.container}> */}
       {/* Header */}
       <View style={styles.header}>
-        <Text style={styles.oldSeasonHeaderText}>{year} Season</Text>
+        <Text style={styles.headerText}>{year} Season</Text>
         <Text style={styles.recordText}>
           {record.wins}-{record.losses}
         </Text>

@@ -6,8 +6,6 @@ const adminStyles = StyleSheet.create({
         flex: 1,
         backgroundColor: Colors.background,
         padding: 20,
-        // justifyContent: 'center',
-        // marginTop: 50,
         fontFamily: 'roboto-regular',
     },
     header: {

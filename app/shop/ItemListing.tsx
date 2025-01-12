@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, Image, ScrollView, ActivityIndicator, Alert, TouchableOpacity } from 'react-native';
 import axios from 'axios';
-import { useSearchParams } from 'expo-router/build/hooks';
+import { useLocalSearchParams } from 'expo-router/build/hooks';
 import Markdown from 'react-native-markdown-display';
 import Colors from '@/constants/Colors';
 import { styles } from '@/constants/styles/itemListings';
@@ -11,8 +11,8 @@ import { ShopItem } from '../(tabs)/Shop';
 const { getCartItems, addItemToCart, setCartItems } = cartStore;
 
 const ItemListing = () => {
-  const searchParams = useSearchParams();
-  const id = searchParams.get('id');
+  const searchParams = useLocalSearchParams();
+  const id = searchParams.id;
   const [itemDetails, setItemDetails] = useState<ShopItem | null>(null);
   const [markdownContent, setMarkdownContent] = useState('');
   const [loading, setLoading] = useState(true);

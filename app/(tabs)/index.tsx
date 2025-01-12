@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
-import Markdown from 'react-native-markdown-display';
 import styles from '../../constants/styles/news'; // Updated path for styles
-import ReactMarkdown from 'react-markdown';
-import Colors from '@/constants/Colors';
 import { Link } from 'expo-router';
 
 interface Article {

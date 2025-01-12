@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Image } from 'react-native';
-import { Link } from 'expo-router';
+import { Text, Image } from 'react-native';
 import styles from '@/constants/styles/roster';
 import Markdown from 'react-native-markdown-display';
 import Colors from '@/constants/Colors'; // Ensure this path is correct
@@ -24,8 +23,6 @@ const PlayerBio = ({ selectedPlayer }: { selectedPlayer: Player }) => {
   const imageUrl = Array.isArray(searchParams.imageUrl) ? searchParams.imageUrl[0] : searchParams.imageUrl || '';
   const contentUrl = Array.isArray(searchParams.contentUrl) ? searchParams.contentUrl[0] : searchParams.contentUrl || '';
   const [markdownContent, setMarkdownContent] = useState('');
-//   const [selectedPlayer, setSelectedPlayer] = useState<Player | null>(null);
-
 
   // Fetch markdown content for the selected player
   const fetchMarkdownContent = async () => {
@@ -95,9 +92,6 @@ const PlayerBio = ({ selectedPlayer }: { selectedPlayer: Player }) => {
       >
         {markdownContent}
       </Markdown>
-      {/* <Link href="/roster" style={styles.bottombackButton}>
-        <Text style={styles.backButtonText}>Back to the Roster</Text>
-      </Link> */}
       <Text style={{ marginBottom: 20 }}></Text>
     </AnimatedHeaderLayout>
   );

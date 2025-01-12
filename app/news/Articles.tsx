@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Image, ScrollView } from 'react-native';
-import { Link } from 'expo-router';
+import { Text, Image, ScrollView } from 'react-native';
 import Markdown from 'react-native-markdown-display';
 import Colors from '@/constants/Colors'; // Ensure this path is correct
-import AnimatedHeaderLayout from '@/components/AnimatedHeaderLayout';
 import { useLocalSearchParams } from 'expo-router/build/hooks';
 import styles from '../../constants/styles/news'; // Updated path for styles
 
@@ -48,10 +46,6 @@ const Articles = ({ selectedArticle }: { selectedArticle: Article }) => {
       
       <Image source={{ uri: Array.isArray(imageUrl) ? imageUrl[0] : imageUrl }} style={styles.detailImage} />
       <Text style={styles.imageAuthor}>Photo by: {imageAuthor}</Text>
-      {/* Top Back Button */}
-      {/* <TouchableOpacity style={styles.topBackButton} onPress={() => setSelectedArticle(null)}>
-        <Text style={styles.topBackButtonText}>← Back</Text>
-      </TouchableOpacity> */}
       <Text style={styles.detailTitle}>{title}</Text>
       <Text style={styles.detailDate}>{date}</Text>
       <Markdown style={{
@@ -98,9 +92,6 @@ const Articles = ({ selectedArticle }: { selectedArticle: Article }) => {
         },
       }}>
       {markdownContent}</Markdown>
-      {/* <TouchableOpacity style={styles.bottombackButton} onPress={() => setSelectedArticle(null)}>
-        <Text style={styles.backButtonText}>Back to News</Text>
-      </TouchableOpacity> */}
       <Text style={{ marginBottom: 20 }}></Text>
     </ScrollView>
   );

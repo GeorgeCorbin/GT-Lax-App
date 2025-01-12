@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, Image, ActivityIndicator, Alert, TouchableOpacity } from 'react-native';
+import { View, Text, ScrollView, Image, ActivityIndicator, Alert } from 'react-native';
 import { Link } from 'expo-router';
 import AnimatedHeaderLayout from '@/components/AnimatedHeaderLayout';
 import axios from 'axios';

@@ -1,7 +1,7 @@
 import React from 'react';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { Tabs } from 'expo-router';
-import { StyleSheet, StatusBar, View, Text, ActivityIndicator } from 'react-native';
+import { StyleSheet, StatusBar, View } from 'react-native';
 import Colors from '@/constants/Colors';
 import { RouteProp } from '@react-navigation/native';
 import NewsStyles from '../../constants/styles/news'; // Updated path for styles

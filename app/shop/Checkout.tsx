@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, TextInput, Alert, FlatList, Image, KeyboardAvoidingView, Platform } from 'react-native';
+import { View, Text, TouchableOpacity, TextInput, Alert, FlatList, Image, KeyboardAvoidingView, Platform } from 'react-native';
 import { CardField, useConfirmPayment } from '@stripe/stripe-react-native';
 import axios from 'axios';
 import cartStore from './cartStore';
