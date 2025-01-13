@@ -26,12 +26,16 @@ const styles = StyleSheet.create({
   },
   section: {
     marginBottom: 20,
+    shadowColor: Colors.grayMatter,
+    shadowOffset: { width: 8, height: 15 },
+    shadowOpacity: .4,
+    shadowRadius: 4,
   },
   sectionHeader: {
     fontSize: 20,
     fontWeight: 'bold',
     color: Colors.textPrimary,
-    marginTop: 15,
+    // marginTop: 15,
     marginBottom: 10,
     marginLeft: 10,
     fontFamily: 'roboto-regular-bold',
@@ -45,14 +49,14 @@ const styles = StyleSheet.create({
     shadowRadius: 3.84,
   },
   playerContainerBox: {
-    marginHorizontal: 10,
+    marginHorizontal: 8,
     backgroundColor: Colors.cardBackground,
     borderRadius: 8,
     padding: 10,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.3,
-    shadowRadius: 4,
+    // shadowColor: Colors.black,
+    // shadowOffset: { width: 0, height: 50 },
+    // shadowOpacity: 1,
+    // shadowRadius: 1,
     width: 145, // needs to be same as playerContainer width for centering (All because of Link)
   },
   playerContainer: {
@@ -64,7 +68,6 @@ const styles = StyleSheet.create({
     height: 100,
     borderRadius: 50,
     marginBottom: 5,
-    
   },
   playerName: {
     fontSize: 14,
