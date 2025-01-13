@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
       fontFamily: 'Roboto-Regular-bold', // Apply Roboto-Regular font
       shadowColor: Colors.grayMatter,
       shadowOffset: { width: 3, height: 2 },
-      shadowOpacity: 0.4,
+      shadowOpacity: 0.3,
       shadowRadius: 3.84,
     },
     link: {
