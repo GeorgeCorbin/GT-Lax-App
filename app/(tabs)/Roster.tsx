@@ -129,9 +129,10 @@ const RosterScreen = () => {
             }
           }}
           buttonColor={Colors.techGold}
+          bold={true}
           backgroundColor={Colors.gray}
           textColor={Colors.white}
-          selectedColor={Colors.black}
+          selectedColor={Colors.grayMatter}
           style={{ width: 140, alignSelf: 'flex-end', marginBottom: 10, fontFamily: 'roboto-regular-bold', fontWeight: 'bold' }}
           fontSize={14}
         />
@@ -199,9 +200,10 @@ const RosterScreen = () => {
           }
         }}
         buttonColor={Colors.techGold}
+        bold={true}
         backgroundColor={Colors.gray}
         textColor={Colors.white}
-        selectedColor={Colors.black}
+        selectedColor={Colors.grayMatter}
         style={{ width: 140, alignSelf: 'flex-end', marginBottom: 10 }}
         fontSize={14}
       />
