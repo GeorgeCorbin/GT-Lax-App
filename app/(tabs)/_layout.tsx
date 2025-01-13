@@ -32,7 +32,7 @@ export default function TabLayout() {
     <>
       {/* Status Bar hidden */}
       {/* <StatusBar hidden /> */}
-      <StatusBar barStyle="light-content" backgroundColor={Colors.background} />
+      <StatusBar barStyle="dark-content" backgroundColor={Colors.background} />
 
       {/* Container with top padding for space buffer */}
       <View style={styles.container}>
@@ -43,13 +43,17 @@ export default function TabLayout() {
               height: 100, // Increase the height of the tab bar
             },
             tabBarActiveTintColor: Colors.activeIcon, // Set the active tab label color to gold
-            // tabBarInactiveTintColor: Colors.inactiveIcon, // Set the inactive tab background color to navy
+            tabBarInactiveTintColor: Colors.inactiveIcon, // Set the inactive tab background color to navy
+            tabBarLabelStyle: {
+              fontSize: 16, // Increase the font size of the tab labels
+            },
             headerStyle: { 
               backgroundColor: tabBackgroundColors[route.name],
               height: 60,
               shadowColor: 'transparent', // Remove the boarder line
             }, // Set the header background to navy
             headerTitle: '', // Removes the header title
+            headerTintColor: Colors.buttonPrimary.text,
             tabBarButton: route.name === 'Shop' ? () => null : undefined, // Hide the "Shop" tab
           })}
         >
@@ -57,7 +61,7 @@ export default function TabLayout() {
             name="index"
             options={{
               title: 'News',
-              tabBarIcon: ({ color }: { color: string }) => <TabBarIcon name="newspaper-o" color={color} />,
+              tabBarIcon: ({ color }: { color: string } ) => <TabBarIcon name="newspaper-o" color={color} />,
             }}
           />
           <Tabs.Screen
@@ -97,6 +101,7 @@ export default function TabLayout() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    fontFamily: 'Roboto-Regular',
   },
   loadingContainer: {
     flex: 1,

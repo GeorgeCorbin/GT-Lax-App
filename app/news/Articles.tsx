@@ -52,25 +52,25 @@ const Articles = ({ selectedArticle }: { selectedArticle: Article }) => {
         bold: {
           fontSize: 28,
           fontWeight: 'bold',
-          color: Colors.techGold,
+          color: Colors.textPrimary,
           marginBottom: 10,
         },
         body: {
           fontSize: 18,
           lineHeight: 24,
-          color: Colors.diploma,
+          color: Colors.textSecondary,
           padding: 12,
         },
         heading1: {
           fontSize: 28,
           fontWeight: 'bold',
-          color: Colors.techGold,
+          color: Colors.textPrimary,
           marginBottom: 10,
         },
         heading2: {
           fontSize: 24,
           fontWeight: 'bold',
-          color: Colors.techGold,
+          color: Colors.textPrimary,
           marginBottom: 8,
         },
         heading3: {

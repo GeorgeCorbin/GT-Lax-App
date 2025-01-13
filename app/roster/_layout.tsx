@@ -6,7 +6,7 @@ import React from 'react';
 export default function RosterLayout() {
   return (
       <>
-        <StatusBar barStyle="light-content" backgroundColor={Colors.background} />
+        <StatusBar barStyle="dark-content" backgroundColor={Colors.background} />
         {/* Container with top padding for space buffer */}
         <View style={styles.container}>
           <Stack screenOptions={{ headerShown: false }}>

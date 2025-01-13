@@ -151,6 +151,7 @@ export const AppDataProvider = ({ children }: { children: React.ReactNode }) => 
       } catch (err) {
         console.error('Error fetching data:', err);
       } finally {
+        console.log('Finished fetching data');
         setLoading(false);
       }
     };

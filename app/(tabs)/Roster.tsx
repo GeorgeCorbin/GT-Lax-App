@@ -132,7 +132,7 @@ const RosterScreen = () => {
           backgroundColor={Colors.gray}
           textColor={Colors.white}
           selectedColor={Colors.black}
-          style={{ width: 140, alignSelf: 'flex-end', marginBottom: 10 }}
+          style={{ width: 140, alignSelf: 'flex-end', marginBottom: 10, fontFamily: 'roboto-regular-bold', fontWeight: 'bold' }}
           fontSize={14}
         />
         </View>

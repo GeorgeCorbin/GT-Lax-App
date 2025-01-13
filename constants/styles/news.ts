@@ -31,9 +31,9 @@ export default StyleSheet.create({
     
     // Shadow for iOS
     shadowColor: Colors.black,
-    shadowOffset: { width: 0, height: 10 },
-    shadowOpacity: 0.3,
-    shadowRadius: 10,
+    shadowOffset: { width: 2, height: 8 },
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
   },
   image: {
     width: '100%',
@@ -43,9 +43,9 @@ export default StyleSheet.create({
   },
   textContainer: {
     padding: 10,
-    shadowColor: Colors.black,
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.5,
+    shadowColor: Colors.grayMatter,
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.3,
     shadowRadius: 3.84,
   },
   date: {
@@ -53,9 +53,12 @@ export default StyleSheet.create({
     fontFamily: 'roboto-regular',
     color: Colors.diploma,
     marginBottom: 5,
+    // textShadowOffset: { width: 1, height: 1 },
+    // textShadowRadius: 1,
+    // textShadowColor: 'rgba(0, 0, 0, 0.5)',
     textShadowOffset: { width: 1, height: 1 },
-    textShadowRadius: 1,
-    textShadowColor: 'rgba(0, 0, 0, 0.5)',
+    textShadowRadius: 4,
+    textShadowColor: Colors.grayMatter,
   },
   title: {
     fontSize: 16,
@@ -63,8 +66,10 @@ export default StyleSheet.create({
     fontFamily: 'roboto-bold',
     color: Colors.diploma,
     textShadowOffset: { width: 1, height: 1 },
-    textShadowRadius: 1,
-    textShadowColor: 'rgba(0, 0, 0, 0.5)',
+    textShadowRadius: 4,
+    // textShadowColor: 'rgba(0, 0, 0, 0.5)',
+    textShadowColor: Colors.grayMatter,
+
   },
   detailImage: {
     width: '100%',
@@ -82,7 +87,7 @@ export default StyleSheet.create({
   },
   detailDate: {
     fontSize: 14,
-    color: Colors.diploma,
+    color: Colors.textPrimary,
     marginBottom: 20,
     textAlign: 'left',
     marginLeft: 9,

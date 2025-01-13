@@ -61,7 +61,8 @@ function RootLayoutNav() {
             title: 'Back',
             headerShown: false,
             headerStyle: { backgroundColor: '#2f3553' },
-            headerTintColor: '#dac368',
+            // headerTintColor: '#dac368',
+            headerTintColor: Colors.textSecondary
           }}
         />
       <Stack.Screen 
@@ -71,7 +72,7 @@ function RootLayoutNav() {
             headerShown: true,
             headerStyle: { backgroundColor: Colors.background },
             headerShadowVisible: false,
-            headerTintColor: Colors.white }} />
+            headerTintColor: Colors.textSecondary }} />
       <Stack.Screen 
           name="roster" 
           options={{ 
@@ -79,7 +80,7 @@ function RootLayoutNav() {
             headerShown: true,
             headerStyle: { backgroundColor: Colors.background },
             headerShadowVisible: false,
-            headerTintColor: Colors.white }} />
+            headerTintColor: Colors.textSecondary }} />
       <Stack.Screen 
           name="shop" 
           options={{ 
@@ -87,7 +88,7 @@ function RootLayoutNav() {
             headerShown: true,
             headerStyle: { backgroundColor: Colors.background },
             headerShadowVisible: false,
-            headerTintColor: Colors.white }} />
+            headerTintColor: Colors.textSecondary }} />
       <Stack.Screen 
           name="news" 
           options={{ 
@@ -95,7 +96,7 @@ function RootLayoutNav() {
             headerShown: true,
             headerStyle: { backgroundColor: Colors.background },
             headerShadowVisible: false,
-            headerTintColor: Colors.white }} />
+            headerTintColor: Colors.textSecondary }} />
       
       {/* <Stack.Screen name="modal" options={{ presentation: 'modal' }} /> */}
       {/* <Stack.Screen 
