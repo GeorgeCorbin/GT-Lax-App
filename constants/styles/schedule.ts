@@ -4,7 +4,8 @@ import Colors from '../Colors';
 const styles = StyleSheet.create({
   // General container for the screen
   container: {
-    backgroundColor: Colors.grayMatter, // Black background for the entire screen
+    // backgroundColor: Colors.grayMatter, // Black background for the entire screen
+    backgroundColor: Colors.background, // Black background for the entire screen
     flex: 1,
     padding: 16,
     fontFamily: 'Roboto-Regular', // Apply Roboto-Regular font
@@ -21,8 +22,9 @@ const styles = StyleSheet.create({
   headerText: {
     fontSize: 48,
     fontWeight: 'bold',
-    color: '#FFF', // White text for the header
+    // color: '#FFF', // White text for the header
     fontFamily: 'Roboto-Regular-bold', // Apply Roboto-Regular font
+    color: Colors.textTitle, // Black background for the header
   },
   recordText: {
     fontSize: 20,
@@ -38,9 +40,14 @@ const styles = StyleSheet.create({
     color: Colors.techGold, // Updated gold
     marginVertical: 12,
     fontFamily: 'Roboto-Regular-bold', // Apply Roboto-Regular font
-    shadowColor: Colors.black,
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.8,
+    // shadowColor: Colors.grayMatter, // Shadow color
+    // shadowOffset: { width: 2, height: 2 },
+    // shadowOpacity: 0.4,
+    // shadowRadius: 3.84,
+    // shadowRadius: 6,
+    shadowColor: Colors.grayMatter,
+    shadowOffset: { width: 3, height: 2 },
+    shadowOpacity: 0.3,
     shadowRadius: 3.84,
   },
 
@@ -81,8 +88,8 @@ const styles = StyleSheet.create({
     marginRight: 8,
     shadowColor: '#fff',
     shadowOffset: { width: 0, height: 0 },
-    shadowOpacity: 1,
-    shadowRadius: 2.5,
+    shadowOpacity: .7,
+    shadowRadius: 1,
   },
 
   // Date and time section
@@ -224,6 +231,8 @@ const styles = StyleSheet.create({
   },
   dropdownContainer: {
     backgroundColor: Colors.buttonPrimary.background,
+    borderColor: Colors.buttonPrimary.background,
+    
   },
   dropdownItemTextHighlight: {
     color: Colors.buttonPrimary.text, // Highlight the selected item

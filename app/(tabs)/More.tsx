@@ -47,7 +47,7 @@ const MoreScreen = () => {
       {/* Social Media Section */}
       <View style={styles.section}>
         <Text style={styles.sectionHeader}>Social Media</Text>
-        <TouchableOpacity onPress={() => Linking.openURL('www.gtlacrosse.com')}>
+        <TouchableOpacity onPress={() => Linking.openURL('https://www.gtlacrosse.com/')}>
           <Text style={styles.link}>Visit our Website</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => Linking.openURL('https://www.instagram.com/gatechlax/')}>

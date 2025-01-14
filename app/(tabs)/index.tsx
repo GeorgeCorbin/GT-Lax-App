@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+import React from 'react';
+import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity, ScrollView, ActivityIndicator } from 'react-native';
 import styles from '../../constants/styles/news'; // Updated path for styles
 import { Link } from 'expo-router';
+import { useAppData } from '@/context/AppDataProvider';
+import Colors from '@/constants/Colors';
 
 interface Article {
   id: number;
@@ -14,38 +16,7 @@ interface Article {
 }
 
 const NewsScreen = () => {
-  const [articles, setArticles] = useState<Article[]>([]);
-  const [loading, setLoading] = useState(true);
-  // const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
-  // const [markdownContent, setMarkdownContent] = useState('');
-
-  // Fetch articles from the hosted JSON file or API
-  const fetchArticles = async () => {
-    try {
-      const response = await fetch('https://gt-lax-app.web.app/articles.json'); // Replace with your actual API or JSON URL
-      const data = await response.json();
-      setArticles(data.reverse());
-    } catch (error) {
-      console.error('Error fetching articles:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  // Fetch Markdown content for the selected article
-  // const fetchMarkdownContent = async (url: string) => {
-  //   try {
-  //     const response = await fetch(url);
-  //     const content = await response.text();
-  //     setMarkdownContent(content);
-  //   } catch (error) {
-  //     console.error('Error fetching markdown content:', error);
-  //   }
-  // };
-
-  useEffect(() => {
-    fetchArticles();
-  }, []);
+  const { articles, loading } = useAppData();
 
   const renderArticleItem = ({ item }: { item: Article }) => (
     <Link
@@ -71,7 +42,11 @@ const NewsScreen = () => {
   );
 
   if (loading) {
-    return <Text>Loading...</Text>;
+    return (
+      <View style={styles.loadingContainer}>
+        <ActivityIndicator size="large" color={Colors.loadingWheel} />
+      </View>
+    );
   }
 
   return (

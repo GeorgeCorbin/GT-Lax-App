@@ -54,13 +54,17 @@ export default {
   darkNavyTint: '#2F3553',   // Darker navy for headers or navigation backgrounds
 
   // Additional Shades
-  background: '#54585A',     // Default light background
-  textTitle: '#FFF',      // Title text color
+  // background: '#54585A',     // Default light background
+  background: '#FFF',     // Default light background
+  textTitle: '#133E6E',      // Title text color
+  // textTitle: '#FFF',      // Title text color
+  // textPrimary: '#B3A369',    // Primary text color
   textPrimary: '#B3A369',    // Primary text color
-  textSecondary: '#F9F6E5',  // Secondary text color
+  // textSecondary: '#F9F6E5',  // Secondary text color
+  textSecondary: '#133E6E',  // Secondary text color
   // activeIcon: '#DAC368',     // Active icon or tab color
   activeIcon: '#FFF',     // Active icon or tab color
-  inactiveIcon: '#54585A',   // Inactive icon or tab color
+  inactiveIcon: '#133E6E',   // Inactive icon or tab color
   buttonPrimary: {
     background: '#B3A369',
     text: '#FFFFFF',
@@ -79,4 +83,5 @@ export default {
   inputText: '#495057',
   link: '#007bff',
   errorText: '#dc3545',
+  loadingWheel: '#133E6E',
 };

@@ -26,29 +26,37 @@ const styles = StyleSheet.create({
   },
   section: {
     marginBottom: 20,
+    shadowColor: Colors.grayMatter,
+    shadowOffset: { width: 8, height: 15 },
+    shadowOpacity: .4,
+    shadowRadius: 4,
   },
   sectionHeader: {
     fontSize: 20,
     fontWeight: 'bold',
     color: Colors.textPrimary,
-    marginTop: 15,
+    // marginTop: 15,
     marginBottom: 10,
     marginLeft: 10,
     fontFamily: 'roboto-regular-bold',
-    shadowColor: Colors.black,
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.6,
+    // shadowColor: Colors.black,
+    // shadowOffset: { width: 0, height: 2 },
+    // shadowOpacity: 0.6,
+    // shadowRadius: 3.84,
+    shadowColor: Colors.grayMatter,
+    shadowOffset: { width: 3, height: 2 },
+    shadowOpacity: 0.3,
     shadowRadius: 3.84,
   },
   playerContainerBox: {
-    marginHorizontal: 10,
+    marginHorizontal: 8,
     backgroundColor: Colors.cardBackground,
     borderRadius: 8,
     padding: 10,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.3,
-    shadowRadius: 4,
+    // shadowColor: Colors.black,
+    // shadowOffset: { width: 0, height: 50 },
+    // shadowOpacity: 1,
+    // shadowRadius: 1,
     width: 145, // needs to be same as playerContainer width for centering (All because of Link)
   },
   playerContainer: {
@@ -60,7 +68,6 @@ const styles = StyleSheet.create({
     height: 100,
     borderRadius: 50,
     marginBottom: 5,
-    
   },
   playerName: {
     fontSize: 14,
@@ -82,22 +89,24 @@ const styles = StyleSheet.create({
   detailName: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#fff',
+    color: Colors.textSecondary,
     marginVertical: 10,
     textAlign: 'center',
     fontFamily: 'roboto-regular-bold',
   },
   detailPosition: {
     fontSize: 20,
-    color: '#dac368',
+    color: Colors.textPrimary,
     textAlign: 'center',
-    fontFamily: 'roboto-regular',
+    fontWeight: 'bold',
+    fontFamily: 'roboto-regular-bold',
   },
   detailNumber: {
     fontSize: 18,
-    color: '#dac368',
+    color: Colors.textPrimary,
     textAlign: 'center',
-    fontFamily: 'roboto-regular',
+    fontWeight: 'bold',
+    fontFamily: 'roboto-regular-bold',
   },
   bottombackButton: {
     marginTop: 10,
@@ -165,7 +174,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     // flex: 1,
     textAlign: 'center',
-    color: Colors.white,
+    color: Colors.textSecondary,
     fontFamily: 'roboto-regular',
     // paddingHorizontal: 8, // Adds spacing between columns
   },
@@ -198,7 +207,7 @@ const styles = StyleSheet.create({
   },
   loadingText: {
     fontSize: 16,
-    color: "#666",
+    color: "#000",
   },
 });
 

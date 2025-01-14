@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList, TouchableOpacity, Image } from 'react-native';
+import { View, Text, FlatList, TouchableOpacity, Image, ActivityIndicator } from 'react-native';
 import Papa from 'papaparse';
 import styles from '../../constants/styles/roster';
 import Colors from '@/constants/Colors';
 import { Link } from 'expo-router';
 // @ts-ignore
 import SwitchSelector from 'react-native-switch-selector';
+import { useAppData } from '@/context/AppDataProvider';
 
 type Player = {
   id: number;
@@ -28,62 +29,30 @@ type jsonPlayer = {
 };
 
 const RosterScreen = () => {
-  const [roster, setRoster] = useState<{ [key: string]: Player[] }>({});
-  const [flatRoster, setFlatRoster] = useState<Player[]>([]);
+  const { roster, loading } = useAppData();
   const [isListView, setIsListView] = useState(false);
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc' | 'default'>('default');
   const [sortColumn, setSortColumn] = useState<'number' | 'playerName' | 'position' | 'year'>('number');
-
-  const fetchRoster = async () => {
-    try {
-      // Fetch JSON data
-      const jsonResponse = await fetch('https://gt-lax-app.web.app/players.json');
-      const jsonData = await jsonResponse.json();
-
-      const jsonMap = new Map<string, jsonPlayer>(jsonData.map((player: jsonPlayer) => [player.playerName, player]));
-
-      // Fetch CSV data
-      const csvResponse = await fetch('https://gt-lax-app.web.app/players/theroster.csv');
-      const csvText = await csvResponse.text();
-      const parsedCSV = Papa.parse(csvText, { header: true }).data;
-
-      const combinedRoster = parsedCSV.map((player: any) => {
-        const jsonPlayer = jsonMap.get(player['Name']);
-        return {
-          id: Number(player['#']),
-          playerName: player['Name'],
-          position: player['Pos'],
-          number: Number(player['#']),
-          year: player['year']
-          ? player['year'].charAt(0).toUpperCase() + player['year'].slice(1).toLowerCase() : '', // Capitalize first letter and lowercase the rest          
-          imageUrl: jsonPlayer?.imageUrl || 'https://gt-lax-app.web.app/players/images/headshot_default.png',
-          contentUrl: jsonPlayer?.contentUrl || 'https://gt-lax-app.web.app/players/bios/default_bio.md',
-        };
-      });
-
-      // Group players by position
-      const groupedRoster = {
-        Defense: combinedRoster.filter((player) => ['D', 'LSM'].includes(player.position)),
-        Attack: combinedRoster.filter((player) => player.position === 'A'),
-        Middies: combinedRoster.filter((player) => player.position === 'M'),
-        Goalies: combinedRoster.filter((player) => player.position === 'G'),
-        'Face-Off': combinedRoster.filter((player) => player.position === 'FO'),
-      };
-
-      setRoster(groupedRoster); // Update grouped roster for default view
-      setFlatRoster(combinedRoster);
-    } catch (error) {
-      console.error('Error fetching roster:', error);
-    }
-  };
+  const [groupedRoster, setGroupedRoster] = useState<Record<string, Player[]>>({});
 
   useEffect(() => {
-    fetchRoster();
-  }, []);
+    if (!loading && roster.length > 0) {
+      const groupedRoster = {
+        Defense: roster.filter((p) => ['D', 'LSM'].includes(p.position)),
+        Attack: roster.filter((p) => p.position === 'A'),
+        Middies: roster.filter((p) => p.position === 'M'),
+        Goalies: roster.filter((p) => p.position === 'G'),
+        'Face-Off': roster.filter((p) => p.position === 'FO'),
+      };
+
+      const imagePromises = roster.map((player) => Image.prefetch(player.imageUrl));
+      Promise.all(imagePromises).then(() => setGroupedRoster(groupedRoster));
+    }
+  }, [roster, loading]);
 
   const sortRoster = () => {
-    const sorted = [...flatRoster];
-    if (sortOrder === 'default') return flatRoster;
+    const sorted = [...roster];
+    if (sortOrder === 'default') return roster;
   
     sorted.sort((a, b) => {
       let valueA = a[sortColumn];
@@ -135,7 +104,14 @@ const RosterScreen = () => {
     }
     return displayName;
   };
-  
+
+  if (loading) {
+    return (
+      <View style={styles.loadingContainer}>
+        <ActivityIndicator size="large" color={Colors.loadingWheel} />
+      </View>
+    );
+  }
 
   if (isListView) {
     return (
@@ -155,10 +131,11 @@ const RosterScreen = () => {
             }
           }}
           buttonColor={Colors.techGold}
+          bold={true}
           backgroundColor={Colors.gray}
           textColor={Colors.white}
-          selectedColor={Colors.black}
-          style={{ width: 140, alignSelf: 'flex-end', marginBottom: 10 }}
+          selectedColor={Colors.grayMatter}
+          style={{ width: 140, alignSelf: 'flex-end', marginBottom: 10, fontFamily: 'roboto-regular-bold', fontWeight: 'bold' }}
           fontSize={14}
         />
         </View>
@@ -225,16 +202,17 @@ const RosterScreen = () => {
           }
         }}
         buttonColor={Colors.techGold}
+        bold={true}
         backgroundColor={Colors.gray}
         textColor={Colors.white}
-        selectedColor={Colors.black}
+        selectedColor={Colors.grayMatter}
         style={{ width: 140, alignSelf: 'flex-end', marginBottom: 10 }}
         fontSize={14}
       />
 
       </View>
       <FlatList
-        data={Object.entries(roster)} // Object entries for grouped data
+        data={Object.entries(groupedRoster) as [string, Player[]][]} // Object entries for grouped data
         keyExtractor={(item) => item[0]?.toString() || ''} // Use the group name as the key
         renderItem={({ item }) => (
           <View style={styles.section}>

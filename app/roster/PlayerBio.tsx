@@ -39,11 +39,26 @@ const PlayerBio = ({ selectedPlayer }: { selectedPlayer: Player }) => {
     fetchMarkdownContent();
   }, [contentUrl]);
 
+  /* 
+        const groupedRoster = {
+        Defense: roster.filter((p) => ['D', 'LSM'].includes(p.position)),
+        Attack: roster.filter((p) => p.position === 'A'),
+        Middies: roster.filter((p) => p.position === 'M'),
+        Goalies: roster.filter((p) => p.position === 'G'),
+        'Face-Off': roster.filter((p) => p.position === 'FO'),
+  */
+
   return (
     <AnimatedHeaderLayout headerText={name} recordText={`#${number}`} backgroundColor={styles.container.backgroundColor}>
       <Image source={{ uri: imageUrl }} style={styles.detailImage} />
       <Text style={styles.detailName}>{name}</Text>
-      <Text style={styles.detailPosition}>{position}</Text>
+      <Text style={styles.detailPosition}>
+        {position === 'D' || position === 'LSM' ? 'Defense' : 
+         position === 'A' ? 'Attack' : 
+         position === 'M' ? 'Middie' : 
+         position === 'G' ? 'Goalie' : 
+         position === 'FO' ? 'Face-Off' : position}
+        </Text>
       <Text style={styles.detailNumber}>#{number}</Text>
       <Markdown
         style={{
@@ -56,7 +71,7 @@ const PlayerBio = ({ selectedPlayer }: { selectedPlayer: Player }) => {
           body: {
             fontSize: 18,
             lineHeight: 24,
-            color: Colors.diploma,
+            color: Colors.textSecondary,
             padding: 12,
           },
           heading1: {

@@ -22,7 +22,7 @@ export const styles = StyleSheet.create({
   },
   rowContainer: {
     flexDirection: 'row',
-    alignItems: 'flex-start', // Align items at the top of the row
+    alignItems: 'center', // Align items at the top of the row
     marginTop: 8,
   },
   photoContainer: {
@@ -37,27 +37,38 @@ export const styles = StyleSheet.create({
   },
   textContainer: {
     flex: 1,
+    flexDirection: 'column',
+    flexWrap: 'wrap',
+  },
+  bioContainer: {
+    flexDirection: 'row',
   },
   name: {
-    fontSize: 22,
+    fontSize: 26,
     fontWeight: 'bold',
     marginBottom: 4,
     color: Colors.textPrimary,
     fontFamily: 'roboto-regular-bold',
   },
   position: {
-    marginBottom: 8,
+    marginBottom: 4,
     textAlign: 'left',
     fontSize: 18,
     fontWeight: 'bold',
     color: Colors.textPrimary,
     fontFamily: 'roboto-regular-bold',
-    shadowColor: Colors.black,
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.6,
+    // shadowColor: Colors.black,
+    // shadowOffset: { width: 0, height: 2 },
+    // shadowOpacity: 0.6,
+    // shadowRadius: 3.84,
+    shadowColor: Colors.grayMatter,
+    shadowOffset: { width: 3, height: 2 },
+    shadowOpacity: 0.3,
     shadowRadius: 3.84,
+    maxWidth: 200,
   },
   bio: {
+    marginTop: 8,
     fontSize: 16,
     lineHeight: 22,
     color: Colors.textSecondary,

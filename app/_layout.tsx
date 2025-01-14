@@ -8,6 +8,7 @@ import 'react-native-reanimated';
 
 import { useColorScheme } from '@/components/useColorScheme';
 import Colors from '@/constants/Colors';
+import { AppDataProvider } from '@/context/AppDataProvider';
 
 export {} from 'expo-router';
 
@@ -41,7 +42,11 @@ export default function RootLayout() {
     return null;
   }
 
-  return <RootLayoutNav />;
+  return (
+    <AppDataProvider>
+      <RootLayoutNav />
+    </AppDataProvider>
+  );
 }
 
 function RootLayoutNav() {
@@ -56,7 +61,8 @@ function RootLayoutNav() {
             title: 'Back',
             headerShown: false,
             headerStyle: { backgroundColor: '#2f3553' },
-            headerTintColor: '#dac368',
+            // headerTintColor: '#dac368',
+            headerTintColor: Colors.textSecondary
           }}
         />
       <Stack.Screen 
@@ -66,7 +72,7 @@ function RootLayoutNav() {
             headerShown: true,
             headerStyle: { backgroundColor: Colors.background },
             headerShadowVisible: false,
-            headerTintColor: Colors.white }} />
+            headerTintColor: Colors.textSecondary }} />
       <Stack.Screen 
           name="roster" 
           options={{ 
@@ -74,7 +80,7 @@ function RootLayoutNav() {
             headerShown: true,
             headerStyle: { backgroundColor: Colors.background },
             headerShadowVisible: false,
-            headerTintColor: Colors.white }} />
+            headerTintColor: Colors.textSecondary }} />
       <Stack.Screen 
           name="shop" 
           options={{ 
@@ -82,7 +88,7 @@ function RootLayoutNav() {
             headerShown: true,
             headerStyle: { backgroundColor: Colors.background },
             headerShadowVisible: false,
-            headerTintColor: Colors.white }} />
+            headerTintColor: Colors.textSecondary }} />
       <Stack.Screen 
           name="news" 
           options={{ 
@@ -90,7 +96,7 @@ function RootLayoutNav() {
             headerShown: true,
             headerStyle: { backgroundColor: Colors.background },
             headerShadowVisible: false,
-            headerTintColor: Colors.white }} />
+            headerTintColor: Colors.textSecondary }} />
       
       {/* <Stack.Screen name="modal" options={{ presentation: 'modal' }} /> */}
       {/* <Stack.Screen 

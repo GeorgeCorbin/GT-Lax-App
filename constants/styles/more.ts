@@ -27,9 +27,9 @@ const styles = StyleSheet.create({
       color: Colors.textPrimary, // Gold text
       marginBottom: 10,
       fontFamily: 'Roboto-Regular-bold', // Apply Roboto-Regular font
-      shadowColor: Colors.black,
-      shadowOffset: { width: 0, height: 2 },
-      shadowOpacity: 0.8,
+      shadowColor: Colors.grayMatter,
+      shadowOffset: { width: 3, height: 2 },
+      shadowOpacity: 0.3,
       shadowRadius: 3.84,
     },
     link: {

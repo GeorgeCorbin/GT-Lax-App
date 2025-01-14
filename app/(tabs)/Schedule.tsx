@@ -7,6 +7,7 @@ import AnimatedHeaderLayout from '@/components/AnimatedHeaderLayout';
 import Colors from '@/constants/Colors';
 import { SelectList } from 'react-native-dropdown-select-list';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import { useAppData } from '@/context/AppDataProvider';
 
 const seasons = [
   { key: '1', value: '2020-21' },
@@ -15,30 +16,6 @@ const seasons = [
   { key: '4', value: '2023-24' },
   { key: '5', value: '2024-25' },
 ];
-
-// Fetch the RSS feed and parse it
-const fetchSchedule = async (season: string | undefined) => {
-  const rssURL =`https://www.gtlacrosse.com/sports/mlax/${season}/schedule?print=rss`;
-  try {
-    const response = await axios.get(rssURL);
-    const parser = new XMLParser({ ignoreAttributes: false });
-    const feed = parser.parse(response.data);
-    const items = feed.rss.channel.item;
-
-    return items.map((item: any) => ({
-      title: item.title,
-      link: item.link,
-      description: item.description,
-      category: item.category,
-      pubDate: item.pubDate,
-      opponent: item["ps:opponent"] || null,
-      score: item["ps:score"] || null,
-    }));
-  } catch (error) {
-    console.error('Error fetching RSS feed:', error);
-    return [];
-  }
-};
 
 type Game = {
   title: string;
@@ -77,47 +54,42 @@ const getTeamLogo = (teamName: string): any => {
 
 
 const Schedule = () => {
+  const { schedule, loading, fetchScheduleForSeason } = useAppData();
+  const [record, setRecord] = useState({ wins: 0, losses: 0 });
+  const [season, setSelected] = useState('2024-25');
   const [completedGames, setCompletedGames] = useState<Game[]>([]);
   const [upcomingGames, setUpcomingGames] = useState<Game[]>([]);
-  const [record, setRecord] = useState({ wins: 0, losses: 0 });
-  const [loading, setLoading] = useState(true);
-  const [season, setSelected] = useState('2024-25');
 
   useEffect(() => {
-    const loadSchedule = async () => {
-      try {
-        const schedule = await fetchSchedule(season);
-
-        const completed = schedule.filter((game: Game) => game.score);
-        const upcoming = schedule.filter((game: Game) => !game.score);
-
-        // Calculate the record
-        const record = completed.reduce(
-          (acc: { wins: number; losses: number; }, game: { score: string | string[]; }) => {
-            if (game.score?.includes('W')) acc.wins++;
-            else acc.losses++;
-            return acc;
-          },
-          { wins: 0, losses: 0}
-        );
-
-        setCompletedGames(completed);
-        setUpcomingGames(upcoming);
-        setRecord(record);
-      } catch (error) {
-        console.error('Error fetching schedule:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    loadSchedule();
+    // Fetch new season each time user picks differently
+    fetchScheduleForSeason(season);
   }, [season]);
+
+  useEffect(() => {
+    if (!loading && schedule.length > 0) {
+      const completed = schedule.filter((game: Game) => game.score);
+      const upcoming = schedule.filter((game: Game) => !game.score);
+
+      // Calculate the record
+      const record = completed.reduce(
+        (acc: { wins: number; losses: number; }, game: Game) => {
+          if (game.score && game.score.includes('W')) acc.wins++;
+          else acc.losses++;
+          return acc;
+        },
+        { wins: 0, losses: 0}
+      );
+
+      setCompletedGames(completed);
+      setUpcomingGames(upcoming);
+      setRecord(record);
+    }
+  }, [loading, schedule]);
 
   if (loading) {
     return (
       <View style={styles.loadingContainer}>
-        <ActivityIndicator size="large" color={Colors.activeIcon} />
+        <ActivityIndicator size="large" color={Colors.loadingWheel} />
       </View>
     );
   }
