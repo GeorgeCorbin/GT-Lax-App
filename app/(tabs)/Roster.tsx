@@ -44,7 +44,9 @@ const RosterScreen = () => {
         Goalies: roster.filter((p) => p.position === 'G'),
         'Face-Off': roster.filter((p) => p.position === 'FO'),
       };
-      setGroupedRoster(groupedRoster);
+
+      const imagePromises = roster.map((player) => Image.prefetch(player.imageUrl));
+      Promise.all(imagePromises).then(() => setGroupedRoster(groupedRoster));
     }
   }, [roster, loading]);
 
@@ -106,7 +108,7 @@ const RosterScreen = () => {
   if (loading) {
     return (
       <View style={styles.loadingContainer}>
-        <ActivityIndicator size="large" color={Colors.activeIcon} />
+        <ActivityIndicator size="large" color={Colors.loadingWheel} />
       </View>
     );
   }

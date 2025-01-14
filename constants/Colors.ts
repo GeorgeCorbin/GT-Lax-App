@@ -83,4 +83,5 @@ export default {
   inputText: '#495057',
   link: '#007bff',
   errorText: '#dc3545',
+  loadingWheel: '#133E6E',
 };

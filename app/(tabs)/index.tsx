@@ -44,7 +44,7 @@ const NewsScreen = () => {
   if (loading) {
     return (
       <View style={styles.loadingContainer}>
-        <ActivityIndicator size="large" color={Colors.activeIcon} />
+        <ActivityIndicator size="large" color={Colors.loadingWheel} />
       </View>
     );
   }

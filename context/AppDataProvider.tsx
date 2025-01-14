@@ -2,6 +2,8 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import Papa from 'papaparse';
 import { XMLParser } from 'fast-xml-parser';
+import * as FileSystem from 'expo-file-system';
+import { Image } from 'react-native';
 
 export interface ShopItem {
   id: string;
@@ -60,6 +62,18 @@ const AppDataContext = createContext<AppDataContextType>({
   fetchScheduleForSeason: async () => {},
 });
 
+const getLocalImageUri = async (url: string) => {
+  const filename = url.split('/').pop();
+  const localUri = `${FileSystem.documentDirectory}${filename}`;
+  const fileInfo = await FileSystem.getInfoAsync(localUri);
+
+  if (!fileInfo.exists) {
+    await FileSystem.downloadAsync(url, localUri);
+  }
+
+  return localUri;
+};
+
 export const AppDataProvider = ({ children }: { children: React.ReactNode }) => {
   const [shopItems, setShopItems] = useState<ShopItem[]>([]);
   const [schedule, setSchedule] = useState<Game[]>([]);
@@ -68,7 +82,7 @@ export const AppDataProvider = ({ children }: { children: React.ReactNode }) => 
   const [loading, setLoading] = useState(true);
 
   const fetchScheduleForSeason = async (season: string) => {
-    setLoading(false);  // adds loading spinner if true (loads fast enough that it's not needed)
+    setLoading(true);
     try {
       const rssURL = `https://www.gtlacrosse.com/sports/mlax/${season}/schedule?print=rss`;
       const scheduleResponse = await axios.get(rssURL);
@@ -128,8 +142,10 @@ export const AppDataProvider = ({ children }: { children: React.ReactNode }) => 
         const parsedCSV = Papa.parse(csvText, { header: true }).data;
 
         const jsonMap = new Map<string, any>(jsonData.map((p: any) => [p.playerName, p]));
-        const combinedRoster = parsedCSV.map((player: any) => {
+        const combinedRoster = await Promise.all(parsedCSV.map(async (player: any) => {
           const j = jsonMap.get(player['Name']);
+          const imageUrl = j?.imageUrl || 'https://gt-lax-app.web.app/players/images/headshot_default.png';
+          const localImageUrl = await getLocalImageUri(imageUrl);
           return {
             id: Number(player['#']),
             playerName: player['Name'],
@@ -138,20 +154,24 @@ export const AppDataProvider = ({ children }: { children: React.ReactNode }) => 
             year: player['year'] 
                    ? player['year'].charAt(0).toUpperCase() + player['year'].slice(1).toLowerCase() 
                    : '',
-            imageUrl: j?.imageUrl || 'https://gt-lax-app.web.app/players/images/headshot_default.png',
+            imageUrl: localImageUrl,
             contentUrl: j?.contentUrl || 'https://gt-lax-app.web.app/players/bios/default_bio.md',
           };
-        });
+        }));
+
         setRoster(combinedRoster);
 
         // --- Fetch Articles
         const articlesResp = await fetch('https://gt-lax-app.web.app/articles.json');
         const articlesData = await articlesResp.json();
         setArticles(articlesData.reverse());
+
+        // Prefetch all images in the background
+        const imagePromises = combinedRoster.map((player) => Image.prefetch(player.imageUrl));
+        Promise.all(imagePromises);
       } catch (err) {
         console.error('Error fetching data:', err);
       } finally {
-        console.log('Finished fetching data');
         setLoading(false);
       }
     };
