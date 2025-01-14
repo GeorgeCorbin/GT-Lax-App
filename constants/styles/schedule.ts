@@ -231,6 +231,8 @@ const styles = StyleSheet.create({
   },
   dropdownContainer: {
     backgroundColor: Colors.buttonPrimary.background,
+    borderColor: Colors.buttonPrimary.background,
+    
   },
   dropdownItemTextHighlight: {
     color: Colors.buttonPrimary.text, // Highlight the selected item
