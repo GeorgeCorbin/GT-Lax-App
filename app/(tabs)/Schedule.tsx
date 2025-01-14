@@ -122,7 +122,7 @@ const Schedule = () => {
         boxStyles={styles.dropdownContainer}
         inputStyles={styles.dropdownItemText}
         searchPlaceholder=""
-        placeholder="2024-25"
+        placeholder={season}
         search={false}
         fontFamily="Roboto-Regular-bold"
         arrowicon={

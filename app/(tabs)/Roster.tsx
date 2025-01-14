@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, TouchableOpacity, Image, ActivityIndicator } from 'react-native';
-import Papa from 'papaparse';
 import styles from '../../constants/styles/roster';
 import Colors from '@/constants/Colors';
 import { Link } from 'expo-router';
@@ -18,16 +17,6 @@ type Player = {
   contentUrl: string;
 };
 
-type jsonPlayer = {
-  id: number;
-  playerName: string;
-  position: string;
-  number: number;
-  year: string;
-  imageUrl: string;
-  contentUrl: string;
-};
-
 const RosterScreen = () => {
   const { roster, loading } = useAppData();
   const [isListView, setIsListView] = useState(false);
@@ -36,7 +25,7 @@ const RosterScreen = () => {
   const [groupedRoster, setGroupedRoster] = useState<Record<string, Player[]>>({});
 
   useEffect(() => {
-    if (!loading && roster.length > 0) {
+    if (roster.length > 0) {
       const groupedRoster = {
         Defense: roster.filter((p) => ['D', 'LSM'].includes(p.position)),
         Attack: roster.filter((p) => p.position === 'A'),
