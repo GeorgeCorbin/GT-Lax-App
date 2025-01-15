@@ -31,7 +31,7 @@ export default StyleSheet.create({
     
     // Shadow for iOS
     shadowColor: Colors.black,
-    shadowOffset: { width: 2, height: 8 },
+    shadowOffset: { width: 4, height: 8 },
     shadowOpacity: 0.2,
     shadowRadius: 3,
   },
