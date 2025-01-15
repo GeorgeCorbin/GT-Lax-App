@@ -81,9 +81,7 @@ const styles = StyleSheet.create({
   },
   detailImage: {
     width: '100%',
-    height: 300,
-    resizeMode: 'cover',
-    fontFamily: 'roboto-regular',
+    height: 360,
     borderRadius: 15,
   },
   detailName: {
