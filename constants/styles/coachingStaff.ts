@@ -38,7 +38,7 @@ export const styles = StyleSheet.create({
   textContainer: {
     flex: 1,
     flexDirection: 'column',
-    flexWrap: 'wrap',
+    wordWrap: 'break-word',
   },
   bioContainer: {
     flexDirection: 'row',
