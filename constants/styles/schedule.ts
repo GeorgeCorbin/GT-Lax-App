@@ -86,10 +86,10 @@ const styles = StyleSheet.create({
     width: 32,
     height: 32,
     marginRight: 8,
-    shadowColor: '#fff',
-    shadowOffset: { width: 0, height: 0 },
-    shadowOpacity: .7,
-    shadowRadius: 1,
+    // shadowColor: '#fff',
+    // shadowOffset: { width: 0, height: 0 },
+    // shadowOpacity: .7,
+    // shadowRadius: 1,
   },
 
   // Date and time section
