@@ -147,31 +147,114 @@
     "contentUrl": "https://gt-lax-app.web.app/players/bios/Peter_Zagrobelny_bio.md"
   },
   {
-    "id": 21,
+    "id": 22,
     "playerName": "Thomas Freer",
     "position": "Middies",
     "imageUrl": "https://gt-lax-app.web.app/players/images/Thomas_Freer.jpg",
     "contentUrl": "https://gt-lax-app.web.app/players/bios/Thomas_Freer_bio.md"
   },
   {
-    "id": 22,
+    "id": 23,
     "playerName": "Wilson Halloran",
     "position": "Defense",
     "imageUrl": "https://gt-lax-app.web.app/players/images/Wilson_Halloran.jpg",
     "contentUrl": "https://gt-lax-app.web.app/players/bios/Wilson_Halloran_bio.md"
   },
   {
-    "id": 23,
+    "id": 24,
     "playerName": "Zach Harrison",
     "position": "Defense",
     "imageUrl": "https://gt-lax-app.web.app/players/images/Zach_Harrison.jpg",
     "contentUrl": "https://gt-lax-app.web.app/players/bios/Zach_Harrison_bio.md"
   },
   {
-    "id": 24,
-    "playerName": "Peter Zagrobelny",
-    "position": "Goalie",
-    "imageUrl": "https://gt-lax-app.web.app/players/images/Peter_Zagrobelny.jpg",
-    "contentUrl": "https://gt-lax-app.web.app/players/bios/Peter_Zagrobelny_bio.md"
+    "id": 25,
+    "playerName": "Charlie Ciardello",
+    "position": "Face-Off",
+    "contentUrl": "https://gt-lax-app.web.app/players/bios/Charlie_Ciardello_bio.md"
+  },
+  {
+    "id": 26,
+    "playerName": "Mitch Savali",
+    "position": "Defense",
+    "contentUrl": "https://gt-lax-app.web.app/players/bios/Mitch_Savali_bio.md"
+  },
+  {
+    "id": 27,
+    "playerName": "Emmett Somers",
+    "position": "Attack",
+    "contentUrl": "https://gt-lax-app.web.app/players/bios/Emmett_Somers_bio.md"
+  },
+  {
+    "id": 28,
+    "playerName": "Matt Shayne",
+    "position": "Goalies",
+    "contentUrl": "https://gt-lax-app.web.app/players/bios/Matt_Shayne_bio.md"
+  },
+  {
+    "id": 29,
+    "playerName": "Noah Stewart",
+    "position": "Defense",
+    "contentUrl": "https://gt-lax-app.web.app/players/bios/Noah_Stewart_bio.md"
+  },
+  {
+    "id": 30,
+    "playerName": "Asher Bernstein",
+    "position": "Middies",
+    "contentUrl": "https://gt-lax-app.web.app/players/bios/Asher_Bernstein_bio.md"
+  },
+  {
+    "id": 31,
+    "playerName": "Andrew Owen",
+    "position": "Middies",
+    "contentUrl": "https://gt-lax-app.web.app/players/bios/Andrew_Owen_bio.md"
+  },
+  {
+    "id": 32,
+    "playerName": "Austin Edler",
+    "position": "Middies",
+    "contentUrl": "https://gt-lax-app.web.app/players/bios/Austin_Edler_bio.md"
+  },
+  {
+    "id": 33,
+    "playerName": "Sam Bueno",
+    "position": "Face-Off",
+    "contentUrl": "https://gt-lax-app.web.app/players/bios/Sam_Bueno_bio.md"
+  },
+  {
+    "id": 34,
+    "playerName": "Andrew Taylor",
+    "position": "Middies",
+    "contentUrl": "https://gt-lax-app.web.app/players/bios/Andrew_Taylor_bio.md"
+  },
+  {
+    "id": 35,
+    "playerName": "Augie Werthman",
+    "position": "Middies",
+    "contentUrl": "https://gt-lax-app.web.app/players/bios/Augie_Werthman_bio.md"
+  },
+  {
+    "id": 36,
+    "playerName": "Brayden Smith",
+    "position": "Attack",
+    "contentUrl": "https://gt-lax-app.web.app/players/bios/Brayden_Smith_bio.md"
+  },
+  {
+    "id": 37,
+    "playerName": "James Iorio",
+    "position": "Middies",
+    "contentUrl": "https://gt-lax-app.web.app/players/bios/James_Iorio_bio.md"
+  },
+  {
+    "id": 38,
+    "playerName": "Owen Smith",
+    "position": "Middies",
+    "contentUrl": "https://gt-lax-app.web.app/players/bios/Owen_Smith_bio.md"
+  },
+  {
+    "id": 39,
+    "playerName": "Carl Dagher",
+    "position": "Middies",
+    "contentUrl": "https://gt-lax-app.web.app/players/bios/Carl_Dagher_bio.md"
   }
 ]
