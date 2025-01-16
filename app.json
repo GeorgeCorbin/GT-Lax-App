@@ -2,24 +2,24 @@
   "expo": {
     "name": "GT-Lax-App",
     "slug": "gt-lax-app",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "orientation": "portrait",
-    "icon": "./assets/images/GeorgiaTechIcon.png",
+    "icon": "./assets/images/icon.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/images/GeorgiaTechIcon.png",
+      "image": "./assets/images/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#54585A"
+      "backgroundColor": "#B3A369"
     },
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/GeorgiaTechIcon.png",
-        "backgroundColor": "#54585A"
+        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "backgroundColor": "#B3A369"
       }
     },
     "web": {
