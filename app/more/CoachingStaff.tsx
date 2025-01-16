@@ -31,6 +31,7 @@ const CoachingStaff = () => {
   return (
     <AnimatedHeaderLayout headerText="Coaching Staff" backgroundColor={Colors.background}>
       <ScrollView contentContainerStyle={styles.container}>
+        <Text style={styles.title}>Coaching Staff</Text>
         {CoachingStaffData.map((coach, index) => (
           <View key={index} style={styles.memberRow}>
             {/* <Text style={styles.position}>{coach.title}</Text> */}

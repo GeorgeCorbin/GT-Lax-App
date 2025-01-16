@@ -50,7 +50,7 @@ const PlayerBio = ({ selectedPlayer }: { selectedPlayer: Player }) => {
 
   return (
     <AnimatedHeaderLayout headerText={name} recordText={`#${number}`} backgroundColor={styles.container.backgroundColor}>
-      <View style={{ width: '100%', height: 300, overflow: 'hidden' }}>
+      <View style={{ width: '100%', height: 300, overflow: 'hidden', borderRadius: 15 }}>
         <Image source={{ uri: imageUrl }} style={styles.detailImage} />
       </View>
       <Text style={styles.detailName}>{name}</Text>
@@ -60,7 +60,7 @@ const PlayerBio = ({ selectedPlayer }: { selectedPlayer: Player }) => {
          position === 'M' ? 'Middie' : 
          position === 'G' ? 'Goalie' : 
          position === 'FO' ? 'Face-Off' : position}
-        </Text>
+      </Text>
       <Text style={styles.detailNumber}>#{number}</Text>
       <Markdown
         style={{
