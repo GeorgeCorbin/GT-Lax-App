@@ -4,6 +4,7 @@ import Papa from 'papaparse';
 import { XMLParser } from 'fast-xml-parser';
 import * as FileSystem from 'expo-file-system';
 import { Image } from 'react-native';
+import messaging from '@react-native-firebase/messaging';
 
 export interface ShopItem {
   id: string;
@@ -177,6 +178,46 @@ export const AppDataProvider = ({ children }: { children: React.ReactNode }) => 
     };
 
     fetchAllData();
+
+    // FCM Initialization
+    const setupFCM = async () => {
+      try {
+        // Request user permissions
+        const authStatus = await messaging().requestPermission();
+        const enabled =
+          authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
+          authStatus === messaging.AuthorizationStatus.PROVISIONAL;
+
+        if (enabled) {
+          console.log('Notification permission granted.');
+          const token = await messaging().getToken();
+          console.log('FCM Token:', token);
+
+          // Optional: send the token to your backend
+        }
+      } catch (error) {
+        console.error('Error initializing FCM:', error);
+      }
+
+      // Handle token refresh
+      const unsubscribe = messaging().onTokenRefresh((newToken) => {
+        console.log('FCM Token refreshed:', newToken);
+        // Optional: send the refreshed token to your backend
+      });
+
+      return () => unsubscribe();
+    };
+
+    setupFCM();
+
+    // Foreground Notification Listener
+    const unsubscribeOnMessage = messaging().onMessage(async (remoteMessage) => {
+      console.log('FCM Notification received in foreground:', remoteMessage);
+    });
+
+    return () => {
+      unsubscribeOnMessage();
+    };
   }, []);
 
   return (
