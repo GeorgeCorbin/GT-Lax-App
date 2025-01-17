@@ -4,7 +4,9 @@ import Papa from 'papaparse';
 import { XMLParser } from 'fast-xml-parser';
 import * as FileSystem from 'expo-file-system';
 import { Image } from 'react-native';
-import messaging from '@react-native-firebase/messaging';
+import * as Notifications from 'expo-notifications';
+import { doc, setDoc } from "firebase/firestore";
+import { db } from "../firebase/firebaseConfig"; // Adjust the path based on your project structure
 
 export interface ShopItem {
   id: string;
@@ -75,6 +77,19 @@ const getLocalImageUri = async (url: string) => {
   return localUri;
 };
 
+const sendNotificationToAllUsers = async (title: string, body: string) => {
+  try {
+    const response = await axios.post(
+      "https://us-central1-gt-lax-app.cloudfunctions.net/sendPushNotification",
+      { title, body },
+      { headers: { "Content-Type": "application/json" } }
+    );
+    console.log("Notification sent successfully:", response.data);
+  } catch (error) {
+    console.error("Error sending notification:", error);
+  }
+};
+
 export const AppDataProvider = ({ children }: { children: React.ReactNode }) => {
   const [shopItems, setShopItems] = useState<ShopItem[]>([]);
   const [schedule, setSchedule] = useState<Game[]>([]);
@@ -107,6 +122,29 @@ export const AppDataProvider = ({ children }: { children: React.ReactNode }) => 
       setLoading(false);
     }
   };
+
+  async function registerForPushNotificationsAsync() {
+    let token;
+    const { status } = await Notifications.requestPermissionsAsync();
+    if (status !== 'granted') {
+      console.error('Push notifications permission denied.');
+      return;
+    }
+  
+    token = (await Notifications.getExpoPushTokenAsync()).data;
+    console.log('Expo Push Token:', token);
+  
+    // Save the token to Firestore
+    try {
+      const docRef = doc(db, "expoTokens", token);
+      await setDoc(docRef, { token, timestamp: new Date() });
+      console.log('Token stored in Firestore.');
+    } catch (error) {
+      console.error('Error storing token in Firestore:', error);
+    }
+  
+    return token;
+  }
 
   useEffect(() => {
     const fetchAllData = async () => {
@@ -179,45 +217,22 @@ export const AppDataProvider = ({ children }: { children: React.ReactNode }) => 
 
     fetchAllData();
 
-    // FCM Initialization
-    const setupFCM = async () => {
-      try {
-        // Request user permissions
-        const authStatus = await messaging().requestPermission();
-        const enabled =
-          authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
-          authStatus === messaging.AuthorizationStatus.PROVISIONAL;
+    // Register and handle notifications
+    registerForPushNotificationsAsync();
 
-        if (enabled) {
-          console.log('Notification permission granted.');
-          const token = await messaging().getToken();
-          console.log('FCM Token:', token);
-
-          // Optional: send the token to your backend
-        }
-      } catch (error) {
-        console.error('Error initializing FCM:', error);
-      }
-
-      // Handle token refresh
-      const unsubscribe = messaging().onTokenRefresh((newToken) => {
-        console.log('FCM Token refreshed:', newToken);
-        // Optional: send the refreshed token to your backend
-      });
-
-      return () => unsubscribe();
-    };
-
-    setupFCM();
-
-    // Foreground Notification Listener
-    const unsubscribeOnMessage = messaging().onMessage(async (remoteMessage) => {
-      console.log('FCM Notification received in foreground:', remoteMessage);
+    Notifications.setNotificationHandler({
+      handleNotification: async () => ({
+        shouldShowAlert: true,
+        shouldPlaySound: true,
+        shouldSetBadge: false,
+      }),
     });
 
-    return () => {
-      unsubscribeOnMessage();
-    };
+    const subscription = Notifications.addNotificationReceivedListener((notification) => {
+      console.log('Notification received:', notification);
+    });
+
+    return () => subscription.remove();
   }, []);
 
   return (
@@ -228,6 +243,7 @@ export const AppDataProvider = ({ children }: { children: React.ReactNode }) => 
       articles,
       loading,
       fetchScheduleForSeason, // Expose for dynamic fetching
+      // sendNotificationToAllUsers, // Expose for sending notifications
     }}>
       {children}
     </AppDataContext.Provider>

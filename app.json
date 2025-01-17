@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "GT-Lax-App",
+    "name": "GT Lacrosse",
     "slug": "gt-lax-app",
     "version": "1.0.5",
     "orientation": "portrait",
@@ -14,7 +14,12 @@
       "backgroundColor": "#B3A369"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "googleServicesFile": "./firebase/GoogleService-Info.plist",
+      "bundleIdentifier": "com.gtlacrosse.gtlacrosse",
+      "config": {
+        "usesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -29,7 +34,17 @@
     },
     "plugins": [
       "expo-router",
-      "expo-asset"
+      "expo-asset",
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/images/notification-icon.png",
+          "color": "#ffffff",
+          "sounds": [
+            "default"
+          ]
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true

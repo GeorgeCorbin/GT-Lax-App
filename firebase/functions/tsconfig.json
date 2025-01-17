@@ -1,0 +1,53 @@
+{
+  "compilerOptions": {
+    // Language Features
+    "target": "ESNext", // Use the latest JavaScript features
+    "lib": ["ESNext"], // Exclude DOM types for React Native
+
+    // Module Resolution
+    "moduleResolution": "node", // Required for resolving node_modules
+    "resolveJsonModule": true, // Allow importing JSON files
+    "esModuleInterop": true, // Enable ES module interoperability
+    "allowSyntheticDefaultImports": true, // Allow default imports from modules with no default export
+
+    // Strict Type-Checking
+    "strict": true, // Enable all strict type-checking options
+    "noImplicitAny": true, // Disallow `any` type unless explicitly declared
+    "strictNullChecks": true, // Ensure null safety
+    "strictFunctionTypes": true, // Check parameter compatibility
+    "strictPropertyInitialization": true, // Ensure class properties are initialized
+
+    // Code Quality
+    "noUnusedLocals": true, // Report unused local variables
+    "noUnusedParameters": true, // Report unused parameters
+    "noImplicitReturns": true, // Report missing return statements
+    "noFallthroughCasesInSwitch": true, // Report fallthrough in switch cases
+
+    // Emit and Source Map Options
+    "outDir": "build", // Output directory for compiled files
+    "sourceMap": true, // Generate source maps for debugging
+    "skipLibCheck": true, // Skip type checking of declaration files
+    "forceConsistentCasingInFileNames": true, // Enforce consistent casing for file names
+
+    // Experimental Features
+    "experimentalDecorators": true, // Enable decorators
+    "emitDecoratorMetadata": true, // Emit metadata for decorators
+
+    // Paths and Type Declarations
+    "baseUrl": "./", // Base directory for resolving paths
+    "paths": {
+      "*": ["node_modules/*"]
+    },
+    "typeRoots": ["./node_modules/@types"], // Load types from node_modules/@types
+    "types": ["react-native"] // Include only React Native types
+  },
+  "exclude": [
+    "node_modules", // Exclude node_modules from compilation
+    "build", // Exclude build artifacts
+    "scripts", // Exclude helper scripts
+    "dist" // Exclude distribution folder if exists
+  ],
+  "include": [
+    "src", // Include your source files
+  ]
+}
