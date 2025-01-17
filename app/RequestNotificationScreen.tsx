@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   View,
   Text,
@@ -21,10 +21,23 @@ const saveTokenToFirestore = async (token: string) => {
     } catch (error) {
       console.error("Error storing token in Firestore:", error);
     }
-};
+  };  
 
 const NotificationSetupScreen = () => {
   const router = useRouter();
+
+  useEffect(() => {
+    const fetchAndSaveToken = async () => {
+      // Get the push token
+      const token = (await Notifications.getExpoPushTokenAsync()).data;
+      console.log("Expo Push Token:", token);
+
+      // Save the token to Firestore
+      await saveTokenToFirestore(token);
+    };
+
+    fetchAndSaveToken();
+  }, []);
 
   const registerForPushNotificationsAsync = async () => {
     const { status } = await Notifications.requestPermissionsAsync();
@@ -39,14 +52,9 @@ const NotificationSetupScreen = () => {
       return;
     }
 
-    // Get the push token
-    const token = (await Notifications.getExpoPushTokenAsync()).data;
-    console.log("Expo Push Token:", token);
-
     // Save the token to your backend
     // Firestore saving logic
-    await saveTokenToFirestore(token);
-
+    // await saveTokenToFirestore(token);
 
     // Set the flag in AsyncStorage to skip the onboarding in future launches
     await AsyncStorage.setItem("hasCompletedNotificationSetup", "true");
