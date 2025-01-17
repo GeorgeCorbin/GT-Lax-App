@@ -3,10 +3,12 @@ import axios from 'axios';
 import Papa from 'papaparse';
 import { XMLParser } from 'fast-xml-parser';
 import * as FileSystem from 'expo-file-system';
-import { Image } from 'react-native';
+import { Alert, Image } from 'react-native';
 import * as Notifications from 'expo-notifications';
 import { doc, setDoc } from "firebase/firestore";
 import { db } from "../firebase/firebaseConfig"; // Adjust the path based on your project structure
+import { useRouter } from "expo-router";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export interface ShopItem {
   id: string;
@@ -81,12 +83,22 @@ const sendNotificationToAllUsers = async (title: string, body: string) => {
   try {
     const response = await axios.post(
       "https://us-central1-gt-lax-app.cloudfunctions.net/sendPushNotification",
-      { title, body },
+      { title, body, data: { screen: "Schedule" } },
       { headers: { "Content-Type": "application/json" } }
     );
     console.log("Notification sent successfully:", response.data);
   } catch (error) {
     console.error("Error sending notification:", error);
+  }
+};
+
+const saveTokenToFirestore = async (token: string) => {
+  try {
+    const docRef = doc(db, "expoTokens", token);
+    await setDoc(docRef, { token, timestamp: new Date() });
+    console.log("Token stored in Firestore.");
+  } catch (error) {
+    console.error("Error storing token in Firestore:", error);
   }
 };
 
@@ -96,6 +108,8 @@ export const AppDataProvider = ({ children }: { children: React.ReactNode }) => 
   const [roster, setRoster] = useState<Player[]>([]);
   const [articles, setArticles] = useState<Article[]>([]);
   const [loading, setLoading] = useState(true);
+
+  const router = useRouter();
 
   const fetchScheduleForSeason = async (season: string) => {
     setLoading(true);
@@ -123,16 +137,22 @@ export const AppDataProvider = ({ children }: { children: React.ReactNode }) => 
     }
   };
 
-  async function registerForPushNotificationsAsync() {
-    let token;
-    const { status } = await Notifications.requestPermissionsAsync();
-    if (status !== 'granted') {
-      console.error('Push notifications permission denied.');
-      return;
-    }
+  async function registerForPushNotificationsAsync(token: string) {
+    // let token;
+    // const { status } = await Notifications.requestPermissionsAsync();
+    // if (status !== 'granted') {
+    //   Alert.alert(
+    //     "Notifications Disabled",
+    //     "Please enable notifications in your device settings to stay updated.",
+    //     [{ text: "OK" }]
+    //   );
+    //   router.replace("/(tabs)/"); // Navigate back to the main app
+    //   console.error('Push notifications permission denied.');
+    //   return;
+    // }
   
-    token = (await Notifications.getExpoPushTokenAsync()).data;
-    console.log('Expo Push Token:', token);
+    // token = (await Notifications.getExpoPushTokenAsync()).data;
+    // console.log('Expo Push Token:', token);
   
     // Save the token to Firestore
     try {
@@ -143,10 +163,24 @@ export const AppDataProvider = ({ children }: { children: React.ReactNode }) => 
       console.error('Error storing token in Firestore:', error);
     }
   
-    return token;
+    // return token;
   }
 
   useEffect(() => {
+    const checkNotificationPermissions = async () => {
+      const hasCompletedSetup = await AsyncStorage.getItem("hasCompletedNotificationSetup");
+
+      if (!hasCompletedSetup) {
+        router.replace("/RequestNotificationScreen");
+        return;
+      }
+
+      const token = (await Notifications.getExpoPushTokenAsync()).data;
+      if (token) {
+        await saveTokenToFirestore(token);
+      }
+    };
+
     const fetchAllData = async () => {
       try {
         // --- Fetch Shop Items
@@ -218,7 +252,7 @@ export const AppDataProvider = ({ children }: { children: React.ReactNode }) => 
     fetchAllData();
 
     // Register and handle notifications
-    registerForPushNotificationsAsync();
+    checkNotificationPermissions();
 
     Notifications.setNotificationHandler({
       handleNotification: async () => ({
@@ -228,12 +262,19 @@ export const AppDataProvider = ({ children }: { children: React.ReactNode }) => 
       }),
     });
 
+    // Listen for notification interactions
     const subscription = Notifications.addNotificationReceivedListener((notification) => {
+      // const { screen } = notification.request.content.data;
+
+      // if (screen) {
+      //   // Navigate using expo-router
+      //   router.push(screen); // Dynamically navigate to the appropriate screen
+      // }
       console.log('Notification received:', notification);
     });
 
     return () => subscription.remove();
-  }, []);
+  }, [router]);
 
   return (
     <AppDataContext.Provider value={{
@@ -243,7 +284,6 @@ export const AppDataProvider = ({ children }: { children: React.ReactNode }) => 
       articles,
       loading,
       fetchScheduleForSeason, // Expose for dynamic fetching
-      // sendNotificationToAllUsers, // Expose for sending notifications
     }}>
       {children}
     </AppDataContext.Provider>

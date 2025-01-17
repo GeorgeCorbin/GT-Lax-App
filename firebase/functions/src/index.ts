@@ -57,7 +57,9 @@ export const sendPushNotification = functions
           title,
           body,
           sound: "default", // Optional: Play sound
-          data: {title, body}, // Optional: Add extra data
+          data: {
+            screen: "Schedule", // The screen to navigate to
+          }, // Optional: Add extra data
         }));
 
       // Chunk and send notifications

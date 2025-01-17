@@ -3,7 +3,8 @@ import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native
 import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import 'react-native-reanimated';
 
 import { useColorScheme } from '@/components/useColorScheme';
@@ -12,10 +13,11 @@ import { AppDataProvider } from '@/context/AppDataProvider';
 
 export {} from 'expo-router';
 
-export const unstable_settings = {
+// export const unstable_settings = {
   // Ensure that reloading on `/modal` keeps a back button present.
-  initialRouteName: '(tabs)',
-};
+  // initialRouteName: '(tabs)',
+  // initialRouteName: 'NotificationInfoScreen',
+// };
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -27,34 +29,52 @@ export default function RootLayout() {
     ...FontAwesome.font,
   });
 
-  // Expo Router uses Error Boundaries to catch errors in the navigation tree.
+  const [initialRoute, setInitialRoute] = useState<string | null>(null);
+
+  // Check if the user has completed the notification flow
+  useEffect(() => {
+    const checkFirstLaunch = async () => {
+      const hasCompletedNotificationSetup = await AsyncStorage.getItem('hasCompletedNotificationSetup');
+      setInitialRoute(hasCompletedNotificationSetup ? '(tabs)' : 'RequestNotificationScreen');
+      if (loaded) SplashScreen.hideAsync();
+    };
+
+    checkFirstLaunch();
+  }, [loaded]);
+
   useEffect(() => {
     if (error) throw error;
   }, [error]);
 
-  useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
-    }
-  }, [loaded]);
-
-  if (!loaded) {
-    return null;
+  if (!loaded || initialRoute === null) {
+    return null; // Wait for fonts and initial route determination
   }
 
   return (
     <AppDataProvider>
-      <RootLayoutNav />
+      <RootLayoutNav initialRoute={initialRoute} />
     </AppDataProvider>
   );
 }
 
-function RootLayoutNav() {
+function RootLayoutNav({ initialRoute }: { initialRoute: string }) {
   const colorScheme = useColorScheme();
 
   return (
     <ThemeProvider value={colorScheme === 'light' ? DarkTheme : DefaultTheme}>
-      <Stack>
+      <Stack initialRouteName={initialRoute}>
+      {/* Initial Notification Flow Screens */}
+        <Stack.Screen
+          name="RequestNotificationScreen"
+          options={{
+            title: '',
+            headerShown: false,
+            headerStyle: { backgroundColor: Colors.background },
+            headerTintColor: Colors.textSecondary,
+          }}
+        />
+
+      {/* Main Tabs and Other Screens */}
       <Stack.Screen
           name="(tabs)" 
           options={{

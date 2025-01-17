@@ -46,7 +46,9 @@ export const sendPushNotification = functions
             title,
             body,
             sound: "default",
-            data: { title, body }, // Optional: Add extra data
+            data: {
+                screen: "Schedule", // The screen to navigate to
+            }, // Optional: Add extra data
         }));
         // Chunk and send notifications
         const chunks = expo.chunkPushNotifications(messages);
