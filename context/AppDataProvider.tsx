@@ -3,10 +3,8 @@ import axios from 'axios';
 import Papa from 'papaparse';
 import { XMLParser } from 'fast-xml-parser';
 import * as FileSystem from 'expo-file-system';
-import { Alert, Image } from 'react-native';
+import { Image } from 'react-native';
 import * as Notifications from 'expo-notifications';
-import { doc, setDoc } from "firebase/firestore";
-import { db } from "../firebase/firebaseConfig"; // Adjust the path based on your project structure
 import { useRouter } from "expo-router";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -92,16 +90,6 @@ const sendNotificationToAllUsers = async (title: string, body: string) => {
   }
 };
 
-const saveTokenToFirestore = async (token: string) => {
-  try {
-    const docRef = doc(db, "expoTokens", token);
-    await setDoc(docRef, { token, timestamp: new Date() });
-    console.log("Token stored in Firestore.");
-  } catch (error) {
-    console.error("Error storing token in Firestore:", error);
-  }
-};
-
 export const AppDataProvider = ({ children }: { children: React.ReactNode }) => {
   const [shopItems, setShopItems] = useState<ShopItem[]>([]);
   const [schedule, setSchedule] = useState<Game[]>([]);
@@ -137,47 +125,12 @@ export const AppDataProvider = ({ children }: { children: React.ReactNode }) => 
     }
   };
 
-  async function registerForPushNotificationsAsync(token: string) {
-    // let token;
-    // const { status } = await Notifications.requestPermissionsAsync();
-    // if (status !== 'granted') {
-    //   Alert.alert(
-    //     "Notifications Disabled",
-    //     "Please enable notifications in your device settings to stay updated.",
-    //     [{ text: "OK" }]
-    //   );
-    //   router.replace("/(tabs)/"); // Navigate back to the main app
-    //   console.error('Push notifications permission denied.');
-    //   return;
-    // }
-  
-    // token = (await Notifications.getExpoPushTokenAsync()).data;
-    // console.log('Expo Push Token:', token);
-  
-    // Save the token to Firestore
-    try {
-      const docRef = doc(db, "expoTokens", token);
-      await setDoc(docRef, { token, timestamp: new Date() });
-      console.log('Token stored in Firestore.');
-    } catch (error) {
-      console.error('Error storing token in Firestore:', error);
-    }
-  
-    // return token;
-  }
-
   useEffect(() => {
     const checkNotificationPermissions = async () => {
       const hasCompletedSetup = await AsyncStorage.getItem("hasCompletedNotificationSetup");
 
       if (!hasCompletedSetup) {
         router.replace("/RequestNotificationScreen");
-        return;
-      }
-
-      const token = (await Notifications.getExpoPushTokenAsync()).data;
-      if (token) {
-        await saveTokenToFirestore(token);
       }
     };
 

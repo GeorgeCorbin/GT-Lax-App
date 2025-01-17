@@ -10,6 +10,18 @@ import * as Notifications from "expo-notifications";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useRouter } from "expo-router";
 import Colors from "@/constants/Colors";
+import { doc, setDoc } from "firebase/firestore";
+import { db } from "../firebase/firebaseConfig"; // Adjust the path based on your project structure
+
+const saveTokenToFirestore = async (token: string) => {
+    try {
+      const docRef = doc(db, "expoTokens", token);
+      await setDoc(docRef, { token, timestamp: new Date() });
+      console.log("Token stored in Firestore.");
+    } catch (error) {
+      console.error("Error storing token in Firestore:", error);
+    }
+};
 
 const NotificationSetupScreen = () => {
   const router = useRouter();
@@ -32,9 +44,9 @@ const NotificationSetupScreen = () => {
     console.log("Expo Push Token:", token);
 
     // Save the token to your backend
-    // Add your Firestore saving logic here
-    // Example:
-    // await saveTokenToFirestore(token);
+    // Firestore saving logic
+    await saveTokenToFirestore(token);
+
 
     // Set the flag in AsyncStorage to skip the onboarding in future launches
     await AsyncStorage.setItem("hasCompletedNotificationSetup", "true");
