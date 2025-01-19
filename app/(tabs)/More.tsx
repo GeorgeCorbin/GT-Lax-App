@@ -29,7 +29,7 @@ const MoreScreen = () => {
       <View style={styles.section}>
         <Text style={styles.sectionHeader}>Contact</Text>
         <TouchableOpacity onPress={() => {
-          const email = 'gtlacrosse@gmail.com';
+          const email = 'gtmenslacrosse@gmail.com';
           const url = `mailto:${email}`;
           Linking.openURL(url).catch(err => console.error('Error opening email app:', err));
         }}>
