@@ -54,7 +54,7 @@ export default function TabLayout() {
             }, // Set the header background to navy
             headerTitle: '', // Removes the header title
             headerTintColor: Colors.buttonPrimary.text,
-            tabBarButton: route.name === 'Shop' ? () => null : undefined, // Hide the "Shop" tab
+            // tabBarButton: route.name === 'Shop' ? () => null : undefined, // Hide the "Shop" tab
           })}
         >
           <Tabs.Screen
@@ -78,13 +78,13 @@ export default function TabLayout() {
               tabBarIcon: ({ color }: { color: string }) => <TabBarIcon name="users" color={color} />,
             }}
           />
-          <Tabs.Screen
+          {/* <Tabs.Screen
             name="Shop"
             options={{
               title: 'Shop',
               tabBarIcon: ({ color }: { color: string }) => <TabBarIcon name="shopping-cart" color={color} />,
             }}
-          />
+          /> */}
           <Tabs.Screen
             name="More"
             options={{

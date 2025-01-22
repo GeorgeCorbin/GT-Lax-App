@@ -19,6 +19,9 @@
       "bundleIdentifier": "com.gtlacrosse.gtlacrosse",
       "config": {
         "usesNonExemptEncryption": false
+      },
+      "infoPlist": {
+        "NSCameraUsageDescription": "We do not use the camera."
       }
     },
     "android": {
@@ -39,10 +42,16 @@
         "expo-notifications",
         {
           "icon": "./assets/images/notification-icon.png",
-          "color": "#ffffff",
-          "sounds": [
-            "default"
-          ]
+          "color": "#ffffff"
+        }
+      ],
+      [
+        "expo-build-properties",
+        {
+          "ios": {
+            "useFrameworks": "static",
+            "jsEngine": "hermes"
+          }
         }
       ]
     ],

@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity, ScrollView, ActivityIndicator } from 'react-native';
+import React, { useCallback, useEffect, useState } from 'react';
+import { View, Text, FlatList, Image, RefreshControl, ActivityIndicator } from 'react-native';
 import styles from '../../constants/styles/news'; // Updated path for styles
 import { Link } from 'expo-router';
 import { useAppData } from '@/context/AppDataProvider';
@@ -16,7 +16,33 @@ interface Article {
 }
 
 const NewsScreen = () => {
-  const { articles, loading } = useAppData();
+  const { articles, loading, fetchArticles } = useAppData();
+  const [refreshing, setRefreshing] = useState(false);
+
+  const onRefresh = useCallback(async () => {
+    console.log('onRefresh called');
+    setRefreshing(true);
+    try {
+      await Promise.all([
+        fetchArticles(true), // Force refresh
+        new Promise((resolve) => setTimeout(resolve, 1000)),
+      ]);
+    } catch (error) {
+      console.error('Error refreshing articles:', error);
+    } finally {
+      setRefreshing(false);
+    }
+  }, [fetchArticles]); 
+  
+  useEffect(() => {
+    const fetchOnMount = async () => {
+      await fetchArticles(); // Default: respect server cache
+    };
+  
+    fetchOnMount();
+    console.log('News useEffect triggered for initial fetch');
+  }, [fetchArticles]);
+  
 
   const renderArticleItem = ({ item }: { item: Article }) => (
     <Link
@@ -41,7 +67,7 @@ const NewsScreen = () => {
     </Link>
   );
 
-  if (loading) {
+  if (loading && !refreshing) {
     return (
       <View style={styles.loadingContainer}>
         <ActivityIndicator size="large" color={Colors.loadingWheel} />
@@ -55,8 +81,15 @@ const NewsScreen = () => {
       <FlatList
         data={articles}
         renderItem={renderArticleItem}
-        keyExtractor={(item, index) => index.toString()}
+        keyExtractor={(item) => item.id.toString()}
         contentContainerStyle={styles.list}
+        refreshControl={
+        <RefreshControl
+          refreshing={refreshing}
+          onRefresh={onRefresh}
+          colors={[Colors.loadingWheel]}
+        />
+        }
       />
     </View>
   );

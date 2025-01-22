@@ -23,6 +23,7 @@ export default StyleSheet.create({
   card: {
     backgroundColor: Colors.techGold,
     borderRadius: 10,
+    marginHorizontal: 8,
     marginBottom: 20,
     // overflow: 'hidden',
 
@@ -30,10 +31,10 @@ export default StyleSheet.create({
     elevation: 5,
     
     // Shadow for iOS
-    shadowColor: Colors.black,
-    shadowOffset: { width: 4, height: 8 },
-    shadowOpacity: 0.2,
-    shadowRadius: 3,
+    shadowColor: Colors.grayMatter,
+    shadowOffset: { width: 3, height: 8 },
+    shadowOpacity: 0.5,
+    shadowRadius: 4,
   },
   image: {
     width: '100%',

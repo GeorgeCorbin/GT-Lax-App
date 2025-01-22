@@ -48,7 +48,7 @@ const NotificationSetupScreen = () => {
       );
       // Set the flag in AsyncStorage to skip the onboarding in future launches
       await AsyncStorage.setItem("hasCompletedNotificationSetup", "true");
-      router.replace("/(tabs)/"); // Navigate back to the main app
+      router.replace("/(tabs)"); // Navigate back to the main app
       return;
     }
 
@@ -59,7 +59,7 @@ const NotificationSetupScreen = () => {
     // Set the flag in AsyncStorage to skip the onboarding in future launches
     await AsyncStorage.setItem("hasCompletedNotificationSetup", "true");
 
-    router.replace("/(tabs)/"); // Navigate back to the main app
+    router.replace("/(tabs)"); // Navigate back to the main app
   };
 
   return (

@@ -31,7 +31,7 @@ const StudentBoard = () => {
   return (
     <AnimatedHeaderLayout headerText="" backgroundColor={Colors.background}>
       <ScrollView contentContainerStyle={styles.container}>
-        <Text style={styles.title}>Student Board</Text>
+        <Text style={styles.title}>Student Officers</Text>
         {studentBoardData.map((member, index) => (
           <View key={index} style={styles.memberRow}>
             <View style={styles.photoContainer}>

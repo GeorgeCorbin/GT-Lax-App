@@ -1,3 +1,5 @@
+// BELONGS in (tabs) when ready to publish
+
 import React from 'react';
 import { View, Text, ScrollView, Image, ActivityIndicator, Alert } from 'react-native';
 import { Link } from 'expo-router';

@@ -1,27 +1,3 @@
 ## Player Bio
 
-**Height:** (FILL IN)  
-**Weight:** (FILL IN)
-**Hometown:** (FILL IN)
-**High School:** (FILL IN)
-**Major:** (FILL IN)  
-
-###
-
-### Biography
-
-John Doe is a dedicated and skilled midfielder known for his agility and strategic play on the field. He has been playing lacrosse since high school and has consistently demonstrated his commitment to the sport through his performance and teamwork. Off the field, John is pursuing a degree in Sports Science, aiming to combine his passion for sports with a solid academic foundation.  
-
-###
-
-### Achievements
-
-- MVP of the Anytown High School Lacrosse Team (Year)
-- Selected for the All-State Lacrosse Team (Year)
-- Captain of the Anytown High School Lacrosse Team (Year)
-
-###
-
-### Fun Fact
-
-John is also an avid guitarist and enjoys playing music in his free time.
+Emmett Somers is a freshman attackman who is injuried for the 2024-2025 season. As he begins his collegiate lacrosse journey Emmett brings enthusiasm to the team from the sideline as he works to get healthy.

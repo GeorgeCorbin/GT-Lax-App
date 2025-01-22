@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useCallback, useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import Papa from 'papaparse';
 import { XMLParser } from 'fast-xml-parser';
@@ -54,6 +54,8 @@ type AppDataContextType = {
   articles: Article[];
   loading: boolean;
   fetchScheduleForSeason: (season: string) => Promise<void>;
+  fetchArticles: (forceRefresh?: boolean) => Promise<void>;
+  fetchRoster?: () => Promise<void>;
 };
 
 const AppDataContext = createContext<AppDataContextType>({
@@ -63,6 +65,8 @@ const AppDataContext = createContext<AppDataContextType>({
   articles: [],
   loading: true,
   fetchScheduleForSeason: async () => {},
+  fetchArticles: async () => {},
+  fetchRoster: async () => {},
 });
 
 const getLocalImageUri = async (url: string) => {
@@ -125,6 +129,63 @@ export const AppDataProvider = ({ children }: { children: React.ReactNode }) => 
     }
   };
 
+  const fetchArticles = useCallback(async (forceRefresh = false) => {
+    try {
+      const url = forceRefresh
+        ? `https://gt-lax-app.web.app/articles.json?t=${Date.now()}` // Add timestamp to bypass cache
+        : 'https://gt-lax-app.web.app/articles.json';
+      
+      const articlesResp = await fetch(url);
+      const articlesData = await articlesResp.json();
+      setArticles(articlesData.reverse());
+      console.log('Fetched articles');
+    } catch (error) {
+      console.error('Error fetching articles:', error);
+    }
+  }, []); // Empty dependency array ensures stability
+  
+
+  const fetchRoster = useCallback(async () => {
+    try {
+      const [jsonResp, csvResp] = await Promise.all([
+        fetch('https://gt-lax-app.web.app/players.json'),
+        fetch('https://gt-lax-app.web.app/players/theroster.csv'),
+      ]);
+      const jsonData = await jsonResp.json();
+      const csvText = await csvResp.text();
+      const parsedCSV = Papa.parse(csvText, { header: true }).data;
+  
+      const jsonMap = new Map<string, any>(jsonData.map((p: any) => [p.playerName, p]));
+      const combinedRoster = await Promise.all(
+        parsedCSV.map(async (player: any) => {
+          const j = jsonMap.get(player['Name']);
+          const imageUrl = j?.imageUrl || 'https://gt-lax-app.web.app/players/images/headshot_default.png';
+          const localImageUrl = await getLocalImageUri(imageUrl);
+          return {
+            id: Number(player['#']),
+            playerName: player['Name'],
+            position: player['Pos'],
+            number: Number(player['#']),
+            year: player['year']
+              ? player['year'].charAt(0).toUpperCase() + player['year'].slice(1).toLowerCase()
+              : '',
+            imageUrl: localImageUrl,
+            contentUrl: j?.contentUrl || 'https://gt-lax-app.web.app/players/bios/default_bio.md',
+          };
+        })
+      );
+  
+      setRoster(combinedRoster);
+
+      // Prefetch all images in the background
+      const imagePromises = combinedRoster.map((player) => Image.prefetch(player.imageUrl));
+      Promise.all(imagePromises);
+
+    } catch (error) {
+      console.error('Error fetching roster:', error);
+    }
+  }, []); // Empty dependency array ensures stability  
+
   useEffect(() => {
     const checkNotificationPermissions = async () => {
       const hasCompletedSetup = await AsyncStorage.getItem("hasCompletedNotificationSetup");
@@ -159,42 +220,46 @@ export const AppDataProvider = ({ children }: { children: React.ReactNode }) => 
         setSchedule(allGames);
 
         // --- Fetch Roster
-        const [jsonResp, csvResp] = await Promise.all([
-          fetch('https://gt-lax-app.web.app/players.json'),
-          fetch('https://gt-lax-app.web.app/players/theroster.csv'),
-        ]);
-        const jsonData = await jsonResp.json();
-        const csvText = await csvResp.text();
-        const parsedCSV = Papa.parse(csvText, { header: true }).data;
+        // const [jsonResp, csvResp] = await Promise.all([
+        //   fetch('https://gt-lax-app.web.app/players.json'),
+        //   fetch('https://gt-lax-app.web.app/players/theroster.csv'),
+        // ]);
+        // const jsonData = await jsonResp.json();
+        // const csvText = await csvResp.text();
+        // const parsedCSV = Papa.parse(csvText, { header: true }).data;
 
-        const jsonMap = new Map<string, any>(jsonData.map((p: any) => [p.playerName, p]));
-        const combinedRoster = await Promise.all(parsedCSV.map(async (player: any) => {
-          const j = jsonMap.get(player['Name']);
-          const imageUrl = j?.imageUrl || 'https://gt-lax-app.web.app/players/images/headshot_default.png';
-          const localImageUrl = await getLocalImageUri(imageUrl);
-          return {
-            id: Number(player['#']),
-            playerName: player['Name'],
-            position: player['Pos'],
-            number: Number(player['#']),
-            year: player['year'] 
-                   ? player['year'].charAt(0).toUpperCase() + player['year'].slice(1).toLowerCase() 
-                   : '',
-            imageUrl: localImageUrl,
-            contentUrl: j?.contentUrl || 'https://gt-lax-app.web.app/players/bios/default_bio.md',
-          };
-        }));
+        // const jsonMap = new Map<string, any>(jsonData.map((p: any) => [p.playerName, p]));
+        // const combinedRoster = await Promise.all(parsedCSV.map(async (player: any) => {
+        //   const j = jsonMap.get(player['Name']);
+        //   const imageUrl = j?.imageUrl || 'https://gt-lax-app.web.app/players/images/headshot_default.png';
+        //   const localImageUrl = await getLocalImageUri(imageUrl);
+        //   return {
+        //     id: Number(player['#']),
+        //     playerName: player['Name'],
+        //     position: player['Pos'],
+        //     number: Number(player['#']),
+        //     year: player['year'] 
+        //            ? player['year'].charAt(0).toUpperCase() + player['year'].slice(1).toLowerCase() 
+        //            : '',
+        //     imageUrl: localImageUrl,
+        //     contentUrl: j?.contentUrl || 'https://gt-lax-app.web.app/players/bios/default_bio.md',
+        //   };
+        // }));
 
-        setRoster(combinedRoster);
+        // setRoster(combinedRoster);
+        await fetchRoster();
+        
+        // --- Fetch Articles
+        // const articlesResp = await fetch('https://gt-lax-app.web.app/articles.json');
+        // const articlesData = await articlesResp.json();
+        // setArticles(articlesData.reverse());
 
         // --- Fetch Articles
-        const articlesResp = await fetch('https://gt-lax-app.web.app/articles.json');
-        const articlesData = await articlesResp.json();
-        setArticles(articlesData.reverse());
+        // await fetchArticles();
 
         // Prefetch all images in the background
-        const imagePromises = combinedRoster.map((player) => Image.prefetch(player.imageUrl));
-        Promise.all(imagePromises);
+      //   const imagePromises = combinedRoster.map((player) => Image.prefetch(player.imageUrl));
+      //   Promise.all(imagePromises);
       } catch (err) {
         console.error('Error fetching data:', err);
       } finally {
@@ -202,7 +267,7 @@ export const AppDataProvider = ({ children }: { children: React.ReactNode }) => 
       }
     };
 
-    fetchAllData();
+    fetchAllData(); 
 
     // Register and handle notifications
     checkNotificationPermissions();
@@ -237,6 +302,8 @@ export const AppDataProvider = ({ children }: { children: React.ReactNode }) => 
       articles,
       loading,
       fetchScheduleForSeason, // Expose for dynamic fetching
+      fetchArticles, // Expose for dynamic fetching
+      fetchRoster, // Expose for dynamic fetching
     }}>
       {children}
     </AppDataContext.Provider>
