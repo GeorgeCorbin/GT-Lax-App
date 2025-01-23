@@ -18,12 +18,17 @@ const MoreScreen = () => {
         <TouchableOpacity style={styles.row} onPress={() => Linking.openURL('/more/StudentBoard')}>
           {/* <Text style={styles.rowText}>Student Officers</Text> */}
           <Link href="/more/StudentBoard" style={styles.rowText}>Student Officers</Link>
-          <Icon name="chevron-forward" style={styles.arrowIcon} />
+          <Link href="/more/StudentBoard" style={styles.rowArrow}>
+            <Icon name="chevron-forward" style={styles.arrowIcon} />
+          </Link>
+
         </TouchableOpacity>
         <TouchableOpacity style={styles.row} onPress={() => Linking.openURL('/more/CoachingStaff')}>
           {/* <Text style={styles.rowText}>Coaching Staff</Text> */}
           <Link href="/more/CoachingStaff" style={styles.rowText}>Coaching Staff</Link>
-          <Icon name="chevron-forward" style={styles.arrowIcon} />
+          <Link href="/more/CoachingStaff" style={styles.rowArrow}>
+            <Icon name="chevron-forward" style={styles.arrowIcon} />
+          </Link>
         </TouchableOpacity>
       </View>
 

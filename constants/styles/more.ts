@@ -14,6 +14,7 @@ const styles = StyleSheet.create({
   sectionHeader: {
     fontSize: 32,
     fontWeight: 'bold',
+    fontFamily: 'roboto-regular-bold',
     color: Colors.textPrimary,
     marginBottom: 10,
   },
@@ -29,11 +30,17 @@ const styles = StyleSheet.create({
   },
   rowText: {
     fontSize: 18,
+    fontFamily: 'roboto-regular',
+    width: '95%',
     color: Colors.textSecondary,
+  },
+  rowArrow: {
+    width: '20%',
   },
   arrowIcon: {
     fontSize: 18,
     color: Colors.gray,
+    zIndex: 1,
   },
   finePrintContainer: {
     marginTop: 20,
@@ -41,6 +48,7 @@ const styles = StyleSheet.create({
   },
   finePrint: {
     fontSize: 12,
+    fontFamily: 'roboto-regular',
     textAlign: 'center',
     color: Colors.gray,
   },
