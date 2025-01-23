@@ -1,8 +1,8 @@
 ## Player Bio
 
 **Player Details:**
-- **State:** Georgia  
 - **Hometown:** Marietta  
+- **State:** Georgia  
 - **Height:** 5'9"  
 - **Weight:** 160 lbs  
 - **Year:** Freshman  

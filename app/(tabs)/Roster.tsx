@@ -231,7 +231,10 @@ const RosterScreen = () => {
                   style={styles.playerContainerBox}
                 >
                   <View style={styles.playerContainer}>
-                    <Image source={{ uri: player.imageUrl }} style={styles.playerImage} />
+                    <View style={{ overflow: 'hidden', borderRadius: 50, marginBottom: 5, width: 100, height: 100 }}>
+                      <Image source={{ uri: player.imageUrl }} style={styles.playerImage} />
+                    </View>
+                    {/* <Image source={{ uri: player.imageUrl }} style={styles.playerImage} /> */}
                     <Text style={styles.playerName}>{player.playerName || 'Unknown'}</Text>
                     <Text style={styles.playerNumber}>
                       #{player.number?.toString() || 'N/A'}

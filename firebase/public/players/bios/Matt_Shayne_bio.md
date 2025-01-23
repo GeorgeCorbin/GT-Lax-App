@@ -1,8 +1,8 @@
 ## Player Bio
 
 **Player Details:**
+- **Hometown:** Hamden
 - **State:** Maine  
-- **Hometown:** Hamden  
 - **Height:** 5'8"  
 - **Weight:** 160 lbs  
 - **Year:** Freshman  

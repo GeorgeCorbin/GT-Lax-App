@@ -1,8 +1,8 @@
 ## Player Bio
 
 **Player Details:**
-- **State:** Pennsylvania  
-- **Hometown:** Landenberg  
+- **Hometown:** Landenberg
+- **State:** Pennsylvania
 - **Height:** 5'10"  
 - **Weight:** 165 lbs  
 - **Year:** Freshman  

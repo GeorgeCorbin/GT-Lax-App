@@ -1,8 +1,8 @@
 ## Player Bio
 
 **Player Details:**
+- **Hometown:** Pequannock
 - **State:** New Jersey  
-- **Hometown:** Pequannock  
 - **Height:** 5'7"  
 - **Weight:** 155 lbs  
 - **Year:** Freshman  

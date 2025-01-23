@@ -1,8 +1,8 @@
 ## Player Bio
 
 **Player Details:**
-- **State:** Georgia  
 - **Hometown:** Roswell  
+- **State:** Georgia  
 - **Height:** 6'1"  
 - **Weight:** 180 lbs  
 - **Year:** Freshman  

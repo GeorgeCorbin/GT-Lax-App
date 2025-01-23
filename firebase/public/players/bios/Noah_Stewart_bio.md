@@ -1,8 +1,8 @@
 ## Player Bio
 
 **Player Details:**
-- **State:** Kentucky  
 - **Hometown:** Louisville  
+- **State:** Kentucky  
 - **Height:** 6'0"  
 - **Weight:** 200 lbs  
 - **Year:** Freshman  

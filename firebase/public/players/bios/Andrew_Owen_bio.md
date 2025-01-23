@@ -1,8 +1,8 @@
 ## Player Bio
 
 **Player Details:**
-- **State:** Virginia  
 - **Hometown:** Burke  
+- **State:** Virginia
 - **Height:** 6'0"  
 - **Weight:** 180 lbs  
 - **Year:** Freshman  

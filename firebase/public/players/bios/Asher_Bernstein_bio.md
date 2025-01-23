@@ -1,8 +1,8 @@
 ## Player Bio
 
 **Player Details:**
+- **Hometown:** Dedham
 - **State:** Massachusetts  
-- **Hometown:** Dedham  
 - **Height:** 5'8"  
 - **Weight:** 165 lbs  
 - **Year:** Freshman  

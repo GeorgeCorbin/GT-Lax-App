@@ -1,8 +1,8 @@
 ## Player Bio
 
 **Player Details:**
-- **State:** Georgia  
 - **Hometown:** Savannah  
+- **State:** Georgia  
 - **Height:** 5'8"  
 - **Weight:** 175 lbs  
 - **Year:** Freshman  
