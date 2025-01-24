@@ -4,7 +4,7 @@
 - **Hometown:** Collierville
 - **State:** Tennessee  
 - **Height:** 6'0"  
-- **Weight:** 175 lbs  
+- **Weight:** 200 lbs  
 - **Year:** Junior  
 - **High School:** St. George's Independent  
 - **Position:** Midfield  

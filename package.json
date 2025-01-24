@@ -58,6 +58,7 @@
     "metro-react-native-babel-preset": "^0.77.0",
     "metro-resolver": "^0.81.0",
     "next": "^15.1.1-canary.23",
+    "npm": "^11.0.0",
     "papaparse": "^5.5.1",
     "prop-types": "^15.8.1",
     "react": "18.3.1",

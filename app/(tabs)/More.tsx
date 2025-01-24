@@ -15,21 +15,22 @@ const MoreScreen = () => {
       {/* Front Office Section */}
       <View style={styles.section}>
         <Text style={styles.sectionHeader}>Front Office</Text>
-        <TouchableOpacity style={styles.row} onPress={() => Linking.openURL('/more/StudentBoard')}>
-          {/* <Text style={styles.rowText}>Student Officers</Text> */}
-          <Link href="/more/StudentBoard" style={styles.rowText}>Student Officers</Link>
+        <View style={styles.row}>
+          <Link href="/more/StudentBoard" style={styles.rowText}>
+            Student Officers
+          </Link>
           <Link href="/more/StudentBoard" style={styles.rowArrow}>
             <Icon name="chevron-forward" style={styles.arrowIcon} />
           </Link>
-
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.row} onPress={() => Linking.openURL('/more/CoachingStaff')}>
-          {/* <Text style={styles.rowText}>Coaching Staff</Text> */}
-          <Link href="/more/CoachingStaff" style={styles.rowText}>Coaching Staff</Link>
+        </View>
+        <View style={styles.row}>
+          <Link href="/more/CoachingStaff" style={styles.rowText}>
+            Coaching Staff
+          </Link>
           <Link href="/more/CoachingStaff" style={styles.rowArrow}>
             <Icon name="chevron-forward" style={styles.arrowIcon} />
           </Link>
-        </TouchableOpacity>
+        </View>
       </View>
 
       {/* Contact Section */}

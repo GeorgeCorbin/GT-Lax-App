@@ -3,8 +3,8 @@
 **Player Details:**
 - **Hometown:** Atlanta  
 - **State:** Georgia  
-- **Height:** 6'0"  
-- **Weight:** 140 lbs  
+- **Height:** 6'1"  
+- **Weight:** 155 lbs  
 - **Year:** Junior  
 - **High School:** Lovett  
 - **Position:** Goalie  
