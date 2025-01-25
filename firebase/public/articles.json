@@ -1,11 +1,26 @@
 [
-    {
-      "id": 1,
-      "title": "Owen Armentrout Gives Back in a Special Way",
-      "date": "Sep 12, 2024",
-      "imageUrl": "https://gt-lax-app.web.app/news/images/article3.jpg",
-      "imageAuthor": "Kevin Schoonover",
-      "contentUrl": "https://gt-lax-app.web.app/news/content/article3.md"
-    }
-  ]
-  
+  {
+    "id": 1,
+    "title": "Owen Armentrout Gives Back in a Special Way",
+    "date": "Sep 12, 2024",
+    "imageUrl": "https://gt-lax-app.web.app/news/images/article3.jpg",
+    "imageAuthor": "Kevin Schoonover",
+    "contentUrl": "https://gt-lax-app.web.app/news/content/article3.md"
+  },
+  {
+    "id": 2,
+    "title": "Wall Street Journal Features Georgia Tech and Freshman Mitch Savalli",
+    "date": "Oct 01, 2024",
+    "imageUrl": "https://gt-lax-app.web.app/news/images/article4.jpg",
+    "imageAuthor": "Kevin Schoonover",
+    "contentUrl": "https://gt-lax-app.web.app/news/content/article4.md"
+  },
+  {
+    "id": 3,
+    "title": "Jackets voted to win Conference in 2025 in Pre season Poll",
+    "date": "Nov 16, 2024",
+    "imageUrl": "https://gt-lax-app.web.app/news/images/article5.jpg",
+    "imageAuthor": "Kevin Schoonover",
+    "contentUrl": "https://gt-lax-app.web.app/news/content/article5.md"
+  }
+]

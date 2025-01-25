@@ -220,33 +220,6 @@ export const AppDataProvider = ({ children }: { children: React.ReactNode }) => 
         setSchedule(allGames);
 
         // --- Fetch Roster
-        // const [jsonResp, csvResp] = await Promise.all([
-        //   fetch('https://gt-lax-app.web.app/players.json'),
-        //   fetch('https://gt-lax-app.web.app/players/theroster.csv'),
-        // ]);
-        // const jsonData = await jsonResp.json();
-        // const csvText = await csvResp.text();
-        // const parsedCSV = Papa.parse(csvText, { header: true }).data;
-
-        // const jsonMap = new Map<string, any>(jsonData.map((p: any) => [p.playerName, p]));
-        // const combinedRoster = await Promise.all(parsedCSV.map(async (player: any) => {
-        //   const j = jsonMap.get(player['Name']);
-        //   const imageUrl = j?.imageUrl || 'https://gt-lax-app.web.app/players/images/headshot_default.png';
-        //   const localImageUrl = await getLocalImageUri(imageUrl);
-        //   return {
-        //     id: Number(player['#']),
-        //     playerName: player['Name'],
-        //     position: player['Pos'],
-        //     number: Number(player['#']),
-        //     year: player['year'] 
-        //            ? player['year'].charAt(0).toUpperCase() + player['year'].slice(1).toLowerCase() 
-        //            : '',
-        //     imageUrl: localImageUrl,
-        //     contentUrl: j?.contentUrl || 'https://gt-lax-app.web.app/players/bios/default_bio.md',
-        //   };
-        // }));
-
-        // setRoster(combinedRoster);
         await fetchRoster();
         
         // --- Fetch Articles

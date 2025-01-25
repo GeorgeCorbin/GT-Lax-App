@@ -12,6 +12,35 @@ const MoreScreen = () => {
   return (
     <AnimatedHeaderLayout headerText="" backgroundColor={styles.container.backgroundColor}>
 
+      {/* About Section */}
+      <View style={styles.section}>
+        <Text style={styles.sectionHeader}>About</Text>
+        <View style={styles.row}>
+          <Link href="/more/TeamHistory" style={styles.rowText}>
+              What is Georgia Tech Lacrosse?
+          </Link>
+          <Link href="/more/TeamHistory" style={styles.rowArrow}>
+            <Icon name="chevron-forward" style={styles.arrowIcon} />
+          </Link>
+        </View>
+        <View style={styles.row}>
+          <Link href="/more/LeagueInfo" style={styles.rowText}>
+              What is the MCLA & SELC?
+          </Link>
+          <Link href="/more/LeagueInfo" style={styles.rowArrow}>
+            <Icon name="chevron-forward" style={styles.arrowIcon} />
+          </Link>
+        </View>
+        <View style={styles.row}>
+          <Link href="/more/TeamSuccess" style={styles.rowText}>
+              Team Success
+          </Link>
+          <Link href="/more/TeamSuccess" style={styles.rowArrow}>
+            <Icon name="chevron-forward" style={styles.arrowIcon} />
+          </Link>
+        </View>
+      </View>
+
       {/* Front Office Section */}
       <View style={styles.section}>
         <Text style={styles.sectionHeader}>Front Office</Text>
@@ -31,23 +60,6 @@ const MoreScreen = () => {
             <Icon name="chevron-forward" style={styles.arrowIcon} />
           </Link>
         </View>
-      </View>
-
-      {/* Contact Section */}
-      <View style={styles.section}>
-        <Text style={styles.sectionHeader}>Contact</Text>
-        <TouchableOpacity
-          style={styles.row}
-          onPress={() => Linking.openURL('mailto:gtmenslacrosse@gmail.com')}>
-          <Text style={styles.rowText}>Contact Team</Text>
-          <Icon name="chevron-forward" style={styles.arrowIcon} />
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.row}
-          onPress={() => Linking.openURL('mailto:george.software.llc@gmail.com')}>
-          <Text style={styles.rowText}>Contact the Developer</Text>
-          <Icon name="chevron-forward" style={styles.arrowIcon} />
-        </TouchableOpacity>
       </View>
 
       {/* Social Media Section */}
@@ -81,6 +93,23 @@ const MoreScreen = () => {
           style={styles.row}
           onPress={() => Linking.openURL('https://www.youtube.com/@GTmenslacrosse')}>
           <Text style={styles.rowText}>Visit us on YouTube</Text>
+          <Icon name="chevron-forward" style={styles.arrowIcon} />
+        </TouchableOpacity>
+      </View>
+
+      {/* Contact Section */}
+      <View style={styles.section}>
+        <Text style={styles.sectionHeader}>Contact</Text>
+        <TouchableOpacity
+          style={styles.row}
+          onPress={() => Linking.openURL('mailto:gtmenslacrosse@gmail.com')}>
+          <Text style={styles.rowText}>Contact Team</Text>
+          <Icon name="chevron-forward" style={styles.arrowIcon} />
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.row}
+          onPress={() => Linking.openURL('mailto:george.software.llc@gmail.com')}>
+          <Text style={styles.rowText}>Contact the Developer</Text>
           <Icon name="chevron-forward" style={styles.arrowIcon} />
         </TouchableOpacity>
       </View>
