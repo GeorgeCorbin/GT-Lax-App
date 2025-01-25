@@ -83,13 +83,13 @@ const NewsScreen = () => {
         renderItem={renderArticleItem}
         keyExtractor={(item) => item.id.toString()}
         contentContainerStyle={styles.list}
-        refreshControl={
-        <RefreshControl
-          refreshing={refreshing}
-          onRefresh={onRefresh}
-          colors={[Colors.loadingWheel]}
-        />
-        }
+        // refreshControl={
+        // <RefreshControl
+        //   refreshing={refreshing}
+        //   onRefresh={onRefresh}
+        //   colors={[Colors.loadingWheel]}
+        // />
+        // }
       />
     </View>
   );
