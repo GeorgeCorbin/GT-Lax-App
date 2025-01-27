@@ -53,7 +53,8 @@
             "jsEngine": "hermes"
           }
         }
-      ]
+      ],
+      "expo-video"
     ],
     "experiments": {
       "typedRoutes": true

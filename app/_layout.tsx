@@ -1,5 +1,5 @@
 import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
+import { DarkTheme, DefaultTheme, ThemeProvider, useNavigationState } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
@@ -12,6 +12,8 @@ import Colors from '@/constants/Colors';
 import { AppDataProvider } from '@/context/AppDataProvider';
 
 export {} from 'expo-router';
+
+import UpdatePopup from '../components/UpdatePopup'; // Adjust path as needed
 
 // export const unstable_settings = {
   // Ensure that reloading on `/modal` keeps a back button present.
@@ -30,21 +32,46 @@ export default function RootLayout() {
   });
 
   const [initialRoute, setInitialRoute] = useState<string | null>(null);
+  const [showUpdatePopup, setShowUpdatePopup] = useState(false);
+  const [popupReady, setPopupReady] = useState(false);
 
-  // Check if the user has completed the notification flow
   useEffect(() => {
-    const checkFirstLaunch = async () => {
-      const hasCompletedNotificationSetup = await AsyncStorage.getItem('hasCompletedNotificationSetup');
-      setInitialRoute(hasCompletedNotificationSetup ? '(tabs)' : 'RequestNotificationScreen');
-      if (loaded) SplashScreen.hideAsync();
+    const initializeApp = async () => {
+      try {
+        const hasCompletedNotificationSetup = await AsyncStorage.getItem('hasCompletedNotificationSetup');
+        const lastVersion = await AsyncStorage.getItem('lastVersion');
+        const currentVersion = require('../app.json').version;
+
+        // Check for app version updates
+        if (lastVersion !== currentVersion) {
+          await AsyncStorage.setItem('lastVersion', currentVersion);
+          setShowUpdatePopup(true); // Flag the popup to show later
+        }
+
+        // Set initial route
+        setInitialRoute(hasCompletedNotificationSetup ? '(tabs)' : 'RequestNotificationScreen');
+      } catch (err) {
+        console.error('Error during app initialization:', err);
+        setInitialRoute('(tabs)'); // Default to main route on error
+      }
     };
 
-    checkFirstLaunch();
-  }, [loaded]);
+    initializeApp();
+  }, []);
 
   useEffect(() => {
-    if (error) throw error;
-  }, [error]);
+    if (loaded && initialRoute) {
+      // Wait for layout to render before hiding splash screen
+      const timer = setTimeout(() => {
+        SplashScreen.hideAsync();
+        if (showUpdatePopup && initialRoute === '(tabs)') {
+          // Delay popup to allow layout to render
+          setTimeout(() => setPopupReady(true), 500);
+        }
+      }, 300); // Small delay to ensure smooth transition
+      return () => clearTimeout(timer);
+    }
+  }, [loaded, initialRoute, showUpdatePopup]);
 
   if (!loaded || initialRoute === null) {
     return null; // Wait for fonts and initial route determination
@@ -52,6 +79,8 @@ export default function RootLayout() {
 
   return (
     <AppDataProvider>
+      {/* Render UpdatePopup only when ready */}
+      {popupReady && <UpdatePopup />}
       <RootLayoutNav initialRoute={initialRoute} />
     </AppDataProvider>
   );
