@@ -102,9 +102,9 @@ function RootLayoutNav({ initialRoute }: { initialRoute: string }) {
             headerShadowVisible: false,
             headerTintColor: Colors.textSecondary }} />
       <Stack.Screen 
-          name="shop" 
+          name="schedule" 
           options={{ 
-            title: '',
+            title: 'Game Information',
             headerShown: true,
             headerStyle: { backgroundColor: Colors.background },
             headerShadowVisible: false,

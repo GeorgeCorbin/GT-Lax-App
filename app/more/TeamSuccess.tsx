@@ -1,9 +1,7 @@
-import { ScrollView, StyleSheet, View } from 'react-native';
-import React, { useState, useEffect } from 'react';
+import { View } from 'react-native';
 import Markdown from 'react-native-markdown-display';
 import Colors from '@/constants/Colors';
 import FitImage from 'react-native-fit-image';
-import styles from '../../constants/styles/news'; // Updated path for styles
 import AnimatedHeaderLayout from '@/components/AnimatedHeaderLayout';
 
 const markdownContent = `
@@ -27,14 +25,14 @@ const markdownContent = `
 - 2024
 - 2023
 - 2022 (Runner-up)
-- No Tournament 2021 (Covid)
-- No Tournament 2020 (Covid)
 - 2019
 - 2018
 - 2017
 - 2016
 - 2015
 - 2004
+
+**No tournaments were held in 2020 or 2021 due to Covid*
 `;
 
 const TeamSuccess: React.FC = () => {
@@ -46,33 +44,40 @@ const TeamSuccess: React.FC = () => {
           fontWeight: 'bold',
           color: Colors.textPrimary,
           marginBottom: 10,
+          fontFamily: 'Roboto-regular-Bold',
         },
         body: {
           fontSize: 18,
           lineHeight: 24,
           color: Colors.textSecondary,
           padding: 12,
+          fontFamily: 'Roboto-regular',
         },
         heading1: {
           fontSize: 28,
           fontWeight: 'bold',
           color: Colors.textPrimary,
           marginBottom: 10,
+          fontFamily: 'Roboto-regular-Bold',
         },
         heading2: {
           fontSize: 24,
           fontWeight: 'bold',
           color: Colors.textPrimary,
           marginBottom: 8,
+          fontFamily: 'Roboto-regular-Bold',
         },
         heading3: {
           fontSize: 20,
           fontWeight: 'bold',
           color: Colors.techMediumGold,
           marginBottom: 8,
+          fontFamily: 'Roboto-regular-Bold',
         },
         paragraph: {
           marginBottom: 12,
+          fontSize: 13,
+          fontFamily: 'Roboto-Regular',
         },
         link: {
           color: '#007bff',
@@ -81,6 +86,7 @@ const TeamSuccess: React.FC = () => {
         listItem: {
           fontSize: 16,
           marginBottom: 6,
+          fontFamily: 'Roboto-regular',
         },
       }}
       rules={{

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, Image, ActivityIndicator } from 'react-native';
-import axios from 'axios';
 import { XMLParser } from 'fast-xml-parser';
 import styles from '../../constants/styles/schedule'; // Updated path for styles
 import AnimatedHeaderLayout from '@/components/AnimatedHeaderLayout';
@@ -8,6 +7,8 @@ import Colors from '@/constants/Colors';
 import { SelectList } from 'react-native-dropdown-select-list';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import { useAppData } from '@/context/AppDataProvider';
+import { Link } from 'expo-router';
+import { isHomeTeam, extractTeams, extractScores, loadTeamLogos, getTeamLogo, getRankingForTeamOnDate } from '../utils/gameUtils';
 
 const seasons = [
   { key: '1', value: '2020-21' },
@@ -27,38 +28,18 @@ type Game = {
   score: string | null;
 };
 
+// Preload the team logos
 const assetsLink = require.context('../../assets/images/Opponent_Logos', false, /\.(png|jpe?g|svg)$/);
-
-// Function to dynamically load all logos
-const loadTeamLogos = () => {
-  const teamLogos: Record<string, any> = {};
-  assetsLink.keys().forEach((fileName) => {
-    const teamName = fileName
-      .replace('./', '') // Remove './' from the beginning
-      .replace(/\.\w+$/, '') // Remove the file extension
-      .replace(/\s+/g, '') // Remove spaces
-      .toLowerCase(); // Normalize to lowercase
-    teamLogos[teamName] = assetsLink(fileName);
-  });
-  return teamLogos;
-};
-
-// Load the logos once and store them in a variable
-const teamLogos = loadTeamLogos();
-
-// Function to get the team logo path
-const getTeamLogo = (teamName: string): any => {
-  const formattedName = teamName.replace(/\s+/g, '').toLowerCase();
-  return teamLogos[formattedName] || teamLogos.placeholder;
-};
-
+const teamLogos = loadTeamLogos(assetsLink);
 
 const Schedule = () => {
-  const { schedule, loading, fetchScheduleForSeason } = useAppData();
+  const { schedule, loading, fetchScheduleForSeason, rankings, loadingRankings } = useAppData();
   const [record, setRecord] = useState({ wins: 0, losses: 0 });
   const [season, setSelected] = useState('2024-25');
   const [completedGames, setCompletedGames] = useState<Game[]>([]);
   const [upcomingGames, setUpcomingGames] = useState<Game[]>([]);
+  const [awayRanking, setAwayRanking] = useState<number | null>(null);
+  const [homeRanking, setHomeRanking] = useState<number | null>(null);
 
   useEffect(() => {
     // Fetch new season each time user picks differently
@@ -72,12 +53,12 @@ const Schedule = () => {
 
       // Calculate the record
       const record = completed.reduce(
-        (acc: { wins: number; losses: number; }, game: Game) => {
+        (acc: { wins: number; losses: number }, game: Game) => {
           if (game.score && game.score.includes('W')) acc.wins++;
           else acc.losses++;
           return acc;
         },
-        { wins: 0, losses: 0}
+        { wins: 0, losses: 0 }
       );
 
       setCompletedGames(completed);
@@ -100,8 +81,6 @@ const Schedule = () => {
       recordText={`${record.wins}-${record.losses}`}
       backgroundColor={styles.container.backgroundColor}
     >
-    {/* <ScrollView style={styles.container}> */}
-      {/* Header */}
       <View style={styles.header}>
         <Text style={styles.headerText}>Schedule</Text>
         <Text style={styles.recordText}>
@@ -109,57 +88,61 @@ const Schedule = () => {
         </Text>
       </View>
 
-      {/* Upcoming Games Section */}
-      {/* <Text style={styles.sectionTitle}>UPCOMING</Text> */}
+      {/* UPCOMING */}
       <View style={styles.dropRow}>
         <Text style={styles.sectionTitle}>UPCOMING</Text>
         <SelectList
-        setSelected={setSelected}
-        data={seasons}
-        save="value"
-        dropdownStyles={styles.dropdown}
-        dropdownTextStyles={styles.dropdownText}
-        boxStyles={styles.dropdownContainer}
-        inputStyles={styles.dropdownItemText}
-        searchPlaceholder=""
-        placeholder={season}
-        search={false}
-        fontFamily="Roboto-Regular-bold"
-        arrowicon={
-          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-            <Text style={{ marginRight: 4 }}></Text>
-            <AntDesign name="down" size={12} color={Colors.buttonPrimary.text} />
-          </View>
-        }
+          setSelected={setSelected}
+          data={seasons}
+          save="value"
+          dropdownStyles={styles.dropdown}
+          dropdownTextStyles={styles.dropdownText}
+          boxStyles={styles.dropdownContainer}
+          inputStyles={styles.dropdownItemText}
+          searchPlaceholder=""
+          placeholder={season}
+          search={false}
+          fontFamily="Roboto-Regular-bold"
+          arrowicon={
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <Text style={{ marginRight: 4 }}></Text>
+              <AntDesign name="down" size={12} color={Colors.buttonPrimary.text} />
+            </View>
+          }
         />
       </View>
-      {upcomingGames.map((game, index) => {
-        // Determine if Georgia Tech is the home team
-        const isHome = game.title.includes('vs. Georgia Tech');
-        const cleanedTitle = game.title.replace(/Final/i, '').trim();
-        const parts = cleanedTitle.split('vs.');
-        const awayTeam = parts[0] ? parts[0].replace(/\d+/g, '').trim() : 'Away Team';
-        const homeTeam = parts[1] ? parts[1].replace(/\d+/g, '').trim() : 'Home Team';
 
+      {upcomingGames.map((game, index) => {
+        const { awayTeam, homeTeam } = extractTeams(game.title);
+        const isHome = isHomeTeam(game.title);
+
+        // Get rankings specific to this game
+        const awayRank = getRankingForTeamOnDate(rankings, awayTeam, game.pubDate);
+        const homeRank = getRankingForTeamOnDate(rankings, homeTeam, game.pubDate);
 
         return (
-          <View key={index} style={styles.gameItem}>
+          <Link
+            key={index}
+            href={{
+              pathname: '/schedule/GameCard',
+              params: { game: JSON.stringify(game), teamLogos: JSON.stringify(teamLogos) },
+            }}
+            style={styles.gameItem}
+          >
             <View style={styles.row}>
               <View style={styles.teamColumn}>
                 <View style={styles.team}>
-                  <Image source={getTeamLogo(awayTeam)} style={styles.logo} />
-                  <Text style={styles.teamName}>{awayTeam}</Text>
+                  <Image source={getTeamLogo(teamLogos, awayTeam)} style={styles.logo} />
+                  <Text style={styles.teamName}>{awayRank ? `#${awayRank} ` : ''}{awayTeam}</Text>
                 </View>
                 <View style={styles.team}>
-                  <Image source={getTeamLogo(homeTeam)} style={styles.logo} />
-                  <Text style={styles.teamName}>{homeTeam}</Text>
+                  <Image source={getTeamLogo(teamLogos, homeTeam)} style={styles.logo} />
+                  <Text style={styles.teamName}>{homeRank ? `#${homeRank} ` : ''}{homeTeam}</Text>
                 </View>
               </View>
 
-              {/* Divider */}
               <View style={styles.divider} />
 
-              {/* Game Details Section */}
               <View style={styles.detailsRow}>
                 <Text style={styles.date}>
                   {new Date(game.pubDate).toLocaleDateString('en-US', {
@@ -175,56 +158,51 @@ const Schedule = () => {
                   })}
                 </Text>
                 <Text style={styles.location}>
-                  {isHome ? 'Roe Stamps Field' : 
-                        (game.description.includes('SELC') || game.description.includes('MCLA') ? game.description.split(',')[2] : 'Away')}
+                  {isHome
+                    ? 'Roe Stamps Field'
+                    : game.description.includes('SELC') || game.description.includes('MCLA')
+                    ? game.description.split(',')[2]
+                    : 'Away'}
                 </Text>
               </View>
             </View>
-          </View>
+          </Link>
         );
       })}
 
-
-      {/* Completed Games Section */}
+      {/* COMPLETED */}
       <Text style={styles.sectionTitle}>COMPLETED</Text>
       {completedGames.map((game, index) => {
-      // Determine if Georgia Tech is the home team
-        const isHome = game.title.includes(', Georgia Tech');
-        const opponent = game.opponent?.trim() || 'Unknown';
-        const cleanedTitle = game.title.replace(/Final/i, '').trim();
-        const [awayPart, homePart] = cleanedTitle.split(',');
-        const awayTeam = awayPart ? awayPart.replace(/\d+/g, '').trim() : 'Away Team';
-        const homeTeam = homePart ? homePart.replace(/\d+/g, '').trim() : 'Home Team';
-
-        const extractScore = (part: string) => {
-          const match = part.match(/(\d+)\s*(,|\s|$)/);
-          return match ? match[1] : '0';
-        };
-
-        const awayScore = extractScore(awayPart);
-        const homeScore = extractScore(homePart);
+        const { awayTeam, homeTeam } = extractTeams(game.title);
+        const { awayScore, homeScore } = extractScores(game.title);
+        const isHome = isHomeTeam(game.title);
 
         return (
-          <View key={index} style={styles.gameItem}>
+          // <View key={index} style={styles.gameItem}>
+          <Link
+            key={index}
+            href={{
+              pathname: '/schedule/GameCard',
+              params: { game: JSON.stringify(game), teamLogos: JSON.stringify(teamLogos) },
+            }}
+            style={styles.gameItem}
+          >
             <View style={styles.row}>
-              {/* Teams */}
               <View style={styles.teamColumn}>
                 <View style={styles.team}>
-                  <Image source={getTeamLogo(awayTeam)} style={styles.logo} />
-                  <Text style={styles.teamName}>{awayTeam}</Text>
+                  <Image source={getTeamLogo(teamLogos, awayTeam)} style={styles.logo} />
+                  <Text style={styles.teamName}>{awayRanking ? `#${awayRanking} ` : ''}{awayTeam}</Text>
                   <Text style={styles.score}>{awayScore}</Text>
                 </View>
                 <View style={styles.team}>
-                  <Image source={getTeamLogo(homeTeam)} style={styles.logo} />
-                  <Text style={styles.teamName}>{homeTeam}</Text>
+                  <Image source={getTeamLogo(teamLogos, homeTeam)} style={styles.logo} />
+                  <Text style={styles.teamName}>{homeRanking ? `#${homeRanking} ` : ''}{homeTeam}</Text>
                   <Text style={styles.score}>{homeScore}</Text>
                 </View>
               </View>
 
-              {/* Divider */}
               <View style={styles.divider} />
 
-              {/* Game Details */}
               <View style={styles.detailsRow}>
                 <Text style={[styles.result, game.score?.includes('W') ? styles.win : styles.loss]}>
                   {game.score?.includes('W') ? 'Win' : 'Loss'}
@@ -236,12 +214,15 @@ const Schedule = () => {
                   })}
                 </Text>
                 <Text style={styles.location}>
-                  {isHome ? 'Roe Stamps Field' : 
-                      (game.description.includes('SELC') || game.description.includes('MCLA') ? game.description.split(',')[2] : 'Away')}
+                  {isHome
+                    ? 'Roe Stamps Field'
+                    : game.description.includes('SELC') || game.description.includes('MCLA')
+                    ? game.description.split(',')[2]
+                    : 'Away'}
                 </Text>
               </View>
             </View>
-          </View>
+          </Link>
         );
       })}
     </AnimatedHeaderLayout>

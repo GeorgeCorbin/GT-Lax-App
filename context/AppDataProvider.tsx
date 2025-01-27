@@ -56,6 +56,8 @@ type AppDataContextType = {
   fetchScheduleForSeason: (season: string) => Promise<void>;
   fetchArticles: (forceRefresh?: boolean) => Promise<void>;
   fetchRoster?: () => Promise<void>;
+  rankings: any[];
+  loadingRankings: boolean;
 };
 
 const AppDataContext = createContext<AppDataContextType>({
@@ -67,6 +69,8 @@ const AppDataContext = createContext<AppDataContextType>({
   fetchScheduleForSeason: async () => {},
   fetchArticles: async () => {},
   fetchRoster: async () => {},
+  rankings: [],
+  loadingRankings: true,
 });
 
 const getLocalImageUri = async (url: string) => {
@@ -100,6 +104,8 @@ export const AppDataProvider = ({ children }: { children: React.ReactNode }) => 
   const [roster, setRoster] = useState<Player[]>([]);
   const [articles, setArticles] = useState<Article[]>([]);
   const [loading, setLoading] = useState(true);
+  const [rankings, setRankings] = useState([]);
+  const [loadingRankings, setLoadingRankings] = useState(true);
 
   const router = useRouter();
 
@@ -195,6 +201,17 @@ export const AppDataProvider = ({ children }: { children: React.ReactNode }) => 
       }
     };
 
+    const fetchRankings = async () => {
+      try {
+        const response = await axios.get('https://gt-lax-app.web.app/rankings_2025.json');
+        setRankings(response.data);
+      } catch (error) {
+        console.error('Error fetching rankings:', error);
+      } finally {
+        setLoadingRankings(false);
+      }
+    };
+
     const fetchAllData = async () => {
       try {
         // --- Fetch Shop Items
@@ -229,6 +246,9 @@ export const AppDataProvider = ({ children }: { children: React.ReactNode }) => 
 
         // --- Fetch Articles
         // await fetchArticles();
+
+        // --- Fetch Rankings
+        fetchRankings();
 
         // Prefetch all images in the background
       //   const imagePromises = combinedRoster.map((player) => Image.prefetch(player.imageUrl));
@@ -277,6 +297,8 @@ export const AppDataProvider = ({ children }: { children: React.ReactNode }) => 
       fetchScheduleForSeason, // Expose for dynamic fetching
       fetchArticles, // Expose for dynamic fetching
       fetchRoster, // Expose for dynamic fetching
+      rankings,
+      loadingRankings,
     }}>
       {children}
     </AppDataContext.Provider>

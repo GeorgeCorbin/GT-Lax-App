@@ -1,33 +1,29 @@
 import Colors from '@/constants/Colors';
-import React, { useEffect, useState } from 'react';
-import { ScrollView, View } from 'react-native';
+import { View } from 'react-native';
 import Markdown from 'react-native-markdown-display';
-import styles from '../../constants/styles/news'; // Updated path for styles
 import AnimatedHeaderLayout from '@/components/AnimatedHeaderLayout';
 
 const markdownContent = `
 ## About the MCLA
 
-The [Men's Collegiate Lacrosse Association (MCLA)](https://mcla.us/) provides a quality national intercollegiate lacrosse experience. The MCLA consists of nine non-varsity college lacrosse conferences featuring over 183 teams across 42 states and two countries. The association provides a governing structure similar to the NCAA, consisting of eligibility rules, national awards, polls, and championship tournaments.
+The [Men's Collegiate Lacrosse Association (MCLA)](https://mcla.us/) consists of nine non-varsity college lacrosse conferences featuring over 183 teams across 42 states and two countries. The association provides a governing structure similar to the NCAA, consisting of eligibility rules, national awards, polls, and championship tournaments.
 
 ## About the SELC
 
-The Divison 1 [SouthEastern Lacrosse Conference (SELC)](https://www.theselc.net/) is the conference the Georgia Tech Lacrosse team is apart of. The Conference is formatted into to divisions, North and South. The Yellow Jackets have won the SELC conference 6 times (1997, 2004, 2016, 2017, 2023 and 2024).
+The Divison 1 [SouthEastern Lacrosse Conference (SELC)](https://www.theselc.net/) is the conference that Georgia Tech Lacrosse is in. The Conference is formatted into two divisions, North and South. The Yellow Jackets have won the SELC conference 6 times (1997, 2004, 2016, 2017, 2023 and 2024).
 
-SELC North Division:
+#### SELC North Division:
 - Georgia Tech
 - Georgia
 - Alabama
 - South Carolina
 
-SELC South Division:
+#### SELC South Division:
 - Univeristy of Florida
 - University of Central Florida
 - Flordia State
 - South Florida
 - Auburn
-
-####
 
 ### The Conferences
 
@@ -60,42 +56,55 @@ const LeagueInfo = () => {
   // }, []);
 
   return (
-    <AnimatedHeaderLayout headerText="MCLA & SELC Info" backgroundColor={styles.container.backgroundColor}>
+    <AnimatedHeaderLayout headerText="About MCLA & SELC" backgroundColor={Colors.background}>
       <Markdown style={{
         bold: {
           fontSize: 28,
           fontWeight: 'bold',
           color: Colors.textPrimary,
           marginBottom: 10,
+          fontFamily: 'Roboto-regular-Bold',
         },
         body: {
-          fontSize: 15,
+          fontSize: 18,
           lineHeight: 24,
           color: Colors.textSecondary,
           padding: 12,
-          // alignContent: 'center',
+          fontFamily: 'Roboto-regular',
         },
         heading1: {
           fontSize: 28,
           fontWeight: 'bold',
           color: Colors.textPrimary,
           marginBottom: 10,
+          fontFamily: 'Roboto-regular-Bold',
         },
         heading2: {
           fontSize: 24,
           fontWeight: 'bold',
           color: Colors.textPrimary,
+          marginTop: 16,
           marginBottom: 8,
+          fontFamily: 'Roboto-regular-Bold',
         },
         heading3: {
           fontSize: 20,
           fontWeight: 'bold',
           color: Colors.techMediumGold,
+          marginTop: 16,
           marginBottom: 8,
+          fontFamily: 'Roboto-regular-Bold',
+        },
+        heading4: {
+          fontSize: 18,
+          color: Colors.textSecondary,
+          marginTop: 8,
+          fontFamily: 'Roboto-regular-Bold',
         },
         paragraph: {
-          marginBottom: 12,
-          // alignContent: 'center',
+          marginBottom: 16,
+          fontSize: 18,
+          fontFamily: 'Roboto-Regular',
         },
         link: {
           color: '#007bff',
@@ -104,6 +113,7 @@ const LeagueInfo = () => {
         listItem: {
           fontSize: 16,
           marginBottom: 6,
+          fontFamily: 'Roboto-regular',
         },
       }}>
       {markdownContent}

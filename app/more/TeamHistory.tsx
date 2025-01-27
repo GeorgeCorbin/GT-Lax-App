@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
 import Markdown from 'react-native-markdown-display';
 import Colors from '@/constants/Colors';
 import FitImage from 'react-native-fit-image';
-import styles from '../../constants/styles/news'; // Updated path for styles
 import AnimatedHeaderLayout from '@/components/AnimatedHeaderLayout';
 
 const markdownContent = `
@@ -13,7 +11,7 @@ Lacrosse at Georgia Tech is about playing in a top program with a goal to win Ch
 
 Lacrosse at Georgia Tech is a nationally competitive Club Sport dedicated to winning national championships and molding teamwork life skills.  Georgia Tech is a member of the [SouthEastern Lacrosse Conference (SELC)](https://mcla.us/conferences/selc) of the [Men's Collegiate Lacrosse Association (MCLA)](http://mcla.us/). We play a national schedule.
 
-We are about winning as TEAM! Building a Great Future. We have Big Goals! Understand what Georgia Tech Lacrosse is about from Players, Coaches and Alumni by following the 2016 Team as they pursued their dream as [documented in the "Big Goals" Series](https://youtu.be/FmN6mxk6fWs)
+We are about winning as a TEAM! Building a Great Future. We have Big Goals! Understand what Georgia Tech Lacrosse is about from Players, Coaches and Alumni by following the 2016 Team as they pursued their dream as [documented in the "Big Goals" Series](https://youtu.be/FmN6mxk6fWs)
 
 Lacrosse at Georgia Tech is about UpHolding The Ramblin Wreck and Helluva an Engineer Tradition!
 `;
@@ -38,38 +36,53 @@ const TeamHistory: React.FC = () => {
   return (
     <AnimatedHeaderLayout headerText="Georgia Tech Lacrosse" backgroundColor={Colors.background}>
       <Markdown style={{
-        bold: {
+bold: {
           fontSize: 28,
           fontWeight: 'bold',
           color: Colors.textPrimary,
           marginBottom: 10,
+          fontFamily: 'Roboto-regular-Bold',
         },
         body: {
           fontSize: 18,
           lineHeight: 24,
           color: Colors.textSecondary,
           padding: 12,
+          fontFamily: 'Roboto-regular',
         },
         heading1: {
           fontSize: 28,
           fontWeight: 'bold',
           color: Colors.textPrimary,
           marginBottom: 10,
+          fontFamily: 'Roboto-regular-Bold',
         },
         heading2: {
           fontSize: 24,
           fontWeight: 'bold',
           color: Colors.textPrimary,
+          marginTop: 16,
           marginBottom: 8,
+          fontFamily: 'Roboto-regular-Bold',
         },
         heading3: {
           fontSize: 20,
           fontWeight: 'bold',
           color: Colors.techMediumGold,
+          marginTop: 16,
           marginBottom: 8,
+          fontFamily: 'Roboto-regular-Bold',
+        },
+        heading4: {
+          fontSize: 18,
+          color: Colors.textSecondary,
+          marginTop: 8,
+          fontFamily: 'Roboto-regular-Bold',
         },
         paragraph: {
-          marginBottom: 12,
+          marginBottom: 16,
+          fontSize: 18,
+          fontFamily: 'Roboto-Regular',
         },
         link: {
           color: '#007bff',
@@ -78,6 +91,7 @@ const TeamHistory: React.FC = () => {
         listItem: {
           fontSize: 16,
           marginBottom: 6,
+          fontFamily: 'Roboto-regular',
         },
       }}
       rules={{
