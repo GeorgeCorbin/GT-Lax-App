@@ -40,7 +40,7 @@ export default function RootLayout() {
       try {
         const hasCompletedNotificationSetup = await AsyncStorage.getItem('hasCompletedNotificationSetup');
         const lastVersion = await AsyncStorage.getItem('lastVersion');
-        const currentVersion = require('../app.json').version;
+        const currentVersion = require('../package.json').version;
 
         // Check for app version updates
         if (lastVersion !== currentVersion) {

@@ -30,13 +30,19 @@ const GameCard = () => {
 
   const assetsLink = require.context('../../assets/images/fields', false, /\.(png|jpe?g|svg)$/);
   const fieldImages = loadFieldImages(assetsLink);
-  const fieldImage = getFieldImage(fieldImages, homeTeam);
+  const fieldImage = getFieldImage(fieldImages, game.description.includes('SELC') || game.description.includes('MCLA') ? (game.description.includes('SELC') ? 'SELC' : 'MCLA') : homeTeam);
 
   const { city: location, fieldName, latitude, longitude, conference, region } = getUniversityDetails(homeTeam);
   const homeTeamConference = conference;
   const homeTeamRegion = region;
   const awayTeamConference = getUniversityDetails(awayTeam).conference;
   const awayTeamRegion = getUniversityDetails(awayTeam).region;
+  const field = game.description.includes('SELC') ? 'Bolles Stadium' : (game.description.includes('MCLA') ? 'Round Rock Sports Complex' : fieldName)
+  const gameLocation = game.description.includes('SELC') ? 'Jacksonville, FL' : (game.description.includes('MCLA') ? 'Round Rock, TX' : location)
+  const selcLat = 30.3322;
+  const selcLong = -81.6557;
+  const mclaLat = 30.5083;
+  const mclaLong = -97.6789;
 
   const { rankings, loadingRankings } = useAppData();
   const [awayRanking, setAwayRanking] = useState<number | null>(null);
@@ -65,12 +71,24 @@ const GameCard = () => {
   };
 
   const [weather, setWeather] = useState<WeatherData>(null);
+  const [weatherOneWeek, setWeatherOneWeek] = useState<WeatherData>(null);
 
   useEffect(() => {
     const fetchWeather = async () => {
       try {
         // Fetch NWS metadata
-        const pointsResponse = await fetch(`${NWS_API_URL}/points/${latitude},${longitude}`);
+        let lat, long;
+        if (gameLocation == 'Jacksonville, FL') {
+          lat = selcLat;
+          long = selcLong;
+        } else if (gameLocation == 'Round Rock, TX') {
+          lat = mclaLat;
+          long = mclaLong;
+        } else {
+          lat = latitude;
+          long = longitude;
+        }
+        const pointsResponse = await fetch(`${NWS_API_URL}/points/${lat},${long}`);
         if (!pointsResponse.ok) throw new Error('Failed to fetch NWS metadata.');
         const pointsData = await pointsResponse.json();
   
@@ -81,7 +99,6 @@ const GameCard = () => {
   
         // Find the hourly forecast period matching the game time
         const gameDateTime = new Date(pubDate).toISOString();
-        // console.log('Game date/time:', gameDateTime);
         let matchingPeriod = forecastData.properties.periods.find(
           (period: { startTime: string | number | Date; endTime: string | number | Date; }) =>
             new Date(period.startTime).toISOString() <= gameDateTime &&
@@ -90,7 +107,6 @@ const GameCard = () => {
   
         // If no hourly forecast is found, fallback to the daily forecast
         if (!matchingPeriod) {
-          // console.log('Hourly forecast unavailable. Falling back to daily forecast.');
           forecastUrl = pointsData.properties.forecast;
           forecastResponse = await fetch(forecastUrl);
           forecastData = await forecastResponse.json();
@@ -104,7 +120,18 @@ const GameCard = () => {
         }
 
         if (!matchingPeriod) {
-          // console.log('No forecast available for the specified time or day.');
+          // Fetch the weather for one week from today
+          const oneWeekFromToday = new Date();
+          oneWeekFromToday.setDate(oneWeekFromToday.getDate() + 6);
+          const oneWeekDateString = oneWeekFromToday.toISOString();
+
+          const oneWeekPeriod = forecastData.properties.periods.find((period: { startTime: string | number | Date; }) => {
+            const periodDate = new Date(period.startTime).toDateString();
+            const oneWeekDate = new Date(oneWeekDateString).toDateString();
+            return periodDate === oneWeekDate;
+          });
+
+          setWeatherOneWeek(oneWeekPeriod || null);
           setWeather(null);
         } else {
           setWeather(matchingPeriod);
@@ -142,7 +169,7 @@ const GameCard = () => {
 
       {/* Stadium Name*/}
       <Text style={styles.detailPosition}>
-        Field: {fieldName}
+        Field: {field}
       </Text>
 
       {/* Team Logos Section */}
@@ -155,7 +182,7 @@ const GameCard = () => {
             {awayTeamRegion && `, ${awayTeamRegion}`}
             </Text>
         </View>
-        <Text style={styles.vsText}>@</Text>
+        <Text style={styles.vsText}>{game.description.includes('SELC') || game.description.includes('MCLA') ? 'vs.' : '@'}</Text>
         <View style={styles.team}>
           <Image source={getTeamLogo(teamLogos, homeTeam)} style={styles.logo} />
           <Text style={styles.teamName}>{homeRanking ? `#${homeRanking} ` : ''}{homeTeam}</Text>
@@ -183,9 +210,9 @@ const GameCard = () => {
         {/* Coverage */}
         <Text style={styles.detailText}>
           Coverage: {homeTeam.toLowerCase() === 'liberty' ? 'ESPN+' : (
-        <Text style={{ color: Colors.textSecondary, textDecorationLine: 'underline' }} onPress={() => Linking.openURL('https://mclatv.us')}>
-          MCLATV.us
-        </Text>
+          <Text style={{ color: Colors.textSecondary, textDecorationLine: 'underline' }} onPress={() => Linking.openURL('https://www.youtube.com/@GTmenslacrosse/streams')}>
+            Streaming on YouTube
+          </Text>
           )}
         </Text>
       </View>
@@ -193,7 +220,7 @@ const GameCard = () => {
       {/* Weather Information */}
       <View style={styles.weatherBox}>
         {/*  location */}
-        <Text style={styles.location}>{location}</Text>
+        <Text style={styles.location}>{gameLocation}</Text>
 
         {/* Weather */}
         {weather ? (
@@ -225,15 +252,15 @@ const GameCard = () => {
             </View>
           )
         ) : (
-          <Text style={styles.noWeatherText}>
-            <MaterialCommunityIcons
-              name={'weather-sunny-off'}
-              size={24}
-              color={Colors.grayMatter}
-            />
-            {' '} Weather Data {'\n'} Not Available Yet {'\n'} Check Back Later
-          </Text>
-          
+          // <Text style={styles.noWeatherText}>
+          //   <MaterialCommunityIcons
+          //     name={'weather-sunny-off'}
+          //     size={24}
+          //     color={Colors.grayMatter}
+          //   />
+          //   {' '} Weather Data {'\n'} Not Available Yet {'\n'} Check Back Later
+          // </Text>
+          ''
         )}
       </View>
 

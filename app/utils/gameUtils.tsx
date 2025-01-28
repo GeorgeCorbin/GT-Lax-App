@@ -44,71 +44,84 @@ export const getFieldImage = (fieldImages: Record<string, any>, teamName: string
 
 // Utility to determine if Georgia Tech is the home team
 export const isHomeTeam = (title: string): boolean => {
-    return title.includes('vs. Georgia Tech') || title.includes(', Georgia Tech');
+  return title.includes('vs. Georgia Tech') || title.includes(', Georgia Tech');
+};
+
+export const isSELCorMCLA = (title: string): { city: string; fieldName: string; latitude: number; longitude: number; } => {
+  const selcDetails = { city: 'Jacksonville, FL', fieldName: "Bolles Stadium", latitude: 30.185916, longitude: -81.602356 };
+  const mclaDetails = { city: 'Round Rock, TX', fieldName: "Round Rock", latitude: 30.508255, longitude: -97.678896 };
+
+  if (title.includes('SELC')) {
+    return selcDetails;
+  } else if (title.includes('MCLA')) {
+    return mclaDetails;
+  } else {
+    return { city: '', fieldName: '', latitude: 0, longitude: 0 };
+  }
+}
+  
+// Utility to clean and extract team names
+export const extractTeams = (title: string): { awayTeam: string; homeTeam: string } => {
+  const cleanedTitle = title.replace(/Final/i, '').trim();
+  const parts = cleanedTitle.includes('vs.') ? cleanedTitle.split('vs.') : cleanedTitle.split(',');
+
+  return {
+    awayTeam: parts[0]?.replace(/\d+/g, '').trim() || 'Away Team',
+    homeTeam: parts[1]?.replace(/\d+/g, '').trim() || 'Home Team',
   };
+};
   
-  // Utility to clean and extract team names
-  export const extractTeams = (title: string): { awayTeam: string; homeTeam: string } => {
-    const cleanedTitle = title.replace(/Final/i, '').trim();
-    const parts = cleanedTitle.includes('vs.') ? cleanedTitle.split('vs.') : cleanedTitle.split(',');
-  
-    return {
-      awayTeam: parts[0]?.replace(/\d+/g, '').trim() || 'Away Team',
-      homeTeam: parts[1]?.replace(/\d+/g, '').trim() || 'Home Team',
-    };
-  };
-  
-  // Utility to extract scores from a title
-  export const extractScores = (title: string): { awayScore: string; homeScore: string } => {
-    const cleanedTitle = title.replace(/Final/i, '').trim();
-    const [awayPart, homePart] = cleanedTitle.split(',');
-  
-    const extractScore = (part: string) => {
-      const match = part.match(/(\d+)\s*(,|\s|$)/);
-      return match ? match[1] : '0';
-    };
-  
-    return {
-      awayScore: extractScore(awayPart),
-      homeScore: extractScore(homePart),
-    };
+// Utility to extract scores from a title
+export const extractScores = (title: string): { awayScore: string; homeScore: string } => {
+  const cleanedTitle = title.replace(/Final/i, '').trim();
+  const [awayPart, homePart] = cleanedTitle.split(',');
+
+  const extractScore = (part: string) => {
+    const match = part.match(/(\d+)\s*(,|\s|$)/);
+    return match ? match[1] : '0';
   };
 
-  // Utility to get rankings for a team on a specific date
-  export const getRankingForTeamOnDate = (
-    rankings: any[],
-    teamName: string,
-    gameDate: string
-  ): number | null => {
-    if (!rankings.length) {
-      console.error('Rankings not loaded.');
-      return null;
-    }
-  
-    const gameDateObj = new Date(gameDate);
-
-    // Find the latest ranking published before or on the game date
-    const applicableRanking = rankings
-      .filter((ranking) => {
-        const rankingDate = parse(ranking.date, 'MMMM dd, yyyy', new Date()); // Parse with a specific format
-        return isBefore(rankingDate, gameDateObj) || rankingDate.getTime() === gameDateObj.getTime();
-      })
-      .sort((a, b) => compareDesc(parse(a.date, 'MMMM dd, yyyy', new Date()), parse(b.date, 'MMMM dd, yyyy', new Date())))[0];
-    
-    if (!applicableRanking) return null;
-  
-    // Parse the rankings list into an array of ranked teams
-    const rankList = applicableRanking.list.split(',').map((entry: string) => entry.trim());
-
-    // Use an exact match for the team name
-    const teamRank = rankList.findIndex((entry: string) => {
-      // Extract the team name from the ranking entry (e.g., "1. Georgia Tech" -> "Georgia Tech")
-      const entryTeamName = entry.replace(/^\d+\.\s*/, '').toLowerCase(); // Remove the rank number and whitespace
-      return entryTeamName === teamName.toLowerCase(); // Exact match
-    });
-
-    return teamRank !== -1 ? teamRank + 1 : null; // Rankings are 1-based
+  return {
+    awayScore: extractScore(awayPart),
+    homeScore: extractScore(homePart),
   };
+};
+
+// Utility to get rankings for a team on a specific date
+export const getRankingForTeamOnDate = (
+  rankings: any[],
+  teamName: string,
+  gameDate: string
+): number | null => {
+  if (!rankings.length) {
+    console.error('Rankings not loaded.');
+    return null;
+  }
+
+  const gameDateObj = new Date(gameDate);
+
+  // Find the latest ranking published before or on the game date
+  const applicableRanking = rankings
+    .filter((ranking) => {
+      const rankingDate = parse(ranking.date, 'MMMM dd, yyyy', new Date()); // Parse with a specific format
+      return isBefore(rankingDate, gameDateObj) || rankingDate.getTime() === gameDateObj.getTime();
+    })
+    .sort((a, b) => compareDesc(parse(a.date, 'MMMM dd, yyyy', new Date()), parse(b.date, 'MMMM dd, yyyy', new Date())))[0];
+  
+  if (!applicableRanking) return null;
+
+  // Parse the rankings list into an array of ranked teams
+  const rankList = applicableRanking.list.split(',').map((entry: string) => entry.trim());
+
+  // Use an exact match for the team name
+  const teamRank = rankList.findIndex((entry: string) => {
+    // Extract the team name from the ranking entry (e.g., "1. Georgia Tech" -> "Georgia Tech")
+    const entryTeamName = entry.replace(/^\d+\.\s*/, '').toLowerCase(); // Remove the rank number and whitespace
+    return entryTeamName === teamName.toLowerCase(); // Exact match
+  });
+
+  return teamRank !== -1 ? teamRank + 1 : null; // Rankings are 1-based
+};
 
 // Utility to get the city, field name, latitude, and longitude of each university
 export const getUniversityDetails = (teamName: string): { city: string; fieldName: string; latitude: number; longitude: number; conference: string; region: string } => {
@@ -125,21 +138,21 @@ export const getUniversityDetails = (teamName: string): { city: string; fieldNam
   };
 
   const universityDetails: Record<string, UniversityDetails> = {
-    'alabama': { city: 'Tuscaloosa, AL', fieldName: unknownFieldName, latitude: 33.2095614, longitude: -87.5675258, conference: 'SELC', region: 'North' },
+    'alabama': { city: 'Tuscaloosa, AL', fieldName: "Alabama Intramural Fields Field #2", latitude: 33.2095614, longitude: -87.5675258, conference: 'SELC', region: 'North' },
     'arizonastate': { city: 'Tempe, AZ', fieldName: unknownFieldName, latitude: 33.4255117, longitude: -111.940016, conference: 'SLC', region: unknownRegion },
     'arizona': { city: 'Tucson, AZ', fieldName: unknownFieldName, latitude: 32.2228765, longitude: -110.974847, conference: 'SLC', region: unknownRegion },
     'arkansas': { city: 'Fayetteville, AR', fieldName: unknownFieldName, latitude: 36.0625843, longitude: -94.1574328, conference: 'LSA', region: 'North' },
-    'auburn': { city: 'Auburn, AL', fieldName: 'SportsPlex', latitude: 32.6098566, longitude: -85.4807825, conference: 'SELC', region: 'South' },
+    'auburn': { city: 'Auburn, AL', fieldName: 'Auburn Club Sports Fields', latitude: 32.6098566, longitude: -85.4807825, conference: 'SELC', region: 'South' },
     'baylor': { city: 'Waco, TX', fieldName: unknownFieldName, latitude: 31.549333, longitude: -97.1466695, conference: 'LSA', region: 'North' },
     'boisestate': { city: 'Boise, ID', fieldName: unknownFieldName, latitude: 43.6166163, longitude: -116.200886, conference: 'PNCLL', region: unknownRegion },
     'bostoncollege': { city: 'Chestnut Hill, MA', fieldName: unknownFieldName, latitude: 42.3306529, longitude: -71.1661647, conference: 'CLC', region: unknownRegion },
-    'byu': { city: 'Provo, UT', fieldName: unknownFieldName, latitude: 40.2337289, longitude: -111.6587085, conference: 'RMLC', region: unknownRegion },
+    'byu': { city: 'Provo, UT', fieldName: 'BYU West Stadium Field', latitude: 40.2337289, longitude: -111.6587085, conference: 'RMLC', region: unknownRegion },
     'buffalo': { city: 'Buffalo, NY', fieldName: unknownFieldName, latitude: 42.8867166, longitude: -78.8783922, conference: 'CLC', region: unknownRegion },
     'calpoly': { city: 'San Luis Obispo, CA', fieldName: unknownFieldName, latitude: 35.3540209, longitude: -120.375716, conference: 'WCLL', region: unknownRegion },
     'california': { city: 'Berkeley, CA', fieldName: unknownFieldName, latitude: 37.8708393, longitude: -122.272863, conference: 'WCLL', region: unknownRegion },
     'centralflorida': { city: 'Orlando, FL', fieldName: 'RWC Park', latitude: 28.5421109, longitude: -81.3790304, conference: 'SELC', region: unknownRegion },
     'chapman': { city: 'Orange, CA', fieldName: unknownFieldName, latitude: 33.750631, longitude: -117.8722311, conference: 'SLC', region: unknownRegion },
-    'clemson': { city: 'Clemson, SC', fieldName: unknownFieldName, latitude: 34.6850749, longitude: -82.8364111, conference: 'ALC', region: 'South' },
+    'clemson': { city: 'Clemson, SC', fieldName: 'Clemson Rec Sports Fields', latitude: 34.6850749, longitude: -82.8364111, conference: 'ALC', region: 'South' },
     'colorado': { city: 'Boulder, CO', fieldName: unknownFieldName, latitude: 40.0149856, longitude: -105.270545, conference: 'RMLC', region: unknownRegion },
     'coloradostate': { city: 'Fort Collins, CO', fieldName: unknownFieldName, latitude: 40.5871782, longitude: -105.0770113, conference: 'RMLC', region: unknownRegion },
     'concordiairvine': { city: 'Irvine, CA', fieldName: unknownFieldName, latitude: 33.6856969, longitude: -117.825981, conference: 'SLC', region: unknownRegion },
@@ -147,7 +160,7 @@ export const getUniversityDetails = (teamName: string): { city: string; fieldNam
     'eastcarolina': { city: 'Greenville, NC', fieldName: unknownFieldName, latitude: 35.613224, longitude: -77.3724593, conference: 'ALC', region: 'South' },
     'florida': { city: 'Gainesville, FL', fieldName: 'Maguire Field', latitude: 29.6519684, longitude: -82.3249846, conference: 'SELC', region: 'South' },
     'floridastate': { city: 'Tallahassee, FL', fieldName: 'Seminoles Field', latitude: 30.4380832, longitude: -84.2809332, conference: 'SELC', region: 'South' },
-    'georgia': { city: 'Athens, GA', fieldName: 'Sports Complex', latitude: 33.9597677, longitude: -83.376398, conference: 'SELC', region: 'North' },
+    'georgia': { city: 'Athens, GA', fieldName: 'Georgia Club Sports Complex', latitude: 33.9597677, longitude: -83.376398, conference: 'SELC', region: 'North' },
     'georgiatech': { city: 'Atlanta, GA', fieldName: 'Roe Stamps Field', latitude: 33.7489924, longitude: -84.3902644, conference: 'SELC', region: 'North' },
     'grandcanyon': { city: 'Phoenix, AZ', fieldName: unknownFieldName, latitude: 33.4484367, longitude: -112.074141, conference: 'SLC', region: unknownRegion },
     'highpoint': { city: 'High Point, NC', fieldName: unknownFieldName, latitude: 35.955692, longitude: -80.005318, conference: 'ALC', region: 'South' },
@@ -158,7 +171,7 @@ export const getUniversityDetails = (teamName: string): { city: string; fieldNam
     'kansas': { city: 'Lawrence, KS', fieldName: unknownFieldName, latitude: 38.9719137, longitude: -95.2359403, conference: 'LSA', region: 'North' },
     'kennesawstate': { city: 'Kennesaw, GA', fieldName: unknownFieldName, latitude: 34.0234337, longitude: -84.6154897, conference: 'D2 SELC', region: 'North' },
     'kentucky': { city: 'Lexington, KY', fieldName: unknownFieldName, latitude: 38.0405837, longitude: -84.5037164, conference: 'ALC', region: 'North' },
-    'liberty': { city: 'Lynchburg, VA', fieldName: 'East Athletic Complex', latitude: 37.4137536, longitude: -79.1422464, conference: 'ALC', region: 'North' },
+    'liberty': { city: 'Lynchburg, VA', fieldName: "Liberty Men's Lacrosse Field", latitude: 37.4137536, longitude: -79.1422464, conference: 'ALC', region: 'North' },
     'louisville': { city: 'Louisville, KY', fieldName: unknownFieldName, latitude: 38.2542376, longitude: -85.759407, conference: 'ALC', region: 'North' },
     'lsu': { city: 'Baton Rouge, LA', fieldName: unknownFieldName, latitude: 30.4494155, longitude: -91.1869659, conference: 'LSA', region: 'South' },
     'miamiohio': { city: 'Miami, OH', fieldName: unknownFieldName, latitude: 39.5108574, longitude: -84.7315563, conference: 'UMLC', region: 'East' },
@@ -196,10 +209,10 @@ export const getUniversityDetails = (teamName: string): { city: string; fieldNam
     'ucsantabarbara': { city: 'Santa Barbara, CA', fieldName: unknownFieldName, latitude: 34.4221319, longitude: -119.702667, conference: 'WCLL', region: unknownRegion },
     'ucla': { city: 'Los Angeles, CA', fieldName: unknownFieldName, latitude: 34.0536909, longitude: -118.242766, conference: 'SLC', region: unknownRegion },
     'usc': { city: 'Los Angeles, CA', fieldName: unknownFieldName, latitude: 34.0536909, longitude: -118.242766, conference: 'SLC', region: unknownRegion },
-    'utahvalley': { city: 'Orem, UT', fieldName: unknownFieldName, latitude: 40.2981599, longitude: -111.6944313, conference: 'RMLC', region: unknownRegion },
+    'utahvalley': { city: 'Orem, UT', fieldName: ' Utah Valley University Field', latitude: 40.2981599, longitude: -111.6944313, conference: 'RMLC', region: unknownRegion },
     'utah': { city: 'Salt Lake City, UT', fieldName: unknownFieldName, latitude: 40.7596198, longitude: -111.886797, conference: 'RMLC', region: unknownRegion },
     'utahtech': { city: 'Salt Lake City, UT', fieldName: unknownFieldName, latitude: 40.7596198, longitude: -111.886797, conference: 'RMLC', region: unknownRegion },
-    'virginiatech': { city: 'Blacksburg, VA', fieldName: unknownFieldName, latitude: 37.2296566, longitude: -80.4136767, conference: 'ALC', region: 'South' },
+    'virginiatech': { city: 'Blacksburg, VA', fieldName: "The Marching Virginians Center", latitude: 37.2296566, longitude: -80.4136767, conference: 'ALC', region: 'South' },
     'virginia': { city: 'Charlottesville, VA', fieldName: unknownFieldName, latitude: 38.029306, longitude: -78.4766781, conference: 'ALC', region: 'North' },
     'walsh': { city: 'North Canton, OH', fieldName: unknownFieldName, latitude: 40.875891, longitude: -81.402336, conference: 'ALC', region: 'North' },
     'washingtonstate': { city: 'Pullman, WA', fieldName: unknownFieldName, latitude: 46.7304268, longitude: -117.173895, conference: 'PNCLL', region: unknownRegion },

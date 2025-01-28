@@ -32,9 +32,22 @@ type Game = {
 const assetsLink = require.context('../../assets/images/Opponent_Logos', false, /\.(png|jpe?g|svg)$/);
 const teamLogos = loadTeamLogos(assetsLink);
 
+const location = (game: Game, isHome: boolean): string => {
+  return (
+    (game.description.includes('SELC') && !game.description.includes('Quarter')) || game.description.includes('MCLA')
+    ? game.description.split(',')[2]
+    : (isHome && game.description.includes('SELC Quarter')
+      ? 'Roe Stamps Field\nSELC Quarter-Final'
+      : (isHome
+        ? 'Roe Stamps Field'
+        : 'Away'))
+  );
+}
+
 const Schedule = () => {
   const { schedule, loading, fetchScheduleForSeason, rankings, loadingRankings } = useAppData();
   const [record, setRecord] = useState({ wins: 0, losses: 0 });
+  const [divisionRecord, setDivisionRecord] = useState({ wins: 0, losses: 0 });
   const [season, setSelected] = useState('2024-25');
   const [completedGames, setCompletedGames] = useState<Game[]>([]);
   const [upcomingGames, setUpcomingGames] = useState<Game[]>([]);
@@ -60,10 +73,25 @@ const Schedule = () => {
         },
         { wins: 0, losses: 0 }
       );
+      
+      const divisionTeams = ['Georgia', 'Alabama', 'South Carolina']; // Replace with actual division teams
+
+      const divisionRecord = completed.reduce(
+        (acc: { wins: number; losses: number }, game: Game) => {
+          const { awayTeam, homeTeam } = extractTeams(game.title);
+          if (divisionTeams.includes(awayTeam) || divisionTeams.includes(homeTeam)) {
+            if (game.score && game.score.includes('W')) acc.wins++;
+            else acc.losses++;
+          }
+          return acc;
+        },
+        { wins: 0, losses: 0 }
+      );
 
       setCompletedGames(completed);
       setUpcomingGames(upcoming);
       setRecord(record);
+      setDivisionRecord(divisionRecord);
     }
   }, [loading, schedule]);
 
@@ -78,13 +106,13 @@ const Schedule = () => {
   return (
     <AnimatedHeaderLayout
       headerText="Schedule"
-      recordText={`${record.wins}-${record.losses}`}
+      recordText={`${record.wins}-${record.losses} (${divisionRecord.wins}-${divisionRecord.losses})`}
       backgroundColor={styles.container.backgroundColor}
     >
       <View style={styles.header}>
         <Text style={styles.headerText}>Schedule</Text>
         <Text style={styles.recordText}>
-          {record.wins}-{record.losses}
+          {record.wins}-{record.losses} ({divisionRecord.wins}-{divisionRecord.losses})
         </Text>
       </View>
 
@@ -158,11 +186,7 @@ const Schedule = () => {
                   })}
                 </Text>
                 <Text style={styles.location}>
-                  {isHome
-                    ? 'Roe Stamps Field'
-                    : game.description.includes('SELC') || game.description.includes('MCLA')
-                    ? game.description.split(',')[2]
-                    : 'Away'}
+                  {location(game, isHome)}
                 </Text>
               </View>
             </View>
@@ -214,11 +238,7 @@ const Schedule = () => {
                   })}
                 </Text>
                 <Text style={styles.location}>
-                  {isHome
-                    ? 'Roe Stamps Field'
-                    : game.description.includes('SELC') || game.description.includes('MCLA')
-                    ? game.description.split(',')[2]
-                    : 'Away'}
+                  {location(game, isHome)}
                 </Text>
               </View>
             </View>
