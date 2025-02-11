@@ -24,6 +24,7 @@ type GameInfo = {
 const GameCard = () => {
   const params = useSearchParams(); // Use useSearchParams to access route params
   const [gameInfo, setGameInfo] = useState<GameInfo[]>([]);
+  const [loadingGameInfo, setLoadingGameInfo] = useState(true);
 
   useEffect(() => {
     const fetchGameInfo = async () => {
@@ -32,6 +33,7 @@ const GameCard = () => {
         const response = await fetch(`https://gt-lax-app.web.app/game_info.json`);
         const gameInfo = await response.json();
         setGameInfo(gameInfo);
+        setLoadingGameInfo(false);
       } catch (error) {
         console.error('Error fetching game info:', error);
       }
@@ -55,30 +57,6 @@ const GameCard = () => {
   const { awayTeam, homeTeam } = extractTeams(title);
   const isHome = isHomeTeam(title);
 
-  // const assetsLink = require.context('../../assets/images/fields', false, /\.(png|jpe?g|svg)$/);
-  // const fieldImages = loadFieldImages(assetsLink);
-  // const fieldImage = getFieldImage(fieldImages, game.description.includes('SELC') || game.description.includes('MCLA') ? (game.description.includes('SELC') ? 'SELC' : 'MCLA') : homeTeam);
-  // const fieldImage = getFieldImage(
-  //   fieldImages,
-  //   game.description.includes('SELC')
-  //     ? (game.description.includes('Quarter') ? homeTeam : 'SELC')
-  //     : (game.description.includes('MCLA') ? 'MCLA' : homeTeam)
-  // );
-
-  // const { city: location, fieldName, latitude, longitude, conference, region } = getUniversityDetails(homeTeam);
-  // const homeTeamConference = conference;
-  // const homeTeamRegion = region;
-  // const awayTeamConference = getUniversityDetails(awayTeam).conference;
-  // const awayTeamRegion = getUniversityDetails(awayTeam).region;
-  // const field = game.description.includes('SELC') ? 'Bolles Stadium' : (game.description.includes('MCLA') ? 'Round Rock Sports Complex' : fieldName)
-  // const field = game.description.includes('SELC')
-  //   ? (game.description.includes('Quarter') ? fieldName : 'Bolles Stadium')
-  //   : (game.description.includes('MCLA') ? 'Round Rock Sports Complex' : fieldName);
-  // const gameLocation = game.description.includes('SELC') ? 'Jacksonville, FL' : (game.description.includes('MCLA') ? 'Round Rock, TX' : location);
-  // const selcLat = 30.3322;
-  // const selcLong = -81.6557;
-  // const mclaLat = 30.5083;
-  // const mclaLong = -97.6789;
   const normalizeTeamName = (team: string) => team.toLowerCase().replace(/\s+/g, '');
 
   const homeTeamId = normalizeTeamName(homeTeam);
@@ -87,14 +65,16 @@ const GameCard = () => {
   const homeGameInfo = gameInfo?.find(info => normalizeTeamName(info.id) === homeTeamId);
   const awayGameInfo = gameInfo?.find(info => normalizeTeamName(info.id) === awayTeamId);
   
-  
-  const fieldImage = homeGameInfo?.fieldImage;
   const homeTeamConference = homeGameInfo?.conference;
   const homeTeamRegion = homeGameInfo?.region;
   const awayTeamConference = awayGameInfo?.conference;
   const awayTeamRegion = awayGameInfo?.region;
-  const field = homeGameInfo?.fieldName;
-  const gameLocation = homeGameInfo?.location;
+  const fieldImage = (game.description.includes('SELC') && !game.description.includes('Quarter')) ? gameInfo.find(info => info.id === 'SELC')?.fieldImage : (game.description.includes('MCLA') ? gameInfo.find(info => info.id === 'MCLA')?.fieldImage : homeGameInfo?.fieldImage);
+  const field = (game.description.includes('SELC') && !game.description.includes('Quarter')) ? gameInfo.find(info => info.id === 'SELC')?.fieldName : (game.description.includes('MCLA') ? gameInfo.find(info => info.id === 'MCLA')?.fieldName : homeGameInfo?.fieldName);
+  const gameLocation = (game.description.includes('SELC') && !game.description.includes('Quarter')) ? gameInfo.find(info => info.id === 'SELC')?.location : (game.description.includes('MCLA') ? gameInfo.find(info => info.id === 'MCLA')?.location : homeGameInfo?.location);
+  const latitude = (game.description.includes('SELC') && !game.description.includes('Quarter')) ? gameInfo.find(info => info.id === 'SELC')?.latitude : (game.description.includes('MCLA') ? gameInfo.find(info => info.id === 'MCLA')?.latitude : homeGameInfo?.latitude);
+  const longitude = (game.description.includes('SELC') && !game.description.includes('Quarter')) ? gameInfo.find(info => info.id === 'SELC')?.longitude : (game.description.includes('MCLA') ? gameInfo.find(info => info.id === 'MCLA')?.longitude : homeGameInfo?.longitude);
+
 
   const { rankings, loadingRankings } = useAppData();
   const [awayRanking, setAwayRanking] = useState<number | null>(null);
@@ -129,19 +109,9 @@ const GameCard = () => {
     const fetchWeather = async () => {
       try {
         // Fetch NWS metadata
-        // let lat, long;
-        // if (gameLocation == 'Jacksonville, FL') {
-        //   lat = selcLat;
-        //   long = selcLong;
-        // } else if (gameLocation == 'Round Rock, TX') {
-        //   lat = mclaLat;
-        //   long = mclaLong;
-        // } else {
-        //   lat = latitude;
-        //   long = longitude;
-        // }
-        const lat = homeGameInfo?.latitude || 0;
-        const long = homeGameInfo?.longitude || 0;
+        let lat = latitude;
+        let long = longitude;
+
         const pointsResponse = await fetch(`${NWS_API_URL}/points/${lat},${long}`);
         if (!pointsResponse.ok) throw new Error('Failed to fetch NWS metadata.');
         const pointsData = await pointsResponse.json();
@@ -200,15 +170,16 @@ const GameCard = () => {
       }
     };
 
-    fetchWeather();
-    
+    if (!loadingGameInfo && latitude && longitude) {
+      fetchWeather();
+    }    
     if (!loadingRankings) {
       const awayRank = getRankingForTeamOnDate(rankings, awayTeam, pubDate);
       const homeRank = getRankingForTeamOnDate(rankings, homeTeam, pubDate);
       setAwayRanking(awayRank);
       setHomeRanking(homeRank);
     }
-  }, [rankings, homeGameInfo?.latitude, homeGameInfo?.longitude, awayTeam, homeTeam, pubDate]);
+  }, [rankings, latitude, longitude, awayTeam, homeTeam, pubDate, loadingGameInfo]);
 
   return (
     <ScrollView style={styles.container}>      
