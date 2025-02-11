@@ -4,6 +4,7 @@ import styles from '../../constants/styles/news'; // Updated path for styles
 import { Link } from 'expo-router';
 import { useAppData } from '@/context/AppDataProvider';
 import Colors from '@/constants/Colors';
+import FastImage from 'react-native-fast-image';
 
 interface Article {
   id: number;
@@ -59,7 +60,7 @@ const NewsScreen = () => {
       }}
       style={styles.card}
     >
-      <Image source={{ uri: item.imageUrl }} style={styles.image} />
+      <FastImage source={{ uri: item.imageUrl }} style={styles.image} />
       <View style={styles.textContainer}>
         <Text style={styles.date}>{item.date}</Text>
         <Text style={styles.title}>{item.title}</Text>

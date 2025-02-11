@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, Image, ActivityIndicator } from 'react-native';
+import FastImage from 'react-native-fast-image';
 import { XMLParser } from 'fast-xml-parser';
 import styles from '../../constants/styles/schedule'; // Updated path for styles
 import AnimatedHeaderLayout from '@/components/AnimatedHeaderLayout';
@@ -160,11 +161,11 @@ const Schedule = () => {
             <View style={styles.row}>
               <View style={styles.teamColumn}>
                 <View style={styles.team}>
-                  <Image source={getTeamLogo(teamLogos, awayTeam)} style={styles.logo} />
+                  <FastImage source={getTeamLogo(teamLogos, awayTeam)} style={styles.logo} />
                   <Text style={styles.teamName}>{awayRank ? `#${awayRank} ` : ''}{awayTeam}</Text>
                 </View>
                 <View style={styles.team}>
-                  <Image source={getTeamLogo(teamLogos, homeTeam)} style={styles.logo} />
+                  <FastImage source={getTeamLogo(teamLogos, homeTeam)} style={styles.logo} />
                   <Text style={styles.teamName}>{homeRank ? `#${homeRank} ` : ''}{homeTeam}</Text>
                 </View>
               </View>
@@ -218,12 +219,12 @@ const Schedule = () => {
             <View style={styles.row}>
               <View style={styles.teamColumn}>
                 <View style={styles.team}>
-                  <Image source={getTeamLogo(teamLogos, awayTeam)} style={styles.logo} />
+                  <FastImage source={getTeamLogo(teamLogos, awayTeam)} style={styles.logo} />
                   <Text style={styles.teamName}>{awayRank ? `#${awayRank} ` : ''}{awayTeam}</Text>
                   <Text style={styles.score}>{awayScore}</Text>
                 </View>
                 <View style={styles.team}>
-                  <Image source={getTeamLogo(teamLogos, homeTeam)} style={styles.logo} />
+                  <FastImage source={getTeamLogo(teamLogos, homeTeam)} style={styles.logo} />
                   <Text style={styles.teamName}>{homeRank ? `#${homeRank} ` : ''}{homeTeam}</Text>
                   <Text style={styles.score}>{homeScore}</Text>
                 </View>

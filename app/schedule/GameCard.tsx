@@ -233,7 +233,7 @@ const GameCard = () => {
         </Text>
 
         {/* Coverage */}
-        {(homeGameInfo?.coverageText /* replace with your current season logic */ && homeGameInfo?.coverageText !== "") && (
+        {(new Date(pubDate) > new Date() /* replace with your current season logic */ && homeGameInfo?.coverageText !== "") && (
           <Text style={styles.detailText}>
             Coverage:{' '}
             {homeGameInfo?.coverageLink.trim() !== "" ? (
