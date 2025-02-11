@@ -22,5 +22,13 @@
     "imageUrl": "https://gt-lax-app.web.app/news/images/article5.jpg",
     "imageAuthor": "Kevin Schoonover",
     "contentUrl": "https://gt-lax-app.web.app/news/content/article5.md"
+  },
+  {
+    "id": 4,
+    "title": "Jackets Open Season 2-0",
+    "date": "Feb 04, 2025",
+    "imageUrl": "https://gt-lax-app.web.app/news/images/article6.jpg",
+    "imageAuthor": "Kevin Schoonover",
+    "contentUrl": "https://gt-lax-app.web.app/news/content/article6.md"
   }
 ]

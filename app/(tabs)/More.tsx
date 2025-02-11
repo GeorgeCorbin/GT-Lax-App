@@ -25,7 +25,7 @@ const MoreScreen = () => {
         </View>
         <View style={styles.row}>
           <Link href="/more/LeagueInfo" style={styles.rowText}>
-              What is the MCLA & SELC?
+              What are the MCLA & SELC?
           </Link>
           <Link href="/more/LeagueInfo" style={styles.rowArrow}>
             <Icon name="chevron-forward" style={styles.arrowIcon} />

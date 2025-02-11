@@ -31,6 +31,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: Colors.techGold, // Updated gold for the record text
     fontFamily: 'roboto-regular-bold',
+    textAlign: 'right', // Right-align the text
+    flex: 1, // Take up the remaining space
   },
 
   // Section title (e.g., UPCOMING, COMPLETED)

@@ -74,7 +74,7 @@ const Schedule = () => {
         { wins: 0, losses: 0 }
       );
       
-      const divisionTeams = ['Georgia', 'Alabama', 'South Carolina']; // Replace with actual division teams
+      const divisionTeams = ['Georgia', 'Alabama', 'South Carolina', 'Vanderbilt']; // Replace with actual division teams
 
       const divisionRecord = completed.reduce(
         (acc: { wins: number; losses: number }, game: Game) => {
@@ -201,6 +201,10 @@ const Schedule = () => {
         const { awayScore, homeScore } = extractScores(game.title);
         const isHome = isHomeTeam(game.title);
 
+        // Get rankings specific to this game
+        const awayRank = getRankingForTeamOnDate(rankings, awayTeam, game.pubDate);
+        const homeRank = getRankingForTeamOnDate(rankings, homeTeam, game.pubDate);
+
         return (
           // <View key={index} style={styles.gameItem}>
           <Link
@@ -215,12 +219,12 @@ const Schedule = () => {
               <View style={styles.teamColumn}>
                 <View style={styles.team}>
                   <Image source={getTeamLogo(teamLogos, awayTeam)} style={styles.logo} />
-                  <Text style={styles.teamName}>{awayRanking ? `#${awayRanking} ` : ''}{awayTeam}</Text>
+                  <Text style={styles.teamName}>{awayRank ? `#${awayRank} ` : ''}{awayTeam}</Text>
                   <Text style={styles.score}>{awayScore}</Text>
                 </View>
                 <View style={styles.team}>
                   <Image source={getTeamLogo(teamLogos, homeTeam)} style={styles.logo} />
-                  <Text style={styles.teamName}>{homeRanking ? `#${homeRanking} ` : ''}{homeTeam}</Text>
+                  <Text style={styles.teamName}>{homeRank ? `#${homeRank} ` : ''}{homeTeam}</Text>
                   <Text style={styles.score}>{homeScore}</Text>
                 </View>
               </View>

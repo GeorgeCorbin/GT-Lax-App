@@ -1,12 +1,17 @@
 [
     {
-        "week": 0,
-        "date": "January 28, 2025",
-        "list": "1. Georgia Tech, 2. Florida State,"
+        "week": 1,
+        "date": "January 29, 2025",
+        "list": "BYU, Utah Valley, Liberty, Georgia Tech, Texas, San Diego State, Arizona State, Tennessee, UCSB, Chapman, Virginia Tech, Florida, Colorado, California, Florida State, South Carolina, Northeastern, Colorado State, Cal Poly, Auburn, Simon Fraser, JMU, Oregon, Clemson, Georgia"
     },
     {
-        "week": 1,
-        "date": "February 4, 2025",
-        "list": "Georgia, Georgia Tech, Florida, Auburn"
+        "week": 2,
+        "date": "February 3, 2025",
+        "list": "BYU, Utah Valley, Liberty, Georgia Tech, San Diego State, Texas, Arizona State, Tennessee, Florida, UCSB, Virginia Tech, Chapman, Colorado, California, Florida State, Northeastern, South Carolina, Oregon, Cal Poly, Georgia, Colorado State, Simon Fraser, JMU, Arizona, Clemson"
+    },
+    {
+        "week": 3,
+        "date": "February 10, 2025",
+        "list": "BYU, Utah Valley, Georgia Tech, San Diego State, Texas, Arizona State, Virginia Tech, Georgia, UCSB, Liberty, Florida, Tennessee, Chapman, Colorado, California, Florida State, Northeastern, South Carolina, Cal Poly, Simon Fraser, Arizona, Oregon, JMU, Colorado State, Boston College"
     }
 ]

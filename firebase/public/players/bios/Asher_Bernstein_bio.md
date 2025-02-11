@@ -1,9 +1,9 @@
 ## Player Bio
 
 **Player Details:**
-- **Hometown:** Dedham
+- **Hometown:** Sharon
 - **State:** Massachusetts  
-- **Height:** 5'8"  
+- **Height:** 5'11"  
 - **Weight:** 165 lbs  
 - **Year:** Freshman  
 - **High School:** Noble & Greenough  

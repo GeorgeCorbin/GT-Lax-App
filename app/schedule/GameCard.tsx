@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, Image, Linking, ActivityIndicator } from 'react-native';
+import { View, Text, StyleSheet, Image, Linking, ScrollView } from 'react-native';
 import Colors from '@/constants/Colors';
 import { isHomeTeam, extractTeams, getTeamLogo, getFieldImage, loadFieldImages, getRankingForTeamOnDate, getUniversityDetails } from '../utils/gameUtils';
 import { useSearchParams } from 'expo-router/build/hooks';
@@ -157,7 +157,7 @@ const GameCard = () => {
   }, [rankings, latitude, longitude, awayTeam, homeTeam, pubDate]);
 
   return (
-    <View style={styles.container}>      
+    <ScrollView style={styles.container}>      
       {/* Image of the field */}
       {fieldImage ? (
         <Image source={fieldImage} style={styles.detailImage} />
@@ -227,8 +227,9 @@ const GameCard = () => {
           typeof weather === 'string' ? (
             <Text style={styles.noWeatherText}>{weather}</Text>
           ) : (
-            <View style={{ flex: 1 }}>
+            <View style={{ flex: 2 }}>
               <View style={styles.weatherDetails}>
+                <Text style={styles.weatherTitleText}>Gametime Weather:</Text>
                 <Text style={styles.weatherText}>
                   {weather.temperature}°{weather.temperatureUnit}{ '  ' }
                   <MaterialCommunityIcons
@@ -265,7 +266,7 @@ const GameCard = () => {
       </View>
 
 
-    </View>
+    </ScrollView>
   );
 };
 
@@ -408,6 +409,13 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: Colors.textSecondary,
     fontFamily: 'roboto-regular',
+    textAlign: 'right',
+  },
+  weatherTitleText: {
+    fontSize: 20,
+    color: Colors.textSecondary,
+    fontFamily: 'roboto-regular',
+    marginBottom: 8,
     textAlign: 'right',
   },
   noWeatherText: {

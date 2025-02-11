@@ -10,7 +10,7 @@ The [Men's Collegiate Lacrosse Association (MCLA)](https://mcla.us/) consists of
 
 ## About the SELC
 
-The Divison 1 [SouthEastern Lacrosse Conference (SELC)](https://www.theselc.net/) is the conference that Georgia Tech Lacrosse is in. The Conference is formatted into two divisions, North and South. The Yellow Jackets have won the SELC conference 6 times (1997, 2004, 2016, 2017, 2023 and 2024).
+Georgia Tech Lacrosse is in Divison I of the [SouthEastern Lacrosse Conference (SELC)](https://www.theselc.net/). The Conference is formatted into two divisions, North and South. The Yellow Jackets have won the SELC conference 6 times (1997, 2004, 2016, 2017, 2023 and 2024).
 
 #### SELC North Division:
 - Georgia Tech
@@ -25,7 +25,7 @@ The Divison 1 [SouthEastern Lacrosse Conference (SELC)](https://www.theselc.net/
 - South Florida
 - Auburn
 
-### The Conferences
+### MCLA Conferences
 
 - Atlantic Lacrosse Conference [(ALC)](https://mcla.us/conferences/alc)  
 - Continental Lacrosse Conference [(CLC)](https://mcla.us/conferences/clc)  

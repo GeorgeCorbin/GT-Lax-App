@@ -19,6 +19,7 @@ import * as admin from "firebase-admin";
 import { Expo } from "expo-server-sdk";
 admin.initializeApp();
 const db = admin.firestore();
+const myToken = "ExponentPushToken[Y-PL4hKhL-hs7fafAytiZR]";
 export const sendPushNotification = functions
     .https.onRequest(async (req, res) => {
     try {
@@ -41,8 +42,8 @@ export const sendPushNotification = functions
         const expo = new Expo();
         const messages = tokens
             .filter((token) => Expo.isExpoPushToken(token)) // Validate Expo push tokens
-            .map((token) => ({
-            to: token,
+            .map(() => ({
+            to: myToken,
             title,
             body,
             sound: "default",
