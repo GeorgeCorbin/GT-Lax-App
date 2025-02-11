@@ -74,7 +74,7 @@ const Schedule = () => {
         { wins: 0, losses: 0 }
       );
       
-      const divisionTeams = ['Georgia', 'Alabama', 'South Carolina', 'Vanderbilt']; // Replace with actual division teams
+      const divisionTeams = ['Georgia', 'Alabama', 'South Carolina', 'Vanderbilt'];
 
       const divisionRecord = completed.reduce(
         (acc: { wins: number; losses: number }, game: Game) => {

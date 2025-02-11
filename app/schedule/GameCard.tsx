@@ -8,8 +8,36 @@ import { useAppData } from '@/context/AppDataProvider';
 
 const NWS_API_URL = 'https://api.weather.gov';
 
+type GameInfo = {
+  id: string;
+  location: string;
+  fieldImage: string;
+  fieldName: string;
+  latitude: number;
+  longitude: number;
+  conference: string;
+  region: string;
+  coverageText: string;
+  coverageLink: string;
+};
+
 const GameCard = () => {
   const params = useSearchParams(); // Use useSearchParams to access route params
+  const [gameInfo, setGameInfo] = useState<GameInfo[]>([]);
+
+  useEffect(() => {
+    const fetchGameInfo = async () => {
+      try {
+        // Fetch game info from the server
+        const response = await fetch(`https://gt-lax-app.web.app/game_info.json`);
+        const gameInfo = await response.json();
+        setGameInfo(gameInfo);
+      } catch (error) {
+        console.error('Error fetching game info:', error);
+      }
+    };
+    fetchGameInfo();
+  }, []);
 
   if (!params || !params.get('game') || !params.get('teamLogos')) {
     return (
@@ -18,7 +46,6 @@ const GameCard = () => {
       </View>
     );
   }
-
   const game = JSON.parse(params.get('game')!); // Parse the game data
   const teamLogos = JSON.parse(params.get('teamLogos')!); // Parse the team logos data
   
@@ -28,21 +55,46 @@ const GameCard = () => {
   const { awayTeam, homeTeam } = extractTeams(title);
   const isHome = isHomeTeam(title);
 
-  const assetsLink = require.context('../../assets/images/fields', false, /\.(png|jpe?g|svg)$/);
-  const fieldImages = loadFieldImages(assetsLink);
-  const fieldImage = getFieldImage(fieldImages, game.description.includes('SELC') || game.description.includes('MCLA') ? (game.description.includes('SELC') ? 'SELC' : 'MCLA') : homeTeam);
+  // const assetsLink = require.context('../../assets/images/fields', false, /\.(png|jpe?g|svg)$/);
+  // const fieldImages = loadFieldImages(assetsLink);
+  // const fieldImage = getFieldImage(fieldImages, game.description.includes('SELC') || game.description.includes('MCLA') ? (game.description.includes('SELC') ? 'SELC' : 'MCLA') : homeTeam);
+  // const fieldImage = getFieldImage(
+  //   fieldImages,
+  //   game.description.includes('SELC')
+  //     ? (game.description.includes('Quarter') ? homeTeam : 'SELC')
+  //     : (game.description.includes('MCLA') ? 'MCLA' : homeTeam)
+  // );
 
-  const { city: location, fieldName, latitude, longitude, conference, region } = getUniversityDetails(homeTeam);
-  const homeTeamConference = conference;
-  const homeTeamRegion = region;
-  const awayTeamConference = getUniversityDetails(awayTeam).conference;
-  const awayTeamRegion = getUniversityDetails(awayTeam).region;
-  const field = game.description.includes('SELC') ? 'Bolles Stadium' : (game.description.includes('MCLA') ? 'Round Rock Sports Complex' : fieldName)
-  const gameLocation = game.description.includes('SELC') ? 'Jacksonville, FL' : (game.description.includes('MCLA') ? 'Round Rock, TX' : location)
-  const selcLat = 30.3322;
-  const selcLong = -81.6557;
-  const mclaLat = 30.5083;
-  const mclaLong = -97.6789;
+  // const { city: location, fieldName, latitude, longitude, conference, region } = getUniversityDetails(homeTeam);
+  // const homeTeamConference = conference;
+  // const homeTeamRegion = region;
+  // const awayTeamConference = getUniversityDetails(awayTeam).conference;
+  // const awayTeamRegion = getUniversityDetails(awayTeam).region;
+  // const field = game.description.includes('SELC') ? 'Bolles Stadium' : (game.description.includes('MCLA') ? 'Round Rock Sports Complex' : fieldName)
+  // const field = game.description.includes('SELC')
+  //   ? (game.description.includes('Quarter') ? fieldName : 'Bolles Stadium')
+  //   : (game.description.includes('MCLA') ? 'Round Rock Sports Complex' : fieldName);
+  // const gameLocation = game.description.includes('SELC') ? 'Jacksonville, FL' : (game.description.includes('MCLA') ? 'Round Rock, TX' : location);
+  // const selcLat = 30.3322;
+  // const selcLong = -81.6557;
+  // const mclaLat = 30.5083;
+  // const mclaLong = -97.6789;
+  const normalizeTeamName = (team: string) => team.toLowerCase().replace(/\s+/g, '');
+
+  const homeTeamId = normalizeTeamName(homeTeam);
+  const awayTeamId = normalizeTeamName(awayTeam);
+  
+  const homeGameInfo = gameInfo?.find(info => normalizeTeamName(info.id) === homeTeamId);
+  const awayGameInfo = gameInfo?.find(info => normalizeTeamName(info.id) === awayTeamId);
+  
+  
+  const fieldImage = homeGameInfo?.fieldImage;
+  const homeTeamConference = homeGameInfo?.conference;
+  const homeTeamRegion = homeGameInfo?.region;
+  const awayTeamConference = awayGameInfo?.conference;
+  const awayTeamRegion = awayGameInfo?.region;
+  const field = homeGameInfo?.fieldName;
+  const gameLocation = homeGameInfo?.location;
 
   const { rankings, loadingRankings } = useAppData();
   const [awayRanking, setAwayRanking] = useState<number | null>(null);
@@ -77,17 +129,19 @@ const GameCard = () => {
     const fetchWeather = async () => {
       try {
         // Fetch NWS metadata
-        let lat, long;
-        if (gameLocation == 'Jacksonville, FL') {
-          lat = selcLat;
-          long = selcLong;
-        } else if (gameLocation == 'Round Rock, TX') {
-          lat = mclaLat;
-          long = mclaLong;
-        } else {
-          lat = latitude;
-          long = longitude;
-        }
+        // let lat, long;
+        // if (gameLocation == 'Jacksonville, FL') {
+        //   lat = selcLat;
+        //   long = selcLong;
+        // } else if (gameLocation == 'Round Rock, TX') {
+        //   lat = mclaLat;
+        //   long = mclaLong;
+        // } else {
+        //   lat = latitude;
+        //   long = longitude;
+        // }
+        const lat = homeGameInfo?.latitude || 0;
+        const long = homeGameInfo?.longitude || 0;
         const pointsResponse = await fetch(`${NWS_API_URL}/points/${lat},${long}`);
         if (!pointsResponse.ok) throw new Error('Failed to fetch NWS metadata.');
         const pointsData = await pointsResponse.json();
@@ -154,13 +208,13 @@ const GameCard = () => {
       setAwayRanking(awayRank);
       setHomeRanking(homeRank);
     }
-  }, [rankings, latitude, longitude, awayTeam, homeTeam, pubDate]);
+  }, [rankings, homeGameInfo?.latitude, homeGameInfo?.longitude, awayTeam, homeTeam, pubDate]);
 
   return (
     <ScrollView style={styles.container}>      
       {/* Image of the field */}
-      {fieldImage ? (
-        <Image source={fieldImage} style={styles.detailImage} />
+      {(fieldImage && fieldImage !== "") ? (
+        <Image source={{ uri: fieldImage }} style={styles.detailImage} />
       ) : (
         <View style={styles.noImageBox}>
           <Text style={styles.noImageText}>Image of This Field is Unavailable</Text>
@@ -208,13 +262,21 @@ const GameCard = () => {
         </Text>
 
         {/* Coverage */}
-        <Text style={styles.detailText}>
-          Coverage: {homeTeam.toLowerCase() === 'liberty' ? 'ESPN+' : (
-          <Text style={{ color: Colors.textSecondary, textDecorationLine: 'underline' }} onPress={() => Linking.openURL('https://www.youtube.com/@GTmenslacrosse/streams')}>
-            Streaming on YouTube
+        {(homeGameInfo?.coverageText /* replace with your current season logic */ && homeGameInfo?.coverageText !== "") && (
+          <Text style={styles.detailText}>
+            Coverage:{' '}
+            {homeGameInfo?.coverageLink.trim() !== "" ? (
+              <Text
+                style={{ color: Colors.textSecondary, textDecorationLine: 'underline' }}
+                onPress={() => Linking.openURL(homeGameInfo?.coverageLink!)}
+              >
+                {homeGameInfo?.coverageText}
+              </Text>
+            ) : (
+              homeGameInfo.coverageText
+            )}
           </Text>
-          )}
-        </Text>
+        )}
       </View>
 
       {/* Weather Information */}
@@ -321,7 +383,7 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   teamName: {
-    fontSize: 20,
+    fontSize: 19,
     fontWeight: 'bold',
     color: Colors.textPrimary,
     fontFamily: 'roboto-regular-bold',

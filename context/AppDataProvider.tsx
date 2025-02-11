@@ -47,6 +47,19 @@ type Article = {
   contentUrl: string;
 };
 
+type GameInfo = {
+  id: string;
+  location: string;
+  fieldImage: string;
+  fieldName: string;
+  latitude: number;
+  longitude: number;
+  conference?: string;
+  region?: string;
+  coverageText: string;
+  coverageLink?: string;
+};
+
 type AppDataContextType = {
   shopItems: ShopItem[];
   schedule: Game[];
