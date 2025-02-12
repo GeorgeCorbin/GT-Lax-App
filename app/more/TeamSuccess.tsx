@@ -3,39 +3,26 @@ import Markdown from 'react-native-markdown-display';
 import Colors from '@/constants/Colors';
 import FitImage from 'react-native-fit-image';
 import AnimatedHeaderLayout from '@/components/AnimatedHeaderLayout';
-
-const markdownContent = `
-## Team Success
-
-##
-
-### SELC Conference Championships:
-
-- 2024
-- 2023
-- 2017
-- 2016
-- 2004
-- 1997
-
-##
-
-### MCLA National Tournament Appearances:
-
-- 2024
-- 2023
-- 2022 (Runner-up)
-- 2019
-- 2018
-- 2017
-- 2016
-- 2015
-- 2004
-
-**No tournaments were held in 2020 or 2021 due to Covid*
-`;
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 
 const TeamSuccess: React.FC = () => {
+  const [markdownData, setMarkdownData] = useState<string>('');
+  
+  useEffect(() => {
+    const fetchMarkdownData = async () => {
+      try {
+        const response = await axios.get('https://gt-lax-app.web.app/about/TeamSuccessText.md');
+        setMarkdownData(response.data);
+      } catch (error) {
+        console.error('Error fetching Team Success data:', error);
+      }
+    };
+    fetchMarkdownData();
+  }, []);
+  
+  const markdownContent = markdownData;
+
   return (
     <AnimatedHeaderLayout headerText="Team Success" backgroundColor={Colors.background}>
       <Markdown style={{

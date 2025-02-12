@@ -7,7 +7,8 @@
 - **Weight:** 160 lbs  
 - **Year:** Senior  
 - **High School:** Creekview High School  
-- **Position:** Attack  
+- **Position:** Attack
+- **Captain:** 2025  
 
 **Honors and Achievements:**
 - MCLA Scholar Athlete (2022, 2023, 2024)

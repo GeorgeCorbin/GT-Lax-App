@@ -4,16 +4,17 @@
 - **Hometown:** Peachtree City  
 - **State:** Georgia  
 - **Height:** 6'2"  
-- **Weight:** 190 lbs  
+- **Weight:** 200 lbs  
 - **Year:** Senior  
 - **High School:** McIntosh  
 - **Position:** Attack  
-- **Captain:** 2024, 2025  
+- **Captain:** 2024, 2025
 
 **Honors and Achievements:**
 - MCLA Scholar Athlete (2022, 2023, 2024)
-- SELC All-Tournament Team (2024)
+- SELC All-Tournament Team (2022, 2023, 2024)
 - SELC All-Conference Team (2022, 2023, 2024)
+- SELC Tournament MVP (2023)
 - MCLA All-American (2022, 2023, 2024)
 
 **Career Stats Through Last Season:**  
