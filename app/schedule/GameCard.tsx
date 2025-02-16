@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, Image, Linking, ScrollView } from 'react-native';
 import Colors from '@/constants/Colors';
-import { isHomeTeam, extractTeams, getTeamLogo, getFieldImage, loadFieldImages, getRankingForTeamOnDate, getUniversityDetails } from '../utils/gameUtils';
+import { isHomeTeam, extractTeams, getTeamLogo, getFieldImage, loadFieldImages, getRankingForTeamOnDate } from '../utils/gameUtils';
 import { useSearchParams } from 'expo-router/build/hooks';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useAppData } from '@/context/AppDataProvider';
@@ -233,7 +233,7 @@ const GameCard = () => {
         </Text>
 
         {/* Coverage */}
-        {(new Date(pubDate) > new Date() /* replace with your current season logic */ && homeGameInfo?.coverageText !== "") && (
+        {(new Date(pubDate).getDate() > (new Date().getDate() - 1) && homeGameInfo?.coverageText !== "") && (
           <Text style={styles.detailText}>
             Coverage:{' '}
             {homeGameInfo?.coverageLink.trim() !== "" ? (

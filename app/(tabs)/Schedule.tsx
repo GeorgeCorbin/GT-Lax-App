@@ -234,7 +234,7 @@ const Schedule = () => {
 
               <View style={styles.detailsRow}>
                 <Text style={[styles.result, game.score?.includes('W') ? styles.win : styles.loss]}>
-                  {game.score?.includes('W') ? 'Win' : 'Loss'}
+                  {game.score?.includes('W') ? 'Win' : 'Loss'}{game.title?.includes('OT') ? ' - OT' : ''}
                 </Text>
                 <Text style={styles.date}>
                   {new Date(game.pubDate).toLocaleDateString('en-US', {
