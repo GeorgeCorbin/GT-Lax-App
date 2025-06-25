@@ -30,5 +30,61 @@
     "imageUrl": "https://gt-lax-app.web.app/news/images/article6.jpg",
     "imageAuthor": "Kevin Schoonover",
     "contentUrl": "https://gt-lax-app.web.app/news/content/article6.md"
+  },
+  {
+    "id": 5,
+    "title": "Jackets Surge Past 20th Ranked Gamecocks",
+    "date": "Feb 21, 2025",
+    "imageUrl": "https://gt-lax-app.web.app/news/images/article7.jpg",
+    "imageAuthor": "Kevin Schoonover",
+    "contentUrl": "https://gt-lax-app.web.app/news/content/article7.md"
+  },
+  {
+    "id": 6,
+    "title": "Jackets Handle Huskies on Senior Day",
+    "date": "Mar 09, 2025",
+    "imageUrl": "https://gt-lax-app.web.app/news/images/article8.jpg",
+    "imageAuthor": "Kevin Schoonover",
+    "contentUrl": "https://gt-lax-app.web.app/news/content/article8.md"
+  },
+  {
+    "id": 7,
+    "title": "Gators Fast Start Dooms Jackets",
+    "date": "Mar 30, 2025",
+    "imageUrl": "https://gt-lax-app.web.app/news/images/article9.jpg",
+    "imageAuthor": "Kevin Schoonover",
+    "contentUrl": "https://gt-lax-app.web.app/news/content/article9.md"
+  },
+  {
+    "id": 8,
+    "title": "Jackets Defeat Georgia and Clinch SELC Tournament First Round Bye",
+    "date": "Apr 05, 2025",
+    "imageUrl": "https://gt-lax-app.web.app/news/images/article10.jpg",
+    "imageAuthor": "Kevin Schoonover",
+    "contentUrl": "https://gt-lax-app.web.app/news/content/article10.md"
+  },
+  {
+    "id": 9,
+    "title": "The SELC Championships Weekend 2025",
+    "date": "Apr 08, 2025",
+    "imageUrl": "https://gt-lax-app.web.app/news/images/article11.png",
+    "imageAuthor": "",
+    "contentUrl": "https://gt-lax-app.web.app/news/content/article11.md"
+  },
+  {
+    "id": 10,
+    "title": "Jackets Overcome South Carolina to advance to SELC Final",
+    "date": "Apr 18, 2025",
+    "imageUrl": "https://gt-lax-app.web.app/news/images/article12.jpg",
+    "imageAuthor": "Kevin Schoonover",
+    "contentUrl": "https://gt-lax-app.web.app/news/content/article12.md"
+  },
+  {
+    "id": 11,
+    "title": "Jackets Sink Gators for SELC Title",
+    "date": "Apr 19, 2025",
+    "imageUrl": "https://gt-lax-app.web.app/news/images/article13.jpg",
+    "imageAuthor": "Kevin Schoonover",
+    "contentUrl": "https://gt-lax-app.web.app/news/content/article13.md"
   }
 ]

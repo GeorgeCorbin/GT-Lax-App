@@ -1,0 +1,7 @@
+The Jackets have earned a first round Bye and will be competing for an unprecedented 3rd Consecutive SELC championship April 18-19 at The Bolles School in Jacksonville Florida.  Tech will face the winner of the Quarter Final Round contest between Auburn and South Carolina on Friday the 18th at 5 PM.  The Finals will be held Saturday Afternoon the 19th at 3PM.  Florida State and Georgia are on the other side of the bracket, the winner will face Florida.  It will be one of the most competitive tournaments in the MCLA this season with Florida in the top 5 of the MCLA latest National Rankings. Both Auburn and South Carolina started the season slowly with very strong schedules, but are currently two of the hottest teams in the country with Auburn winning its last 5 games including an upset of Florida State and South Carolina winning 6 games in a row including a victory over Texas. Georgia and Florida State have been in the top ten all season and are fighting to keep their hopes for an at-large bid to the MCLA National Tournament alive.
+
+Live stream for the tournament from **DNF_ADV** Sports may be purchased at [SELC Championship Weekend Live Stream](https://www.youtube.com/watch?v=Eqhe2l8XDZo)
+
+To attend person for directions: [The Bolles School](https://www.bolles.org/)
+
+Go Jackets!

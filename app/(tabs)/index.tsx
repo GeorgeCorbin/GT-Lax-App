@@ -1,10 +1,10 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { View, Text, FlatList, Image, RefreshControl, ActivityIndicator } from 'react-native';
-import styles from '../../constants/styles/news'; // Updated path for styles
+import { View, Text, FlatList, RefreshControl, ActivityIndicator } from 'react-native';
+import { Image } from 'expo-image';
+import styles from '../../constants/styles/news';
 import { Link } from 'expo-router';
 import { useAppData } from '@/context/AppDataProvider';
 import Colors from '@/constants/Colors';
-import FastImage from 'react-native-fast-image';
 
 interface Article {
   id: number;
@@ -15,6 +15,9 @@ interface Article {
   contentUrl: string;
   contentAuthor?: string;
 }
+
+const blurhash =
+  '|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj[';
 
 const NewsScreen = () => {
   const { articles, loading, fetchArticles } = useAppData();
@@ -43,30 +46,56 @@ const NewsScreen = () => {
     fetchOnMount();
     console.log('News useEffect triggered for initial fetch');
   }, [fetchArticles]);
-  
 
-  const renderArticleItem = ({ item }: { item: Article }) => (
-    <Link
-      href={{
-        pathname: '/news/Articles',
-        params: {
-          id: item.id,
-          title: item.title,
-          date: item.date,
-          imageUrl: item.imageUrl,
-          imageAuthor: item.imageAuthor,
-          contentUrl: item.contentUrl,
-        },
-      }}
-      style={styles.card}
-    >
-      <FastImage source={{ uri: item.imageUrl }} style={styles.image} />
-      <View style={styles.textContainer}>
-        <Text style={styles.date}>{item.date}</Text>
-        <Text style={styles.title}>{item.title}</Text>
-      </View>
-    </Link>
-  );
+  // Debug logging for articles
+  useEffect(() => {
+    if (articles.length > 0) {
+      console.log('Articles loaded:', articles.length);
+      console.log('First article:', JSON.stringify(articles[0], null, 2));
+      articles.forEach((article, index) => {
+        console.log(`Article ${index} image URL:`, article.imageUrl);
+        // Test if the image URL is valid
+        Image.prefetch(article.imageUrl)
+          .then(() => console.log(`Image prefetch success for article ${index}`))
+          .catch(err => console.error(`Image prefetch failed for article ${index}:`, err));
+      });
+    }
+  }, [articles]);
+
+  const renderArticleItem = ({ item }: { item: Article }) => {
+    console.log('Rendering article:', item.id, 'with image URL:', item.imageUrl);
+    return (
+      <Link
+        href={{
+          pathname: '/news/Articles',
+          params: {
+            id: item.id,
+            title: item.title,
+            date: item.date,
+            imageUrl: item.imageUrl,
+            imageAuthor: item.imageAuthor,
+            contentUrl: item.contentUrl,
+          },
+        }}
+        style={styles.card}
+      >
+        <Image 
+          source={{ uri: item.imageUrl }}
+          style={styles.image}
+          contentFit="cover"
+          transition={200}
+          placeholder={blurhash}
+          cachePolicy="memory-disk"
+          onLoad={() => console.log('Image loaded successfully:', item.id)}
+          onError={(error) => console.error('Image load error:', item.id, error)}
+        />
+        <View style={styles.textContainer}>
+          <Text style={styles.date}>{item.date}</Text>
+          <Text style={styles.title}>{item.title}</Text>
+        </View>
+      </Link>
+    );
+  };
 
   if (loading && !refreshing) {
     return (
@@ -84,13 +113,16 @@ const NewsScreen = () => {
         renderItem={renderArticleItem}
         keyExtractor={(item) => item.id.toString()}
         contentContainerStyle={styles.list}
-        // refreshControl={
-        // <RefreshControl
-        //   refreshing={refreshing}
-        //   onRefresh={onRefresh}
-        //   colors={[Colors.loadingWheel]}
-        // />
-        // }
+        refreshControl={
+          <RefreshControl
+            refreshing={refreshing}
+            onRefresh={onRefresh}
+            colors={[Colors.loadingWheel]}
+          />
+        }
+        initialNumToRender={5}
+        maxToRenderPerBatch={5}
+        windowSize={5}
       />
     </View>
   );

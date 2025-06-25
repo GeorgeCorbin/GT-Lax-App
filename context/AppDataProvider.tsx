@@ -7,6 +7,16 @@ import { Image } from 'react-native';
 import * as Notifications from 'expo-notifications';
 import { useRouter } from "expo-router";
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { 
+  fetchRSSFeed, 
+  saveArticlesToFile, 
+  loadArticlesFromFile, 
+  mergeArticles,
+  fetchRemoveAutoArticles,
+  debugArticleDates,
+  normalizeArticleDates,
+  diagnoseAndFixDateIssues
+} from '../app/utils/articleUtils';
 
 export interface ShopItem {
   id: string;
@@ -150,18 +160,70 @@ export const AppDataProvider = ({ children }: { children: React.ReactNode }) => 
 
   const fetchArticles = useCallback(async (forceRefresh = false) => {
     try {
-      const url = forceRefresh
-        ? `https://gt-lax-app.web.app/articles.json?t=${Date.now()}` // Add timestamp to bypass cache
-        : 'https://gt-lax-app.web.app/articles.json';
+      // Pre-fetch the removal list to ensure it's available for filtering
+      const removeAutoArticles = await fetchRemoveAutoArticles();
+      console.log(`Fetched ${removeAutoArticles.length} articles to auto-remove in fetchArticles`);
       
-      const articlesResp = await fetch(url);
-      const articlesData = await articlesResp.json();
-      setArticles(articlesData.reverse());
+      // Run diagnostics and fix any date issues
+      console.log('Running article date diagnostics...');
+      const hadDateIssues = await diagnoseAndFixDateIssues();
+      if (hadDateIssues) {
+        console.log('Fixed date issues found during diagnostics');
+      }
+      
+      // Then normalize any stored articles with incorrect dates
+      await normalizeArticleDates();
+      
+      if (forceRefresh) {
+        // Fetch fresh data from RSS feed
+        const newArticles = await fetchRSSFeed(removeAutoArticles);
+        const existingArticles = await loadArticlesFromFile();
+        const mergedArticles = mergeArticles(existingArticles, newArticles, removeAutoArticles);
+        
+        // Debug date sorting before saving
+        console.log('Debug dates (after merge):');
+        debugArticleDates(mergedArticles);
+        
+        await saveArticlesToFile(mergedArticles);
+        setArticles(mergedArticles);
+      } else {
+        // Try to load from local file first
+        const localArticles = await loadArticlesFromFile();
+        
+        // Debug local articles dates
+        console.log('Debug dates (local articles):');
+        debugArticleDates(localArticles);
+        
+        if (localArticles.length > 0) {
+          setArticles(localArticles);
+          
+          // Fetch new articles in the background
+          const newArticles = await fetchRSSFeed(removeAutoArticles);
+          const mergedArticles = mergeArticles(localArticles, newArticles, removeAutoArticles);
+          
+          // Debug date sorting after merge
+          console.log('Debug dates (after merge with new articles):');
+          debugArticleDates(mergedArticles);
+          
+          await saveArticlesToFile(mergedArticles);
+          setArticles(mergedArticles);
+        } else {
+          // If no local data, fetch from RSS
+          const newArticles = await fetchRSSFeed(removeAutoArticles);
+          
+          // Debug date sorting for new articles
+          console.log('Debug dates (new articles only):');
+          debugArticleDates(newArticles);
+          
+          await saveArticlesToFile(newArticles);
+          setArticles(newArticles);
+        }
+      }
       console.log('Fetched articles');
     } catch (error) {
       console.error('Error fetching articles:', error);
     }
-  }, []); // Empty dependency array ensures stability
+  }, []);
   
 
   const fetchRoster = useCallback(async () => {

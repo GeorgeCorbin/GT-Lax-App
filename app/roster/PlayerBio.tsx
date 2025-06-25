@@ -17,26 +17,31 @@ type Player = {
 
 const PlayerBio = ({ selectedPlayer }: { selectedPlayer: Player }) => {
   const searchParams = useLocalSearchParams();
-  const name = Array.isArray(searchParams.name) ? searchParams.name[0] : searchParams.name || '';
-  const number = Array.isArray(searchParams.number) ? searchParams.number[0] : searchParams.number || '';
-  const position = Array.isArray(searchParams.position) ? searchParams.position[0] : searchParams.position || '';
-  const imageUrl = Array.isArray(searchParams.imageUrl) ? searchParams.imageUrl[0] : searchParams.imageUrl || '';
-  const contentUrl = Array.isArray(searchParams.contentUrl) ? searchParams.contentUrl[0] : searchParams.contentUrl || '';
+  // Use the selectedPlayer prop data if provided, otherwise fall back to URL params
+  const name = selectedPlayer?.playerName || (Array.isArray(searchParams.name) ? searchParams.name[0] : searchParams.name || '');
+  const number = selectedPlayer?.number || (Array.isArray(searchParams.number) ? searchParams.number[0] : searchParams.number || '');
+  const position = selectedPlayer?.position || (Array.isArray(searchParams.position) ? searchParams.position[0] : searchParams.position || '');
+  const imageUrl = selectedPlayer?.imageUrl || (Array.isArray(searchParams.imageUrl) ? searchParams.imageUrl[0] : searchParams.imageUrl || '');
+  const contentUrl = selectedPlayer?.contentUrl || (Array.isArray(searchParams.contentUrl) ? searchParams.contentUrl[0] : searchParams.contentUrl || '');
   const [markdownContent, setMarkdownContent] = useState('');
 
   // Fetch markdown content for the selected player
   const fetchMarkdownContent = async () => {
     try {
+      console.log('Fetching content from URL:', contentUrl);
       const response = await fetch(contentUrl);
       const content = await response.text();
       setMarkdownContent(content);
     } catch (error) {
       console.error('Error fetching markdown content:', error);
+      setMarkdownContent('Unable to load player bio. Please check back later.');
     }
   };
 
   useEffect(() => {
-    fetchMarkdownContent();
+    if (contentUrl) {
+      fetchMarkdownContent();
+    }
   }, [contentUrl]);
 
   /* 
@@ -58,8 +63,8 @@ const PlayerBio = ({ selectedPlayer }: { selectedPlayer: Player }) => {
         {position === 'D' || position === 'LSM' ? 'Defense' : 
          position === 'A' ? 'Attack' : 
          position === 'M' ? 'Middie' : 
-         position === 'G' ? 'Goalie' : 
-         position === 'FO' ? 'Face-Off' : position}
+         position === 'G' || position === 'Goalies' ? 'Goalie' : 
+         position === 'FO' || position === 'Face-Off' ? 'Face-Off' : position}
       </Text>
       <Text style={styles.detailNumber}>#{number}</Text>
       <Markdown

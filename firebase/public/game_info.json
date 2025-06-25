@@ -16,8 +16,8 @@
     "fieldName": "Bolles Stadium",
     "latitude": 30.3322,
     "longitude": -81.6557,
-    "coverageText": "",
-    "coverageLink": ""
+    "coverageText": "DNF_ADV Sports",
+    "coverageLink": "https://www.youtube.com/watch?v=Eqhe2l8XDZo"
   },
   {
     "id": "Alabama",
@@ -171,7 +171,7 @@
     "latitude": 28.5421109,
     "longitude": -81.3790304,
     "conference": "SELC",
-    "region": "",
+    "region": "South",
     "coverageText": "Streaming on YouTube",
     "coverageLink": "https://www.youtube.com/@GTmenslacrosse/streams"
   },
@@ -269,7 +269,7 @@
     "conference": "SELC",
     "region": "South",
     "coverageText": "Streaming on YouTube",
-    "coverageLink": "https://www.youtube.com/@GTmenslacrosse/streams"
+    "coverageLink": "https://youtube.com/live/zPjsPzPDVWI?feature=share"
   },
   {
     "id": "floridastate",
@@ -286,14 +286,14 @@
   {
     "id": "georgia",
     "location": "Athens, GA",
-    "fieldImage": "https://gt-lax-app.web.app/game_info/fieldImages/georgia_field.jpg",
+    "fieldImage": "https://gt-lax-app.web.app/game_info/fieldImages/georgia_field.png",
     "fieldName": "Georgia Club Sports Complex",
     "latitude": 33.9597677,
     "longitude": -83.376398,
     "conference": "SELC",
     "region": "North",
     "coverageText": "Streaming on YouTube",
-    "coverageLink": "https://www.youtube.com/@GTmenslacrosse/streams"
+    "coverageLink": "https://www.youtube.com/live/Mni-6udDYbs?si=sEHjJiRFp62kNcj3"
   },
   {
     "id": "georgiatech",
@@ -425,7 +425,7 @@
     "conference": "ALC",
     "region": "North",
     "coverageText": "ESPN+",
-    "coverageLink": ""
+    "coverageLink": "https://www.espn.com/espnplus/player/_/id/cb031c7f-e0fb-4b04-ac86-e7f921492827"
   },
   {
     "id": "louisville",
@@ -699,9 +699,9 @@
     "latitude": 34.00071,
     "longitude": -81.034814,
     "conference": "SELC",
-    "region": "South",
-    "coverageText": "Streaming on YouTube",
-    "coverageLink": "https://www.youtube.com/@GTmenslacrosse/streams"
+    "region": "North",
+    "coverageText": "DNF_ADV Sports",
+    "coverageLink": "https://www.youtube.com/watch?v=Eqhe2l8XDZo"
   },
   {
     "id": "southflorida",
@@ -711,7 +711,7 @@
     "latitude": 27.9477595,
     "longitude": -82.458444,
     "conference": "SELC",
-    "region": "North",
+    "region": "South",
     "coverageText": "Streaming on YouTube",
     "coverageLink": "https://www.youtube.com/@GTmenslacrosse/streams"
   },

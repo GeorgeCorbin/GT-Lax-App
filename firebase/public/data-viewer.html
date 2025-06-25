@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GT Lax App - Rankings & Articles</title>
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background: #f5f5f5;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .header {
+        background: #ffa100;
+        color: white;
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+      }
+      .section {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      }
+      h1, h2, h3 {
+        margin: 0;
+      }
+      .data-section {
+        margin-top: 20px;
+        padding: 15px;
+        border: 1px solid #eee;
+        border-radius: 4px;
+      }
+      .data-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #eee;
+      }
+      .data-title {
+        color: #333;
+        font-size: 1.2em;
+        font-weight: 500;
+      }
+      .data-content {
+        background: #f8f9fa;
+        padding: 15px;
+        border-radius: 4px;
+        overflow-x: auto;
+      }
+      .rankings-list {
+        list-style-position: inside;
+        padding: 0;
+        margin: 0;
+      }
+      .rankings-list li {
+        padding: 10px 15px;
+        border-bottom: 1px solid #eee;
+        font-size: 1.1em;
+      }
+      .rankings-list li:last-child {
+        border-bottom: none;
+      }
+      .tabs {
+        display: flex;
+        margin-bottom: 15px;
+      }
+      .tab {
+        padding: 8px 16px;
+        cursor: pointer;
+        border: none;
+        background: none;
+        border-bottom: 2px solid transparent;
+        color: #666;
+      }
+      .tab.active {
+        color: #ffa100;
+        border-bottom-color: #ffa100;
+      }
+      pre {
+        margin: 0;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+      }
+      .error {
+        color: #d32f2f;
+        padding: 15px;
+        background: #ffebee;
+        border-radius: 4px;
+        margin-top: 10px;
+      }
+      .loading {
+        text-align: center;
+        padding: 20px;
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>GT Lax App - Rankings & Articles</h1>
+      </div>
+      
+      <div class="section">
+        <h2>Rankings</h2>
+        <div class="tabs">
+          <button class="tab active" onclick="showRankingsView('formatted')">Formatted</button>
+          <button class="tab" onclick="showRankingsView('raw')">Raw JSON</button>
+        </div>
+        <div id="rankings-container">
+          <div class="loading">Loading rankings...</div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Latest Articles</h2>
+        <div id="articles-container">
+          <div class="loading">Loading articles...</div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let rankingsData = null;
+      let currentView = 'formatted';
+
+      async function fetchData() {
+        try {
+          // Fetch rankings
+          const rankingsResponse = await fetch('rankings_2025.json');
+          rankingsData = await rankingsResponse.json();
+          
+          // Fetch articles
+          const articlesResponse = await fetch('articles.json');
+          const articlesData = await articlesResponse.json();
+
+          // Display the data
+          displayRankings();
+          displayArticles(articlesData);
+        } catch (error) {
+          console.error('Error fetching data:', error);
+          document.getElementById('rankings-container').innerHTML = `
+            <div class="error">Error loading data: ${error.message}</div>
+          `;
+        }
+      }
+
+      function showRankingsView(view) {
+        currentView = view;
+        // Update active tab
+        document.querySelectorAll('.tab').forEach(tab => {
+          tab.classList.toggle('active', tab.textContent.toLowerCase().includes(view));
+        });
+        displayRankings();
+      }
+
+      function displayRankings() {
+        const container = document.getElementById('rankings-container');
+        if (!rankingsData) {
+          container.innerHTML = '<div class="error">No rankings data available</div>';
+          return;
+        }
+
+        const rankings = Array.isArray(rankingsData) ? rankingsData : 
+                        (rankingsData.rankings || []);
+
+        if (currentView === 'raw') {
+          // Get the latest rankings entry
+          const latestRankings = rankings[rankings.length - 1];
+          container.innerHTML = `
+            <div class="data-content">
+              <pre>${JSON.stringify(latestRankings, null, 2)}</pre>
+            </div>
+          `;
+        } else {
+          // Get the latest rankings entry
+          const latestRankings = rankings[rankings.length - 1];
+          // Split the list of teams by comma and create numbered list
+          const teamList = latestRankings.list.split(',').map(team => team.trim());
+          
+          const formattedHtml = `
+            <ol class="rankings-list">
+              ${teamList.map(team => `
+                <li>${team}</li>
+              `).join('')}
+            </ol>
+          `;
+          container.innerHTML = formattedHtml;
+        }
+      }
+
+      function displayArticles(data) {
+        const container = document.getElementById('articles-container');
+        if (!data || !Array.isArray(data)) {
+          container.innerHTML = '<div class="error">No articles available</div>';
+          return;
+        }
+
+        const latestArticle = data[data.length - 1];
+        container.innerHTML = `
+          <div class="data-section">
+            <div class="data-header">
+              <span class="data-title">${latestArticle.title || 'Untitled'}</span>
+            </div>
+            <div class="data-content">
+              <pre>${JSON.stringify(latestArticle, null, 2)}</pre>
+            </div>
+          </div>
+        `;
+      }
+
+      // Load data when page loads
+      fetchData();
+    </script>
+  </body>
+</html> 

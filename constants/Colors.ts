@@ -39,7 +39,7 @@ export default {
 
   // light of this color #003057
   navyLight: '#133E6E',
-  
+
 
   // Primary Colors
   navy: '#002E63',        // Georgia Tech Navy

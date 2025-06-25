@@ -18,6 +18,14 @@ export const loadTeamLogos = (assetsLink: __WebpackModuleApi.RequireContext): Re
 
 // Utility to get the team logo path
 export const getTeamLogo = (teamLogos: Record<string, any>, teamName: string): any => {
+  // Special case for TBD with conference context
+  if (teamName === 'TBD_MCLA') {
+    return teamLogos['tbd_mcla'] || teamLogos.placeholder;
+  }
+  if (teamName === 'TBD_SELC') {
+    return teamLogos['tbd_selc'] || teamLogos.placeholder;
+  }
+  
   const formattedName = teamName.replace(/\s+/g, '').toLowerCase();
   return teamLogos[formattedName] || teamLogos.placeholder;
 };
@@ -64,7 +72,24 @@ export const isSELCorMCLA = (title: string): { city: string; fieldName: string; 
 export const extractTeams = (title: string): { awayTeam: string; homeTeam: string } => {
   const cleanedTitle = title.replace(/Final.*/i, '').trim();
   const parts = cleanedTitle.includes('vs.') ? cleanedTitle.split('vs.') : cleanedTitle.split(',');
-
+  
+  // Check if this is an MCLA or SELC game
+  const isMCLAGame = cleanedTitle.includes('MCLA');
+  const isSELCGame = cleanedTitle.includes('SELC');
+  
+  // For games with TBD opponents, use a consistent "TBD" name with the conference context
+  if (isMCLAGame || isSELCGame) {
+    const awayTeam = parts[0]?.replace(/\d+/g, '').trim() || 'TBD';
+    const homeTeam = parts[1]?.replace(/\d+/g, '').trim() || 'TBD';
+    
+    // Replace any team containing "TBD" with TBD_MCLA or TBD_SELC
+    return {
+      awayTeam: awayTeam.includes('TBD') ? (isMCLAGame ? 'TBD_MCLA' : 'TBD_SELC') : awayTeam,
+      homeTeam: homeTeam.includes('TBD') ? (isMCLAGame ? 'TBD_MCLA' : 'TBD_SELC') : homeTeam
+    };
+  }
+  
+  // For regular games, use the standard extraction
   return {
     awayTeam: parts[0]?.replace(/\d+/g, '').trim() || 'Away Team',
     homeTeam: parts[1]?.replace(/\d+/g, '').trim() || 'Home Team',

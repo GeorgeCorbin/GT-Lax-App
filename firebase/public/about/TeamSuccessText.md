@@ -4,6 +4,7 @@
 
 ### SELC Conference Championships:
 
+- 2025
 - 2024
 - 2023
 - 2017
@@ -15,6 +16,7 @@
 
 ### MCLA National Tournament Appearances:
 
+- 2025 (Runner-up)
 - 2024
 - 2023
 - 2022 (Runner-up)

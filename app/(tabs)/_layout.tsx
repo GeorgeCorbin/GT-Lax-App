@@ -25,6 +25,7 @@ const tabBackgroundColors: { [key: string]: string } = {
   Roster: RosterStyles.container.backgroundColor, // Gray for Roster
   Shop: ShopStyles.container.backgroundColor,
   More: MoreStyles.container.backgroundColor,
+  debug: Colors.background, // Add debug screen background
 };
 
 export default function TabLayout() {
@@ -92,6 +93,17 @@ export default function TabLayout() {
               tabBarIcon: ({ color }: { color: string }) => <TabBarIcon name="ellipsis-h" color={color} />,
             }}
           />
+          
+          {/* Debug screen - visible only in development mode */}
+          {__DEV__ && (
+            <Tabs.Screen
+              name="debug"
+              options={{
+                title: 'Debug',
+                tabBarIcon: ({ color }: { color: string }) => <TabBarIcon name="bug" color={color} />,
+              }}
+            />
+          )}
         </Tabs>
       </View>
     </>

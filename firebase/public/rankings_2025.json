@@ -13,5 +13,60 @@
         "week": 3,
         "date": "February 10, 2025",
         "list": "BYU, Utah Valley, Georgia Tech, San Diego State, Texas, Arizona State, Virginia Tech, Georgia, UCSB, Liberty, Florida, Tennessee, Chapman, Colorado, California, Florida State, Northeastern, South Carolina, Cal Poly, Simon Fraser, Arizona, Oregon, JMU, Colorado State, Boston College"
+    },
+    {
+        "week": 4,
+        "date": "February 17, 2025",
+        "list": "BYU, Utah Valley, Texas, Northeastern, Cal Poly, Georgia, Georgia Tech, San Diego State, UCSB, Arizona State, Florida, Florida State, Virginia Tech, Liberty, Tennessee, Chapman, Colorado, California, Simon Fraser, South Carolina, JMU, Oregon, Boston College, Colorado State, TCU"
+    },
+    {
+        "week": 5,
+        "date": "February 24, 2025",
+        "list": "BYU, Northeastern, Cal Poly, Arizona State, Georgia, Florida, Georgia Tech, Utah Valley, Florida State, Texas, San Diego State, Virginia Tech, UCSB, Liberty, Colorado, Tennessee, Chapman, Colorado State, Oregon, Simon Fraser, Utah, JMU, South Carolina, California, Boston College"
+    },
+    {
+        "week": 6,
+        "date": "March 5, 2025",
+        "list": "BYU, Northeastern, Cal Poly, Florida, Utah Valley, Liberty, Florida State, Arizona State, Georgia, San Diego State, Georgia Tech, Texas, Virginia Tech, Tennessee, UC Santa Barbara, Oregon, Utah, James Madison, Texas Christian, Colorado"
+    },
+    {
+        "week": 7,
+        "date": "March 12, 2025",
+        "list": "BYU, Northeastern, Cal Poly, Florida, Utah Valley, Liberty, Florida State,San Diego State, Georgia Tech, Georgia, Texas, Virginia Tech, Tennessee, UC Santa Barbara, Arizona State, Colorado, Utah, Boston College, Texas Christian, James Madison"
+    },
+    {
+        "week": 8,
+        "date": "March 19, 2025",
+        "list": "BYU, Cal Poly, Liberty, Northeastern, Utah Valley, Florida, Texas, Florida State, San Diego State, Georgia Tech, Georgia, UC Santa Barbara, Virginia Tech, Tennessee, Colorado, Arizona State, Boston College, Utah, Colorado State, James Madison"
+    },
+    {
+        "week": 9,
+        "date": "March 26, 2025",
+        "list": "BYU, Cal Poly, Liberty, Utah Valley, Florida, Texas, Florida State, San Diego State, Northeastern, Georgia Tech, Georgia, Virginia Tech, Tennessee, UC Santa Barbara, Colorado, Utah, Boston College, Arizona State, Arizona, Colorado State"
+    },
+    {
+        "week": 10,
+        "date": "April 2, 2025",
+        "list": "BYU, Liberty, Florida, Utah Valley, Texas, Cal Poly, Georgia, Florida State, Northeastern, Georgia Tech, Virginia Tech, San Diego State, Arizona State, Tennessee, Colorado, UC Santa Barbara, Boston College, Utah, Arizona, Grand Canyon"
+    },
+    {
+        "week": 11,
+        "date":"April 9, 2025",
+        "list": "BYU, Liberty, Florida, Utah Valley, Texas, Cal Poly, Georgia Tech, Northeastern, Florida State, Virginia Tech, Georgia, San Diego State, Arizona State, Colorado, Tennessee, Boston College, UC Santa Barbara, South Carolina, Colorado State, Texas Christian"
+    },
+    {
+        "week": 12,
+        "date":"April 16, 2025",
+        "list": "Liberty, Florida, BYU, Utah Valley, Texas, Georgia Tech, Northeastern, Cal Poly, Florida State, Colorado, Arizona State, Tennessee, Virginia Tech, San Diego State, Georgia, South Carolina, Boston College, UC Santa Barbara, Texas Christian, Colorado State"
+    },
+    {
+        "week": 13,
+        "date": "April 23, 2025",
+        "list": "Liberty, BYU, Florida, Georgia Tech, Utah Valley, Texas, Northeastern, Cal Poly, Florida State, Arizona State, Tennessee, Colorado, San Diego State, Georgia, Virginia Tech, South Carolina, Boston College, UC Santa Barbara, Colorado State, Texas Christian"
+    },
+    {
+        "week": 14,
+        "date": "April 27, 2025",
+        "list": "Liberty, Utah Valley, Georgia Tech, Florida, Brigham Young, Texas, Northeastern, Arizona State, Florida State, UC Santa Barbara, Colorado, Cal Poly, San Diego State, Tennessee, Boise State, Minnesota"
     }
 ]

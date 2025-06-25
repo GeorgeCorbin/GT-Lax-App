@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Image, ActivityIndicator } from 'react-native';
-import FastImage from 'react-native-fast-image';
+import { View, Text, ActivityIndicator } from 'react-native';
+import { Image } from 'expo-image';
 import { XMLParser } from 'fast-xml-parser';
 import styles from '../../constants/styles/schedule'; // Updated path for styles
 import AnimatedHeaderLayout from '@/components/AnimatedHeaderLayout';
@@ -149,6 +149,10 @@ const Schedule = () => {
         const awayRank = getRankingForTeamOnDate(rankings, awayTeam, game.pubDate);
         const homeRank = getRankingForTeamOnDate(rankings, homeTeam, game.pubDate);
 
+        // Display names should not show the conference tag
+        const awayDisplayName = awayTeam.startsWith('TBD_') ? 'TBD' : awayTeam;
+        const homeDisplayName = homeTeam.startsWith('TBD_') ? 'TBD' : homeTeam;
+
         return (
           <Link
             key={index}
@@ -161,12 +165,12 @@ const Schedule = () => {
             <View style={styles.row}>
               <View style={styles.teamColumn}>
                 <View style={styles.team}>
-                  <FastImage source={getTeamLogo(teamLogos, awayTeam)} style={styles.logo} />
-                  <Text style={styles.teamName}>{awayRank ? `#${awayRank} ` : ''}{awayTeam}</Text>
+                  <Image source={getTeamLogo(teamLogos, awayTeam)} style={styles.logo} />
+                  <Text style={styles.teamName}>{awayRank ? `#${awayRank} ` : ''}{awayDisplayName}</Text>
                 </View>
                 <View style={styles.team}>
-                  <FastImage source={getTeamLogo(teamLogos, homeTeam)} style={styles.logo} />
-                  <Text style={styles.teamName}>{homeRank ? `#${homeRank} ` : ''}{homeTeam}</Text>
+                  <Image source={getTeamLogo(teamLogos, homeTeam)} style={styles.logo} />
+                  <Text style={styles.teamName}>{homeRank ? `#${homeRank} ` : ''}{homeDisplayName}</Text>
                 </View>
               </View>
 
@@ -197,7 +201,7 @@ const Schedule = () => {
 
       {/* COMPLETED */}
       <Text style={styles.sectionTitle}>COMPLETED</Text>
-      {completedGames.map((game, index) => {
+      {completedGames.slice().reverse().map((game, index) => {
         const { awayTeam, homeTeam } = extractTeams(game.title);
         const { awayScore, homeScore } = extractScores(game.title);
         const isHome = isHomeTeam(game.title);
@@ -206,8 +210,11 @@ const Schedule = () => {
         const awayRank = getRankingForTeamOnDate(rankings, awayTeam, game.pubDate);
         const homeRank = getRankingForTeamOnDate(rankings, homeTeam, game.pubDate);
 
+        // Display names should not show the conference tag
+        const awayDisplayName = awayTeam.startsWith('TBD_') ? 'TBD' : awayTeam;
+        const homeDisplayName = homeTeam.startsWith('TBD_') ? 'TBD' : homeTeam;
+
         return (
-          // <View key={index} style={styles.gameItem}>
           <Link
             key={index}
             href={{
@@ -219,13 +226,13 @@ const Schedule = () => {
             <View style={styles.row}>
               <View style={styles.teamColumn}>
                 <View style={styles.team}>
-                  <FastImage source={getTeamLogo(teamLogos, awayTeam)} style={styles.logo} />
-                  <Text style={styles.teamName}>{awayRank ? `#${awayRank} ` : ''}{awayTeam}</Text>
+                  <Image source={getTeamLogo(teamLogos, awayTeam)} style={styles.logo} />
+                  <Text style={styles.teamName}>{awayRank ? `#${awayRank} ` : ''}{awayDisplayName}</Text>
                   <Text style={styles.score}>{awayScore}</Text>
                 </View>
                 <View style={styles.team}>
-                  <FastImage source={getTeamLogo(teamLogos, homeTeam)} style={styles.logo} />
-                  <Text style={styles.teamName}>{homeRank ? `#${homeRank} ` : ''}{homeTeam}</Text>
+                  <Image source={getTeamLogo(teamLogos, homeTeam)} style={styles.logo} />
+                  <Text style={styles.teamName}>{homeRank ? `#${homeRank} ` : ''}{homeDisplayName}</Text>
                   <Text style={styles.score}>{homeScore}</Text>
                 </View>
               </View>

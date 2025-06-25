@@ -134,9 +134,26 @@ export default StyleSheet.create({
   },
   loadingContainer: {
     flex: 1,
+    marginTop: 10,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: Colors.background, // Black background
+  },
+  loadingText: {
+    fontSize: 18,
+    lineHeight: 24,
+    color: Colors.textSecondary,
+    padding: 16,
+    marginTop: 8,
+    fontFamily: 'roboto-regular',
+  },
+  contentText: {
+    fontSize: 18,
+    lineHeight: 24,
+    color: '#333',
+    padding: 16,
+    marginTop: 8,
+    fontFamily: 'System',
   },
 });
 

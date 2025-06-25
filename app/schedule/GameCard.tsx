@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, Image, Linking, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, Linking, ScrollView } from 'react-native';
+import { Image } from 'expo-image';
 import Colors from '@/constants/Colors';
 import { isHomeTeam, extractTeams, getTeamLogo, getFieldImage, loadFieldImages, getRankingForTeamOnDate } from '../utils/gameUtils';
 import { useSearchParams } from 'expo-router/build/hooks';
@@ -48,14 +49,18 @@ const GameCard = () => {
       </View>
     );
   }
-  const game = JSON.parse(params.get('game')!); // Parse the game data
-  const teamLogos = JSON.parse(params.get('teamLogos')!); // Parse the team logos data
+  const game = JSON.parse(params.get('game')!);
+  const teamLogos = JSON.parse(params.get('teamLogos')!);
   
   const { title, pubDate, description } = game;
 
   // Use gameUtils to extract teams and determine if it's a home game
   const { awayTeam, homeTeam } = extractTeams(title);
   const isHome = isHomeTeam(title);
+  
+  // Display names should not show the conference tag
+  const awayDisplayName = awayTeam.startsWith('TBD_') ? 'TBD' : awayTeam;
+  const homeDisplayName = homeTeam.startsWith('TBD_') ? 'TBD' : homeTeam;
 
   const normalizeTeamName = (team: string) => team.toLowerCase().replace(/\s+/g, '');
 
@@ -185,7 +190,7 @@ const GameCard = () => {
     <ScrollView style={styles.container}>      
       {/* Image of the field */}
       {(fieldImage && fieldImage !== "") ? (
-        <Image source={{ uri: fieldImage }} style={styles.detailImage} />
+        <Image source={{ uri: fieldImage }} style={styles.detailImage} contentFit="cover" />
       ) : (
         <View style={styles.noImageBox}>
           <Text style={styles.noImageText}>Image of This Field is Unavailable</Text>
@@ -200,8 +205,8 @@ const GameCard = () => {
       {/* Team Logos Section */}
       <View style={styles.teamRow}>
         <View style={styles.team}>
-          <Image source={getTeamLogo(teamLogos, awayTeam)} style={styles.logo} />
-          <Text style={styles.teamName}>{awayRanking ? `#${awayRanking} ` : ''}{awayTeam}</Text>
+          <Image source={getTeamLogo(teamLogos, awayTeam)} style={styles.logo} contentFit="contain" />
+          <Text style={styles.teamName}>{awayRanking ? `#${awayRanking} ` : ''}{awayDisplayName}</Text>
             <Text style={styles.conferenceName}>
             {awayTeamConference}
             {awayTeamRegion && `, ${awayTeamRegion}`}
@@ -209,8 +214,8 @@ const GameCard = () => {
         </View>
         <Text style={styles.vsText}>{game.description.includes('SELC') || game.description.includes('MCLA') ? 'vs.' : '@'}</Text>
         <View style={styles.team}>
-          <Image source={getTeamLogo(teamLogos, homeTeam)} style={styles.logo} />
-          <Text style={styles.teamName}>{homeRanking ? `#${homeRanking} ` : ''}{homeTeam}</Text>
+          <Image source={getTeamLogo(teamLogos, homeTeam)} style={styles.logo} contentFit="contain" />
+          <Text style={styles.teamName}>{homeRanking ? `#${homeRanking} ` : ''}{homeDisplayName}</Text>
           <Text style={styles.conferenceName}>
             {homeTeamConference}
             {homeTeamRegion && `, ${homeTeamRegion}`}
@@ -233,6 +238,7 @@ const GameCard = () => {
         </Text>
 
         {/* Coverage */}
+        {/* TODO: Make coverage link effected by SELC play offs */}
         {(new Date(pubDate).getDate() > (new Date().getDate() - 1) && homeGameInfo?.coverageText !== "") && (
           <Text style={styles.detailText}>
             Coverage:{' '}

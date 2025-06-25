@@ -73,7 +73,7 @@ const MoreScreen = () => {
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.row}
-          onPress={() => Linking.openURL('https://www.instagram.com/gatechlax/')}>
+          onPress={() => Linking.openURL('https://www.instagram.com/gtlacrosse/')}>
           <Text style={styles.rowText}>Visit us on Instagram</Text>
           <Icon name="chevron-forward" style={styles.arrowIcon} />
         </TouchableOpacity>
