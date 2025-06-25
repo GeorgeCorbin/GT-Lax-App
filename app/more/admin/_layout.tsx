@@ -18,6 +18,7 @@ export default function AdminLayout() {
       {/* Ensure paths match */}
       <Stack.Screen name="AdminLogin" options={{ title: 'Admin Login' }} />
       <Stack.Screen name="AdminPanel" options={{ title: 'Admin Panel' }} />
+      <Stack.Screen name="FeatureFlagManager" options={{ title: 'Feature Flags' }} />
     </Stack>
   );
 }

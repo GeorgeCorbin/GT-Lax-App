@@ -1,0 +1,12 @@
+{
+  "automatic_article_notifications": {
+    "enabled": true,
+    "global_enabled": false,
+    "allowed_tokens": [
+      "ExponentPushToken[Y-PL4hKhL-hs7fafAytiZR]"
+    ],
+    "description": "Controls automatic push notifications when new articles are detected",
+    "last_updated": "2025-01-27",
+    "updated_by": "admin"
+  }
+} 

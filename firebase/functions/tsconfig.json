@@ -2,7 +2,7 @@
   "compilerOptions": {
     // Language Features
     "target": "ESNext", // Use the latest JavaScript features
-    "lib": ["ESNext"], // Exclude DOM types for React Native
+    "lib": ["ESNext"], // Use latest JavaScript features for Node.js
 
     // Module Resolution
     "moduleResolution": "node", // Required for resolving node_modules
@@ -39,7 +39,7 @@
       "*": ["node_modules/*"]
     },
     "typeRoots": ["./node_modules/@types"], // Load types from node_modules/@types
-    "types": ["react-native"] // Include only React Native types
+    "types": ["node"] // Include only Node.js types for Firebase Functions
   },
   "exclude": [
     "node_modules", // Exclude node_modules from compilation

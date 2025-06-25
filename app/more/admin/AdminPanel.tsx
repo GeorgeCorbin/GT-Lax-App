@@ -15,6 +15,12 @@ const AdminPanel = () => {
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.panelButton}>
+                <Link href={"/more/admin/FeatureFlagManager" as any} style={styles.panelButtonText}>
+                    Feature Flags
+                </Link>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.panelButton}>
                 <Link href="/more/admin/ToggleStore" style={styles.panelButtonText}>
                     Toggle Store
                 </Link>

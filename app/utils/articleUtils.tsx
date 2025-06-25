@@ -580,7 +580,13 @@ export const loadArticlesFromFile = async (): Promise<Article[]> => {
   }
 };
 
-export const mergeArticles = (existingArticles: Article[], newArticles: Article[], removeAutoArticles: RemoveAutoArticle[] = []): Article[] => {
+// Updated interface to return both merged articles and new articles found
+export interface MergeArticlesResult {
+  mergedArticles: Article[];
+  newArticlesFound: Article[];
+}
+
+export const mergeArticles = (existingArticles: Article[], newArticles: Article[], removeAutoArticles: RemoveAutoArticle[] = []): MergeArticlesResult => {
   console.log(`Using auto-remove list with ${removeAutoArticles.length} articles in mergeArticles`);
   if (removeAutoArticles.length > 0) {
     console.log('Articles to remove:', JSON.stringify(removeAutoArticles));
@@ -597,6 +603,9 @@ export const mergeArticles = (existingArticles: Article[], newArticles: Article[
       }
       return !shouldRemove;
     });
+  
+  // Detect new articles before any filtering
+  const newArticlesFound = detectNewArticles(filteredExistingArticles, newArticles, removeAutoArticles);
   
   // Create a map of existing articles by contentUrl for quick lookup
   const existingMap = new Map(filteredExistingArticles.map(article => [article.contentUrl, article]));
@@ -655,7 +664,10 @@ export const mergeArticles = (existingArticles: Article[], newArticles: Article[
   });
   console.log('After sorting, article dates:', sortedArticles.map(a => ({ title: a.title.substring(0, 20), date: a.date })));
   
-  return sortedArticles;
+  return {
+    mergedArticles: sortedArticles,
+    newArticlesFound: newArticlesFound
+  };
 };
 
 // Add this debug function after mergeArticles function
@@ -962,5 +974,99 @@ export const diagnoseAndFixDateIssues = async (): Promise<boolean> => {
   } catch (error) {
     console.error('Error in diagnoseAndFixDateIssues:', error);
     return false;
+  }
+};
+
+// Notification options for new articles
+const NOTIFICATION_TITLES = [
+  "🏆 Georgia Tech Lacrosse News!",
+  "🥍 Breaking: New GT Lax Update!",
+  "⚡ Fresh GT Lacrosse Content!",
+  "🔥 Georgia Tech Lax Alert!",
+  "📰 Latest from the Yellow Jackets!",
+  "🎯 GT Lacrosse Update!",
+  "⭐ Georgia Tech News Flash!",
+  "🚨 New Buzz from Tech Lacrosse!",
+  "📢 Yellow Jacket Headlines!",
+  "💪 Fresh GT Lax News!"
+];
+
+// Variable to track the last used notification title index on the client side
+let lastUsedTitleIndex = -1;
+
+// Function to get random notification title (ensuring it's different from last used)
+export const getRandomNotificationTitle = (): string => {
+  let randomTitleIndex;
+  do {
+    randomTitleIndex = Math.floor(Math.random() * NOTIFICATION_TITLES.length);
+  } while (randomTitleIndex === lastUsedTitleIndex && NOTIFICATION_TITLES.length > 1);
+  
+  lastUsedTitleIndex = randomTitleIndex;
+  return NOTIFICATION_TITLES[randomTitleIndex];
+};
+
+/**
+ * Function to detect new articles by comparing existing and new article arrays.
+ * 
+ * This function applies the same filtering logic as mergeArticles to ensure that
+ * only "notification-worthy" articles are detected as new. This prevents notifications
+ * for commitment articles, transfer announcements, and articles in the auto-remove list.
+ * 
+ * @param existingArticles - Previously stored articles (should already be filtered)
+ * @param newArticles - Fresh articles from RSS feed (unfiltered)
+ * @param removeAutoArticles - List of articles to automatically remove/skip
+ * @returns Array of newly detected articles that should trigger notifications
+ */
+export const detectNewArticles = (existingArticles: Article[], newArticles: Article[], removeAutoArticles: RemoveAutoArticle[] = []): Article[] => {
+  if (!existingArticles || existingArticles.length === 0) {
+    // If no existing articles, don't consider any as "new" to avoid spam on first install
+    return [];
+  }
+  
+  // Create a map of existing articles by contentUrl for quick lookup
+  const existingMap = new Map(existingArticles.map(article => [article.contentUrl, article]));
+  
+  // Filter new articles to exclude commitment/transfer articles and other types that should be skipped
+  // This ensures we only detect "worthy" articles as new, not ones we would filter out anyway
+  const filteredNewArticles = newArticles
+    .filter(article => !isCommitmentOrTransferArticle(article.title))
+    .filter(article => {
+      const shouldRemove = shouldAutoRemoveArticle(article, removeAutoArticles);
+      if (shouldRemove) {
+        console.log(`Filtering out auto-remove article during detection: "${article.title}" (${article.date})`);
+      }
+      return !shouldRemove;
+    });
+  
+  // Find articles in filteredNewArticles that don't exist in existingArticles
+  const newlyFoundArticles = filteredNewArticles.filter(newArticle => {
+    return !existingMap.has(newArticle.contentUrl);
+  });
+  
+  console.log(`Detected ${newlyFoundArticles.length} new articles (after filtering out commitments/transfers/auto-remove)`);
+  newlyFoundArticles.forEach(article => {
+    console.log(`New article: "${article.title}" (${article.date})`);
+  });
+  
+  return newlyFoundArticles;
+};
+
+// Test function to manually trigger article notification (for testing purposes)
+export const testArticleNotification = async (): Promise<void> => {
+  try {
+    const response = await axios.post(
+      "https://us-central1-gt-lax-app.cloudfunctions.net/sendArticleNotification",
+      { 
+        newArticlesCount: 2,
+        articleTitles: [
+          "Jackets Defeat Rival Georgia in Overtime Thriller",
+          "New Recruit Commits to Georgia Tech Lacrosse"
+        ]
+      },
+      { headers: { "Content-Type": "application/json" } }
+    );
+    console.log("Test notification sent successfully:", response.data);
+  } catch (error) {
+    console.error("Error sending test notification:", error);
   }
 }; 

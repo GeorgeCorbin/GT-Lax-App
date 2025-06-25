@@ -15,7 +15,8 @@ import {
   fetchRemoveAutoArticles,
   debugArticleDates,
   normalizeArticleDates,
-  diagnoseAndFixDateIssues
+  diagnoseAndFixDateIssues,
+  MergeArticlesResult
 } from '../app/utils/articleUtils';
 
 export interface ShopItem {
@@ -121,6 +122,28 @@ const sendNotificationToAllUsers = async (title: string, body: string) => {
   }
 };
 
+const sendArticleNotification = async (newArticlesCount: number, articleTitles: string[] = []) => {
+  try {
+    // Check feature flags before sending notification
+    const featureFlagsResponse = await axios.get("https://gt-lax-app.web.app/feature_flags.json");
+    const featureFlags = featureFlagsResponse.data;
+    
+    if (!featureFlags?.automatic_article_notifications?.enabled) {
+      console.log("Automatic article notifications feature is disabled, skipping notification");
+      return;
+    }
+    
+    const response = await axios.post(
+      "https://us-central1-gt-lax-app.cloudfunctions.net/sendArticleNotification",
+      { newArticlesCount, articleTitles },
+      { headers: { "Content-Type": "application/json" } }
+    );
+    console.log("Article notification sent successfully:", response.data);
+  } catch (error) {
+    console.error("Error sending article notification:", error);
+  }
+};
+
 export const AppDataProvider = ({ children }: { children: React.ReactNode }) => {
   const [shopItems, setShopItems] = useState<ShopItem[]>([]);
   const [schedule, setSchedule] = useState<Game[]>([]);
@@ -178,14 +201,21 @@ export const AppDataProvider = ({ children }: { children: React.ReactNode }) => 
         // Fetch fresh data from RSS feed
         const newArticles = await fetchRSSFeed(removeAutoArticles);
         const existingArticles = await loadArticlesFromFile();
-        const mergedArticles = mergeArticles(existingArticles, newArticles, removeAutoArticles);
+        const mergeResult = mergeArticles(existingArticles, newArticles, removeAutoArticles);
         
         // Debug date sorting before saving
         console.log('Debug dates (after merge):');
-        debugArticleDates(mergedArticles);
+        debugArticleDates(mergeResult.mergedArticles);
         
-        await saveArticlesToFile(mergedArticles);
-        setArticles(mergedArticles);
+        // Send notification if new articles were found
+        if (mergeResult.newArticlesFound.length > 0) {
+          console.log(`Found ${mergeResult.newArticlesFound.length} new articles, sending notification`);
+          const articleTitles = mergeResult.newArticlesFound.map(article => article.title);
+          await sendArticleNotification(mergeResult.newArticlesFound.length, articleTitles);
+        }
+        
+        await saveArticlesToFile(mergeResult.mergedArticles);
+        setArticles(mergeResult.mergedArticles);
       } else {
         // Try to load from local file first
         const localArticles = await loadArticlesFromFile();
@@ -199,14 +229,21 @@ export const AppDataProvider = ({ children }: { children: React.ReactNode }) => 
           
           // Fetch new articles in the background
           const newArticles = await fetchRSSFeed(removeAutoArticles);
-          const mergedArticles = mergeArticles(localArticles, newArticles, removeAutoArticles);
+          const mergeResult = mergeArticles(localArticles, newArticles, removeAutoArticles);
           
           // Debug date sorting after merge
           console.log('Debug dates (after merge with new articles):');
-          debugArticleDates(mergedArticles);
+          debugArticleDates(mergeResult.mergedArticles);
           
-          await saveArticlesToFile(mergedArticles);
-          setArticles(mergedArticles);
+          // Send notification if new articles were found
+          if (mergeResult.newArticlesFound.length > 0) {
+            console.log(`Found ${mergeResult.newArticlesFound.length} new articles, sending notification`);
+            const articleTitles = mergeResult.newArticlesFound.map(article => article.title);
+            await sendArticleNotification(mergeResult.newArticlesFound.length, articleTitles);
+          }
+          
+          await saveArticlesToFile(mergeResult.mergedArticles);
+          setArticles(mergeResult.mergedArticles);
         } else {
           // If no local data, fetch from RSS
           const newArticles = await fetchRSSFeed(removeAutoArticles);
