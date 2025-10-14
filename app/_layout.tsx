@@ -45,7 +45,7 @@ export default function RootLayout() {
         // Check for app version updates
         if (lastVersion !== currentVersion) {
           await AsyncStorage.setItem('lastVersion', currentVersion);
-          setShowUpdatePopup(true); // Flag the popup to show later
+          setShowUpdatePopup(false); // Flag the popup to show later
         }
 
         // Set initial route

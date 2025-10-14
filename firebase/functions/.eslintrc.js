@@ -30,5 +30,10 @@ module.exports = {
     "quotes": ["error", "double"],
     "import/no-unresolved": 0,
     "indent": ["error", 2],
+    "no-trailing-spaces": 0,
+    "brace-style": ["error", "1tbs", { allowSingleLine: true }],
+    "max-len": ["error", { code: 120 }],
+    "object-curly-spacing": ["error", "always"],
+    "arrow-parens": 0,
   },
 };

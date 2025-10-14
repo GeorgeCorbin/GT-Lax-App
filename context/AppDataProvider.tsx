@@ -7,6 +7,7 @@ import { Image } from 'react-native';
 import * as Notifications from 'expo-notifications';
 import { useRouter } from "expo-router";
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { getNotificationApiKey } from '../app/utils/config';
 import { 
   fetchRSSFeed, 
   saveArticlesToFile, 
@@ -18,6 +19,7 @@ import {
   diagnoseAndFixDateIssues,
   MergeArticlesResult
 } from '../app/utils/articleUtils';
+import localFeatureFlags from '@/local_feature_flags';
 
 export interface ShopItem {
   id: string;
@@ -111,10 +113,16 @@ const getLocalImageUri = async (url: string) => {
 
 const sendNotificationToAllUsers = async (title: string, body: string) => {
   try {
+    const apiKey = getNotificationApiKey();
     const response = await axios.post(
       "https://us-central1-gt-lax-app.cloudfunctions.net/sendPushNotification",
       { title, body, data: { screen: "Schedule" } },
-      { headers: { "Content-Type": "application/json" } }
+      { 
+        headers: { 
+          "Content-Type": "application/json",
+          "X-API-Key": apiKey 
+        } 
+      }
     );
     console.log("Notification sent successfully:", response.data);
   } catch (error) {
@@ -133,14 +141,49 @@ const sendArticleNotification = async (newArticlesCount: number, articleTitles: 
       return;
     }
     
+    // Validate we have articles to notify about
+    if (newArticlesCount <= 0) {
+      console.log("No new articles to notify about, skipping notification");
+      return;
+    }
+    
+    console.log(`Sending notification for ${newArticlesCount} new articles with titles:`, articleTitles);
+    
+    // Ensure we have the correct endpoint URL
+    const notificationEndpoint = "https://us-central1-gt-lax-app.cloudfunctions.net/sendPushNotification";
+    
+    // Add timeout to avoid hanging requests
+    const apiKey = getNotificationApiKey();
     const response = await axios.post(
-      "https://us-central1-gt-lax-app.cloudfunctions.net/sendArticleNotification",
+      notificationEndpoint,
       { newArticlesCount, articleTitles },
-      { headers: { "Content-Type": "application/json" } }
+      { 
+        headers: { 
+          "Content-Type": "application/json",
+          "X-API-Key": apiKey 
+        },
+        timeout: 10000 // 10 second timeout
+      }
     );
+    
     console.log("Article notification sent successfully:", response.data);
-  } catch (error) {
-    console.error("Error sending article notification:", error);
+    return response.data;
+  } catch (error: any) {
+    // More detailed error logging
+    if (error.response) {
+      // The request was made and the server responded with a status code outside of 2xx range
+      console.error("Error sending article notification - server response:", {
+        status: error.response.status,
+        data: error.response.data,
+      });
+    } else if (error.request) {
+      // The request was made but no response was received
+      console.error("Error sending article notification - no response received:", error.request);
+    } else {
+      // Something happened in setting up the request
+      console.error("Error sending article notification - request setup error:", error.message);
+    }
+    return null;
   }
 };
 
@@ -203,10 +246,11 @@ export const AppDataProvider = ({ children }: { children: React.ReactNode }) => 
         const existingArticles = await loadArticlesFromFile();
         const mergeResult = mergeArticles(existingArticles, newArticles, removeAutoArticles);
         
-        // Debug date sorting before saving
-        console.log('Debug dates (after merge):');
-        debugArticleDates(mergeResult.mergedArticles);
-        
+        if (localFeatureFlags.disable_article_logs.enabled) {
+          // Debug date sorting before saving
+          console.log('Debug dates (after merge):');
+          debugArticleDates(mergeResult.mergedArticles);
+        }
         // Send notification if new articles were found
         if (mergeResult.newArticlesFound.length > 0) {
           console.log(`Found ${mergeResult.newArticlesFound.length} new articles, sending notification`);
@@ -220,9 +264,11 @@ export const AppDataProvider = ({ children }: { children: React.ReactNode }) => 
         // Try to load from local file first
         const localArticles = await loadArticlesFromFile();
         
-        // Debug local articles dates
-        console.log('Debug dates (local articles):');
-        debugArticleDates(localArticles);
+        if (localFeatureFlags.disable_article_logs.enabled) {
+          // Debug local articles dates
+          console.log('Debug dates (local articles):');
+          debugArticleDates(localArticles);
+        }
         
         if (localArticles.length > 0) {
           setArticles(localArticles);
@@ -231,9 +277,11 @@ export const AppDataProvider = ({ children }: { children: React.ReactNode }) => 
           const newArticles = await fetchRSSFeed(removeAutoArticles);
           const mergeResult = mergeArticles(localArticles, newArticles, removeAutoArticles);
           
-          // Debug date sorting after merge
-          console.log('Debug dates (after merge with new articles):');
-          debugArticleDates(mergeResult.mergedArticles);
+          if (localFeatureFlags.disable_article_logs.enabled) {
+            // Debug date sorting after merge
+            console.log('Debug dates (after merge with new articles):');
+            debugArticleDates(mergeResult.mergedArticles);
+          }
           
           // Send notification if new articles were found
           if (mergeResult.newArticlesFound.length > 0) {
@@ -248,9 +296,11 @@ export const AppDataProvider = ({ children }: { children: React.ReactNode }) => 
           // If no local data, fetch from RSS
           const newArticles = await fetchRSSFeed(removeAutoArticles);
           
-          // Debug date sorting for new articles
-          console.log('Debug dates (new articles only):');
-          debugArticleDates(newArticles);
+          if (localFeatureFlags.disable_article_logs.enabled) {
+            // Debug date sorting for new articles
+            console.log('Debug dates (new articles only):');
+            debugArticleDates(newArticles);
+          }
           
           await saveArticlesToFile(newArticles);
           setArticles(newArticles);
@@ -315,7 +365,7 @@ export const AppDataProvider = ({ children }: { children: React.ReactNode }) => 
 
     const fetchRankings = async () => {
       try {
-        const response = await axios.get('https://gt-lax-app.web.app/rankings_2025.json');
+        const response = await axios.get('https://gt-lax-app.web.app/current_rankings.json');
         setRankings(response.data);
       } catch (error) {
         console.error('Error fetching rankings:', error);

@@ -1,0 +1,8 @@
+ExponentPushToken[nnQDP7HS82BZIQiqH5buzo]
+
+Now make it so notifications are sent anytime a new article is posted and give me a way to temporarily simulate new article being added that passes all checks
+
+Make sure app.json and app.config.js are in sync and updated with the correct version numbers.
+
+To build the app for the app store run:
+npx eas build --platform ios --local

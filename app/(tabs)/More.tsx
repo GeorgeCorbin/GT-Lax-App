@@ -85,14 +85,14 @@ const MoreScreen = () => {
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.row}
-          onPress={() => Linking.openURL('https://www.facebook.com/GeorgiaTechMensLacrosse/')}>
-          <Text style={styles.rowText}>Visit us on Facebook</Text>
+          onPress={() => Linking.openURL('https://www.youtube.com/@GTmenslacrosse')}>
+          <Text style={styles.rowText}>Visit us on YouTube</Text>
           <Icon name="chevron-forward" style={styles.arrowIcon} />
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.row}
-          onPress={() => Linking.openURL('https://www.youtube.com/@GTmenslacrosse')}>
-          <Text style={styles.rowText}>Visit us on YouTube</Text>
+          onPress={() => Linking.openURL('https://www.facebook.com/GeorgiaTechMensLacrosse/')}>
+          <Text style={styles.rowText}>Visit us on Facebook</Text>
           <Icon name="chevron-forward" style={styles.arrowIcon} />
         </TouchableOpacity>
       </View>

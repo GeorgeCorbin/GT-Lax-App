@@ -74,11 +74,14 @@ const GameCard = () => {
   const homeTeamRegion = homeGameInfo?.region;
   const awayTeamConference = awayGameInfo?.conference;
   const awayTeamRegion = awayGameInfo?.region;
-  const fieldImage = (game.description.includes('SELC') && !game.description.includes('Quarter')) ? gameInfo.find(info => info.id === 'SELC')?.fieldImage : (game.description.includes('MCLA') ? gameInfo.find(info => info.id === 'MCLA')?.fieldImage : homeGameInfo?.fieldImage);
-  const field = (game.description.includes('SELC') && !game.description.includes('Quarter')) ? gameInfo.find(info => info.id === 'SELC')?.fieldName : (game.description.includes('MCLA') ? gameInfo.find(info => info.id === 'MCLA')?.fieldName : homeGameInfo?.fieldName);
-  const gameLocation = (game.description.includes('SELC') && !game.description.includes('Quarter')) ? gameInfo.find(info => info.id === 'SELC')?.location : (game.description.includes('MCLA') ? gameInfo.find(info => info.id === 'MCLA')?.location : homeGameInfo?.location);
-  const latitude = (game.description.includes('SELC') && !game.description.includes('Quarter')) ? gameInfo.find(info => info.id === 'SELC')?.latitude : (game.description.includes('MCLA') ? gameInfo.find(info => info.id === 'MCLA')?.latitude : homeGameInfo?.latitude);
-  const longitude = (game.description.includes('SELC') && !game.description.includes('Quarter')) ? gameInfo.find(info => info.id === 'SELC')?.longitude : (game.description.includes('MCLA') ? gameInfo.find(info => info.id === 'MCLA')?.longitude : homeGameInfo?.longitude);
+  const isSELCPlayoff = game.description.includes('SELC');
+  const isMCLAPlayoff = game.description.includes('MCLA');
+  
+  const fieldImage = isSELCPlayoff ? gameInfo.find(info => info.id === 'SELC')?.fieldImage : (isMCLAPlayoff ? gameInfo.find(info => info.id === 'MCLA')?.fieldImage : homeGameInfo?.fieldImage);
+  const field = isSELCPlayoff ? gameInfo.find(info => info.id === 'SELC')?.fieldName : (isMCLAPlayoff ? gameInfo.find(info => info.id === 'MCLA')?.fieldName : homeGameInfo?.fieldName);
+  const gameLocation = isSELCPlayoff ? gameInfo.find(info => info.id === 'SELC')?.location : (isMCLAPlayoff ? gameInfo.find(info => info.id === 'MCLA')?.location : homeGameInfo?.location);
+  const latitude = isSELCPlayoff ? gameInfo.find(info => info.id === 'SELC')?.latitude : (isMCLAPlayoff ? gameInfo.find(info => info.id === 'MCLA')?.latitude : homeGameInfo?.latitude);
+  const longitude = isSELCPlayoff ? gameInfo.find(info => info.id === 'SELC')?.longitude : (isMCLAPlayoff ? gameInfo.find(info => info.id === 'MCLA')?.longitude : homeGameInfo?.longitude);
 
 
   const { rankings, loadingRankings } = useAppData();
@@ -212,7 +215,7 @@ const GameCard = () => {
             {awayTeamRegion && `, ${awayTeamRegion}`}
             </Text>
         </View>
-        <Text style={styles.vsText}>{game.description.includes('SELC') || game.description.includes('MCLA') ? 'vs.' : '@'}</Text>
+        <Text style={styles.vsText}>{isSELCPlayoff || isMCLAPlayoff ? 'vs.' : '@'}</Text>
         <View style={styles.team}>
           <Image source={getTeamLogo(teamLogos, homeTeam)} style={styles.logo} contentFit="contain" />
           <Text style={styles.teamName}>{homeRanking ? `#${homeRanking} ` : ''}{homeDisplayName}</Text>

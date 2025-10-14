@@ -368,6 +368,18 @@
     "coverageLink": "https://www.youtube.com/@GTmenslacrosse/streams"
   },
   {
+    "id": "jacksonville",
+    "location": "Jacksonville, FL",
+    "fieldImage": "",
+    "fieldName": "Unknown",
+    "latitude": 30.3322,
+    "longitude": -81.6557,
+    "conference": "SELC",
+    "region": "South",
+    "coverageText": "Streaming on YouTube",
+    "coverageLink": "https://www.youtube.com/@GTmenslacrosse/streams"
+  },
+  {
     "id": "jmu",
     "location": "Harrisonburg, VA",
     "fieldImage": "",

@@ -70,23 +70,33 @@ export const isSELCorMCLA = (title: string): { city: string; fieldName: string; 
   
 // Utility to clean and extract team names
 export const extractTeams = (title: string): { awayTeam: string; homeTeam: string } => {
+  
+  // Check if this is an MCLA or SELC game (check original title for TBD)
+  const isMCLAGame = title.includes('MCLA');
+  const isSELCGame = title.includes('SELC');
+  const hasTBD = title.includes('TBD');
+  
   const cleanedTitle = title.replace(/Final.*/i, '').trim();
   const parts = cleanedTitle.includes('vs.') ? cleanedTitle.split('vs.') : cleanedTitle.split(',');
   
-  // Check if this is an MCLA or SELC game
-  const isMCLAGame = cleanedTitle.includes('MCLA');
-  const isSELCGame = cleanedTitle.includes('SELC');
   
   // For games with TBD opponents, use a consistent "TBD" name with the conference context
   if (isMCLAGame || isSELCGame) {
     const awayTeam = parts[0]?.replace(/\d+/g, '').trim() || 'TBD';
     const homeTeam = parts[1]?.replace(/\d+/g, '').trim() || 'TBD';
     
-    // Replace any team containing "TBD" with TBD_MCLA or TBD_SELC
-    return {
-      awayTeam: awayTeam.includes('TBD') ? (isMCLAGame ? 'TBD_MCLA' : 'TBD_SELC') : awayTeam,
-      homeTeam: homeTeam.includes('TBD') ? (isMCLAGame ? 'TBD_MCLA' : 'TBD_SELC') : homeTeam
+    
+    // Check if a team should be replaced with TBD_SELC or TBD_MCLA
+    // This happens if: the team name contains "TBD", OR if the original title has TBD and the team name is just the conference/round info
+    const isAwayTBD = awayTeam.includes('TBD') || (hasTBD && (awayTeam.includes('SELC') || awayTeam.includes('MCLA') || awayTeam.includes('Quarter')));
+    const isHomeTBD = homeTeam.includes('TBD') || (hasTBD && (homeTeam.includes('SELC') || homeTeam.includes('MCLA') || homeTeam.includes('Quarter')));
+    
+    const result = {
+      awayTeam: isAwayTBD ? (isMCLAGame ? 'TBD_MCLA' : 'TBD_SELC') : awayTeam,
+      homeTeam: isHomeTBD ? (isMCLAGame ? 'TBD_MCLA' : 'TBD_SELC') : homeTeam
     };
+    
+    return result;
   }
   
   // For regular games, use the standard extraction

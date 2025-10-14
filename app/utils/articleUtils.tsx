@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { XMLParser } from 'fast-xml-parser';
 import * as FileSystem from 'expo-file-system';
+import localFeatureFlags from '@/local_feature_flags';
 
 // Define a type for remove auto articles
 type RemoveAutoArticle = {
@@ -89,7 +90,9 @@ export const fetchArticleContent = async (url: string): Promise<string> => {
     const html = response.data;
     
     // Log the raw HTML to check for paragraph breaks
-    console.log("HTML contains paragraph divs:", html.includes('<div>&nbsp;</div>'));
+    if (localFeatureFlags.disable_article_logs.enabled) {
+      console.log("HTML contains paragraph divs:", html.includes('<div>&nbsp;</div>'));
+    }
     
     // First, handle empty paragraph divs by converting them to explicit paragraph markers
     let processedHtml = html.replace(/<div>\s*&nbsp;\s*<\/div>/g, '<div>PARAGRAPH_BREAK</div>');
@@ -116,7 +119,9 @@ export const fetchArticleContent = async (url: string): Promise<string> => {
       content = content
         // First handle player name links with relative paths (e.g., /roster/player-name)
         .replace(/<a\s+href="(\/roster\/[^"]+)"[^>]*>([^<]+)<\/a>/g, (match: string, path: string, name: string) => {
-          console.log(`Converting player link: ${name} -> ${path}`);
+          if (localFeatureFlags.disable_article_logs.enabled) {
+            console.log(`Converting player link: ${name} -> ${path}`);
+          }
           return `[${name}](${path})`;
         })
         // Then handle player name links with absolute paths
@@ -124,16 +129,22 @@ export const fetchArticleContent = async (url: string): Promise<string> => {
           // Extract just the /roster/player-name part for internal navigation
           const playerPath = url.match(/\/roster\/[^/?"]+/);
           if (playerPath) {
-            console.log(`Converting absolute player link: ${name} -> ${playerPath[0]}`);
+            if (localFeatureFlags.disable_article_logs.enabled) {
+              console.log(`Converting absolute player link: ${name} -> ${playerPath[0]}`);
+            }
             return `[${name}](${playerPath[0]})`;
           }
           // Fallback to full URL if pattern doesn't match
-          console.log(`Could not extract player path from URL: ${url}, using full URL`);
+          if (localFeatureFlags.disable_article_logs.enabled) {
+            console.log(`Could not extract player path from URL: ${url}, using full URL`);
+          }
           return `[${name}](${url})`;
         })
         // Then handle all other links
         .replace(/<a\s+href="([^"]+)"[^>]*>([^<]+)<\/a>/g, (match: string, url: string, name: string) => {
-          console.log(`Converting regular link: ${name} -> ${url}`);
+          if (localFeatureFlags.disable_article_logs.enabled) {
+            console.log(`Converting regular link: ${name} -> ${url}`);
+          }
           return `[${name}](${url})`;
         });
       
@@ -157,7 +168,9 @@ export const fetchArticleContent = async (url: string): Promise<string> => {
       
       // Join processed paragraphs with two newlines for proper markdown paragraphs
       const finalContent = processedParagraphs.join('\n\n');
-      console.log("Final content paragraph count:", processedParagraphs.length);
+      if (localFeatureFlags.disable_article_logs.enabled) {
+        console.log("Final content paragraph count:", processedParagraphs.length);
+      }
       
       return finalContent;
     }
@@ -402,26 +415,10 @@ export const fetchRSSFeed = async (removeAutoArticles: RemoveAutoArticle[] = [])
       ? feed.rss.channel.item 
       : [feed.rss.channel.item];
     
-    // Use static data for testing if RSS feed doesn't contain valid data
+    // Handle empty RSS feed
     if (items.length === 0 || !items[0].title) {
-      console.log('Using static test data instead of empty RSS feed');
-      const testDate = new Date().toLocaleDateString('en-US', {
-        month: 'short',
-        day: 'numeric',
-        year: 'numeric'
-      });
-      const testTitle = 'Test Article 1';
-      return [
-        {
-          id: generateArticleId(testTitle, testDate),
-          title: testTitle,
-          date: testDate,
-          imageUrl: 'https://gt-lax-app.web.app/assets/article1.jpg',
-          imageAuthor: 'Kevin Schoonover',
-          contentUrl: 'https://gt-lax-app.web.app/assets/article1.md',
-          content: 'Test article content'
-        }
-      ];
+      console.log('RSS feed is empty or invalid');
+      return [];
     }
     
     const articles: Article[] = await Promise.all(
@@ -532,24 +529,7 @@ export const fetchRSSFeed = async (removeAutoArticles: RemoveAutoArticle[] = [])
     return sortedArticles;
   } catch (error) {
     console.error('Error fetching RSS feed:', error);
-    console.log('Using fallback static data due to error');
-    const testDate = new Date().toLocaleDateString('en-US', {
-      month: 'short',
-      day: 'numeric',
-      year: 'numeric'
-    });
-    const testTitle = 'Test Article 1';
-    return [
-      {
-        id: generateArticleId(testTitle, testDate),
-        title: testTitle,
-        date: testDate,
-        imageUrl: 'https://gt-lax-app.web.app/assets/article1.jpg',
-        imageAuthor: 'Kevin Schoonover',
-        contentUrl: 'https://gt-lax-app.web.app/assets/article1.md',
-        content: 'Test article content'
-      }
-    ];
+    return [];
   }
 };
 
@@ -641,29 +621,34 @@ export const mergeArticles = (existingArticles: Article[], newArticles: Article[
     }
   });
 
-  console.log('Before sorting, article dates:', mergedArticles.map(a => ({ title: a.title.substring(0, 20), date: a.date })));
+  if (localFeatureFlags.disable_article_logs.enabled) {
+    console.log('Before sorting, article dates:', mergedArticles.map(a => ({ title: a.title.substring(0, 20), date: a.date })));
+  }
   // Sort merged articles by date (newest first) with error handling
   const sortedArticles = mergedArticles.sort((a, b) => {
     try {
       const timestampA = getDateTimestamp(a.date);
       const timestampB = getDateTimestamp(b.date);
-      
+
       // Debug any potential sorting issues
       if (isNaN(timestampA) || isNaN(timestampB)) {
         console.error(`Invalid timestamp(s) during sorting: Article A: "${a.title}" (${a.date}) = ${timestampA}, Article B: "${b.title}" (${b.date}) = ${timestampB}`);
         // Default to preserving original order if we can't determine
         return 0;
       }
-      
+
       return timestampB - timestampA;
     } catch (error) {
       console.error(`Error during article sorting between "${a.title}" and "${b.title}":`, error);
       // Default to preserving original order if there's an error
-      return 0; 
+      return 0;
     }
   });
-  console.log('After sorting, article dates:', sortedArticles.map(a => ({ title: a.title.substring(0, 20), date: a.date })));
-  
+
+  if (localFeatureFlags.disable_article_logs.enabled) {
+    console.log('After sorting, article dates:', sortedArticles.map(a => ({ title: a.title.substring(0, 20), date: a.date })));
+  }
+
   return {
     mergedArticles: sortedArticles,
     newArticlesFound: newArticlesFound
@@ -681,12 +666,12 @@ export const debugArticleDates = (articles: Article[]): void => {
     return;
   }
   
-  // Original sort order
-  console.log('\nArticles in their original order:');
-  articles.forEach((article, index) => {
-    console.log(`${index + 1}. "${article.title}" - Date: ${article.date}`);
-  });
-  
+    // Original sort order
+    console.log('\nArticles in their original order:');
+    articles.forEach((article, index) => {
+      console.log(`${index + 1}. "${article.title}" - Date: ${article.date}`);
+    });
+
   // Sort using our custom getDateTimestamp function
   const customSorted = [...articles].sort((a, b) => {
     try {
@@ -854,7 +839,9 @@ export const normalizeArticleDates = async (): Promise<void> => {
       console.log(`Successfully normalized ${fixCount} article dates`);
       
       // Debug final result
-      debugArticleDates(updatedArticles);
+      if (localFeatureFlags.disable_article_logs.enabled) {
+        debugArticleDates(updatedArticles);
+      }
     } else {
       console.log('All article dates are in the correct format');
     }
@@ -876,7 +863,9 @@ export const diagnoseAndFixDateIssues = async (): Promise<boolean> => {
       return false;
     }
     
-    console.log(`Checking ${articles.length} articles for date issues`);
+    if (localFeatureFlags.disable_article_logs.enabled) {
+      console.log(`Checking ${articles.length} articles for date issues`);
+    }
     
     let hasIssues = false;
     let fixedArticles = [...articles];
@@ -885,7 +874,9 @@ export const diagnoseAndFixDateIssues = async (): Promise<boolean> => {
     articles.forEach((article, index) => {
       try {
         const { id, title, date } = article;
-        console.log(`Testing article ${index + 1}/${articles.length}: "${title}" (${date})`);
+        if (localFeatureFlags.disable_article_logs.enabled) {
+          console.log(`Testing article ${index + 1}/${articles.length}: "${title}" (${date})`);
+        }
         
         // Skip empty dates
         if (!date || date.trim() === '') {

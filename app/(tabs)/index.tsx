@@ -5,6 +5,7 @@ import styles from '../../constants/styles/news';
 import { Link } from 'expo-router';
 import { useAppData } from '@/context/AppDataProvider';
 import Colors from '@/constants/Colors';
+import localFeatureFlags from '@/local_feature_flags';
 
 interface Article {
   id: number;
@@ -36,13 +37,13 @@ const NewsScreen = () => {
     } finally {
       setRefreshing(false);
     }
-  }, [fetchArticles]); 
-  
+  }, [fetchArticles]);
+
   useEffect(() => {
     const fetchOnMount = async () => {
       await fetchArticles(); // Default: respect server cache
     };
-  
+
     fetchOnMount();
     console.log('News useEffect triggered for initial fetch');
   }, [fetchArticles]);
@@ -50,20 +51,34 @@ const NewsScreen = () => {
   // Debug logging for articles
   useEffect(() => {
     if (articles.length > 0) {
-      console.log('Articles loaded:', articles.length);
-      console.log('First article:', JSON.stringify(articles[0], null, 2));
+      if (localFeatureFlags.disable_article_logs.enabled) {
+        console.log('Articles loaded:', articles.length);
+        console.log('First article:', JSON.stringify(articles[0], null, 2));
+      }
       articles.forEach((article, index) => {
-        console.log(`Article ${index} image URL:`, article.imageUrl);
+        if (localFeatureFlags.disable_article_logs.enabled) {
+          console.log(`Article ${index} image URL:`, article.imageUrl);
+        }
         // Test if the image URL is valid
         Image.prefetch(article.imageUrl)
-          .then(() => console.log(`Image prefetch success for article ${index}`))
-          .catch(err => console.error(`Image prefetch failed for article ${index}:`, err));
+          .then(() => {
+            if (localFeatureFlags.disable_article_logs.enabled) {
+              console.log(`Image prefetch success for article ${index}`);
+            }
+          })
+          .catch(err => {
+            if (localFeatureFlags.disable_article_logs.enabled) {
+              console.error(`Image prefetch failed for article ${index}:`, err);
+            }
+          });
       });
     }
   }, [articles]);
 
   const renderArticleItem = ({ item }: { item: Article }) => {
-    console.log('Rendering article:', item.id, 'with image URL:', item.imageUrl);
+    if (localFeatureFlags.disable_article_logs.enabled) {
+      console.log('Rendering article:', item.id, 'with image URL:', item.imageUrl);
+    }
     return (
       <Link
         href={{
@@ -79,15 +94,23 @@ const NewsScreen = () => {
         }}
         style={styles.card}
       >
-        <Image 
+        <Image
           source={{ uri: item.imageUrl }}
           style={styles.image}
           contentFit="cover"
           transition={200}
           placeholder={blurhash}
           cachePolicy="memory-disk"
-          onLoad={() => console.log('Image loaded successfully:', item.id)}
-          onError={(error) => console.error('Image load error:', item.id, error)}
+          onLoad={() => {
+            if (localFeatureFlags.disable_article_logs.enabled) {
+              console.log('Image loaded successfully:', item.id);
+            }
+          }}
+          onError={(error) => {
+            if (localFeatureFlags.disable_article_logs.enabled) {
+              console.error('Image load error:', item.id, error);
+            }
+          }}
         />
         <View style={styles.textContainer}>
           <Text style={styles.date}>{item.date}</Text>

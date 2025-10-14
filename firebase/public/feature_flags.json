@@ -3,7 +3,8 @@
     "enabled": true,
     "global_enabled": false,
     "allowed_tokens": [
-      "ExponentPushToken[Y-PL4hKhL-hs7fafAytiZR]"
+      "ExponentPushToken[Y-PL4hKhL-hs7fafAytiZR]",
+      "ExponentPushToken[nnQDP7HS82BZIQiqH5buzo]"
     ],
     "description": "Controls automatic push notifications when new articles are detected",
     "last_updated": "2025-01-27",

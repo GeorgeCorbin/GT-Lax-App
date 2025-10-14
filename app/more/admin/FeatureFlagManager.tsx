@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Switch, TextInput, TouchableOpacity, Alert, ActivityIndicator, ScrollView } from 'react-native';
 import Colors from '@/constants/Colors';
 import axios from 'axios';
+import { getNotificationApiKey } from '@/app/utils/config';
 
 interface FeatureFlags {
   automatic_article_notifications: {
@@ -142,13 +143,19 @@ const FeatureFlagManager = () => {
 
   const testNotification = async () => {
     try {
+      const apiKey = getNotificationApiKey();
       const response = await axios.post(
-        "https://us-central1-gt-lax-app.cloudfunctions.net/sendArticleNotification",
+        "https://us-central1-gt-lax-app.cloudfunctions.net/sendPushNotification",
         { 
           newArticlesCount: 1,
           articleTitles: ["Test Article: Feature Flag System Working!"]
         },
-        { headers: { "Content-Type": "application/json" } }
+        { 
+          headers: { 
+            "Content-Type": "application/json",
+            "X-API-Key": apiKey 
+          } 
+        }
       );
       console.log("Test notification sent:", response.data);
       Alert.alert("Success", "Test notification sent! Check your device for the notification.");

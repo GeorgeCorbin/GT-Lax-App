@@ -11,13 +11,44 @@ import { useAppData } from '@/context/AppDataProvider';
 import { Link } from 'expo-router';
 import { isHomeTeam, extractTeams, extractScores, loadTeamLogos, getTeamLogo, getRankingForTeamOnDate } from '../utils/gameUtils';
 
-const seasons = [
-  { key: '1', value: '2020-21' },
-  { key: '2', value: '2021-22' },
-  { key: '3', value: '2022-23' },
-  { key: '4', value: '2023-24' },
-  { key: '5', value: '2024-25' },
-];
+// Helper function to get the current season based on the current date
+const getCurrentSeason = (): string => {
+  const now = new Date();
+  const currentYear = now.getFullYear();
+  const currentMonth = now.getMonth() + 1; // 0-indexed, so add 1
+  
+  // Lacrosse season typically runs from January to May
+  // If we're in August or later, we're in the next season
+  // If we're before August, we're in the current season
+  if (currentMonth >= 8) {
+    // August or later: next season (e.g., Aug 2024 -> 2024-25)
+    return `${currentYear}-${String(currentYear + 1).slice(-2)}`;
+  } else {
+    // Before August: current season (e.g., Jan 2025 -> 2024-25)
+    return `${currentYear - 1}-${String(currentYear).slice(-2)}`;
+  }
+};
+
+// Helper function to generate seasons from 2020-21 to current season
+const generateSeasons = (): Array<{ key: string; value: string }> => {
+  const currentSeason = getCurrentSeason();
+  const currentSeasonYear = parseInt(currentSeason.split('-')[0]);
+  const seasons = [];
+  
+  // Start from current season and go back to 2020 (reverse order)
+  for (let year = currentSeasonYear; year >= 2020; year--) {
+    const nextYear = String(year + 1).slice(-2);
+    seasons.push({
+      key: String(seasons.length + 1),
+      value: `${year}-${nextYear}`
+    });
+  }
+  
+  return seasons;
+};
+
+// Generate seasons dynamically from 2020-21 to current season
+const seasons = generateSeasons();
 
 type Game = {
   title: string;
@@ -34,22 +65,25 @@ const assetsLink = require.context('../../assets/images/Opponent_Logos', false, 
 const teamLogos = loadTeamLogos(assetsLink);
 
 const location = (game: Game, isHome: boolean): string => {
-  return (
-    (game.description.includes('SELC') && !game.description.includes('Quarter')) || game.description.includes('MCLA')
-    ? game.description.split(',')[2]
-    : (isHome && game.description.includes('SELC Quarter')
-      ? 'Roe Stamps Field\nSELC Quarter-Final'
-      : (isHome
-        ? 'Roe Stamps Field'
-        : 'Away'))
-  );
+  // Check for SELC Quarter Final games first
+  if (game.description.includes('SELC Quarter')) {
+    return isHome ? 'Roe Stamps Field\nSELC Quarter-Final' : 'Away\nSELC Quarter-Final';
+  }
+  
+  // Check for other SELC playoff games or MCLA games
+  if (game.description.includes('SELC') || game.description.includes('MCLA')) {
+    return game.description.split(',')[2] || (isHome ? 'Roe Stamps Field' : 'Away');
+  }
+  
+  // Regular season games
+  return isHome ? 'Roe Stamps Field' : 'Away';
 }
 
 const Schedule = () => {
   const { schedule, loading, fetchScheduleForSeason, rankings, loadingRankings } = useAppData();
   const [record, setRecord] = useState({ wins: 0, losses: 0 });
   const [divisionRecord, setDivisionRecord] = useState({ wins: 0, losses: 0 });
-  const [season, setSelected] = useState('2024-25');
+  const [season, setSelected] = useState(getCurrentSeason());
   const [completedGames, setCompletedGames] = useState<Game[]>([]);
   const [upcomingGames, setUpcomingGames] = useState<Game[]>([]);
   const [awayRanking, setAwayRanking] = useState<number | null>(null);
