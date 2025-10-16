@@ -4,10 +4,11 @@
     "global_enabled": false,
     "allowed_tokens": [
       "ExponentPushToken[Y-PL4hKhL-hs7fafAytiZR]",
-      "ExponentPushToken[nnQDP7HS82BZIQiqH5buzo]"
+      "ExponentPushToken[nnQDP7HS82BZIQiqH5buzo]",
+      "ExponentPushToken[iHWyLJAHWdEKYnPZ2iAjXd]"
     ],
     "description": "Controls automatic push notifications when new articles are detected",
-    "last_updated": "2025-01-27",
+    "last_updated": "2025-10-15",
     "updated_by": "admin"
   }
 } 

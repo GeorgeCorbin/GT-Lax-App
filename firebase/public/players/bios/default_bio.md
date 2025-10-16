@@ -1,27 +1,3 @@
 ## Player Bio
 
-**Height:** (FILL IN)  
-**Weight:** (FILL IN)
-**Hometown:** (FILL IN)
-**High School:** (FILL IN)
-**Major:** (FILL IN)  
-
-###
-
-### Biography
-
-John Doe is a dedicated and skilled midfielder known for his agility and strategic play on the field. He has been playing lacrosse since high school and has consistently demonstrated his commitment to the sport through his performance and teamwork. Off the field, John is pursuing a degree in Sports Science, aiming to combine his passion for sports with a solid academic foundation.  
-
-###
-
-### Achievements
-
-- MVP of the Anytown High School Lacrosse Team (Year)
-- Selected for the All-State Lacrosse Team (Year)
-- Captain of the Anytown High School Lacrosse Team (Year)
-
-###
-
-### Fun Fact
-
-John is also an avid guitarist and enjoys playing music in his free time.
+He contributes on and off the field with a team-first mindset, accountability in the classroom, and an unwavering commitment to excellence. He hopes to make an impact this year and help the Jackets compete for an SELC Championship and a deep run in the MCLA National Tournament.

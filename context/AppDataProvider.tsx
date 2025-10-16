@@ -130,9 +130,22 @@ const sendNotificationToAllUsers = async (title: string, body: string) => {
   }
 };
 
+let lastUsedRemoteTitleIndex = -1;
+const fetchRemoteNotificationTitles = async (): Promise<string[] | null> => {
+  try {
+    const resp = await axios.get("https://gt-lax-app.web.app/auto_notification_titles.json");
+    const data = resp.data;
+    if (Array.isArray(data) && data.every((t) => typeof t === "string")) {
+      return data as string[];
+    }
+    return null;
+  } catch (_) {
+    return null;
+  }
+};
+
 const sendArticleNotification = async (newArticlesCount: number, articleTitles: string[] = []) => {
   try {
-    // Check feature flags before sending notification
     const featureFlagsResponse = await axios.get("https://gt-lax-app.web.app/feature_flags.json");
     const featureFlags = featureFlagsResponse.data;
     
@@ -141,22 +154,50 @@ const sendArticleNotification = async (newArticlesCount: number, articleTitles: 
       return;
     }
     
-    // Validate we have articles to notify about
     if (newArticlesCount <= 0) {
       console.log("No new articles to notify about, skipping notification");
       return;
     }
     
     console.log(`Sending notification for ${newArticlesCount} new articles with titles:`, articleTitles);
-    
-    // Ensure we have the correct endpoint URL
+
+    const remoteTitles = await fetchRemoteNotificationTitles();
+    const titles = remoteTitles && remoteTitles.length > 0 ? remoteTitles : [];
+
+    let title: string;
+    if (titles.length > 0) {
+      let idx: number;
+      do {
+        idx = Math.floor(Math.random() * titles.length);
+      } while (idx === lastUsedRemoteTitleIndex && titles.length > 1);
+      lastUsedRemoteTitleIndex = idx;
+      title = titles[idx];
+    } else {
+      title = "GT Lacrosse Update";
+    }
+
+    let body = "";
+    if (articleTitles && Array.isArray(articleTitles) && articleTitles.length > 0) {
+      if (newArticlesCount === 1) {
+        body = `New article: "${articleTitles[0]}"`;
+      } else if (newArticlesCount === 2) {
+        body = `New articles: "${articleTitles[0]}" and "${articleTitles[1]}"`;
+      } else {
+        const remaining = newArticlesCount - 2;
+        body = `New articles: "${articleTitles[0]}", "${articleTitles[1]}" and ${remaining} more`;
+      }
+    } else {
+      body = newArticlesCount === 1
+        ? "Check out the latest news from the Yellow Jackets!"
+        : `Check out ${newArticlesCount} new articles from the Yellow Jackets!`;
+    }
+
     const notificationEndpoint = "https://us-central1-gt-lax-app.cloudfunctions.net/sendPushNotification";
-    
-    // Add timeout to avoid hanging requests
+
     const apiKey = getNotificationApiKey();
     const response = await axios.post(
       notificationEndpoint,
-      { newArticlesCount, articleTitles },
+      { title, body },
       { 
         headers: { 
           "Content-Type": "application/json",

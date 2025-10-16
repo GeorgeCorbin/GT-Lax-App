@@ -91,6 +91,22 @@ const fetchFeatureFlags = async (): Promise<FeatureFlags | null> => {
   }
 };
 
+const fetchNotificationTitles = async (): Promise<string[] | null> => {
+  try {
+    const response = await axios.get(
+      "https://gt-lax-app.web.app/auto_notification_titles.json"
+    );
+    const data = response.data;
+    if (Array.isArray(data) && data.every((t) => typeof t === "string")) {
+      return data as string[];
+    }
+    return null;
+  } catch (error) {
+    console.error("Error fetching notification titles:", error);
+    return null;
+  }
+};
+
 export const sendPushNotification = functions
   .https.onRequest(async (req, res) => {
     try {
@@ -194,16 +210,16 @@ export const sendArticleNotification = functions
         return;
       }
 
-      // Get random notification title (ensuring different from last used)
+      const remoteTitles = await fetchNotificationTitles();
+      const titles = remoteTitles && remoteTitles.length > 0 ? remoteTitles : NOTIFICATION_TITLES;
+
       let randomTitleIndex;
       do {
-        randomTitleIndex = Math.floor(Math.random() *
-          NOTIFICATION_TITLES.length);
-      } while (randomTitleIndex === lastUsedTitleIndex &&
-        NOTIFICATION_TITLES.length > 1);
+        randomTitleIndex = Math.floor(Math.random() * titles.length);
+      } while (randomTitleIndex === lastUsedTitleIndex && titles.length > 1);
 
       lastUsedTitleIndex = randomTitleIndex;
-      const notificationTitle = NOTIFICATION_TITLES[randomTitleIndex];
+      const notificationTitle = titles[randomTitleIndex];
 
       // Create notification body using article titles
       let notificationBody = "";

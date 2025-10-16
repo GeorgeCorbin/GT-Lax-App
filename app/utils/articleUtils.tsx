@@ -1041,23 +1041,3 @@ export const detectNewArticles = (existingArticles: Article[], newArticles: Arti
   
   return newlyFoundArticles;
 };
-
-// Test function to manually trigger article notification (for testing purposes)
-export const testArticleNotification = async (): Promise<void> => {
-  try {
-    const response = await axios.post(
-      "https://us-central1-gt-lax-app.cloudfunctions.net/sendArticleNotification",
-      { 
-        newArticlesCount: 2,
-        articleTitles: [
-          "Jackets Defeat Rival Georgia in Overtime Thriller",
-          "New Recruit Commits to Georgia Tech Lacrosse"
-        ]
-      },
-      { headers: { "Content-Type": "application/json" } }
-    );
-    console.log("Test notification sent successfully:", response.data);
-  } catch (error) {
-    console.error("Error sending test notification:", error);
-  }
-}; 

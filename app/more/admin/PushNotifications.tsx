@@ -1,7 +1,6 @@
 import Colors from '@/constants/Colors';
 import React, { useState } from 'react';
 import { View, Text, Button, StyleSheet, Alert, ActivityIndicator } from 'react-native';
-import { testArticleNotification } from '../../utils/articleUtils';
 import axios from 'axios';
 
 const PushNotifications = () => {
@@ -28,19 +27,6 @@ const PushNotifications = () => {
         }
     };
 
-    const sendTestArticleNotification = async () => {
-        setIsLoading(true);
-        try {
-            await testArticleNotification();
-            Alert.alert("Success", "Test article notification sent successfully!");
-        } catch (error) {
-            console.error("Error sending test article notification:", error);
-            Alert.alert("Error", "Failed to send test article notification");
-        } finally {
-            setIsLoading(false);
-        }
-    };
-
     return (
         <View style={styles.container}>
             <Text style={styles.header}>Push Notifications</Text>
@@ -56,18 +42,6 @@ const PushNotifications = () => {
                 <Button 
                     title={isLoading ? "Sending..." : "Send Manual Notification"} 
                     onPress={sendManualNotification}
-                    disabled={isLoading}
-                />
-            </View>
-
-            <View style={styles.buttonContainer}>
-                <Text style={styles.sectionTitle}>Article Notification</Text>
-                <Text style={styles.sectionDescription}>
-                    Test the new article notification system with random title/body.
-                </Text>
-                <Button 
-                    title={isLoading ? "Sending..." : "Send Test Article Notification"} 
-                    onPress={sendTestArticleNotification}
                     disabled={isLoading}
                 />
             </View>
