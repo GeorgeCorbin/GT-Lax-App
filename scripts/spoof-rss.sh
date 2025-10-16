@@ -85,7 +85,7 @@ cmd_patch() {
   # Original pattern example:
   #   const rssURL = 'https://www.gtlacrosse.com/landing/headlines-featured?print=rss';
   # We replace the first occurrence of const rssURL = '...'; with our test URL.
-  sed -E -i '' "0,/(const rssURL = ').*(';)/s//\1$TEST_RSS_URL\2/" "$UTILS_FILE"
+  sed -E -i '' "s|const rssURL = '.*';|const rssURL = '$TEST_RSS_URL';|" "$UTILS_FILE"
   echo "[spoof-rss] Patched rssURL to $TEST_RSS_URL"
   echo "[spoof-rss] Rebuild/restart your app, then call fetchArticles(true) to test detection"
 }

@@ -615,10 +615,22 @@ export const mergeArticles = (existingArticles: Article[], newArticles: Article[
     });
 
   // Add any existing articles that aren't in the new feed (and aren't too old)
+  const oldestNewTs = newArticles.length > 0
+    ? Math.min(...newArticles.map(a => getDateTimestamp(a.date)))
+    : 0;
   filteredExistingArticles.forEach(existingArticle => {
-    if (!newArticles.some(newArticle => newArticle.contentUrl === existingArticle.contentUrl)) {
-      mergedArticles.push(existingArticle);
+    const existsInNew = newArticles.some(newArticle => newArticle.contentUrl === existingArticle.contentUrl);
+    if (existsInNew) {
+      return;
     }
+    const exTs = getDateTimestamp(existingArticle.date);
+    // If this cached article is within the timeframe of the current feed
+    // (i.e., date >= oldest current RSS article), and it's not in the new feed,
+    // drop it (assume it was removed from the source). Otherwise, keep it.
+    if (oldestNewTs > 0 && exTs >= oldestNewTs) {
+      return;
+    }
+    mergedArticles.push(existingArticle);
   });
 
   if (localFeatureFlags.disable_article_logs.enabled) {

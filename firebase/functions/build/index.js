@@ -65,6 +65,20 @@ const fetchFeatureFlags = async () => {
         return null;
     }
 };
+const fetchNotificationTitles = async () => {
+    try {
+        const response = await axios.get("https://gt-lax-app.web.app/auto_notification_titles.json");
+        const data = response.data;
+        if (Array.isArray(data) && data.every((t) => typeof t === "string")) {
+            return data;
+        }
+        return null;
+    }
+    catch (error) {
+        console.error("Error fetching notification titles:", error);
+        return null;
+    }
+};
 export const sendPushNotification = functions
     .https.onRequest(async (req, res) => {
     try {
@@ -81,11 +95,24 @@ export const sendPushNotification = functions
         }
         // Fetch all tokens from Firestore
         const tokensSnapshot = await db.collection("expoTokens").get();
-        const tokens = [];
+        let tokens = [];
         tokensSnapshot.forEach((doc) => {
             tokens.push(doc.id);
         });
+        console.log(`Found ${tokens.length} total tokens in Firestore (sendPushNotification)`);
+        // Apply feature flag filtering when automatic article notifications are configured
+        const featureFlags = await fetchFeatureFlags();
+        if (featureFlags && featureFlags.automatic_article_notifications) {
+            const notifFlag = featureFlags.automatic_article_notifications;
+            if (notifFlag.enabled && !notifFlag.global_enabled) {
+                const allowedTokens = notifFlag.allowed_tokens || [];
+                tokens = tokens.filter((t) => allowedTokens.includes(t));
+                console.log(`Feature not globally enabled. Filtered to ${tokens.length} allowed tokens 
+            from ${allowedTokens.length} in allowlist (sendPushNotification).`);
+            }
+        }
         if (tokens.length === 0) {
+            console.log("No tokens found after filtering (sendPushNotification).");
             res.status(200).send("No tokens found.");
             return;
         }
@@ -154,15 +181,14 @@ export const sendArticleNotification = functions
             res.status(200).send("Automatic article notifications disabled.");
             return;
         }
-        // Get random notification title (ensuring different from last used)
+        const remoteTitles = await fetchNotificationTitles();
+        const titles = remoteTitles && remoteTitles.length > 0 ? remoteTitles : NOTIFICATION_TITLES;
         let randomTitleIndex;
         do {
-            randomTitleIndex = Math.floor(Math.random() *
-                NOTIFICATION_TITLES.length);
-        } while (randomTitleIndex === lastUsedTitleIndex &&
-            NOTIFICATION_TITLES.length > 1);
+            randomTitleIndex = Math.floor(Math.random() * titles.length);
+        } while (randomTitleIndex === lastUsedTitleIndex && titles.length > 1);
         lastUsedTitleIndex = randomTitleIndex;
-        const notificationTitle = NOTIFICATION_TITLES[randomTitleIndex];
+        const notificationTitle = titles[randomTitleIndex];
         // Create notification body using article titles
         let notificationBody = "";
         if (articleTitles && Array.isArray(articleTitles) && articleTitles.length > 0) {

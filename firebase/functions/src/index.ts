@@ -126,12 +126,29 @@ export const sendPushNotification = functions
 
       // Fetch all tokens from Firestore
       const tokensSnapshot = await db.collection("expoTokens").get();
-      const tokens: string[] = [];
+      let tokens: string[] = [];
       tokensSnapshot.forEach((doc) => {
         tokens.push(doc.id);
       });
 
+      console.log(`Found ${tokens.length} total tokens in Firestore (sendPushNotification)`);
+
+      // Apply feature flag filtering when automatic article notifications are configured
+      const featureFlags = await fetchFeatureFlags();
+      if (featureFlags && featureFlags.automatic_article_notifications) {
+        const notifFlag = featureFlags.automatic_article_notifications;
+        if (notifFlag.enabled && !notifFlag.global_enabled) {
+          const allowedTokens = notifFlag.allowed_tokens || [];
+          tokens = tokens.filter((t) => allowedTokens.includes(t));
+          console.log(
+            `Feature not globally enabled. Filtered to ${tokens.length} allowed tokens 
+            from ${allowedTokens.length} in allowlist (sendPushNotification).`
+          );
+        }
+      }
+
       if (tokens.length === 0) {
+        console.log("No tokens found after filtering (sendPushNotification).");
         res.status(200).send("No tokens found.");
         return;
       }

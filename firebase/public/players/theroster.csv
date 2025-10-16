@@ -1,5 +1,5 @@
-#,Name,Year,Pos
-1,Charlie Ciardello,SO,FOGO
+#,Name,year,Pos
+1,Charlie Ciardullo,SO,FO
 2,Mitch Savalli,SO,D
 4,Trey Ridder ,FR,A
 5,Thomas Freer,SR,M
@@ -15,7 +15,7 @@
 16,Tate O'Leary,FR,M
 17,Asher Bernstein,SO,A
 18,Aaron Sumrall,JR,G
-19,Andrew Belli,SO,M/A
+19,Andrew Belli,SO,M
 20,Braxton Furiness,FR,D
 21,DJ Louis,SO,M
 22,Michael Rice,SR,M
@@ -24,13 +24,14 @@
 25,Maddox Davis,SR,M
 26,Braden Baro,SO,A
 27,Emmett White,FR,M
+29,Nick French,FR,M
 30,David Hull,FR,M
 31,George Corbin,SR,D
 32,Andrew Taylor,SO,M
 33,Jack Odom,FR,D
 34,Augie Werthman,FR,M
 35,Zach Harrison,SR,D
-39,Benjamin Skopicki,SR,FOGO
+39,Ben Skopicki,SR,FO
 40,Sean Carmody,FR,M
 42,Graeme Navarro,FR,A
 43,Hayden Post,FR,A
@@ -39,8 +40,7 @@
 46,Jack Fishbein,FR,D
 50,Owen Seibold,SR,D
 55,Alek Crone,SO,M
-99,Will Ahmuty,FR,A
-99,Brecken Laliberte,FR,M
-29,Nick French,FR,M
-99,Phillip Marshall,SO,M
+96,Will Ahmuty,FR,A
+97,Brecken Laliberte,FR,M
+98,Phillip Marshall,SO,M
 99,Chad Spalding,FR,D
