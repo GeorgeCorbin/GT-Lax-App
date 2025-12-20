@@ -1,6 +1,6 @@
 {
   "automatic_article_notifications": {
-    "enabled": true,
+    "enabled": false,
     "global_enabled": false,
     "allowed_tokens": [
       "ExponentPushToken[Y-PL4hKhL-hs7fafAytiZR]",

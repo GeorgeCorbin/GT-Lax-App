@@ -14,3 +14,12 @@ Ideas:
 
 
 
+To Turn off Push Notifications:
+
+Delete the function temporarily 
+Remove the endpoint; re-deploy later to restore:
+```
+firebase functions:delete sendPushNotification --force
+# Restore later by deploying functions again
+firebase deploy --only functions
+```

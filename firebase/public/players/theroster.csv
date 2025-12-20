@@ -1,10 +1,11 @@
 #,Name,year,Pos
 1,Charlie Ciardullo,SO,FO
 2,Mitch Savalli,SO,D
+3,Will Ahmuty,FR,A
 4,Trey Ridder ,FR,A
 5,Thomas Freer,SR,M
 6,Peter Zagrobelny,SR,G
-7,Matthew Seifert,SR,M
+7,Matt Seifert,SR,M
 9,Brennen Finch,FR,G
 10,Owen Armentrout,SR,G
 11,Griffin Davis,FR,G
@@ -24,6 +25,7 @@
 25,Maddox Davis,SR,M
 26,Braden Baro,SO,A
 27,Emmett White,FR,M
+28,Brecken Laliberte,FR,M
 29,Nick French,FR,M
 30,David Hull,FR,M
 31,George Corbin,SR,D
@@ -31,6 +33,8 @@
 33,Jack Odom,FR,D
 34,Augie Werthman,FR,M
 35,Zach Harrison,SR,D
+36,Chad Spalding,FR,D
+38,Phillip Marshall,SO,M
 39,Ben Skopicki,SR,FO
 40,Sean Carmody,FR,M
 42,Graeme Navarro,FR,A
@@ -40,7 +44,3 @@
 46,Jack Fishbein,FR,D
 50,Owen Seibold,SR,D
 55,Alek Crone,SO,M
-96,Will Ahmuty,FR,A
-97,Brecken Laliberte,FR,M
-98,Phillip Marshall,SO,M
-99,Chad Spalding,FR,D

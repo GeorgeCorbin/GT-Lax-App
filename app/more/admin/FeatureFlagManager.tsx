@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Switch, TextInput, TouchableOpacity, Alert, ActivityIndicator, ScrollView } from 'react-native';
 import Colors from '@/constants/Colors';
 import axios from 'axios';
-import { getNotificationApiKey } from '@/app/utils/config';
+import { getNotificationApiKey } from '@/utils/config';
 
 interface FeatureFlags {
   automatic_article_notifications: {

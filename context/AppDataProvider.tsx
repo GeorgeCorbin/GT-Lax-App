@@ -7,7 +7,7 @@ import { Image } from 'react-native';
 import * as Notifications from 'expo-notifications';
 import { useRouter } from "expo-router";
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { getNotificationApiKey } from '../app/utils/config';
+import { getNotificationApiKey } from '@/utils/config';
 import { 
   fetchRSSFeed, 
   saveArticlesToFile, 
@@ -18,7 +18,7 @@ import {
   normalizeArticleDates,
   diagnoseAndFixDateIssues,
   MergeArticlesResult
-} from '../app/utils/articleUtils';
+} from '@/utils/articleUtils';
 import localFeatureFlags from '@/local_feature_flags';
 
 export interface ShopItem {

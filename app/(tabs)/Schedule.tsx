@@ -9,7 +9,7 @@ import { SelectList } from 'react-native-dropdown-select-list';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import { useAppData } from '@/context/AppDataProvider';
 import { Link } from 'expo-router';
-import { isHomeTeam, extractTeams, extractScores, loadTeamLogos, getTeamLogo, getRankingForTeamOnDate } from '../utils/gameUtils';
+import { isHomeTeam, extractTeams, extractScores, loadTeamLogos, getTeamLogo, getRankingForTeamOnDate } from '@/utils/gameUtils';
 
 // Helper function to get the current season based on the current date
 const getCurrentSeason = (): string => {

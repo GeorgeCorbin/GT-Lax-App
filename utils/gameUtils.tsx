@@ -129,7 +129,6 @@ export const getRankingForTeamOnDate = (
   gameDate: string
 ): number | null => {
   if (!rankings.length) {
-    console.error('Rankings not loaded.');
     return null;
   }
 

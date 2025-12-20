@@ -5,7 +5,7 @@ import Markdown from 'react-native-markdown-display';
 import Colors from '@/constants/Colors'; // Ensure this path is correct
 import { useLocalSearchParams, router } from 'expo-router';
 import styles from '../../constants/styles/news'; // Updated path for styles
-import { fetchArticleContent } from '../utils/articleUtils';
+import { fetchArticleContent } from '@/utils/articleUtils';
 
 interface Article {
   id: number;

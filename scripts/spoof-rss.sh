@@ -16,7 +16,7 @@ set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 PUBLIC_DIR="$ROOT_DIR/firebase/public"
-UTILS_FILE="$ROOT_DIR/app/utils/articleUtils.tsx"
+UTILS_FILE="$ROOT_DIR/utils/articleUtils.tsx"
 BACKUP_FILE="$UTILS_FILE.bak"
 TEST_RSS="$PUBLIC_DIR/test_rss.xml"
 TEST_RSS_URL="https://gt-lax-app.web.app/test_rss.xml"
@@ -110,7 +110,7 @@ Usage: scripts/spoof-rss.sh <command>
 
 Commands:
   generate   Create firebase/public/test_rss.xml and deploy hosting
-  patch      Patch app/utils/articleUtils.tsx to use $TEST_RSS_URL (backup created)
+  patch      Patch utils/articleUtils.tsx to use $TEST_RSS_URL (backup created)
   restore    Restore original articleUtils.tsx from backup and keep the test feed file
 
 Examples:

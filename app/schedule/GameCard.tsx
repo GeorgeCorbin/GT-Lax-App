@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, Linking, ScrollView } from 'react-native';
 import { Image } from 'expo-image';
 import Colors from '@/constants/Colors';
-import { isHomeTeam, extractTeams, getTeamLogo, getFieldImage, loadFieldImages, getRankingForTeamOnDate } from '../utils/gameUtils';
+import { isHomeTeam, extractTeams, getTeamLogo, getFieldImage, loadFieldImages, getRankingForTeamOnDate } from '@/utils/gameUtils';
 import { useSearchParams } from 'expo-router/build/hooks';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useAppData } from '@/context/AppDataProvider';
