@@ -8,7 +8,8 @@
     "android": "expo run:android",
     "ios": "expo run:ios",
     "web": "expo start --web",
-    "test": "jest --watchAll"
+    "test": "jest --watchAll",
+    "scrape-roster": "node scripts/scrape-roster.js"
   },
   "jest": {
     "preset": "jest-expo"
@@ -65,7 +66,6 @@
     "jest-expo": "~52.0.6",
     "jsonwebtoken": "^9.0.2",
     "next": "^15.5.9",
-    "npm": "^11.0.0",
     "papaparse": "^5.5.1",
     "prop-types": "^15.8.1",
     "react": "18.3.1",
@@ -105,7 +105,9 @@
     "markdown-it": "12.3.2",
     "on-headers": "1.1.0",
     "tmp": "0.2.4",
-    "undici": "6.21.2"
+    "undici": "6.23.0",
+    "tar": "7.5.3",
+    "diff": "8.0.3"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
