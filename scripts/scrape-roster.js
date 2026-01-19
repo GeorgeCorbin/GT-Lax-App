@@ -355,13 +355,13 @@ class RosterScraper {
     
     // Generate theroster.csv
     const csvPath = path.join(OUTPUT_DIR, 'theroster.csv');
-    const csvHeader = '#,Name,Pos,year\n';
+    const csvHeader = '#,Name,year,Pos\n';
     const csvRows = players
       .filter(p => p.number)
       .sort((a, b) => a.number - b.number)
       .map(p => {
         const year = (p.year || '').toLowerCase();
-        return `${p.number},${p.playerName},${this.normalizePosition(p.position)},${year}`;
+        return `${p.number},${p.playerName},${year},${this.normalizePosition(p.position)}`;
       })
       .join('\n');
     

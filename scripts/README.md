@@ -18,7 +18,7 @@ node scripts/scrape-roster.js
 
 ## What It Does
 
-1. **Fetches roster data** from `https://www.gtlacrosse.com/sports/mlax/2025-26/roster?view=headshot`
+1. **Fetches roster data** from `https://www.gtlacrosse.com/sports/mlax/2025-26/roster?view=list`
 2. **Scrapes each player's bio page** for detailed information
 3. **Downloads player headshot images** to `public/players/images/`
 4. **Generates bio markdown files** to `public/players/bios/`
