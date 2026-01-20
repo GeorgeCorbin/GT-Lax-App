@@ -125,4 +125,4 @@ rm -rf Pods Podfile.lock
 pod install --repo-update 
 
 cd ..
-eas build --platform ios --local 
+**eas build --platform ios --local**
