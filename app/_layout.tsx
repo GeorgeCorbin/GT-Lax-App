@@ -80,7 +80,7 @@ export default function RootLayout() {
   return (
     <AppDataProvider>
       {/* Render UpdatePopup only when ready */}
-      {popupReady && <UpdatePopup />}
+      {/* {popupReady && <UpdatePopup />} */}
       <RootLayoutNav initialRoute={initialRoute} />
     </AppDataProvider>
   );

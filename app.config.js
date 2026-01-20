@@ -3,7 +3,7 @@ import 'dotenv/config';
 export default {
   name: "GT Lacrosse",
   slug: "gt-lax-app",
-  version: "1.1.1",
+  version: "1.1.2",
   orientation: "portrait",
   icon: "./assets/images/icon.png",
   scheme: "myapp",
