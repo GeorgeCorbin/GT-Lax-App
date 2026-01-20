@@ -1,23 +1,23 @@
-## Player Bio
+## Player Details
 
-**Player Details:**
-- **Hometown:** Atlanta  
-- **State:** Georgia  
-- **Height:** 6'1"  
-- **Weight:** 155 lbs  
-- **Year:** Junior  
-- **High School:** Lovett  
-- **Position:** Goalie  
+- **Height:** 6'0"
+- **Weight:** 140
+- **Hometown:** Atlanta
+- **Position:** Goalie
+- **Year:** Sr
+- **State:** GA
+- **High School:** Lovett
 
-**Career Stats Through Last Season:**  
-- Games Played: 21  
-- Games Started: 11  
-- Minutes Played: 653:00  
-- Goals Allowed: 110  
-- Goals Against Average (GAA): 10.11  
-- Saves: 133  
-- Save Percentage: 54.7%  
-- Wins: 9  
-- Losses: 2  
+## Honors and Achievements
 
-Owen Armentrout has been a steady presence in goal for Georgia Tech, showcasing exceptional composure and shot-stopping ability. In his sophomore season, he posted a 54.3% save percentage over 8 games, demonstrating consistent improvement. His pivotal contributions to key games have earned him a reputation as a reliable last line of defense. Owen enters the 2024-25 season looking to build on his previous performances and cement his role as a cornerstone of the Yellow Jackets’ defense.
+- 2025 SELC ALL TOURNAMENT TEAM
+
+## Career Stats
+
+| Year | gp | gs | min | ga | gaa | sv | sv% | win | loss | tie | win % |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 2022-23 | 13 | 11 | 513:00 | 89 | 10.41 | 108 | 54.8 | 0 | 0 | 0 | 0.0 |
+| 2023-24 | 8 | 0 | 140:00 | 21 | 9.00 | 25 | 54.3 | 0 | 0 | 0 | 0.0 |
+| 2024-25 | 20 | 19 | 810:00 | 144 | 10.67 | 159 | 52.5 | 14 | 4 | 0 | 77.8 |
+| 2025-26 | - | - | 0:00 | - | - | - | 0.0 | 0 | 0 | 0 | 0.0 |
+| Total | 41 | 30 | 1463:00 | 254 | 10.42 | 292 | 53.5 | 14 | 4 | 0 | 77.8 |

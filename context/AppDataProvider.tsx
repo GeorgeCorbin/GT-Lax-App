@@ -20,6 +20,8 @@ import {
   MergeArticlesResult
 } from '@/utils/articleUtils';
 import localFeatureFlags from '@/local_feature_flags';
+import { getFeatureFlags, getExpoToken, EvaluatedFeatureFlags } from '@/utils/featureFlagService';
+import { displayExpoTokenInTerminal } from '@/utils/devTokenDisplay';
 
 export interface ShopItem {
   id: string;
@@ -41,6 +43,11 @@ type Game = {
   score: string | null;
 };
 
+type CareerStats = {
+  headers: string[];
+  rows: string[][];
+} | null;
+
 type Player = {
   id: number;
   playerName: string;
@@ -48,7 +55,13 @@ type Player = {
   number: number;
   year: string;
   imageUrl: string;
-  contentUrl: string;
+  height: string | null;
+  weight: string | null;
+  hometown: string | null;
+  state: string | null;
+  highSchool: string | null;
+  achievements: string[];
+  careerStats: CareerStats;
 };
 
 type Article = {
@@ -73,6 +86,17 @@ type GameInfo = {
   coverageLink?: string;
 };
 
+type ImageConfig = {
+  playerProfile: {
+    default: { top: string; left: string };
+    player: { top: string; left: string };
+  };
+  rosterGrid: {
+    default: { scale: number; translateX: number; translateY: number };
+    player: { scale: number; translateX: number; translateY: number };
+  };
+};
+
 type AppDataContextType = {
   shopItems: ShopItem[];
   schedule: Game[];
@@ -84,6 +108,10 @@ type AppDataContextType = {
   fetchRoster?: () => Promise<void>;
   rankings: any[];
   loadingRankings: boolean;
+  imageConfig: ImageConfig | null;
+  featureFlags: EvaluatedFeatureFlags;
+  loadingFeatureFlags: boolean;
+  refreshFeatureFlags: () => Promise<void>;
 };
 
 const AppDataContext = createContext<AppDataContextType>({
@@ -97,6 +125,10 @@ const AppDataContext = createContext<AppDataContextType>({
   fetchRoster: async () => {},
   rankings: [],
   loadingRankings: true,
+  imageConfig: null,
+  featureFlags: {},
+  loadingFeatureFlags: true,
+  refreshFeatureFlags: async () => {},
 });
 
 const getLocalImageUri = async (url: string) => {
@@ -236,8 +268,44 @@ export const AppDataProvider = ({ children }: { children: React.ReactNode }) => 
   const [loading, setLoading] = useState(true);
   const [rankings, setRankings] = useState([]);
   const [loadingRankings, setLoadingRankings] = useState(true);
+  const [imageConfig, setImageConfig] = useState<ImageConfig | null>(null);
+  const [featureFlags, setFeatureFlags] = useState<EvaluatedFeatureFlags>({});
+  const [loadingFeatureFlags, setLoadingFeatureFlags] = useState(true);
 
   const router = useRouter();
+
+  const fetchImageConfig = useCallback(async () => {
+    try {
+      const response = await axios.get('https://gt-lax-app.web.app/image-config.json');
+      setImageConfig(response.data);
+    } catch (error) {
+      console.error('Error fetching image config:', error);
+      // Set default config if fetch fails
+      setImageConfig({
+        playerProfile: {
+          default: { top: '50%', left: '50%' },
+          player: { top: '20%', left: '50%' }
+        },
+        rosterGrid: {
+          default: { scale: 1.3, translateX: 0, translateY: 5 },
+          player: { scale: 1.3, translateX: 0, translateY: 5 }
+        }
+      });
+    }
+  }, []);
+
+  const refreshFeatureFlags = useCallback(async () => {
+    setLoadingFeatureFlags(true);
+    try {
+      await displayExpoTokenInTerminal();
+      const flags = await getFeatureFlags(true);
+      setFeatureFlags(flags);
+    } catch (error) {
+      console.error('Error fetching feature flags:', error);
+    } finally {
+      setLoadingFeatureFlags(false);
+    }
+  }, []);
 
   const fetchScheduleForSeason = async (season: string) => {
     setLoading(true);
@@ -379,7 +447,13 @@ export const AppDataProvider = ({ children }: { children: React.ReactNode }) => 
               ? player['year'].charAt(0).toUpperCase() + player['year'].slice(1).toLowerCase()
               : '',
             imageUrl: localImageUrl,
-            contentUrl: j?.contentUrl || 'https://gt-lax-app.web.app/players/bios/default_bio.md',
+            height: j?.height || null,
+            weight: j?.weight || null,
+            hometown: j?.hometown || null,
+            state: j?.state || null,
+            highSchool: j?.highSchool || null,
+            achievements: j?.achievements || [],
+            careerStats: j?.careerStats || null,
           };
         })
       );
@@ -421,24 +495,6 @@ export const AppDataProvider = ({ children }: { children: React.ReactNode }) => 
         const shopResponse = await axios.get('https://gt-lax-app.web.app/shops.json');
         setShopItems(shopResponse.data);
 
-        // --- Fetch Schedule (example for one season, e.g. "2024-25")
-        const season = '2024-25';
-        const rssURL = `https://www.gtlacrosse.com/sports/mlax/${season}/schedule?print=rss`;
-        const scheduleResponse = await axios.get(rssURL);
-        const parser = new XMLParser({ ignoreAttributes: false });
-        const feed = parser.parse(scheduleResponse.data);
-        const items = feed.rss.channel.item;
-        const allGames = items.map((item: any) => ({
-          title: item.title,
-          link: item.link,
-          description: item.description,
-          category: item.category,
-          pubDate: item.pubDate,
-          opponent: item["ps:opponent"] || null,
-          score: item["ps:score"] || null,
-        }));
-        setSchedule(allGames);
-
         // --- Fetch Roster
         await fetchRoster();
         
@@ -464,6 +520,7 @@ export const AppDataProvider = ({ children }: { children: React.ReactNode }) => 
     };
 
     fetchAllData(); 
+    fetchImageConfig();
 
     // Register and handle notifications
     checkNotificationPermissions();
@@ -490,6 +547,10 @@ export const AppDataProvider = ({ children }: { children: React.ReactNode }) => 
     return () => subscription.remove();
   }, [router]);
 
+  useEffect(() => {
+    refreshFeatureFlags();
+  }, [refreshFeatureFlags]);
+
   return (
     <AppDataContext.Provider value={{
       shopItems,
@@ -497,11 +558,15 @@ export const AppDataProvider = ({ children }: { children: React.ReactNode }) => 
       roster,
       articles,
       loading,
-      fetchScheduleForSeason, // Expose for dynamic fetching
-      fetchArticles, // Expose for dynamic fetching
-      fetchRoster, // Expose for dynamic fetching
+      fetchScheduleForSeason,
+      fetchArticles,
+      fetchRoster,
       rankings,
       loadingRankings,
+      imageConfig,
+      featureFlags,
+      loadingFeatureFlags,
+      refreshFeatureFlags,
     }}>
       {children}
     </AppDataContext.Provider>

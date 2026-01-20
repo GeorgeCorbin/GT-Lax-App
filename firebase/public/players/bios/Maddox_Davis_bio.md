@@ -1,20 +1,19 @@
-## Player Bio
+## Player Details
 
-**Player Details:**
+- **Height:** 6'0"
+- **Weight:** 175
 - **Hometown:** Collierville
-- **State:** Tennessee  
-- **Height:** 6'0"  
-- **Weight:** 200 lbs  
-- **Year:** Junior  
-- **High School:** St. George's Independent  
-- **Position:** Midfield  
+- **Position:** Midfield
+- **Year:** Sr
+- **State:** TN
+- **High School:** St. George's Independent
 
-**Career Stats Through Last Season:**  
-- Games Played: 12  
-- Goals: 0  
-- Assists: 0  
-- Points: 0  
-- Ground Balls: 4  
-- Faceoffs: 7-16  
+## Career Stats
 
-Maddox Davis has appeared in 12 games over two seasons, contributing as a midfielder. He has recorded 4 ground balls and participated in 16 faceoffs, showcasing his versatility and effort on the field. Maddox enters the 2024-25 season aiming to build on his experiences and contribute further to Georgia Tech's success.
+| Year | gp | gs | g | a | pts | gb | fo | sh | sh% |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 2022-23 | 7 | - | 0 | 0 | 0 | 3 | 7-16 | 0 | - |
+| 2023-24 | 5 | - | 0 | 0 | 0 | 1 | 0-0 | 1 | 0.0 |
+| 2024-25 | 5 | - | 1 | 3 | 4 | 1 | 0-0 | 1 | 100.0 |
+| 2025-26 | - | - | - | - | 0 | - | 0-0 | - | - |
+| Total | 17 | - | 1 | 3 | 4 | 5 | 7-16 | 2 | 50.0 |

@@ -21,6 +21,12 @@ export default function PlayerSlugScreen() {
     console.log('PlayerSlug received:', playerSlug);
     console.log('Current roster size:', roster.length);
     
+    // Wait for roster to load
+    if (roster.length === 0) {
+      setLoading(true);
+      return;
+    }
+    
     setLoading(true);
     
     // Handle different slug formats:

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, ActivityIndicator } from 'react-native';
+import { View, Text, ActivityIndicator, Pressable, Alert } from 'react-native';
 import { Image } from 'expo-image';
 import { XMLParser } from 'fast-xml-parser';
 import styles from '../../constants/styles/schedule'; // Updated path for styles
@@ -8,7 +8,7 @@ import Colors from '@/constants/Colors';
 import { SelectList } from 'react-native-dropdown-select-list';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import { useAppData } from '@/context/AppDataProvider';
-import { Link } from 'expo-router';
+import { useRouter } from 'expo-router';
 import { isHomeTeam, extractTeams, extractScores, loadTeamLogos, getTeamLogo, getRankingForTeamOnDate } from '@/utils/gameUtils';
 
 // Helper function to get the current season based on the current date
@@ -80,7 +80,8 @@ const location = (game: Game, isHome: boolean): string => {
 }
 
 const Schedule = () => {
-  const { schedule, loading, fetchScheduleForSeason, rankings, loadingRankings } = useAppData();
+  const { schedule, loading, fetchScheduleForSeason, rankings, loadingRankings, featureFlags, loadingFeatureFlags } = useAppData();
+  const router = useRouter();
   const [record, setRecord] = useState({ wins: 0, losses: 0 });
   const [divisionRecord, setDivisionRecord] = useState({ wins: 0, losses: 0 });
   const [season, setSelected] = useState(getCurrentSeason());
@@ -187,13 +188,25 @@ const Schedule = () => {
         const awayDisplayName = awayTeam.startsWith('TBD_') ? 'TBD' : awayTeam;
         const homeDisplayName = homeTeam.startsWith('TBD_') ? 'TBD' : homeTeam;
 
+        const handleGamePress = () => {
+          if (!featureFlags.game_information?.enabled) {
+            Alert.alert(
+              'Maintenance',
+              'Game information is currently undergoing maintenance. Please check back later.',
+              [{ text: 'OK' }]
+            );
+            return;
+          }
+          router.push({
+            pathname: '/schedule/GameCard',
+            params: { game: JSON.stringify(game), teamLogos: JSON.stringify(teamLogos) },
+          });
+        };
+
         return (
-          <Link
+          <Pressable
             key={index}
-            href={{
-              pathname: '/schedule/GameCard',
-              params: { game: JSON.stringify(game), teamLogos: JSON.stringify(teamLogos) },
-            }}
+            onPress={handleGamePress}
             style={styles.gameItem}
           >
             <View style={styles.row}>
@@ -229,7 +242,7 @@ const Schedule = () => {
                 </Text>
               </View>
             </View>
-          </Link>
+          </Pressable>
         );
       })}
 
@@ -248,13 +261,25 @@ const Schedule = () => {
         const awayDisplayName = awayTeam.startsWith('TBD_') ? 'TBD' : awayTeam;
         const homeDisplayName = homeTeam.startsWith('TBD_') ? 'TBD' : homeTeam;
 
+        const handleGamePress = () => {
+          if (!featureFlags.game_information?.enabled) {
+            Alert.alert(
+              'Maintenance',
+              'Game information is currently undergoing maintenance. Please check back later.',
+              [{ text: 'OK' }]
+            );
+            return;
+          }
+          router.push({
+            pathname: '/schedule/GameCard',
+            params: { game: JSON.stringify(game), teamLogos: JSON.stringify(teamLogos) },
+          });
+        };
+
         return (
-          <Link
+          <Pressable
             key={index}
-            href={{
-              pathname: '/schedule/GameCard',
-              params: { game: JSON.stringify(game), teamLogos: JSON.stringify(teamLogos) },
-            }}
+            onPress={handleGamePress}
             style={styles.gameItem}
           >
             <View style={styles.row}>
@@ -288,7 +313,7 @@ const Schedule = () => {
                 </Text>
               </View>
             </View>
-          </Link>
+          </Pressable>
         );
       })}
     </AnimatedHeaderLayout>

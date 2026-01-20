@@ -9,7 +9,7 @@ interface FeatureFlags {
 
 const featureFlags: FeatureFlags = {
     disable_article_logs: {
-      "enabled": false, // set to false to disable article logs
+      "enabled": false,
       "description": "When enabled, suppresses verbose article processing logs",
       "last_updated": "2025-07-26",
     }

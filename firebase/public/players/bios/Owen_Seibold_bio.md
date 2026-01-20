@@ -1,19 +1,19 @@
-## Player Bio
+## Player Details
 
-**Player Details:**
-- **Hometown:** Hopewell  
-- **State:** New Jersey  
-- **Height:** 6'0"  
-- **Weight:** 195 lbs  
-- **Year:** Junior  
-- **High School:** Hopewell Valley Central  
-- **Position:** Defense  
+- **Height:** 6'0"
+- **Weight:** 195
+- **Hometown:** Hopewell
+- **Position:** Defense
+- **Year:** Sr
+- **State:** NJ
+- **High School:** Hopewell Valley Central
 
-**Career Stats Through Last Season:**  
-- Games Played: 6  
-- Goals: 0  
-- Assists: 0  
-- Points: 0  
-- Ground Balls: 0  
+## Career Stats
 
-Owen Seibold has been a consistent member of the defensive unit, providing depth and support in key matchups. Known for his commitment and hard work, he looks to make a bigger impact this season.Owen is expected to continue developing his skills and contribute significantly to the defensive lineup this season.
+| Year | gp | gs | g | a | pts | gb | fo | sh | sh% |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 2022-23 | 4 | - | 0 | 0 | 0 | 0 | 0-0 | 0 | - |
+| 2023-24 | 2 | - | 0 | 0 | 0 | 0 | 0-0 | 0 | - |
+| 2024-25 | 6 | - | 0 | 0 | 0 | 0 | 0-0 | 0 | - |
+| 2025-26 | - | - | - | - | 0 | - | 0-0 | - | - |
+| Total | 12 | - | 0 | 0 | 0 | 0 | 0-0 | 0 | - |

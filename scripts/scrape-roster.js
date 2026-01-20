@@ -7,7 +7,7 @@ const path = require('path');
 
 const BASE_URL = 'https://www.gtlacrosse.com';
 const ROSTER_URL = `${BASE_URL}/sports/mlax/2025-26/roster?view=list`;
-const OUTPUT_DIR = path.join(__dirname, '../public/players');
+const OUTPUT_DIR = path.join(__dirname, '../firebase/public/players');
 const BIOS_DIR = path.join(OUTPUT_DIR, 'bios');
 
 class RosterScraper {
@@ -340,16 +340,48 @@ class RosterScraper {
   async generateOutputFiles(players) {
     console.log('📝 Generating output files...\n');
     
-    // Generate players.json with correct format: id, playerName, position, imageUrl, contentUrl
-    const jsonPlayers = players.map((p, index) => ({
-      id: index + 1,
-      playerName: p.playerName,
-      position: p.position || '',
-      imageUrl: p.imageUrl,
-      contentUrl: p.contentUrl
-    }));
+    // Filter out unwanted columns from career stats: up, dn, to, ct, sog, sog%
+    const excludeColumns = ['up', 'dn', 'to', 'ct', 'sog', 'sog%'];
     
-    const jsonPath = path.join(OUTPUT_DIR, 'players.json');
+    // Generate players.json with all player data for programmatic display
+    const jsonPlayers = players.map((p, index) => {
+      // Filter career stats columns
+      let filteredCareerStats = null;
+      if (p.careerStats && p.careerStats.headers.length > 0) {
+        const filteredIndices = [];
+        const filteredHeaders = [];
+        
+        p.careerStats.headers.forEach((header, i) => {
+          if (!excludeColumns.includes(header.toLowerCase())) {
+            filteredIndices.push(i);
+            filteredHeaders.push(header);
+          }
+        });
+        
+        filteredCareerStats = {
+          headers: filteredHeaders,
+          rows: p.careerStats.rows.map(row => filteredIndices.map(i => row[i]))
+        };
+      }
+      
+      return {
+        id: index + 1,
+        playerName: p.playerName,
+        number: p.number || null,
+        position: p.position || '',
+        imageUrl: p.imageUrl,
+        height: p.height || null,
+        weight: p.weight || null,
+        hometown: p.hometown || null,
+        state: p.state || null,
+        year: p.year || null,
+        highSchool: p.highSchool || null,
+        achievements: p.achievements || [],
+        careerStats: filteredCareerStats
+      };
+    });
+    
+    const jsonPath = path.join(__dirname, '../firebase/public/players.json');
     await fs.writeFile(jsonPath, JSON.stringify(jsonPlayers, null, 2), 'utf8');
     console.log(`✅ Created ${jsonPath}`);
     

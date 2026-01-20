@@ -1,21 +1,27 @@
-## Player Bio
+## Player Details
 
-**Player Details:**
-- **Hometown:** Atlanta  
-- **State:** Georgia  
-- **Height:** 6'0"  
-- **Weight:** 185 lbs  
-- **Year:** Junior  
-- **High School:** Westminster  
-- **Position:** Defense  
+- **Height:** 6'0"
+- **Weight:** 185
+- **Hometown:** Atlanta
+- **Position:** Defense
+- **Year:** Sr
+- **State:** GA
+- **High School:** Westminster
 
-**Honors and Achievements:**
-- MCLA Scholar Athlete (2024)
-- SELC All-Conference (2024)
-- SELC All-Tournament Team (2024)
+## Honors and Achievements
 
-**Career Stats Through Last Season:**  
-- Games Played: 36
-- Ground Balls: 49  
+- 2024 SELC Alll Conference Team
+- 2024 SELC All Tournament Team
+- 2024 MCLA SCHOLAR ATHLETE
+- 2025 SELC ALL TOURNAMENT TEAM
+- 2026 CAPTAIN
 
-George Corbin has been a steadfast presence on defense, playing in 36 games over two seasons. Known for his reliability and strong defensive skills, George has secured 49 ground balls, showcasing his ability to win possessions for his team. His contributions have been instrumental in anchoring the defensive unit. George's consistency and leadership on defense makes him a critical asset to the team's success. As a junior, he aims to continue his dominance and play a vital role in the team's defensive strategy.
+## Career Stats
+
+| Year | gp | gs | g | a | pts | gb | fo | sh | sh% |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 2022-23 | 18 | - | 0 | 0 | 0 | 11 | 0-0 | 0 | - |
+| 2023-24 | 18 | 18 | 0 | 0 | 0 | 38 | 0-0 | 1 | 0.0 |
+| 2024-25 | 20 | 20 | 1 | 0 | 1 | 37 | 0-0 | 4 | 25.0 |
+| 2025-26 | - | - | - | - | 0 | - | 0-0 | - | - |
+| Total | 56 | 38 | 1 | 0 | 1 | 86 | 0-0 | 5 | 20.0 |

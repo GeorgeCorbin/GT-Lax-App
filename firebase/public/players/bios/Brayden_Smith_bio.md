@@ -1,12 +1,17 @@
-## Player Bio
+## Player Details
 
-**Player Details:**
-- **Hometown:** Acworth  
-- **State:** Georgia  
-- **Height:** 6'0"  
-- **Weight:** 215 lbs  
-- **Year:** Freshman  
-- **High School:** Allatoona  
-- **Position:** Attack  
+- **Height:** 6'0"
+- **Weight:** 215
+- **Hometown:** Acworth
+- **Position:** Attack
+- **Year:** So
+- **State:** GA
+- **High School:** Allatoona
 
-Brayden Smith enters his first collegiate season with a high school career that showcased his scoring ability and strength in the attacking zone. His size and skillset make him a key prospect for the team's offensive unit.
+## Career Stats
+
+| Year | gp | gs | g | a | pts | gb | fo | sh | sh% |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 2024-25 | 6 | - | 3 | 2 | 5 | 4 | 0-0 | 9 | 33.3 |
+| 2025-26 | - | - | - | - | 0 | - | 0-0 | - | - |
+| Total | 6 | - | 3 | 2 | 5 | 4 | 0-0 | 9 | 33.3 |

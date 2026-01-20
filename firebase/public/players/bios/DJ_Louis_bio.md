@@ -1,21 +1,18 @@
-## Player Bio
+## Player Details
 
-**Player Details:**
-- **Hometown:** Atlanta  
-- **State:** Georgia  
-- **Height:** 6'0"  
-- **Weight:** 190 lbs  
-- **Year:** Sophomore  
-- **High School:** North Atlanta  
-- **Position:** Midfield  
+- **Height:** 6'0"
+- **Weight:** 190
+- **Hometown:** Atlanta
+- **Position:** Midfield
+- **Year:** Jr
+- **State:** GA
+- **High School:** North Atlanta
 
-**Career Stats Through Last Season:**  
-- Games Played: 18  
-- Goals: 10  
-- Assists: 1  
-- Points: 11  
-- Ground Balls: 11  
-- Shots: 38  
-- Shooting Percentage: 26.3%  
+## Career Stats
 
-DJ Louis had a strong freshman season in 2023-24, showcasing his scoring ability and versatility. He appeared in all 18 games, recording 10 goals and 1 assist for a total of 11 points. DJ also collected 11 ground balls, contributing on both ends of the field. DJ looks to build on his impressive debut season as he continues to develop his skills and impact Georgia Tech's midfield unit in the 2024-25 season.
+| Year | gp | gs | g | a | pts | gb | fo | sh | sh% |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 2023-24 | 18 | - | 10 | 1 | 11 | 11 | 0-0 | 38 | 26.3 |
+| 2024-25 | 18 | - | 7 | 5 | 12 | 19 | 0-0 | 23 | 30.4 |
+| 2025-26 | - | - | - | - | 0 | - | 0-0 | - | - |
+| Total | 36 | - | 17 | 6 | 23 | 30 | 0-0 | 61 | 27.9 |

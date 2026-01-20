@@ -7,6 +7,11 @@ import { Link } from 'expo-router';
 import SwitchSelector from 'react-native-switch-selector';
 import { useAppData } from '@/context/AppDataProvider';
 
+type CareerStats = {
+  headers: string[];
+  rows: string[][];
+} | null;
+
 type Player = {
   id: number;
   playerName: string;
@@ -14,11 +19,17 @@ type Player = {
   number: number;
   year: string;
   imageUrl: string;
-  contentUrl: string;
+  height: string | null;
+  weight: string | null;
+  hometown: string | null;
+  state: string | null;
+  highSchool: string | null;
+  achievements: string[];
+  careerStats: CareerStats;
 };
 
 const RosterScreen = () => {
-  const { roster, loading } = useAppData();
+  const { roster, loading, imageConfig } = useAppData();
   const [isListView, setIsListView] = useState(false);
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc' | 'default'>('default');
   const [sortColumn, setSortColumn] = useState<'number' | 'playerName' | 'position' | 'year'>('number');
@@ -147,19 +158,11 @@ const RosterScreen = () => {
         <FlatList
           data={sortRoster()}
           keyExtractor={(player) => player.id.toString()}
-          renderItem={({ item: player }) => (
+          renderItem={({ item: player }) => {
+            const playerSlug = player.playerName.toLowerCase().replace(/\s+/g, '-');
+            return (
             <Link
-              href={{
-                pathname: '/roster/PlayerBio',
-                params: {
-                  name: player.playerName,
-                  number: player.number,
-                  position: player.position,
-                  year: player.year,
-                  imageUrl: player.imageUrl,
-                  contentUrl: player.contentUrl,
-                },
-              }}
+              href={`/roster/${playerSlug}`}
             >
               <View style={styles.listViewRow}>
                 <Text style={[styles.listViewText, styles.listViewColumnNumber]}>{player.number}</Text>
@@ -168,7 +171,8 @@ const RosterScreen = () => {
                 <Text style={[styles.listViewText, styles.listViewColumnYear]}>{player.year}</Text>
               </View>
             </Link>
-          )}
+            );
+          }}
         />
       </View>
     );
@@ -215,24 +219,35 @@ const RosterScreen = () => {
               keyExtractor={(player) =>
                 player.id?.toString() || `player-${Math.random()}`
               } // Ensure unique keys for players
-              renderItem={({ item: player }) => (
+              renderItem={({ item: player }) => {
+                const playerSlug = player.playerName.toLowerCase().replace(/\s+/g, '-');
+                const isDefaultImage = player.imageUrl.includes('headshot_default.jpg');
+                const transform = imageConfig
+                  ? (isDefaultImage ? imageConfig.rosterGrid.default : imageConfig.rosterGrid.player)
+                  : (isDefaultImage 
+                      ? { scale: 1.3, translateX: 0, translateY: 5 }
+                      : { scale: 1.3, translateX: 0, translateY: 5 });
+                
+                return (
                 <Link
-                  href={{
-                    pathname: '/roster/PlayerBio',
-                    params: {
-                      name: player.playerName,
-                      number: player.number,
-                      position: player.position,
-                      year: player.year,
-                      imageUrl: player.imageUrl,
-                      contentUrl: player.contentUrl,
-                    },
-                  }}
+                  href={`/roster/${playerSlug}`}
                   style={styles.playerContainerBox}
                 >
                   <View style={styles.playerContainer}>
                     <View style={{ overflow: 'hidden', borderRadius: 50, marginBottom: 5, width: 100, height: 100 }}>
-                      <Image source={{ uri: player.imageUrl }} style={styles.playerImage} />
+                      <Image 
+                        source={{ uri: player.imageUrl }} 
+                        style={[
+                          styles.playerImage,
+                          {
+                            transform: [
+                              { scale: transform.scale },
+                              { translateX: transform.translateX },
+                              { translateY: transform.translateY }
+                            ]
+                          }
+                        ]} 
+                      />
                     </View>
                     {/* <Image source={{ uri: player.imageUrl }} style={styles.playerImage} /> */}
                     <Text style={styles.playerName}>{player.playerName || 'Unknown'}</Text>
@@ -241,7 +256,8 @@ const RosterScreen = () => {
                     </Text>
                   </View>
                 </Link>
-              )}
+                );
+              }}
               horizontal
             />
           </View>

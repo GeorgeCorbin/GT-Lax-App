@@ -1,28 +1,26 @@
-## Player Bio
+## Player Details
 
-**Player Details:**
-- **Hometown:** Jericho  
-- **State:** New York  
-- **Height:** 6'0"  
-- **Weight:** 170 lbs  
-- **Year:** Junior  
-- **High School:** Jericho  
-- **Position:** Midfield/Faceoff  
+- **Height:** 6'0"
+- **Weight:** 170
+- **Hometown:** Jericho
+- **Position:** M/FO
+- **Year:** Sr
+- **State:** NY
+- **High School:** Jericho
 
-**Honors and Achievements:**
-- MCLA Scholar Athlete (2024)
-- SELC All-Conference (2024)
-- SELC All-Tournament Team (2024)
-- MCLA All-American (2024)
+## Honors and Achievements
 
-**Career Stats Through Last Season:**  
-- Games Played: 31  
-- Goals: 5  
-- Assists: 6  
-- Points: 11  
-- Ground Balls: 150  
-- Faceoffs: 275-408 (55.6%)  
-- Shots: 9  
-- Shooting Percentage: 55.6%  
+- 2024 SELC All Conference 2nd Team
+- 2024 SELC All Tournament Team
+- 2024 MCLA ALL AMERICA 3RD TEAM
+- 2024 MCLA SCHOLAR ATHLETE
 
-Ben Skopicki has excelled as a faceoff specialist and midfielder, demonstrating dominance at the X and an impressive work ethic. Over 31 games in his career, Ben has secured 275 faceoff wins out of 408 attempts, achieving a strong 55.6% faceoff win percentage. He has also recorded 150 ground balls, underlining his ability to win key possessions and control the game flow. Ben's consistency and impact at the faceoff position make him a vital part of the team's success. As a junior, he continues to develop his skills and make significant contributions on both ends of the field.
+## Career Stats
+
+| Year | gp | gs | g | a | pts | gb | fo | sh | sh% |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 2022-23 | 13 | - | 0 | 1 | 1 | 11 | 26-54 | 1 | 0.0 |
+| 2023-24 | 18 | 15 | 5 | 5 | 10 | 139 | 249-354 | 8 | 62.5 |
+| 2024-25 | 6 | 1 | 0 | 0 | 0 | 13 | 20-27 | 4 | 0.0 |
+| 2025-26 | - | - | - | - | 0 | - | 0-0 | - | - |
+| Total | 37 | 16 | 5 | 6 | 11 | 163 | 295-435 | 13 | 38.5 |

@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
   playerImage: {
     width: 100,
     height: 100,
-    transform: [{ scale: 1.3 }, { translateX: -10 }, { translateY: 10 }],
+    transform: [{ scale: 1.3 }, { translateX: 0 }, { translateY: 5 }],
   },
   playerName: {
     fontSize: 14,

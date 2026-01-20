@@ -1,12 +1,17 @@
-## Player Bio
+## Player Details
 
-**Player Details:**
+- **Height:** 5'10"
+- **Weight:** 165
 - **Hometown:** Landenberg
-- **State:** Pennsylvania
-- **Height:** 5'10"  
-- **Weight:** 165 lbs  
-- **Year:** Freshman  
-- **High School:** Sanford  
-- **Position:** Midfield  
+- **Position:** Midfield
+- **Year:** So
+- **State:** PA
+- **High School:** Sanford
 
-Andrew Taylor is a freshman midfielder from Landenberg, Pennsylvania. A graduate of Sanford High School, Andrew is looking to begin his collegiate lacrosse career and contribute to Georgia Tech's midfield unit during the 2024-25 season.
+## Career Stats
+
+| Year | gp | gs | g | a | pts | gb | fo | sh | sh% |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 2024-25 | 15 | - | 0 | 0 | 0 | 5 | 0-0 | 4 | 0.0 |
+| 2025-26 | - | - | - | - | 0 | - | 0-0 | - | - |
+| Total | 15 | - | 0 | 0 | 0 | 5 | 0-0 | 4 | 0.0 |

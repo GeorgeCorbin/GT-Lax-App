@@ -10,5 +10,53 @@
     "description": "Controls automatic push notifications when new articles are detected",
     "last_updated": "2025-10-15",
     "updated_by": "admin"
+  },
+  "game_information": {
+    "enabled": true,
+    "global_enabled": false,
+    "allowed_tokens": [],
+    "description": "Master toggle for the entire game information page",
+    "last_updated": "2026-01-20",
+    "updated_by": "admin"
+  },
+  "game_info_field_name": {
+    "enabled": true,
+    "global_enabled": true,
+    "allowed_tokens": [],
+    "description": "Show field name on game information page",
+    "last_updated": "2026-01-20",
+    "updated_by": "admin"
+  },
+  "game_info_image": {
+    "enabled": true,
+    "global_enabled": true,
+    "allowed_tokens": [],
+    "description": "Show field image on game information page",
+    "last_updated": "2026-01-20",
+    "updated_by": "admin"
+  },
+  "game_info_location": {
+    "enabled": true,
+    "global_enabled": true,
+    "allowed_tokens": [],
+    "description": "Show location on game information page",
+    "last_updated": "2026-01-20",
+    "updated_by": "admin"
+  },
+  "game_info_weather": {
+    "enabled": true,
+    "global_enabled": true,
+    "allowed_tokens": [],
+    "description": "Show weather information on game information page",
+    "last_updated": "2026-01-20",
+    "updated_by": "admin"
+  },
+  "game_info_streaming": {
+    "enabled": true,
+    "global_enabled": true,
+    "allowed_tokens": [],
+    "description": "Show streaming/coverage information on game information page",
+    "last_updated": "2026-01-20",
+    "updated_by": "admin"
   }
 } 

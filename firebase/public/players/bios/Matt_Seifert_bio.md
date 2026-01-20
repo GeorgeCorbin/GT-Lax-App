@@ -1,24 +1,19 @@
-## Player Bio
+## Player Details
 
-**Player Details:**
-- **Hometown:** Mattituck  
-- **State:** New York  
-- **Height:** 6'2"  
-- **Weight:** 180 lbs  
-- **Year:** Junior  
-- **High School:** Mattituck  
+- **Height:** 6'2"
+- **Weight:** 180
+- **Hometown:** Mattituck
 - **Position:** Midfield
+- **Year:** Sr
+- **State:** NY
+- **High School:** Mattituck
 
-**Honors and Achievements:**
-- SELC All-Tournament Team (2024)
+## Career Stats
 
-**Career Stats Through Last Season:**  
-- Games Played: 37  
-- Goals: 20  
-- Assists: 14  
-- Points: 34  
-- Ground Balls: 47  
-- Shots: 58  
-- Shooting Percentage: 34.5%  
-
-Matt Seifert has been a standout midfielder for Georgia Tech, showcasing his offensive prowess and versatility over two seasons. He has played in 37 games, accumulating 34 points through 20 goals and 14 assists. His ability to win ground balls and contribute on both ends of the field makes him a valuable asset to the team. Matt aims to build on his impressive career as he enters the 2024-25 season, continuing to provide leadership and impact for the Yellow Jackets.
+| Year | gp | gs | g | a | pts | gb | fo | sh | sh% |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 2022-23 | 19 | - | 6 | 8 | 14 | 26 | 0-0 | 18 | 33.3 |
+| 2023-24 | 18 | 1 | 14 | 6 | 20 | 21 | 0-0 | 40 | 35.0 |
+| 2024-25 | 20 | 19 | 18 | 10 | 28 | 31 | 0-0 | 49 | 36.7 |
+| 2025-26 | - | - | - | - | 0 | - | 0-0 | - | - |
+| Total | 57 | 20 | 38 | 24 | 62 | 78 | 0-0 | 107 | 35.5 |

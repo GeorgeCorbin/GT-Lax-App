@@ -41,3 +41,6 @@ yarn-error.*
 ios/
 
 *.ipa
+
+firebase/public/players/bios/*
+firebase/public/players/images/*

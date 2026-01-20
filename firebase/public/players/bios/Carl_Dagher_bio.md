@@ -1,12 +1,17 @@
-## Player Bio
+## Player Details
 
-**Player Details:**
-- **Hometown:** Marietta  
-- **State:** Georgia  
-- **Height:** 5'9"  
-- **Weight:** 160 lbs  
-- **Year:** Freshman  
-- **High School:** Walton  
-- **Position:** Midfield  
+- **Height:** 5-9
+- **Weight:** 160
+- **Hometown:** Marietta
+- **Position:** Midfield
+- **Year:** So
+- **State:** GA
+- **High School:** Walton
 
-Carl Dagher is a freshman midfielder from Marietta, Georgia, and a graduate of Walton High School. Carl looks forward to beginning his collegiate lacrosse journey at Georgia Tech, where he aims to contribute his skills and energy to the midfield unit in the 2024-25 season.
+## Career Stats
+
+| Year | gp | gs | g | a | pts | gb | fo | sh | sh% |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 2024-25 | 19 | 1 | 10 | 12 | 22 | 30 | 0-0 | 41 | 24.4 |
+| 2025-26 | - | - | - | - | 0 | - | 0-0 | - | - |
+| Total | 19 | 1 | 10 | 12 | 22 | 30 | 0-0 | 41 | 24.4 |

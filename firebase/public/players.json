@@ -1,274 +1,2696 @@
 [
   {
     "id": 1,
-    "playerName": "Aaron Piszczek",
-    "position": "Middies",
-    "imageUrl": "https://gt-lax-app.web.app/players/images/Aaron_Piszczek_2025.jpg",
-    "contentUrl": "https://gt-lax-app.web.app/players/bios/Aaron_Piszczek_bio.md"
+    "playerName": "Mitch Savalli",
+    "number": 2,
+    "position": "Defense",
+    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2024-25/bios/mitch.jpg?max_width=510&max_height=600",
+    "height": "6'0\"",
+    "weight": "180",
+    "hometown": "Merrick",
+    "state": "NY",
+    "year": "So",
+    "highSchool": "W.C. Mepham",
+    "achievements": [
+      "2025 SELC ALL CONFERENCE HONORABLE MENTION",
+      "2025 MCLA SCHOLAR ATHLETE"
+    ],
+    "careerStats": {
+      "headers": [
+        "Year",
+        "GP",
+        "gs",
+        "g",
+        "a",
+        "pts",
+        "gb",
+        "fo",
+        "sh",
+        "sh%"
+      ],
+      "rows": [
+        [
+          "2024-25",
+          "19",
+          "18",
+          "0",
+          "2",
+          "2",
+          "39",
+          "0-0",
+          "3",
+          "0.0"
+        ],
+        [
+          "2025-26",
+          "-",
+          "-",
+          "-",
+          "-",
+          "0",
+          "-",
+          "0-0",
+          "-",
+          "-"
+        ],
+        [
+          "Total",
+          "19",
+          "18",
+          "0",
+          "2",
+          "2",
+          "39",
+          "0-0",
+          "3",
+          "0.0"
+        ]
+      ]
+    }
   },
   {
     "id": 2,
-    "playerName": "Aaron Sumrall",
-    "position": "Goalies",
-    "imageUrl": "https://gt-lax-app.web.app/players/images/Aaron_Sumrall_2025.jpg",
-    "contentUrl": "https://gt-lax-app.web.app/players/bios/Aaron_Sumrall_bio.md"
+    "playerName": "Will Ahmuty",
+    "number": 3,
+    "position": "Attack",
+    "imageUrl": "https://www.gtlacrosse.com/images/setup/headshot_default.jpg?max_width=510&max_height=600",
+    "height": "5'11\"",
+    "weight": "160",
+    "hometown": "Port Washington",
+    "state": "NY",
+    "year": "Fr",
+    "highSchool": "Schreiber",
+    "achievements": [],
+    "careerStats": {
+      "headers": [
+        "Year",
+        "gp",
+        "gs",
+        "g",
+        "a",
+        "pts",
+        "gb",
+        "fo",
+        "sh",
+        "sh%"
+      ],
+      "rows": [
+        [
+          "2025-26",
+          "-",
+          "-",
+          "-",
+          "-",
+          "0",
+          "-",
+          "0-0",
+          "-",
+          "-"
+        ],
+        [
+          "Total",
+          "-",
+          "-",
+          "-",
+          "-",
+          "0",
+          "-",
+          "0-0",
+          "-",
+          "-"
+        ]
+      ]
+    }
   },
   {
     "id": 3,
-    "playerName": "Alex Le",
-    "position": "Defense",
-    "imageUrl": "https://gt-lax-app.web.app/players/images/Alex_Le_2025.jpg",
-    "contentUrl": "https://gt-lax-app.web.app/players/bios/Alex_Le_bio.md"
+    "playerName": "Trey Ridder",
+    "number": 4,
+    "position": "Attack",
+    "imageUrl": "https://www.gtlacrosse.com/images/setup/headshot_default.jpg?max_width=510&max_height=600",
+    "height": "6'0\"",
+    "weight": "175",
+    "hometown": "Oviedo",
+    "state": "FL",
+    "year": "Fr",
+    "highSchool": "Oviedo",
+    "achievements": [],
+    "careerStats": {
+      "headers": [
+        "Year",
+        "gp",
+        "gs",
+        "g",
+        "a",
+        "pts",
+        "gb",
+        "fo",
+        "sh",
+        "sh%"
+      ],
+      "rows": [
+        [
+          "2025-26",
+          "-",
+          "-",
+          "-",
+          "-",
+          "0",
+          "-",
+          "0-0",
+          "-",
+          "-"
+        ],
+        [
+          "Total",
+          "-",
+          "-",
+          "-",
+          "-",
+          "0",
+          "-",
+          "0-0",
+          "-",
+          "-"
+        ]
+      ]
+    }
   },
   {
     "id": 4,
-    "playerName": "Andrew Belli",
-    "position": "Middies",
-    "imageUrl": "https://gt-lax-app.web.app/players/images/Andrew_Belli_2025.jpg",
-    "contentUrl": "https://gt-lax-app.web.app/players/bios/Andrew_Belli_bio.md"
+    "playerName": "Thomas Freer",
+    "number": 5,
+    "position": "SSMD",
+    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2024-25/bios/freer.jpg?max_width=510&max_height=600",
+    "height": "5'9\"",
+    "weight": "150",
+    "hometown": "College Park",
+    "state": "GA",
+    "year": "Sr",
+    "highSchool": "Woodward Academy",
+    "achievements": [],
+    "careerStats": {
+      "headers": [
+        "Year",
+        "gp",
+        "gs",
+        "g",
+        "a",
+        "pts",
+        "gb",
+        "fo",
+        "sh",
+        "sh%"
+      ],
+      "rows": [
+        [
+          "2022-23",
+          "7",
+          "-",
+          "0",
+          "0",
+          "0",
+          "1",
+          "0-0",
+          "0",
+          "-"
+        ],
+        [
+          "2023-24",
+          "15",
+          "-",
+          "0",
+          "0",
+          "0",
+          "1",
+          "0-0",
+          "1",
+          "0.0"
+        ],
+        [
+          "2024-25",
+          "4",
+          "-",
+          "0",
+          "0",
+          "0",
+          "1",
+          "0-0",
+          "2",
+          "0.0"
+        ],
+        [
+          "2025-26",
+          "-",
+          "-",
+          "-",
+          "-",
+          "0",
+          "-",
+          "0-0",
+          "-",
+          "-"
+        ],
+        [
+          "Total",
+          "26",
+          "-",
+          "0",
+          "0",
+          "0",
+          "3",
+          "0-0",
+          "3",
+          "0.0"
+        ]
+      ]
+    }
   },
   {
     "id": 5,
-    "playerName": "Ben Skopicki",
-    "position": "Face-Off",
-    "imageUrl": "https://gt-lax-app.web.app/players/images/Ben_Skopicki_2025.jpg",
-    "contentUrl": "https://gt-lax-app.web.app/players/bios/Ben_Skopicki_bio.md"
+    "playerName": "Peter Zagrobelny",
+    "number": 6,
+    "position": "Goalie",
+    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2024-25/bios/pete.jpg?max_width=510&max_height=600",
+    "height": "6-1",
+    "weight": "190",
+    "hometown": "Tarrytown",
+    "state": "NY",
+    "year": "Sr",
+    "highSchool": "Iona Prep",
+    "achievements": [
+      "2024 SELC All Conference 2nd Team",
+      "2024 SELC All Tournament Team",
+      "2024 SELC Tournament Specialty Player MVP",
+      "2024 MCLA SCHOLAR ATHLETE",
+      "2025 SELC ALL TOURNAMENT TEAM"
+    ],
+    "careerStats": {
+      "headers": [
+        "Year",
+        "gp",
+        "gs",
+        "min",
+        "ga",
+        "gaa",
+        "sv",
+        "sv%",
+        "win",
+        "loss",
+        "tie",
+        "win %"
+      ],
+      "rows": [
+        [
+          "2022-23",
+          "11",
+          "8",
+          "476:00",
+          "69",
+          "8.70",
+          "102",
+          "59.6",
+          "0",
+          "0",
+          "0",
+          "0.0"
+        ],
+        [
+          "2023-24",
+          "18",
+          "18",
+          "877:00",
+          "160",
+          "10.95",
+          "193",
+          "54.7",
+          "0",
+          "0",
+          "0",
+          "0.0"
+        ],
+        [
+          "2024-25",
+          "14",
+          "1",
+          "343:00",
+          "55",
+          "9.62",
+          "73",
+          "57.0",
+          "1",
+          "1",
+          "0",
+          "50.0"
+        ],
+        [
+          "2025-26",
+          "-",
+          "-",
+          "0:00",
+          "-",
+          "-",
+          "-",
+          "0.0",
+          "0",
+          "0",
+          "0",
+          "0.0"
+        ],
+        [
+          "Total",
+          "43",
+          "27",
+          "1696:00",
+          "284",
+          "10.05",
+          "368",
+          "56.4",
+          "1",
+          "1",
+          "0",
+          "50.0"
+        ]
+      ]
+    }
   },
   {
     "id": 6,
-    "playerName": "Brendan Sullivan",
-    "position": "Attack",
-    "imageUrl": "https://gt-lax-app.web.app/players/images/Brendan_Sullivan_2025.jpg",
-    "contentUrl": "https://gt-lax-app.web.app/players/bios/Brendan_Sullivan_bio.md"
+    "playerName": "Matt Seifert",
+    "number": 7,
+    "position": "Midfield",
+    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2024-25/bios/seifert.jpg?max_width=510&max_height=600",
+    "height": "6'2\"",
+    "weight": "180",
+    "hometown": "Mattituck",
+    "state": "NY",
+    "year": "Sr",
+    "highSchool": "Mattituck",
+    "achievements": [],
+    "careerStats": {
+      "headers": [
+        "Year",
+        "gp",
+        "gs",
+        "g",
+        "a",
+        "pts",
+        "gb",
+        "fo",
+        "sh",
+        "sh%"
+      ],
+      "rows": [
+        [
+          "2022-23",
+          "19",
+          "-",
+          "6",
+          "8",
+          "14",
+          "26",
+          "0-0",
+          "18",
+          "33.3"
+        ],
+        [
+          "2023-24",
+          "18",
+          "1",
+          "14",
+          "6",
+          "20",
+          "21",
+          "0-0",
+          "40",
+          "35.0"
+        ],
+        [
+          "2024-25",
+          "20",
+          "19",
+          "18",
+          "10",
+          "28",
+          "31",
+          "0-0",
+          "49",
+          "36.7"
+        ],
+        [
+          "2025-26",
+          "-",
+          "-",
+          "-",
+          "-",
+          "0",
+          "-",
+          "0-0",
+          "-",
+          "-"
+        ],
+        [
+          "Total",
+          "57",
+          "20",
+          "38",
+          "24",
+          "62",
+          "78",
+          "0-0",
+          "107",
+          "35.5"
+        ]
+      ]
+    }
   },
   {
     "id": 7,
-    "playerName": "Brooks Baro",
-    "position": "Middies",
-    "imageUrl": "https://gt-lax-app.web.app/players/images/Brooks_Baro_2025.jpg",
-    "contentUrl": "https://gt-lax-app.web.app/players/bios/Brooks_Baro_bio.md"
+    "playerName": "Brennan Finch",
+    "number": 9,
+    "position": "Goalie",
+    "imageUrl": "https://www.gtlacrosse.com/images/setup/headshot_default.jpg?max_width=510&max_height=600",
+    "height": "5'9\"",
+    "weight": "160",
+    "hometown": "Powder Springs",
+    "state": "GA",
+    "year": "Fr",
+    "highSchool": "Hillgrove",
+    "achievements": [],
+    "careerStats": {
+      "headers": [
+        "Year",
+        "gp",
+        "gs",
+        "min",
+        "ga",
+        "gaa",
+        "sv",
+        "sv%",
+        "win",
+        "loss",
+        "tie",
+        "win %"
+      ],
+      "rows": [
+        [
+          "2025-26",
+          "-",
+          "-",
+          "0:00",
+          "-",
+          "-",
+          "-",
+          "0.0",
+          "0",
+          "0",
+          "0",
+          "0.0"
+        ],
+        [
+          "Total",
+          "-",
+          "-",
+          "0:00",
+          "-",
+          "-",
+          "-",
+          "0.0",
+          "0",
+          "0",
+          "0",
+          "0.0"
+        ]
+      ]
+    }
   },
   {
     "id": 8,
-    "playerName": "DJ Louis",
-    "position": "Middies",
-    "imageUrl": "https://gt-lax-app.web.app/players/images/DJ_Louis_2025.jpg",
-    "contentUrl": "https://gt-lax-app.web.app/players/bios/DJ_Louis_bio.md"
+    "playerName": "Owen Armentrout",
+    "number": 10,
+    "position": "Goalie",
+    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2024-25/bios/owen_ar.jpg?max_width=510&max_height=600",
+    "height": "6'0\"",
+    "weight": "140",
+    "hometown": "Atlanta",
+    "state": "GA",
+    "year": "Sr",
+    "highSchool": "Lovett",
+    "achievements": [
+      "2025 SELC ALL TOURNAMENT TEAM"
+    ],
+    "careerStats": {
+      "headers": [
+        "Year",
+        "gp",
+        "gs",
+        "min",
+        "ga",
+        "gaa",
+        "sv",
+        "sv%",
+        "win",
+        "loss",
+        "tie",
+        "win %"
+      ],
+      "rows": [
+        [
+          "2022-23",
+          "13",
+          "11",
+          "513:00",
+          "89",
+          "10.41",
+          "108",
+          "54.8",
+          "0",
+          "0",
+          "0",
+          "0.0"
+        ],
+        [
+          "2023-24",
+          "8",
+          "0",
+          "140:00",
+          "21",
+          "9.00",
+          "25",
+          "54.3",
+          "0",
+          "0",
+          "0",
+          "0.0"
+        ],
+        [
+          "2024-25",
+          "20",
+          "19",
+          "810:00",
+          "144",
+          "10.67",
+          "159",
+          "52.5",
+          "14",
+          "4",
+          "0",
+          "77.8"
+        ],
+        [
+          "2025-26",
+          "-",
+          "-",
+          "0:00",
+          "-",
+          "-",
+          "-",
+          "0.0",
+          "0",
+          "0",
+          "0",
+          "0.0"
+        ],
+        [
+          "Total",
+          "41",
+          "30",
+          "1463:00",
+          "254",
+          "10.42",
+          "292",
+          "53.5",
+          "14",
+          "4",
+          "0",
+          "77.8"
+        ]
+      ]
+    }
   },
   {
     "id": 9,
-    "playerName": "George Corbin",
-    "position": "Defense",
-    "imageUrl": "https://gt-lax-app.web.app/players/images/George_Corbin_2025.jpg",
-    "contentUrl": "https://gt-lax-app.web.app/players/bios/George_Corbin_bio.md"
+    "playerName": "Griffin Davis",
+    "number": 11,
+    "position": "Goalie",
+    "imageUrl": "https://www.gtlacrosse.com/images/setup/headshot_default.jpg?max_width=510&max_height=600",
+    "height": "5'11\"",
+    "weight": "175",
+    "hometown": "Germantown",
+    "state": "TN",
+    "year": "Fr",
+    "highSchool": "St George",
+    "achievements": [],
+    "careerStats": {
+      "headers": [
+        "Year",
+        "gp",
+        "gs",
+        "min",
+        "ga",
+        "gaa",
+        "sv",
+        "sv%",
+        "win",
+        "loss",
+        "tie",
+        "win %"
+      ],
+      "rows": [
+        [
+          "2025-26",
+          "-",
+          "-",
+          "0:00",
+          "-",
+          "-",
+          "-",
+          "0.0",
+          "0",
+          "0",
+          "0",
+          "0.0"
+        ],
+        [
+          "Total",
+          "-",
+          "-",
+          "0:00",
+          "-",
+          "-",
+          "-",
+          "0.0",
+          "0",
+          "0",
+          "0",
+          "0.0"
+        ]
+      ]
+    }
   },
   {
     "id": 10,
-    "playerName": "Hudson Higgins",
-    "position": "Defense",
-    "imageUrl": "https://gt-lax-app.web.app/players/images/Hudson_Higgins_2025.jpg",
-    "contentUrl": "https://gt-lax-app.web.app/players/bios/Hudson_Higgins_bio.md"
+    "playerName": "Owen Smith",
+    "number": 12,
+    "position": "Midfield",
+    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2024-25/bios/owen_smith.jpg?max_width=510&max_height=600",
+    "height": "6-1",
+    "weight": "180",
+    "hometown": "Roswell",
+    "state": "GA",
+    "year": "So",
+    "highSchool": "Roswell",
+    "achievements": [],
+    "careerStats": {
+      "headers": [
+        "Year",
+        "gp",
+        "gs",
+        "g",
+        "a",
+        "pts",
+        "gb",
+        "fo",
+        "sh",
+        "sh%"
+      ],
+      "rows": [
+        [
+          "2024-25",
+          "8",
+          "-",
+          "0",
+          "0",
+          "0",
+          "2",
+          "0-0",
+          "1",
+          "0.0"
+        ],
+        [
+          "2025-26",
+          "-",
+          "-",
+          "-",
+          "-",
+          "0",
+          "-",
+          "0-0",
+          "-",
+          "-"
+        ],
+        [
+          "Total",
+          "8",
+          "-",
+          "0",
+          "0",
+          "0",
+          "2",
+          "0-0",
+          "1",
+          "0.0"
+        ]
+      ]
+    }
   },
   {
     "id": 11,
-    "playerName": "Ian Balser",
-    "position": "Defense",
-    "imageUrl": "https://gt-lax-app.web.app/players/images/Ian_Balser_2025.jpg",
-    "contentUrl": "https://gt-lax-app.web.app/players/bios/Ian_Balser_bio.md"
+    "playerName": "Carl Dagher",
+    "number": 13,
+    "position": "Midfield",
+    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2024-25/bios/carl.jpg?max_width=510&max_height=600",
+    "height": "5-9",
+    "weight": "160",
+    "hometown": "Marietta",
+    "state": "GA",
+    "year": "So",
+    "highSchool": "Walton",
+    "achievements": [],
+    "careerStats": {
+      "headers": [
+        "Year",
+        "gp",
+        "gs",
+        "g",
+        "a",
+        "pts",
+        "gb",
+        "fo",
+        "sh",
+        "sh%"
+      ],
+      "rows": [
+        [
+          "2024-25",
+          "19",
+          "1",
+          "10",
+          "12",
+          "22",
+          "30",
+          "0-0",
+          "41",
+          "24.4"
+        ],
+        [
+          "2025-26",
+          "-",
+          "-",
+          "-",
+          "-",
+          "0",
+          "-",
+          "0-0",
+          "-",
+          "-"
+        ],
+        [
+          "Total",
+          "19",
+          "1",
+          "10",
+          "12",
+          "22",
+          "30",
+          "0-0",
+          "41",
+          "24.4"
+        ]
+      ]
+    }
   },
   {
     "id": 12,
-    "playerName": "JoJo Banks",
-    "position": "Goalies",
-    "imageUrl": "https://gt-lax-app.web.app/players/images/JoJo_Banks_2025.jpg",
-    "contentUrl": "https://gt-lax-app.web.app/players/bios/JoJo_Banks_bio.md"
+    "playerName": "Noah Stewart",
+    "number": 15,
+    "position": "Defense",
+    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2024-25/bios/noah.jpg?max_width=510&max_height=600",
+    "height": "6-0",
+    "weight": "200",
+    "hometown": "Louisville",
+    "state": "KY",
+    "year": "So",
+    "highSchool": "DuPont Manual",
+    "achievements": [],
+    "careerStats": {
+      "headers": [
+        "Year",
+        "gp",
+        "gs",
+        "g",
+        "a",
+        "pts",
+        "gb",
+        "fo",
+        "sh",
+        "sh%"
+      ],
+      "rows": [
+        [
+          "2024-25",
+          "20",
+          "15",
+          "1",
+          "3",
+          "4",
+          "23",
+          "4-10",
+          "1",
+          "100.0"
+        ],
+        [
+          "2025-26",
+          "-",
+          "-",
+          "-",
+          "-",
+          "0",
+          "-",
+          "0-0",
+          "-",
+          "-"
+        ],
+        [
+          "Total",
+          "20",
+          "15",
+          "1",
+          "3",
+          "4",
+          "23",
+          "4-10",
+          "1",
+          "100.0"
+        ]
+      ]
+    }
   },
   {
     "id": 13,
-    "playerName": "Joseph Rose",
-    "position": "Attack",
-    "imageUrl": "https://gt-lax-app.web.app/players/images/Joseph_Rose_2025.jpg",
-    "contentUrl": "https://gt-lax-app.web.app/players/bios/Joseph_Rose_bio.md"
+    "playerName": "Tate O'Leary",
+    "number": 16,
+    "position": "Midfield",
+    "imageUrl": "https://www.gtlacrosse.com/images/setup/headshot_default.jpg?max_width=510&max_height=600",
+    "height": "6'0\"",
+    "weight": "160",
+    "hometown": "Atlanta",
+    "state": "GA",
+    "year": "Fr",
+    "highSchool": "Pace Academy",
+    "achievements": [],
+    "careerStats": {
+      "headers": [
+        "Year",
+        "gp",
+        "gs",
+        "g",
+        "a",
+        "pts",
+        "gb",
+        "fo",
+        "sh",
+        "sh%"
+      ],
+      "rows": [
+        [
+          "2025-26",
+          "-",
+          "-",
+          "-",
+          "-",
+          "0",
+          "-",
+          "0-0",
+          "-",
+          "-"
+        ],
+        [
+          "Total",
+          "-",
+          "-",
+          "-",
+          "-",
+          "0",
+          "-",
+          "0-0",
+          "-",
+          "-"
+        ]
+      ]
+    }
   },
   {
     "id": 14,
-    "playerName": "Luke Jurgens",
-    "position": "Defense",
-    "imageUrl": "https://gt-lax-app.web.app/players/images/Luke_Jurgens_2025.jpg",
-    "contentUrl": "https://gt-lax-app.web.app/players/bios/Luke_Jurgens_bio.md"
+    "playerName": "Asher Bernstein",
+    "number": 17,
+    "position": "Attack",
+    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2024-25/bios/asher.jpg?max_width=510&max_height=600",
+    "height": "5'8\"",
+    "weight": "165",
+    "hometown": "Dedham",
+    "state": "MA",
+    "year": "So",
+    "highSchool": "Noble & Greenough",
+    "achievements": [],
+    "careerStats": {
+      "headers": [
+        "Year",
+        "gp",
+        "gs",
+        "g",
+        "a",
+        "pts",
+        "gb",
+        "fo",
+        "sh",
+        "sh%"
+      ],
+      "rows": [
+        [
+          "2024-25",
+          "10",
+          "-",
+          "2",
+          "4",
+          "6",
+          "1",
+          "0-0",
+          "6",
+          "33.3"
+        ],
+        [
+          "2025-26",
+          "-",
+          "-",
+          "-",
+          "-",
+          "0",
+          "-",
+          "0-0",
+          "-",
+          "-"
+        ],
+        [
+          "Total",
+          "10",
+          "-",
+          "2",
+          "4",
+          "6",
+          "1",
+          "0-0",
+          "6",
+          "33.3"
+        ]
+      ]
+    }
   },
   {
     "id": 15,
-    "playerName": "Maddox Davis",
-    "position": "Middies",
-    "imageUrl": "https://gt-lax-app.web.app/players/images/Maddox_Davis_2025.jpg",
-    "contentUrl": "https://gt-lax-app.web.app/players/bios/Maddox_Davis_bio.md"
+    "playerName": "Braxton Furiness",
+    "number": 20,
+    "position": "Defense",
+    "imageUrl": "https://www.gtlacrosse.com/images/setup/headshot_default.jpg?max_width=510&max_height=600",
+    "height": "5'11\"",
+    "weight": "170",
+    "hometown": "Yardley",
+    "state": "PA",
+    "year": "Fr",
+    "highSchool": "Pennsbury",
+    "achievements": [],
+    "careerStats": {
+      "headers": [
+        "Year",
+        "gp",
+        "gs",
+        "g",
+        "a",
+        "pts",
+        "gb",
+        "fo",
+        "sh",
+        "sh%"
+      ],
+      "rows": [
+        [
+          "2025-26",
+          "-",
+          "-",
+          "-",
+          "-",
+          "0",
+          "-",
+          "0-0",
+          "-",
+          "-"
+        ],
+        [
+          "Total",
+          "-",
+          "-",
+          "-",
+          "-",
+          "0",
+          "-",
+          "0-0",
+          "-",
+          "-"
+        ]
+      ]
+    }
   },
   {
     "id": 16,
-    "playerName": "Matt Seifert",
-    "position": "Middies",
-    "imageUrl": "https://gt-lax-app.web.app/players/images/Matt_Seifert_2025.jpg",
-    "contentUrl": "https://gt-lax-app.web.app/players/bios/Matt_Seifert_bio.md"
+    "playerName": "DJ Louis",
+    "number": 21,
+    "position": "Midfield",
+    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2024-25/bios/dj.jpg?max_width=510&max_height=600",
+    "height": "6'0\"",
+    "weight": "190",
+    "hometown": "Atlanta",
+    "state": "GA",
+    "year": "Jr",
+    "highSchool": "North Atlanta",
+    "achievements": [],
+    "careerStats": {
+      "headers": [
+        "Year",
+        "gp",
+        "gs",
+        "g",
+        "a",
+        "pts",
+        "gb",
+        "fo",
+        "sh",
+        "sh%"
+      ],
+      "rows": [
+        [
+          "2023-24",
+          "18",
+          "-",
+          "10",
+          "1",
+          "11",
+          "11",
+          "0-0",
+          "38",
+          "26.3"
+        ],
+        [
+          "2024-25",
+          "18",
+          "-",
+          "7",
+          "5",
+          "12",
+          "19",
+          "0-0",
+          "23",
+          "30.4"
+        ],
+        [
+          "2025-26",
+          "-",
+          "-",
+          "-",
+          "-",
+          "0",
+          "-",
+          "0-0",
+          "-",
+          "-"
+        ],
+        [
+          "Total",
+          "36",
+          "-",
+          "17",
+          "6",
+          "23",
+          "30",
+          "0-0",
+          "61",
+          "27.9"
+        ]
+      ]
+    }
   },
   {
     "id": 17,
-    "playerName": "Michael Grosso",
-    "position": "Middies",
-    "imageUrl": "https://gt-lax-app.web.app/players/images/Michael_Grosso_2025.jpg",
-    "contentUrl": "https://gt-lax-app.web.app/players/bios/Michael_Grosso_bio.md"
+    "playerName": "David Hull",
+    "number": 22,
+    "position": "Midfield",
+    "imageUrl": "https://www.gtlacrosse.com/images/setup/headshot_default.jpg?max_width=510&max_height=600",
+    "height": "6'1\"",
+    "weight": "180",
+    "hometown": "Winter Park",
+    "state": "Fl",
+    "year": "Fr",
+    "highSchool": "Trinity Prep",
+    "achievements": [],
+    "careerStats": {
+      "headers": [
+        "Year",
+        "gp",
+        "gs",
+        "g",
+        "a",
+        "pts",
+        "gb",
+        "fo",
+        "sh",
+        "sh%"
+      ],
+      "rows": [
+        [
+          "2025-26",
+          "-",
+          "-",
+          "-",
+          "-",
+          "0",
+          "-",
+          "0-0",
+          "-",
+          "-"
+        ],
+        [
+          "Total",
+          "-",
+          "-",
+          "-",
+          "-",
+          "0",
+          "-",
+          "0-0",
+          "-",
+          "-"
+        ]
+      ]
+    }
   },
   {
     "id": 18,
-    "playerName": "Owen Armentrout",
-    "position": "Goalies",
-    "imageUrl": "https://gt-lax-app.web.app/players/images/Owen_Armentrout_2025.jpg",
-    "contentUrl": "https://gt-lax-app.web.app/players/bios/Owen_Armentrout_bio.md"
+    "playerName": "Ben Goldberg",
+    "number": 23,
+    "position": "Defense",
+    "imageUrl": "https://www.gtlacrosse.com/images/setup/headshot_default.jpg?max_width=510&max_height=600",
+    "height": "5'10\"",
+    "weight": "170",
+    "hometown": "Evans",
+    "state": "GA",
+    "year": "Fr",
+    "highSchool": "Lakeside",
+    "achievements": [],
+    "careerStats": {
+      "headers": [
+        "Year",
+        "gp",
+        "gs",
+        "g",
+        "a",
+        "pts",
+        "gb",
+        "fo",
+        "sh",
+        "sh%"
+      ],
+      "rows": [
+        [
+          "2025-26",
+          "-",
+          "-",
+          "-",
+          "-",
+          "0",
+          "-",
+          "0-0",
+          "-",
+          "-"
+        ],
+        [
+          "Total",
+          "-",
+          "-",
+          "-",
+          "-",
+          "0",
+          "-",
+          "0-0",
+          "-",
+          "-"
+        ]
+      ]
+    }
   },
   {
     "id": 19,
-    "playerName": "Owen Seibold",
-    "position": "Defense",
-    "imageUrl": "https://gt-lax-app.web.app/players/images/Owen_Seibold_2025.jpg",
-    "contentUrl": "https://gt-lax-app.web.app/players/bios/Owen_Seibold_bio.md"
+    "playerName": "Maddox Davis",
+    "number": 25,
+    "position": "Midfield",
+    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2024-25/bios/maddox.jpg?max_width=510&max_height=600",
+    "height": "6'0\"",
+    "weight": "175",
+    "hometown": "Collierville",
+    "state": "TN",
+    "year": "Sr",
+    "highSchool": "St. George's Independent",
+    "achievements": [],
+    "careerStats": {
+      "headers": [
+        "Year",
+        "gp",
+        "gs",
+        "g",
+        "a",
+        "pts",
+        "gb",
+        "fo",
+        "sh",
+        "sh%"
+      ],
+      "rows": [
+        [
+          "2022-23",
+          "7",
+          "-",
+          "0",
+          "0",
+          "0",
+          "3",
+          "7-16",
+          "0",
+          "-"
+        ],
+        [
+          "2023-24",
+          "5",
+          "-",
+          "0",
+          "0",
+          "0",
+          "1",
+          "0-0",
+          "1",
+          "0.0"
+        ],
+        [
+          "2024-25",
+          "5",
+          "-",
+          "1",
+          "3",
+          "4",
+          "1",
+          "0-0",
+          "1",
+          "100.0"
+        ],
+        [
+          "2025-26",
+          "-",
+          "-",
+          "-",
+          "-",
+          "0",
+          "-",
+          "0-0",
+          "-",
+          "-"
+        ],
+        [
+          "Total",
+          "17",
+          "-",
+          "1",
+          "3",
+          "4",
+          "5",
+          "7-16",
+          "2",
+          "50.0"
+        ]
+      ]
+    }
   },
   {
     "id": 20,
-    "playerName": "Pierce Quarles",
+    "playerName": "Braden Baro",
+    "number": 26,
     "position": "Attack",
-    "imageUrl": "https://gt-lax-app.web.app/players/images/Pierce_Quarles_2025.jpg",
-    "contentUrl": "https://gt-lax-app.web.app/players/bios/Pierce_Quarles_bio.md"
+    "imageUrl": "https://www.gtlacrosse.com/images/setup/headshot_default.jpg?max_width=510&max_height=600",
+    "height": "6'1\"",
+    "weight": "170",
+    "hometown": "Peachtree City",
+    "state": "GA",
+    "year": "So",
+    "highSchool": "Woodward Academy",
+    "achievements": [],
+    "careerStats": {
+      "headers": [
+        "Year",
+        "gp",
+        "gs",
+        "g",
+        "a",
+        "pts",
+        "gb",
+        "fo",
+        "sh",
+        "sh%"
+      ],
+      "rows": [
+        [
+          "2025-26",
+          "-",
+          "-",
+          "-",
+          "-",
+          "0",
+          "-",
+          "0-0",
+          "-",
+          "-"
+        ],
+        [
+          "Total",
+          "-",
+          "-",
+          "-",
+          "-",
+          "0",
+          "-",
+          "0-0",
+          "-",
+          "-"
+        ]
+      ]
+    }
   },
   {
     "id": 21,
-    "playerName": "Peter Zagrobelny",
-    "position": "Goalie",
-    "imageUrl": "https://gt-lax-app.web.app/players/images/Peter_Zagrobelny_2025.jpg",
-    "contentUrl": "https://gt-lax-app.web.app/players/bios/Peter_Zagrobelny_bio.md"
+    "playerName": "Emmett White",
+    "number": 27,
+    "position": "Midfield",
+    "imageUrl": "https://www.gtlacrosse.com/images/setup/headshot_default.jpg?max_width=510&max_height=600",
+    "height": "6'2\"",
+    "weight": "170",
+    "hometown": "Trumbull",
+    "state": "CT",
+    "year": "Fr",
+    "highSchool": "Trumbull",
+    "achievements": [],
+    "careerStats": {
+      "headers": [
+        "Year",
+        "gp",
+        "gs",
+        "g",
+        "a",
+        "pts",
+        "gb",
+        "fo",
+        "sh",
+        "sh%"
+      ],
+      "rows": [
+        [
+          "2025-26",
+          "-",
+          "-",
+          "-",
+          "-",
+          "0",
+          "-",
+          "0-0",
+          "-",
+          "-"
+        ],
+        [
+          "Total",
+          "-",
+          "-",
+          "-",
+          "-",
+          "0",
+          "-",
+          "0-0",
+          "-",
+          "-"
+        ]
+      ]
+    }
   },
   {
     "id": 22,
-    "playerName": "Thomas Freer",
-    "position": "Middies",
-    "imageUrl": "https://gt-lax-app.web.app/players/images/Thomas_Freer_2025.jpg",
-    "contentUrl": "https://gt-lax-app.web.app/players/bios/Thomas_Freer_bio.md"
+    "playerName": "Brecken Lalberte",
+    "number": 28,
+    "position": "Midfield",
+    "imageUrl": "https://www.gtlacrosse.com/images/setup/headshot_default.jpg?max_width=510&max_height=600",
+    "height": "5'10\"",
+    "weight": "170",
+    "hometown": "Rome",
+    "state": "GA",
+    "year": "Fr",
+    "highSchool": "Darlington",
+    "achievements": [],
+    "careerStats": {
+      "headers": [
+        "Year",
+        "gp",
+        "gs",
+        "g",
+        "a",
+        "pts",
+        "gb",
+        "fo",
+        "sh",
+        "sh%"
+      ],
+      "rows": [
+        [
+          "2025-26",
+          "-",
+          "-",
+          "-",
+          "-",
+          "0",
+          "-",
+          "0-0",
+          "-",
+          "-"
+        ],
+        [
+          "Total",
+          "-",
+          "-",
+          "-",
+          "-",
+          "0",
+          "-",
+          "0-0",
+          "-",
+          "-"
+        ]
+      ]
+    }
   },
   {
     "id": 23,
-    "playerName": "Wilson Halloran",
-    "position": "Defense",
-    "imageUrl": "https://gt-lax-app.web.app/players/images/Wilson_Halloran_2025.jpg",
-    "contentUrl": "https://gt-lax-app.web.app/players/bios/Wilson_Halloran_bio.md"
+    "playerName": "Nick French",
+    "number": 29,
+    "position": "Midfield",
+    "imageUrl": "https://www.gtlacrosse.com/images/setup/headshot_default.jpg?max_width=510&max_height=600",
+    "height": "6'0\"",
+    "weight": "170",
+    "hometown": "Rumson",
+    "state": "NJ",
+    "year": "Fr",
+    "highSchool": "Rumson-Fair Haven",
+    "achievements": [],
+    "careerStats": {
+      "headers": [
+        "Year",
+        "gp",
+        "gs",
+        "g",
+        "a",
+        "pts",
+        "gb",
+        "fo",
+        "sh",
+        "sh%"
+      ],
+      "rows": [
+        [
+          "2025-26",
+          "-",
+          "-",
+          "-",
+          "-",
+          "0",
+          "-",
+          "0-0",
+          "-",
+          "-"
+        ],
+        [
+          "Total",
+          "-",
+          "-",
+          "-",
+          "-",
+          "0",
+          "-",
+          "0-0",
+          "-",
+          "-"
+        ]
+      ]
+    }
   },
   {
     "id": 24,
-    "playerName": "Zach Harrison",
+    "playerName": "George Corbin",
+    "number": 31,
     "position": "Defense",
-    "imageUrl": "https://gt-lax-app.web.app/players/images/Zach_Harrison_2025.jpg",
-    "contentUrl": "https://gt-lax-app.web.app/players/bios/Zach_Harrison_bio.md"
+    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2024-25/bios/corbin.jpg?max_width=510&max_height=600",
+    "height": "6'0\"",
+    "weight": "185",
+    "hometown": "Atlanta",
+    "state": "GA",
+    "year": "Sr",
+    "highSchool": "Westminster",
+    "achievements": [
+      "2024 SELC Alll Conference Team",
+      "2024 SELC All Tournament Team",
+      "2024 MCLA SCHOLAR ATHLETE",
+      "2025 SELC ALL TOURNAMENT TEAM",
+      "2026 CAPTAIN"
+    ],
+    "careerStats": {
+      "headers": [
+        "Year",
+        "gp",
+        "gs",
+        "g",
+        "a",
+        "pts",
+        "gb",
+        "fo",
+        "sh",
+        "sh%"
+      ],
+      "rows": [
+        [
+          "2022-23",
+          "18",
+          "-",
+          "0",
+          "0",
+          "0",
+          "11",
+          "0-0",
+          "0",
+          "-"
+        ],
+        [
+          "2023-24",
+          "18",
+          "18",
+          "0",
+          "0",
+          "0",
+          "38",
+          "0-0",
+          "1",
+          "0.0"
+        ],
+        [
+          "2024-25",
+          "20",
+          "20",
+          "1",
+          "0",
+          "1",
+          "37",
+          "0-0",
+          "4",
+          "25.0"
+        ],
+        [
+          "2025-26",
+          "-",
+          "-",
+          "-",
+          "-",
+          "0",
+          "-",
+          "0-0",
+          "-",
+          "-"
+        ],
+        [
+          "Total",
+          "56",
+          "38",
+          "1",
+          "0",
+          "1",
+          "86",
+          "0-0",
+          "5",
+          "20.0"
+        ]
+      ]
+    }
   },
   {
     "id": 25,
-    "playerName": "Charlie Ciardullo",
-    "position": "Face-Off",
-    "imageUrl": "https://gt-lax-app.web.app/players/images/Charlie_Ciardullo_2025.jpg",
-    "contentUrl": "https://gt-lax-app.web.app/players/bios/Charlie_Ciardullo_bio.md"
+    "playerName": "Andrew Taylor",
+    "number": 32,
+    "position": "Midfield",
+    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2024-25/bios/AT.jpg?max_width=510&max_height=600",
+    "height": "5'10\"",
+    "weight": "165",
+    "hometown": "Landenberg",
+    "state": "PA",
+    "year": "So",
+    "highSchool": "Sanford",
+    "achievements": [],
+    "careerStats": {
+      "headers": [
+        "Year",
+        "gp",
+        "gs",
+        "g",
+        "a",
+        "pts",
+        "gb",
+        "fo",
+        "sh",
+        "sh%"
+      ],
+      "rows": [
+        [
+          "2024-25",
+          "15",
+          "-",
+          "0",
+          "0",
+          "0",
+          "5",
+          "0-0",
+          "4",
+          "0.0"
+        ],
+        [
+          "2025-26",
+          "-",
+          "-",
+          "-",
+          "-",
+          "0",
+          "-",
+          "0-0",
+          "-",
+          "-"
+        ],
+        [
+          "Total",
+          "15",
+          "-",
+          "0",
+          "0",
+          "0",
+          "5",
+          "0-0",
+          "4",
+          "0.0"
+        ]
+      ]
+    }
   },
   {
     "id": 26,
-    "playerName": "Mitch Savalli",
+    "playerName": "Jack Odom",
+    "number": 33,
     "position": "Defense",
-    "imageUrl": "https://gt-lax-app.web.app/players/images/Mitch_Savalli_2025.jpg",
-    "contentUrl": "https://gt-lax-app.web.app/players/bios/Mitch_Savalli_bio.md"
+    "imageUrl": "https://www.gtlacrosse.com/images/setup/headshot_default.jpg?max_width=510&max_height=600",
+    "height": "6'0\"",
+    "weight": "200",
+    "hometown": "Peachtree City",
+    "state": "Ga",
+    "year": "Fr",
+    "highSchool": "Starrs Mill",
+    "achievements": [],
+    "careerStats": {
+      "headers": [
+        "Year",
+        "gp",
+        "gs",
+        "g",
+        "a",
+        "pts",
+        "gb",
+        "fo",
+        "sh",
+        "sh%"
+      ],
+      "rows": [
+        [
+          "2025-26",
+          "-",
+          "-",
+          "-",
+          "-",
+          "0",
+          "-",
+          "0-0",
+          "-",
+          "-"
+        ],
+        [
+          "Total",
+          "-",
+          "-",
+          "-",
+          "-",
+          "0",
+          "-",
+          "0-0",
+          "-",
+          "-"
+        ]
+      ]
+    }
   },
   {
     "id": 27,
-    "playerName": "Emmett Somers",
-    "position": "Attack",
-    "contentUrl": "https://gt-lax-app.web.app/players/bios/Emmett_Somers_bio.md"
+    "playerName": "Augie Werthman",
+    "number": 34,
+    "position": "Midfield",
+    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2024-25/bios/augue.jpg?max_width=510&max_height=600",
+    "height": "5'11\"",
+    "weight": "190",
+    "hometown": "Atlanta",
+    "state": "GA",
+    "year": "So",
+    "highSchool": "Woodward Academy",
+    "achievements": [],
+    "careerStats": {
+      "headers": [
+        "Year",
+        "gp",
+        "gs",
+        "g",
+        "a",
+        "pts",
+        "gb",
+        "fo",
+        "sh",
+        "sh%"
+      ],
+      "rows": [
+        [
+          "2024-25",
+          "20",
+          "-",
+          "9",
+          "2",
+          "11",
+          "21",
+          "0-0",
+          "40",
+          "22.5"
+        ],
+        [
+          "2025-26",
+          "-",
+          "-",
+          "-",
+          "-",
+          "0",
+          "-",
+          "0-0",
+          "-",
+          "-"
+        ],
+        [
+          "Total",
+          "20",
+          "-",
+          "9",
+          "2",
+          "11",
+          "21",
+          "0-0",
+          "40",
+          "22.5"
+        ]
+      ]
+    }
   },
   {
     "id": 28,
-    "playerName": "Matt Shayne",
-    "position": "Goalies",
-    "imageUrl": "https://gt-lax-app.web.app/players/images/Matt_Shayne_2025.jpg",
-    "contentUrl": "https://gt-lax-app.web.app/players/bios/Matt_Shayne_bio.md"
+    "playerName": "Zach Harrison",
+    "number": 35,
+    "position": "Defense",
+    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2024-25/bios/zach_h.jpg?max_width=510&max_height=600",
+    "height": "6'3\"",
+    "weight": "190",
+    "hometown": "Basking Ridge",
+    "state": "NJ",
+    "year": "Sr",
+    "highSchool": "Ridge",
+    "achievements": [],
+    "careerStats": {
+      "headers": [
+        "Year",
+        "gp",
+        "gs",
+        "g",
+        "a",
+        "pts",
+        "gb",
+        "fo",
+        "sh",
+        "sh%"
+      ],
+      "rows": [
+        [
+          "2022-23",
+          "11",
+          "-",
+          "0",
+          "0",
+          "0",
+          "2",
+          "0-0",
+          "0",
+          "-"
+        ],
+        [
+          "2023-24",
+          "18",
+          "-",
+          "0",
+          "0",
+          "0",
+          "8",
+          "0-0",
+          "0",
+          "-"
+        ],
+        [
+          "2024-25",
+          "20",
+          "-",
+          "0",
+          "0",
+          "0",
+          "14",
+          "0-0",
+          "0",
+          "-"
+        ],
+        [
+          "2025-26",
+          "-",
+          "-",
+          "-",
+          "-",
+          "0",
+          "-",
+          "0-0",
+          "-",
+          "-"
+        ],
+        [
+          "Total",
+          "49",
+          "-",
+          "0",
+          "0",
+          "0",
+          "24",
+          "0-0",
+          "0",
+          "-"
+        ]
+      ]
+    }
   },
   {
     "id": 29,
-    "playerName": "Noah Stewart",
+    "playerName": "Chad Spalding",
+    "number": 36,
     "position": "Defense",
-    "imageUrl": "https://gt-lax-app.web.app/players/images/Noah_Stewart_2025.jpg",
-    "contentUrl": "https://gt-lax-app.web.app/players/bios/Noah_Stewart_bio.md"
+    "imageUrl": "https://www.gtlacrosse.com/images/setup/headshot_default.jpg?max_width=510&max_height=600",
+    "height": "5'10\"",
+    "weight": "170",
+    "hometown": "Fort Lauderdale",
+    "state": "FL",
+    "year": "Fr",
+    "highSchool": "Pinecrest Academy",
+    "achievements": [],
+    "careerStats": {
+      "headers": [
+        "Year",
+        "gp",
+        "gs",
+        "g",
+        "a",
+        "pts",
+        "gb",
+        "fo",
+        "sh",
+        "sh%"
+      ],
+      "rows": [
+        [
+          "2025-26",
+          "-",
+          "-",
+          "-",
+          "-",
+          "0",
+          "-",
+          "0-0",
+          "-",
+          "-"
+        ],
+        [
+          "Total",
+          "-",
+          "-",
+          "-",
+          "-",
+          "0",
+          "-",
+          "0-0",
+          "-",
+          "-"
+        ]
+      ]
+    }
   },
   {
     "id": 30,
-    "playerName": "Asher Bernstein",
-    "position": "Middies",
-    "imageUrl": "https://gt-lax-app.web.app/players/images/Asher_Bernstein_2025.jpg",
-    "contentUrl": "https://gt-lax-app.web.app/players/bios/Asher_Bernstein_bio.md"
+    "playerName": "Padraig Mahoney",
+    "number": 37,
+    "position": "Goalie",
+    "imageUrl": "https://www.gtlacrosse.com/images/setup/headshot_default.jpg?max_width=510&max_height=600",
+    "height": "6'0\"",
+    "weight": "180",
+    "hometown": "Atlanta",
+    "state": "GA",
+    "year": "Fr",
+    "highSchool": "Midtown",
+    "achievements": [],
+    "careerStats": {
+      "headers": [
+        "Year",
+        "gp",
+        "gs",
+        "min",
+        "ga",
+        "gaa",
+        "sv",
+        "sv%",
+        "win",
+        "loss",
+        "tie",
+        "win %"
+      ],
+      "rows": [
+        [
+          "2025-26",
+          "-",
+          "-",
+          "0:00",
+          "-",
+          "-",
+          "-",
+          "0.0",
+          "0",
+          "0",
+          "0",
+          "0.0"
+        ],
+        [
+          "Total",
+          "-",
+          "-",
+          "0:00",
+          "-",
+          "-",
+          "-",
+          "0.0",
+          "0",
+          "0",
+          "0",
+          "0.0"
+        ]
+      ]
+    }
   },
   {
     "id": 31,
-    "playerName": "Andrew Owen",
-    "position": "Middies",
-    "imageUrl": "https://gt-lax-app.web.app/players/images/Andrew_Owen_2025.jpg",
-    "contentUrl": "https://gt-lax-app.web.app/players/bios/Andrew_Owen_bio.md"
+    "playerName": "Phil Marshall",
+    "number": 38,
+    "position": "Midfield",
+    "imageUrl": "https://www.gtlacrosse.com/images/setup/headshot_default.jpg?max_width=510&max_height=600",
+    "height": "6'0\"",
+    "weight": "190",
+    "hometown": "Lilburn",
+    "state": "GA",
+    "year": "So",
+    "highSchool": "Parkview",
+    "achievements": [],
+    "careerStats": {
+      "headers": [
+        "Year",
+        "gp",
+        "gs",
+        "g",
+        "a",
+        "pts",
+        "gb",
+        "fo",
+        "sh",
+        "sh%"
+      ],
+      "rows": [
+        [
+          "2025-26",
+          "-",
+          "-",
+          "-",
+          "-",
+          "0",
+          "-",
+          "0-0",
+          "-",
+          "-"
+        ],
+        [
+          "Total",
+          "-",
+          "-",
+          "-",
+          "-",
+          "0",
+          "-",
+          "0-0",
+          "-",
+          "-"
+        ]
+      ]
+    }
   },
   {
     "id": 32,
-    "playerName": "Austin Edler",
-    "position": "Middies",
-    "imageUrl": "https://gt-lax-app.web.app/players/images/Austin_Edler_2025.jpg",
-    "contentUrl": "https://gt-lax-app.web.app/players/bios/Austin_Edler_bio.md"
+    "playerName": "Ben Skopicki",
+    "number": 39,
+    "position": "M/FO",
+    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2024-25/bios/skopes.jpg?max_width=510&max_height=600",
+    "height": "6'0\"",
+    "weight": "170",
+    "hometown": "Jericho",
+    "state": "NY",
+    "year": "Sr",
+    "highSchool": "Jericho",
+    "achievements": [
+      "2024 SELC All Conference 2nd Team",
+      "2024 SELC All Tournament Team",
+      "2024 MCLA ALL AMERICA 3RD TEAM",
+      "2024 MCLA SCHOLAR ATHLETE"
+    ],
+    "careerStats": {
+      "headers": [
+        "Year",
+        "gp",
+        "gs",
+        "g",
+        "a",
+        "pts",
+        "gb",
+        "fo",
+        "sh",
+        "sh%"
+      ],
+      "rows": [
+        [
+          "2022-23",
+          "13",
+          "-",
+          "0",
+          "1",
+          "1",
+          "11",
+          "26-54",
+          "1",
+          "0.0"
+        ],
+        [
+          "2023-24",
+          "18",
+          "15",
+          "5",
+          "5",
+          "10",
+          "139",
+          "249-354",
+          "8",
+          "62.5"
+        ],
+        [
+          "2024-25",
+          "6",
+          "1",
+          "0",
+          "0",
+          "0",
+          "13",
+          "20-27",
+          "4",
+          "0.0"
+        ],
+        [
+          "2025-26",
+          "-",
+          "-",
+          "-",
+          "-",
+          "0",
+          "-",
+          "0-0",
+          "-",
+          "-"
+        ],
+        [
+          "Total",
+          "37",
+          "16",
+          "5",
+          "6",
+          "11",
+          "163",
+          "295-435",
+          "13",
+          "38.5"
+        ]
+      ]
+    }
   },
   {
     "id": 33,
-    "playerName": "Sam Bueno",
-    "position": "Face-Off",
-    "imageUrl": "https://gt-lax-app.web.app/players/images/Sam_Bueno_2025.jpg",
-    "contentUrl": "https://gt-lax-app.web.app/players/bios/Sam_Bueno_bio.md"
+    "playerName": "Sean Carmody",
+    "number": 40,
+    "position": "Midfield",
+    "imageUrl": "https://www.gtlacrosse.com/images/setup/headshot_default.jpg?max_width=510&max_height=600",
+    "height": "5'7\"",
+    "weight": "160",
+    "hometown": "Chicago",
+    "state": "IL",
+    "year": "Fr",
+    "highSchool": "Walter Peyton Prep",
+    "achievements": [],
+    "careerStats": {
+      "headers": [
+        "Year",
+        "gp",
+        "gs",
+        "g",
+        "a",
+        "pts",
+        "gb",
+        "fo",
+        "sh",
+        "sh%"
+      ],
+      "rows": [
+        [
+          "2025-26",
+          "-",
+          "-",
+          "-",
+          "-",
+          "0",
+          "-",
+          "0-0",
+          "-",
+          "-"
+        ],
+        [
+          "Total",
+          "-",
+          "-",
+          "-",
+          "-",
+          "0",
+          "-",
+          "0-0",
+          "-",
+          "-"
+        ]
+      ]
+    }
   },
   {
     "id": 34,
-    "playerName": "Andrew Taylor",
-    "position": "Middies",
-    "imageUrl": "https://gt-lax-app.web.app/players/images/Andrew_Taylor_2025.jpg",
-    "contentUrl": "https://gt-lax-app.web.app/players/bios/Andrew_Taylor_bio.md"
+    "playerName": "Owen Seibold",
+    "number": 41,
+    "position": "Defense",
+    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2024-25/bios/owen_s.jpg?max_width=510&max_height=600",
+    "height": "6'0\"",
+    "weight": "195",
+    "hometown": "Hopewell",
+    "state": "NJ",
+    "year": "Sr",
+    "highSchool": "Hopewell Valley Central",
+    "achievements": [],
+    "careerStats": {
+      "headers": [
+        "Year",
+        "gp",
+        "gs",
+        "g",
+        "a",
+        "pts",
+        "gb",
+        "fo",
+        "sh",
+        "sh%"
+      ],
+      "rows": [
+        [
+          "2022-23",
+          "4",
+          "-",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0-0",
+          "0",
+          "-"
+        ],
+        [
+          "2023-24",
+          "2",
+          "-",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0-0",
+          "0",
+          "-"
+        ],
+        [
+          "2024-25",
+          "6",
+          "-",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0-0",
+          "0",
+          "-"
+        ],
+        [
+          "2025-26",
+          "-",
+          "-",
+          "-",
+          "-",
+          "0",
+          "-",
+          "0-0",
+          "-",
+          "-"
+        ],
+        [
+          "Total",
+          "12",
+          "-",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0-0",
+          "0",
+          "-"
+        ]
+      ]
+    }
   },
   {
     "id": 35,
-    "playerName": "Augie Werthman",
-    "position": "Middies",
-    "imageUrl": "https://gt-lax-app.web.app/players/images/Augie_Werthman_2025.jpg",
-    "contentUrl": "https://gt-lax-app.web.app/players/bios/Augie_Werthman_bio.md"
+    "playerName": "Graeme Navarro",
+    "number": 42,
+    "position": "Attack",
+    "imageUrl": "https://www.gtlacrosse.com/images/setup/headshot_default.jpg?max_width=510&max_height=600",
+    "height": "6'5\"",
+    "weight": "215",
+    "hometown": "Woodstock",
+    "state": "GA",
+    "year": "Fr",
+    "highSchool": "River Ridge",
+    "achievements": [],
+    "careerStats": {
+      "headers": [
+        "Year",
+        "gp",
+        "gs",
+        "g",
+        "a",
+        "pts",
+        "gb",
+        "fo",
+        "sh",
+        "sh%"
+      ],
+      "rows": [
+        [
+          "2025-26",
+          "-",
+          "-",
+          "-",
+          "-",
+          "0",
+          "-",
+          "0-0",
+          "-",
+          "-"
+        ],
+        [
+          "Total",
+          "-",
+          "-",
+          "-",
+          "-",
+          "0",
+          "-",
+          "0-0",
+          "-",
+          "-"
+        ]
+      ]
+    }
   },
   {
     "id": 36,
-    "playerName": "Brayden Smith",
+    "playerName": "Asher Wagnon",
+    "number": 44,
     "position": "Attack",
-    "imageUrl": "https://gt-lax-app.web.app/players/images/Brayden_Smith_2025.jpg",
-    "contentUrl": "https://gt-lax-app.web.app/players/bios/Brayden_Smith_bio.md"
+    "imageUrl": "https://www.gtlacrosse.com/images/setup/headshot_default.jpg?max_width=510&max_height=600",
+    "height": "6'3&quot;",
+    "weight": "215",
+    "hometown": "Atlanta",
+    "state": "GA",
+    "year": "Gr",
+    "highSchool": "St Pius X",
+    "achievements": [
+      "2026 Captain"
+    ],
+    "careerStats": {
+      "headers": [
+        "Year",
+        "gp",
+        "gs",
+        "g",
+        "a",
+        "pts",
+        "gb",
+        "fo",
+        "sh",
+        "sh%"
+      ],
+      "rows": [
+        [
+          "2022-23",
+          "17",
+          "1",
+          "26",
+          "6",
+          "32",
+          "8",
+          "0-0",
+          "72",
+          "36.1"
+        ],
+        [
+          "2023-24",
+          "17",
+          "3",
+          "26",
+          "14",
+          "40",
+          "10",
+          "0-0",
+          "83",
+          "31.3"
+        ],
+        [
+          "2025-26",
+          "-",
+          "-",
+          "-",
+          "-",
+          "0",
+          "-",
+          "0-0",
+          "-",
+          "-"
+        ],
+        [
+          "Total",
+          "34",
+          "4",
+          "52",
+          "20",
+          "72",
+          "18",
+          "0-0",
+          "155",
+          "33.5"
+        ]
+      ]
+    }
   },
   {
     "id": 37,
-    "playerName": "James Iorio",
-    "position": "Middies",
-    "imageUrl": "https://gt-lax-app.web.app/players/images/James_Iorio_2025.jpg",
-    "contentUrl": "https://gt-lax-app.web.app/players/bios/James_Iorio_bio.md"
+    "playerName": "Brayden Smith",
+    "number": 45,
+    "position": "Attack",
+    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2024-25/bios/smitty.jpg?max_width=510&max_height=600",
+    "height": "6'0\"",
+    "weight": "215",
+    "hometown": "Acworth",
+    "state": "GA",
+    "year": "So",
+    "highSchool": "Allatoona",
+    "achievements": [],
+    "careerStats": {
+      "headers": [
+        "Year",
+        "gp",
+        "gs",
+        "g",
+        "a",
+        "pts",
+        "gb",
+        "fo",
+        "sh",
+        "sh%"
+      ],
+      "rows": [
+        [
+          "2024-25",
+          "6",
+          "-",
+          "3",
+          "2",
+          "5",
+          "4",
+          "0-0",
+          "9",
+          "33.3"
+        ],
+        [
+          "2025-26",
+          "-",
+          "-",
+          "-",
+          "-",
+          "0",
+          "-",
+          "0-0",
+          "-",
+          "-"
+        ],
+        [
+          "Total",
+          "6",
+          "-",
+          "3",
+          "2",
+          "5",
+          "4",
+          "0-0",
+          "9",
+          "33.3"
+        ]
+      ]
+    }
   },
   {
     "id": 38,
-    "playerName": "Owen Smith",
-    "position": "Middies",
-    "imageUrl": "https://gt-lax-app.web.app/players/images/Owen_Smith_2025.jpg",
-    "contentUrl": "https://gt-lax-app.web.app/players/bios/Owen_Smith_bio.md"
+    "playerName": "Jack Fishbein",
+    "number": 46,
+    "position": "Defense",
+    "imageUrl": "https://www.gtlacrosse.com/images/setup/headshot_default.jpg?max_width=510&max_height=600",
+    "height": "6'0\"",
+    "weight": "170",
+    "hometown": "Atlanta",
+    "state": "GA",
+    "year": "Fr",
+    "highSchool": "Druid Hills",
+    "achievements": [],
+    "careerStats": {
+      "headers": [
+        "Year",
+        "gp",
+        "gs",
+        "g",
+        "a",
+        "pts",
+        "gb",
+        "fo",
+        "sh",
+        "sh%"
+      ],
+      "rows": [
+        [
+          "2025-26",
+          "-",
+          "-",
+          "-",
+          "-",
+          "0",
+          "-",
+          "0-0",
+          "-",
+          "-"
+        ],
+        [
+          "Total",
+          "-",
+          "-",
+          "-",
+          "-",
+          "0",
+          "-",
+          "0-0",
+          "-",
+          "-"
+        ]
+      ]
+    }
   },
   {
     "id": 39,
-    "playerName": "Carl Dagher",
-    "position": "Middies",
-    "imageUrl": "https://gt-lax-app.web.app/players/images/Carl_Dagher_2025.jpg",
-    "contentUrl": "https://gt-lax-app.web.app/players/bios/Carl_Dagher_bio.md"
+    "playerName": "Ezra Mahle",
+    "number": 47,
+    "position": "Midfield",
+    "imageUrl": "https://www.gtlacrosse.com/images/setup/headshot_default.jpg?max_width=510&max_height=600",
+    "height": "6'1\"",
+    "weight": "180",
+    "hometown": "Dunwoody",
+    "state": "GA",
+    "year": "Fr",
+    "highSchool": "Dunwoody",
+    "achievements": [],
+    "careerStats": {
+      "headers": [
+        "Year",
+        "gp",
+        "gs",
+        "g",
+        "a",
+        "pts",
+        "gb",
+        "fo",
+        "sh",
+        "sh%"
+      ],
+      "rows": [
+        [
+          "2025-26",
+          "-",
+          "-",
+          "-",
+          "-",
+          "0",
+          "-",
+          "0-0",
+          "-",
+          "-"
+        ],
+        [
+          "Total",
+          "-",
+          "-",
+          "-",
+          "-",
+          "0",
+          "-",
+          "0-0",
+          "-",
+          "-"
+        ]
+      ]
+    }
+  },
+  {
+    "id": 40,
+    "playerName": "Alek Crone",
+    "number": 50,
+    "position": "Midfield",
+    "imageUrl": "https://www.gtlacrosse.com/images/setup/headshot_default.jpg?max_width=510&max_height=600",
+    "height": "6'0\"",
+    "weight": "205",
+    "hometown": "Westerville",
+    "state": "Oh",
+    "year": "So",
+    "highSchool": "Westerville South",
+    "achievements": [],
+    "careerStats": {
+      "headers": [
+        "Year",
+        "gp",
+        "gs",
+        "g",
+        "a",
+        "pts",
+        "gb",
+        "fo",
+        "sh",
+        "sh%"
+      ],
+      "rows": [
+        [
+          "2025-26",
+          "-",
+          "-",
+          "-",
+          "-",
+          "0",
+          "-",
+          "0-0",
+          "-",
+          "-"
+        ],
+        [
+          "Total",
+          "-",
+          "-",
+          "-",
+          "-",
+          "0",
+          "-",
+          "0-0",
+          "-",
+          "-"
+        ]
+      ]
+    }
   }
 ]

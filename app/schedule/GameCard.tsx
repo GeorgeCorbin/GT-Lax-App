@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, Linking, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, Linking, ScrollView, Alert } from 'react-native';
 import { Image } from 'expo-image';
 import Colors from '@/constants/Colors';
 import { isHomeTeam, extractTeams, getTeamLogo, getFieldImage, loadFieldImages, getRankingForTeamOnDate } from '@/utils/gameUtils';
-import { useSearchParams } from 'expo-router/build/hooks';
+import { useSearchParams, useRouter } from 'expo-router/build/hooks';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useAppData } from '@/context/AppDataProvider';
 
@@ -23,7 +23,8 @@ type GameInfo = {
 };
 
 const GameCard = () => {
-  const params = useSearchParams(); // Use useSearchParams to access route params
+  const params = useSearchParams();
+  const router = useRouter();
   const [gameInfo, setGameInfo] = useState<GameInfo[]>([]);
   const [loadingGameInfo, setLoadingGameInfo] = useState(true);
 
@@ -84,7 +85,7 @@ const GameCard = () => {
   const longitude = isSELCPlayoff ? gameInfo.find(info => info.id === 'SELC')?.longitude : (isMCLAPlayoff ? gameInfo.find(info => info.id === 'MCLA')?.longitude : homeGameInfo?.longitude);
 
 
-  const { rankings, loadingRankings } = useAppData();
+  const { rankings, loadingRankings, featureFlags, loadingFeatureFlags } = useAppData();
   const [awayRanking, setAwayRanking] = useState<number | null>(null);
   const [homeRanking, setHomeRanking] = useState<number | null>(null);
 
@@ -189,21 +190,41 @@ const GameCard = () => {
     }
   }, [rankings, latitude, longitude, awayTeam, homeTeam, pubDate, loadingGameInfo]);
 
+  if (loadingFeatureFlags) {
+    return (
+      <View style={styles.errorContainer}>
+        <Text style={styles.errorText}>Loading...</Text>
+      </View>
+    );
+  }
+
+  if (!featureFlags.game_information?.enabled) {
+    return (
+      <View style={styles.errorContainer}>
+        <Text style={styles.errorText}>Game information is currently unavailable</Text>
+      </View>
+    );
+  }
+
   return (
     <ScrollView style={styles.container}>      
       {/* Image of the field */}
-      {(fieldImage && fieldImage !== "") ? (
-        <Image source={{ uri: fieldImage }} style={styles.detailImage} contentFit="cover" />
-      ) : (
-        <View style={styles.noImageBox}>
-          <Text style={styles.noImageText}>Image of This Field is Unavailable</Text>
-        </View>
+      {featureFlags.game_info_image?.enabled && (
+        (fieldImage && fieldImage !== "") ? (
+          <Image source={{ uri: fieldImage }} style={styles.detailImage} contentFit="cover" />
+        ) : (
+          <View style={styles.noImageBox}>
+            <Text style={styles.noImageText}>Image of This Field is Unavailable</Text>
+          </View>
+        )
       )}
 
       {/* Stadium Name*/}
-      <Text style={styles.detailPosition}>
-        Field: {field}
-      </Text>
+      {featureFlags.game_info_field_name?.enabled && (
+        <Text style={styles.detailPosition}>
+          Field: {field}
+        </Text>
+      )}
 
       {/* Team Logos Section */}
       <View style={styles.teamRow}>
@@ -241,8 +262,7 @@ const GameCard = () => {
         </Text>
 
         {/* Coverage */}
-        {/* TODO: Make coverage link effected by SELC play offs */}
-        {(new Date(pubDate).getDate() > (new Date().getDate() - 1) && homeGameInfo?.coverageText !== "") && (
+        {featureFlags.game_info_streaming?.enabled && (new Date(pubDate).getDate() > (new Date().getDate() - 1) && homeGameInfo?.coverageText !== "") && (
           <Text style={styles.detailText}>
             Coverage:{' '}
             {homeGameInfo?.coverageLink.trim() !== "" ? (
@@ -260,55 +280,48 @@ const GameCard = () => {
       </View>
 
       {/* Weather Information */}
-      <View style={styles.weatherBox}>
-        {/*  location */}
-        <Text style={styles.location}>{gameLocation}</Text>
+      {(featureFlags.game_info_location?.enabled || featureFlags.game_info_weather?.enabled) && (
+        <View style={styles.weatherBox}>
+          {/*  location */}
+          {featureFlags.game_info_location?.enabled && (
+            <Text style={styles.location}>{gameLocation}</Text>
+          )}
 
-        {/* Weather */}
-        {weather ? (
-          typeof weather === 'string' ? (
-            <Text style={styles.noWeatherText}>{weather}</Text>
-          ) : (
-            <View style={{ flex: 2 }}>
-              <View style={styles.weatherDetails}>
-                <Text style={styles.weatherTitleText}>Gametime Weather:</Text>
-                <Text style={styles.weatherText}>
-                  {weather.temperature}°{weather.temperatureUnit}{ '  ' }
-                  <MaterialCommunityIcons
-                    name={getWeatherIcon(weather.shortForecast)}
-                    size={24}
-                    color={Colors.textPrimary}
-                  />
-                </Text>
-                {/* <Text style={styles.weatherText}>{weather.shortForecast}</Text> */}
-                {weather.windSpeed && 
-                <Text style={styles.weatherText}>
-                  {weather.windSpeed}{ '  ' }
-                  <MaterialCommunityIcons
-                    name={'weather-windy'}
-                    size={24}
-                    color={Colors.textPrimary}
-                  />
-                </Text>}
+          {/* Weather */}
+          {featureFlags.game_info_weather?.enabled && weather ? (
+            typeof weather === 'string' ? (
+              <Text style={styles.noWeatherText}>{weather}</Text>
+            ) : (
+              <View style={{ flex: 2 }}>
+                <View style={styles.weatherDetails}>
+                  <Text style={styles.weatherTitleText}>Gametime Weather:</Text>
+                  <Text style={styles.weatherText}>
+                    {weather.temperature}°{weather.temperatureUnit}{ '  ' }
+                    <MaterialCommunityIcons
+                      name={getWeatherIcon(weather.shortForecast)}
+                      size={24}
+                      color={Colors.textPrimary}
+                    />
+                  </Text>
+                  {weather.windSpeed && 
+                  <Text style={styles.weatherText}>
+                    {weather.windSpeed}{ '  ' }
+                    <MaterialCommunityIcons
+                      name={'weather-windy'}
+                      size={24}
+                      color={Colors.textPrimary}
+                    />
+                  </Text>}
+                </View>
+
               </View>
-
-            </View>
-          )
-        ) : (
-          // <Text style={styles.noWeatherText}>
-          //   <MaterialCommunityIcons
-          //     name={'weather-sunny-off'}
-          //     size={24}
-          //     color={Colors.grayMatter}
-          //   />
-          //   {' '} Weather Data {'\n'} Not Available Yet {'\n'} Check Back Later
-          // </Text>
-          ''
-        )}
-      </View>
+            )
+          ) : null}
+        </View>
+      )}
 
 
-    </ScrollView>
+  </ScrollView>
   );
 };
 

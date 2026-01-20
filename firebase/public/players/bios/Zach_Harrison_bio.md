@@ -1,16 +1,19 @@
-## Player Bio
+## Player Details
 
-**Player Details:**
-- **Hometown:** Basking Ridge  
-- **State:** New Jersey  
-- **Height:** 6'3"  
-- **Weight:** 190 lbs  
-- **Year:** Junior  
-- **High School:** Ridge  
-- **Position:** Defense  
+- **Height:** 6'3"
+- **Weight:** 190
+- **Hometown:** Basking Ridge
+- **Position:** Defense
+- **Year:** Sr
+- **State:** NJ
+- **High School:** Ridge
 
-**Career Stats Through Last Season:**  
-- Games Played: 29  
-- Ground Balls: 10  
+## Career Stats
 
-Zach Harrison has been a consistent contributor to Georgia Tech's defensive success, particularly excelling in man-down defensive situations. His ability to disrupt opposing offenses and clear ground balls has made him an integral part of the team's defense. Zach's work ethic and defensive expertise, especially in high-pressure man-down scenarios, highlight his importance to the team as they continue to strengthen their defensive strategies.
+| Year | gp | gs | g | a | pts | gb | fo | sh | sh% |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 2022-23 | 11 | - | 0 | 0 | 0 | 2 | 0-0 | 0 | - |
+| 2023-24 | 18 | - | 0 | 0 | 0 | 8 | 0-0 | 0 | - |
+| 2024-25 | 20 | - | 0 | 0 | 0 | 14 | 0-0 | 0 | - |
+| 2025-26 | - | - | - | - | 0 | - | 0-0 | - | - |
+| Total | 49 | - | 0 | 0 | 0 | 24 | 0-0 | 0 | - |
