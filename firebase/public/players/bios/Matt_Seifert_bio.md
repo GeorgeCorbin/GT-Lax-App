@@ -8,6 +8,10 @@
 - **State:** NY
 - **High School:** Mattituck
 
+## Honors and Achievements
+
+- 2026 Captain
+
 ## Career Stats
 
 | Year | gp | gs | g | a | pts | gb | fo | sh | sh% |

@@ -1,6 +1,6 @@
 ## Player Details
 
-- **Height:** 6-0
+- **Height:** 6'0"
 - **Weight:** 200
 - **Hometown:** Louisville
 - **Position:** Defense

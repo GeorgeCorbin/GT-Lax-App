@@ -132,7 +132,9 @@ const AppDataContext = createContext<AppDataContextType>({
 });
 
 const getLocalImageUri = async (url: string) => {
-  const filename = url.split('/').pop();
+  // Use the full URL as the cache key so new URLs download fresh files instead of reusing
+  // old cached filenames (e.g., when the hosted headshot URL changes but the filename stays the same).
+  const filename = encodeURIComponent(url);
   const localUri = `${FileSystem.documentDirectory}${filename}`;
   const fileInfo = await FileSystem.getInfoAsync(localUri);
 

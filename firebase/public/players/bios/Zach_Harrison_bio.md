@@ -8,6 +8,10 @@
 - **State:** NJ
 - **High School:** Ridge
 
+## Honors and Achievements
+
+- 2026 Team Captain
+
 ## Career Stats
 
 | Year | gp | gs | g | a | pts | gb | fo | sh | sh% |

@@ -4,7 +4,7 @@
     "playerName": "Mitch Savalli",
     "number": 2,
     "position": "Defense",
-    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2024-25/bios/mitch.jpg?max_width=510&max_height=600",
+    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2025-26/bios/mitch.jpg?max_width=510&max_height=600",
     "height": "6'0\"",
     "weight": "180",
     "hometown": "Merrick",
@@ -18,7 +18,7 @@
     "careerStats": {
       "headers": [
         "Year",
-        "GP",
+        "gp",
         "gs",
         "g",
         "a",
@@ -73,7 +73,7 @@
     "playerName": "Will Ahmuty",
     "number": 3,
     "position": "Attack",
-    "imageUrl": "https://www.gtlacrosse.com/images/setup/headshot_default.jpg?max_width=510&max_height=600",
+    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2025-26/bios/will_a.jpg?max_width=510&max_height=600",
     "height": "5'11\"",
     "weight": "160",
     "hometown": "Port Washington",
@@ -181,7 +181,7 @@
     "playerName": "Thomas Freer",
     "number": 5,
     "position": "SSMD",
-    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2024-25/bios/freer.jpg?max_width=510&max_height=600",
+    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2025-26/bios/freer.jpg?max_width=510&max_height=600",
     "height": "5'9\"",
     "weight": "150",
     "hometown": "College Park",
@@ -272,7 +272,7 @@
     "number": 6,
     "position": "Goalie",
     "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2024-25/bios/pete.jpg?max_width=510&max_height=600",
-    "height": "6-1",
+    "height": "6'1\"",
     "weight": "190",
     "hometown": "Tarrytown",
     "state": "NY",
@@ -379,14 +379,16 @@
     "playerName": "Matt Seifert",
     "number": 7,
     "position": "Midfield",
-    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2024-25/bios/seifert.jpg?max_width=510&max_height=600",
+    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2025-26/bios/seifert.jpg?max_width=510&max_height=600",
     "height": "6'2\"",
     "weight": "180",
     "hometown": "Mattituck",
     "state": "NY",
     "year": "Sr",
     "highSchool": "Mattituck",
-    "achievements": [],
+    "achievements": [
+      "2026 Captain"
+    ],
     "careerStats": {
       "headers": [
         "Year",
@@ -466,10 +468,64 @@
   },
   {
     "id": 7,
+    "playerName": "Emmett Somers",
+    "number": 8,
+    "position": "Attack",
+    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2025-26/bios/sommers.jpg?max_width=510&max_height=600",
+    "height": "6'5\"",
+    "weight": "215",
+    "hometown": "North Canton",
+    "state": "OH",
+    "year": "Fr",
+    "highSchool": "North Canton",
+    "achievements": [],
+    "careerStats": {
+      "headers": [
+        "Year",
+        "gp",
+        "gs",
+        "g",
+        "a",
+        "pts",
+        "gb",
+        "fo",
+        "sh",
+        "sh%"
+      ],
+      "rows": [
+        [
+          "2025-26",
+          "-",
+          "-",
+          "-",
+          "-",
+          "0",
+          "-",
+          "0-0",
+          "-",
+          "-"
+        ],
+        [
+          "Total",
+          "-",
+          "-",
+          "-",
+          "-",
+          "0",
+          "-",
+          "0-0",
+          "-",
+          "-"
+        ]
+      ]
+    }
+  },
+  {
+    "id": 8,
     "playerName": "Brennan Finch",
     "number": 9,
     "position": "Goalie",
-    "imageUrl": "https://www.gtlacrosse.com/images/setup/headshot_default.jpg?max_width=510&max_height=600",
+    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2025-26/bios/finch.jpg?max_width=510&max_height=600",
     "height": "5'9\"",
     "weight": "160",
     "hometown": "Powder Springs",
@@ -525,11 +581,11 @@
     }
   },
   {
-    "id": 8,
+    "id": 9,
     "playerName": "Owen Armentrout",
     "number": 10,
     "position": "Goalie",
-    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2024-25/bios/owen_ar.jpg?max_width=510&max_height=600",
+    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2025-26/bios/owen_ar.jpg?max_width=510&max_height=600",
     "height": "6'0\"",
     "weight": "140",
     "hometown": "Atlanta",
@@ -629,11 +685,11 @@
     }
   },
   {
-    "id": 9,
+    "id": 10,
     "playerName": "Griffin Davis",
     "number": 11,
     "position": "Goalie",
-    "imageUrl": "https://www.gtlacrosse.com/images/setup/headshot_default.jpg?max_width=510&max_height=600",
+    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2025-26/bios/griffin_d.jpg?max_width=510&max_height=600",
     "height": "5'11\"",
     "weight": "175",
     "hometown": "Germantown",
@@ -689,12 +745,12 @@
     }
   },
   {
-    "id": 10,
+    "id": 11,
     "playerName": "Owen Smith",
     "number": 12,
     "position": "Midfield",
-    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2024-25/bios/owen_smith.jpg?max_width=510&max_height=600",
-    "height": "6-1",
+    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2025-26/bios/owen_s.jpg?max_width=510&max_height=600",
+    "height": "6'1\"",
     "weight": "180",
     "hometown": "Roswell",
     "state": "GA",
@@ -755,12 +811,12 @@
     }
   },
   {
-    "id": 11,
+    "id": 12,
     "playerName": "Carl Dagher",
     "number": 13,
     "position": "Midfield",
     "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2024-25/bios/carl.jpg?max_width=510&max_height=600",
-    "height": "5-9",
+    "height": "5'9\"",
     "weight": "160",
     "hometown": "Marietta",
     "state": "GA",
@@ -821,12 +877,12 @@
     }
   },
   {
-    "id": 12,
+    "id": 13,
     "playerName": "Noah Stewart",
     "number": 15,
     "position": "Defense",
-    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2024-25/bios/noah.jpg?max_width=510&max_height=600",
-    "height": "6-0",
+    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2025-26/bios/noah.jpg?max_width=510&max_height=600",
+    "height": "6'0\"",
     "weight": "200",
     "hometown": "Louisville",
     "state": "KY",
@@ -887,11 +943,11 @@
     }
   },
   {
-    "id": 13,
+    "id": 14,
     "playerName": "Tate O'Leary",
     "number": 16,
     "position": "Midfield",
-    "imageUrl": "https://www.gtlacrosse.com/images/setup/headshot_default.jpg?max_width=510&max_height=600",
+    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2025-26/bios/tate.jpg?max_width=510&max_height=600",
     "height": "6'0\"",
     "weight": "160",
     "hometown": "Atlanta",
@@ -941,11 +997,11 @@
     }
   },
   {
-    "id": 14,
+    "id": 15,
     "playerName": "Asher Bernstein",
     "number": 17,
     "position": "Attack",
-    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2024-25/bios/asher.jpg?max_width=510&max_height=600",
+    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2025-26/bios/asher_b.jpg?max_width=510&max_height=600",
     "height": "5'8\"",
     "weight": "165",
     "hometown": "Dedham",
@@ -1007,11 +1063,11 @@
     }
   },
   {
-    "id": 15,
+    "id": 16,
     "playerName": "Braxton Furiness",
     "number": 20,
     "position": "Defense",
-    "imageUrl": "https://www.gtlacrosse.com/images/setup/headshot_default.jpg?max_width=510&max_height=600",
+    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2025-26/bios/braxton.jpg?max_width=510&max_height=600",
     "height": "5'11\"",
     "weight": "170",
     "hometown": "Yardley",
@@ -1061,11 +1117,11 @@
     }
   },
   {
-    "id": 16,
+    "id": 17,
     "playerName": "DJ Louis",
     "number": 21,
     "position": "Midfield",
-    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2024-25/bios/dj.jpg?max_width=510&max_height=600",
+    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2025-26/bios/dj.jpg?max_width=510&max_height=600",
     "height": "6'0\"",
     "weight": "190",
     "hometown": "Atlanta",
@@ -1139,11 +1195,11 @@
     }
   },
   {
-    "id": 17,
+    "id": 18,
     "playerName": "David Hull",
     "number": 22,
     "position": "Midfield",
-    "imageUrl": "https://www.gtlacrosse.com/images/setup/headshot_default.jpg?max_width=510&max_height=600",
+    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2025-26/bios/hull.jpg?max_width=510&max_height=600",
     "height": "6'1\"",
     "weight": "180",
     "hometown": "Winter Park",
@@ -1193,11 +1249,11 @@
     }
   },
   {
-    "id": 18,
+    "id": 19,
     "playerName": "Ben Goldberg",
     "number": 23,
     "position": "Defense",
-    "imageUrl": "https://www.gtlacrosse.com/images/setup/headshot_default.jpg?max_width=510&max_height=600",
+    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2025-26/bios/goldberg.jpg?max_width=510&max_height=600",
     "height": "5'10\"",
     "weight": "170",
     "hometown": "Evans",
@@ -1247,11 +1303,11 @@
     }
   },
   {
-    "id": 19,
+    "id": 20,
     "playerName": "Maddox Davis",
     "number": 25,
     "position": "Midfield",
-    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2024-25/bios/maddox.jpg?max_width=510&max_height=600",
+    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2025-26/bios/maddox.jpg?max_width=510&max_height=600",
     "height": "6'0\"",
     "weight": "175",
     "hometown": "Collierville",
@@ -1337,11 +1393,11 @@
     }
   },
   {
-    "id": 20,
+    "id": 21,
     "playerName": "Braden Baro",
     "number": 26,
     "position": "Attack",
-    "imageUrl": "https://www.gtlacrosse.com/images/setup/headshot_default.jpg?max_width=510&max_height=600",
+    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2025-26/bios/brayden.jpg?max_width=510&max_height=600",
     "height": "6'1\"",
     "weight": "170",
     "hometown": "Peachtree City",
@@ -1391,11 +1447,11 @@
     }
   },
   {
-    "id": 21,
+    "id": 22,
     "playerName": "Emmett White",
     "number": 27,
     "position": "Midfield",
-    "imageUrl": "https://www.gtlacrosse.com/images/setup/headshot_default.jpg?max_width=510&max_height=600",
+    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2025-26/bios/emmett_w.jpg?max_width=510&max_height=600",
     "height": "6'2\"",
     "weight": "170",
     "hometown": "Trumbull",
@@ -1445,11 +1501,11 @@
     }
   },
   {
-    "id": 22,
+    "id": 23,
     "playerName": "Brecken Lalberte",
     "number": 28,
     "position": "Midfield",
-    "imageUrl": "https://www.gtlacrosse.com/images/setup/headshot_default.jpg?max_width=510&max_height=600",
+    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2025-26/bios/brecken.jpg?max_width=510&max_height=600",
     "height": "5'10\"",
     "weight": "170",
     "hometown": "Rome",
@@ -1499,11 +1555,11 @@
     }
   },
   {
-    "id": 23,
+    "id": 24,
     "playerName": "Nick French",
     "number": 29,
     "position": "Midfield",
-    "imageUrl": "https://www.gtlacrosse.com/images/setup/headshot_default.jpg?max_width=510&max_height=600",
+    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2025-26/bios/french.jpg?max_width=510&max_height=600",
     "height": "6'0\"",
     "weight": "170",
     "hometown": "Rumson",
@@ -1553,11 +1609,11 @@
     }
   },
   {
-    "id": 24,
+    "id": 25,
     "playerName": "George Corbin",
     "number": 31,
     "position": "Defense",
-    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2024-25/bios/corbin.jpg?max_width=510&max_height=600",
+    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2025-26/bios/george.jpg?max_width=510&max_height=600",
     "height": "6'0\"",
     "weight": "185",
     "hometown": "Atlanta",
@@ -1649,11 +1705,11 @@
     }
   },
   {
-    "id": 25,
+    "id": 26,
     "playerName": "Andrew Taylor",
     "number": 32,
     "position": "Midfield",
-    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2024-25/bios/AT.jpg?max_width=510&max_height=600",
+    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2025-26/bios/AT.jpg?max_width=510&max_height=600",
     "height": "5'10\"",
     "weight": "165",
     "hometown": "Landenberg",
@@ -1715,15 +1771,15 @@
     }
   },
   {
-    "id": 26,
+    "id": 27,
     "playerName": "Jack Odom",
     "number": 33,
     "position": "Defense",
-    "imageUrl": "https://www.gtlacrosse.com/images/setup/headshot_default.jpg?max_width=510&max_height=600",
+    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2025-26/bios/odom.jpg?max_width=510&max_height=600",
     "height": "6'0\"",
     "weight": "200",
     "hometown": "Peachtree City",
-    "state": "Ga",
+    "state": "GA",
     "year": "Fr",
     "highSchool": "Starrs Mill",
     "achievements": [],
@@ -1769,7 +1825,7 @@
     }
   },
   {
-    "id": 27,
+    "id": 28,
     "playerName": "Augie Werthman",
     "number": 34,
     "position": "Midfield",
@@ -1835,18 +1891,20 @@
     }
   },
   {
-    "id": 28,
+    "id": 29,
     "playerName": "Zach Harrison",
     "number": 35,
     "position": "Defense",
-    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2024-25/bios/zach_h.jpg?max_width=510&max_height=600",
+    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2025-26/bios/zach_h.jpg?max_width=510&max_height=600",
     "height": "6'3\"",
     "weight": "190",
     "hometown": "Basking Ridge",
     "state": "NJ",
     "year": "Sr",
     "highSchool": "Ridge",
-    "achievements": [],
+    "achievements": [
+      "2026 Team Captain"
+    ],
     "careerStats": {
       "headers": [
         "Year",
@@ -1925,11 +1983,11 @@
     }
   },
   {
-    "id": 29,
+    "id": 30,
     "playerName": "Chad Spalding",
     "number": 36,
     "position": "Defense",
-    "imageUrl": "https://www.gtlacrosse.com/images/setup/headshot_default.jpg?max_width=510&max_height=600",
+    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2025-26/bios/chad.jpg?max_width=510&max_height=600",
     "height": "5'10\"",
     "weight": "170",
     "hometown": "Fort Lauderdale",
@@ -1979,11 +2037,11 @@
     }
   },
   {
-    "id": 30,
+    "id": 31,
     "playerName": "Padraig Mahoney",
     "number": 37,
     "position": "Goalie",
-    "imageUrl": "https://www.gtlacrosse.com/images/setup/headshot_default.jpg?max_width=510&max_height=600",
+    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2025-26/bios/padraig.jpg?max_width=510&max_height=600",
     "height": "6'0\"",
     "weight": "180",
     "hometown": "Atlanta",
@@ -2039,11 +2097,11 @@
     }
   },
   {
-    "id": 31,
+    "id": 32,
     "playerName": "Phil Marshall",
     "number": 38,
     "position": "Midfield",
-    "imageUrl": "https://www.gtlacrosse.com/images/setup/headshot_default.jpg?max_width=510&max_height=600",
+    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2025-26/bios/phil_m.jpg?max_width=510&max_height=600",
     "height": "6'0\"",
     "weight": "190",
     "hometown": "Lilburn",
@@ -2093,11 +2151,11 @@
     }
   },
   {
-    "id": 32,
+    "id": 33,
     "playerName": "Ben Skopicki",
     "number": 39,
     "position": "M/FO",
-    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2024-25/bios/skopes.jpg?max_width=510&max_height=600",
+    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2025-26/bios/skopes.jpg?max_width=510&max_height=600",
     "height": "6'0\"",
     "weight": "170",
     "hometown": "Jericho",
@@ -2188,11 +2246,11 @@
     }
   },
   {
-    "id": 33,
+    "id": 34,
     "playerName": "Sean Carmody",
     "number": 40,
     "position": "Midfield",
-    "imageUrl": "https://www.gtlacrosse.com/images/setup/headshot_default.jpg?max_width=510&max_height=600",
+    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2025-26/bios/sean.jpg?max_width=510&max_height=600",
     "height": "5'7\"",
     "weight": "160",
     "hometown": "Chicago",
@@ -2242,7 +2300,7 @@
     }
   },
   {
-    "id": 34,
+    "id": 35,
     "playerName": "Owen Seibold",
     "number": 41,
     "position": "Defense",
@@ -2332,11 +2390,11 @@
     }
   },
   {
-    "id": 35,
+    "id": 36,
     "playerName": "Graeme Navarro",
     "number": 42,
     "position": "Attack",
-    "imageUrl": "https://www.gtlacrosse.com/images/setup/headshot_default.jpg?max_width=510&max_height=600",
+    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2025-26/bios/graeme.jpg?max_width=510&max_height=600",
     "height": "6'5\"",
     "weight": "215",
     "hometown": "Woodstock",
@@ -2386,12 +2444,12 @@
     }
   },
   {
-    "id": 36,
+    "id": 37,
     "playerName": "Asher Wagnon",
     "number": 44,
     "position": "Attack",
-    "imageUrl": "https://www.gtlacrosse.com/images/setup/headshot_default.jpg?max_width=510&max_height=600",
-    "height": "6'3&quot;",
+    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2025-26/bios/asher_w.jpg?max_width=510&max_height=600",
+    "height": "6'3\"",
     "weight": "215",
     "hometown": "Atlanta",
     "state": "GA",
@@ -2466,11 +2524,11 @@
     }
   },
   {
-    "id": 37,
+    "id": 38,
     "playerName": "Brayden Smith",
     "number": 45,
     "position": "Attack",
-    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2024-25/bios/smitty.jpg?max_width=510&max_height=600",
+    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2025-26/bios/smitty.jpg?max_width=510&max_height=600",
     "height": "6'0\"",
     "weight": "215",
     "hometown": "Acworth",
@@ -2532,11 +2590,11 @@
     }
   },
   {
-    "id": 38,
+    "id": 39,
     "playerName": "Jack Fishbein",
     "number": 46,
     "position": "Defense",
-    "imageUrl": "https://www.gtlacrosse.com/images/setup/headshot_default.jpg?max_width=510&max_height=600",
+    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2025-26/bios/fish.jpg?max_width=510&max_height=600",
     "height": "6'0\"",
     "weight": "170",
     "hometown": "Atlanta",
@@ -2586,71 +2644,17 @@
     }
   },
   {
-    "id": 39,
+    "id": 40,
     "playerName": "Ezra Mahle",
     "number": 47,
     "position": "Midfield",
-    "imageUrl": "https://www.gtlacrosse.com/images/setup/headshot_default.jpg?max_width=510&max_height=600",
+    "imageUrl": "https://www.gtlacrosse.com/sports/mlax/2025-26/bios/ezra.jpg?max_width=510&max_height=600",
     "height": "6'1\"",
     "weight": "180",
     "hometown": "Dunwoody",
     "state": "GA",
     "year": "Fr",
     "highSchool": "Dunwoody",
-    "achievements": [],
-    "careerStats": {
-      "headers": [
-        "Year",
-        "gp",
-        "gs",
-        "g",
-        "a",
-        "pts",
-        "gb",
-        "fo",
-        "sh",
-        "sh%"
-      ],
-      "rows": [
-        [
-          "2025-26",
-          "-",
-          "-",
-          "-",
-          "-",
-          "0",
-          "-",
-          "0-0",
-          "-",
-          "-"
-        ],
-        [
-          "Total",
-          "-",
-          "-",
-          "-",
-          "-",
-          "0",
-          "-",
-          "0-0",
-          "-",
-          "-"
-        ]
-      ]
-    }
-  },
-  {
-    "id": 40,
-    "playerName": "Alek Crone",
-    "number": 50,
-    "position": "Midfield",
-    "imageUrl": "https://www.gtlacrosse.com/images/setup/headshot_default.jpg?max_width=510&max_height=600",
-    "height": "6'0\"",
-    "weight": "205",
-    "hometown": "Westerville",
-    "state": "Oh",
-    "year": "So",
-    "highSchool": "Westerville South",
     "achievements": [],
     "careerStats": {
       "headers": [

@@ -1,12 +1,16 @@
-## Player Bio
+## Player Details
 
-**Player Details:**
-- **State:** Ohio
+- **Height:** 6'5"
+- **Weight:** 215
 - **Hometown:** North Canton
-- **Height:** 6'5"  
-- **Weight:** 200 lbs  
-- **Year:** Freshman  
-- **High School:** North Canton High School
-- **Position:** Midfield  
+- **Position:** Attack
+- **Year:** Fr
+- **State:** OH
+- **High School:** North Canton
 
-Emmett Somers is a freshman middie who is injuried for the 2024-2025 season. As he begins his collegiate lacrosse journey Emmett brings enthusiasm to the team from the sideline as he works to get healthy.
+## Career Stats
+
+| Year | gp | gs | g | a | pts | gb | fo | sh | sh% |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 2025-26 | - | - | - | - | 0 | - | 0-0 | - | - |
+| Total | - | - | - | - | 0 | - | 0-0 | - | - |

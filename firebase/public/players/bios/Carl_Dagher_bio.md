@@ -1,6 +1,6 @@
 ## Player Details
 
-- **Height:** 5-9
+- **Height:** 5'9"
 - **Weight:** 160
 - **Hometown:** Marietta
 - **Position:** Midfield

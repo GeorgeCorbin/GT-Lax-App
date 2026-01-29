@@ -1,6 +1,6 @@
 ## Player Details
 
-- **Height:** 6-1
+- **Height:** 6'1"
 - **Weight:** 190
 - **Hometown:** Tarrytown
 - **Position:** Goalie
